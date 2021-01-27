@@ -203,7 +203,7 @@
 					}
 				},
 				{
-					"type": "cav",
+					"type": "cav2",
 					"properties": {
 						"initially-visible": true,
 						"initial-animation": "Default",
@@ -215,8 +215,8 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 712,
-						"y": 299,
+						"x": 611,
+						"y": 417,
 						"width": 241,
 						"height": 202,
 						"originX": 0.5,
