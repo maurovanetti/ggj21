@@ -25,7 +25,7 @@
 			"eventType": "variable",
 			"name": "ROOM_NAME",
 			"type": "string",
-			"initialValue": "arena",
+			"initialValue": "Arena",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -192,9 +192,38 @@
 							"parameters": {
 								"axis": "x"
 							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "StartButton",
+							"sid": 989646849613802,
+							"parameters": {
+								"mode": "enabled"
+							}
 						}
 					],
 					"sid": 783479301242920
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 945990012828369
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "StartButton",
+							"sid": 466521172560120,
+							"parameters": {
+								"mode": "disabled"
+							}
+						}
+					],
+					"sid": 208920943328546
 				},
 				{
 					"eventType": "block",
@@ -225,7 +254,7 @@
 		{
 			"eventType": "group",
 			"disabled": false,
-			"title": "Signalling",
+			"title": "Matchmaking",
 			"description": "",
 			"isActiveOnStart": true,
 			"children": [
@@ -252,6 +281,22 @@
 							"sid": 133886881338203,
 							"parameters": {
 								"server": "\"wss://multiplayer.scirra.com\""
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "StartButton",
+							"sid": 953984617826229,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "PlayerName",
+							"sid": 853072429970513,
+							"parameters": {
+								"visibility": "invisible"
 							}
 						}
 					],
@@ -330,6 +375,14 @@
 						{
 							"callFunction": "DisplayPlayerNames",
 							"sid": 982546591822082
+						},
+						{
+							"id": "set-text",
+							"objectClass": "RoomName",
+							"sid": 910375915626053,
+							"parameters": {
+								"text": "Multiplayer.CurrentRoom"
+							}
 						}
 					],
 					"sid": 455367435737397,
@@ -350,6 +403,22 @@
 									"parameters": [
 										"\"You are the game host\""
 									]
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "StartButton",
+									"sid": 960875368797598,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "StartButton",
+									"sid": 267861296148179,
+									"parameters": {
+										"mode": "disabled"
+									}
 								}
 							],
 							"sid": 365409939725310
@@ -370,6 +439,11 @@
 									"parameters": [
 										"\"You are a game peer\""
 									]
+								},
+								{
+									"id": "destroy",
+									"objectClass": "StartButton",
+									"sid": 254704499026106
 								}
 							],
 							"sid": 884284865114808
@@ -409,6 +483,51 @@
 						}
 					],
 					"sid": 811821798161721
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Keyboard",
+							"sid": 656524898802023,
+							"parameters": {
+								"key": 78
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "NetworkStats",
+							"sid": 166522098809822,
+							"parameters": {
+								"visibility": "toggle"
+							}
+						}
+					],
+					"sid": 893200205548130
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-visible",
+							"objectClass": "NetworkStats",
+							"sid": 567491228608401
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "NetworkStats",
+							"sid": 906167218743459,
+							"parameters": {
+								"text": "Multiplayer.StatInboundCount & \" in (\" & (round(Multiplayer.StatInboundBandwidth/100)/10) & \" k) / sec\" & newline & Multiplayer.StatOutboundCount & \" out (\" & (round(Multiplayer.StatOutboundBandwidth/100)/10) & \" k) / sec\" & newline & \"Host ping \" & round(Multiplayer.PeerLatency(Multiplayer.HostID)) & \", PDV \" & round(Multiplayer.PeerPDV(Multiplayer.HostID))"
+							}
+						}
+					],
+					"sid": 188794122019087
 				}
 			],
 			"sid": 574492691276879

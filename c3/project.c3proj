@@ -73,7 +73,10 @@
 					"LoginButton",
 					"LoginInstructions",
 					"PlayerName",
-					"Log"
+					"Log",
+					"StartButton",
+					"RoomName",
+					"NetworkStats"
 				],
 				"subfolders": [],
 				"name": "UI"

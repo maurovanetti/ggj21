@@ -362,6 +362,122 @@
 						"angle": 0,
 						"zElevation": 0
 					}
+				},
+				{
+					"type": "StartButton",
+					"properties": {
+						"type": "button",
+						"text": "Start!",
+						"tooltip": "",
+						"initially-visible": false,
+						"enabled": false,
+						"auto-font-size": true,
+						"checked": false,
+						"id": ""
+					},
+					"uid": 12,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 472,
+						"y": 287,
+						"width": 299.2941696725815,
+						"height": 99.76472322419383,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						]
+					}
+				},
+				{
+					"type": "RoomName",
+					"properties": {
+						"text": "…",
+						"enable-bbcode": true,
+						"font": "Perpetua Titling MT",
+						"size": 20,
+						"line-height": 0,
+						"bold": true,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "top-left"
+					},
+					"uid": 14,
+					"instanceVariables": {
+						"PeerIndex": 0
+					},
+					"behaviors": {},
+					"world": {
+						"x": 326,
+						"y": 5,
+						"width": 597,
+						"height": 30,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "NetworkStats",
+					"properties": {
+						"text": "Text",
+						"enable-bbcode": true,
+						"font": "Arial",
+						"size": 8,
+						"line-height": 0,
+						"bold": false,
+						"italic": true,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"initially-visible": false,
+						"origin": "top-left"
+					},
+					"uid": 15,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 3,
+						"y": 302,
+						"width": 117,
+						"height": 274,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
 				}
 			],
 			"sid": 854017686661042,

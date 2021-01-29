@@ -1,0 +1,16 @@
+{
+	"name": "RoomName",
+	"plugin-id": "Text",
+	"sid": 775100171941299,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "PeerIndex",
+			"type": "number",
+			"desc": "",
+			"sid": 412783750502367
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}
