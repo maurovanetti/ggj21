@@ -16,6 +16,34 @@
 			],
 			"backgroundColor": [
 				1,
+				0.8980392156862745,
+				0.6196078431372549,
+				1
+			],
+			"isTransparent": false,
+			"parallaxX": 1,
+			"parallaxY": 1,
+			"scaleRate": 1,
+			"forceOwnTexture": false,
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"global": false
+		},
+		{
+			"name": "Terrain",
+			"overriden": 0,
+			"instances": [],
+			"sid": 802443325962969,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				1,
 				1,
 				1,
 				1
@@ -30,7 +58,35 @@
 			"global": false
 		},
 		{
-			"name": "Other Stuff",
+			"name": "Arena",
+			"overriden": 0,
+			"instances": [],
+			"sid": 469799981371182,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				1,
+				1,
+				1,
+				1
+			],
+			"isTransparent": true,
+			"parallaxX": 1,
+			"parallaxY": 1,
+			"scaleRate": 1,
+			"forceOwnTexture": false,
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"global": false
+		},
+		{
+			"name": "Tall Items",
 			"overriden": 0,
 			"instances": [],
 			"sid": 910274710464728,
@@ -58,9 +114,256 @@
 			"global": false
 		},
 		{
-			"name": "GUI",
+			"name": "Overlay",
 			"overriden": 0,
 			"instances": [],
+			"sid": 389031852306720,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				1,
+				1,
+				1,
+				1
+			],
+			"isTransparent": true,
+			"parallaxX": 1,
+			"parallaxY": 1,
+			"scaleRate": 1,
+			"forceOwnTexture": false,
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"global": false
+		},
+		{
+			"name": "GUI",
+			"overriden": 0,
+			"instances": [
+				{
+					"type": "PlayerName",
+					"properties": {
+						"text": "Player Name",
+						"enable-bbcode": true,
+						"font": "Perpetua Titling MT",
+						"size": 20,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "top-left"
+					},
+					"uid": 7,
+					"instanceVariables": {
+						"PeerIndex": 0
+					},
+					"behaviors": {},
+					"world": {
+						"x": 4,
+						"y": 4,
+						"width": 200,
+						"height": 30,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "PlayerName",
+					"properties": {
+						"text": "Player Name",
+						"enable-bbcode": true,
+						"font": "Perpetua Titling MT",
+						"size": 20,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "right",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "top-right"
+					},
+					"uid": 8,
+					"instanceVariables": {
+						"PeerIndex": 1
+					},
+					"behaviors": {},
+					"world": {
+						"x": 1276,
+						"y": 4,
+						"width": 200,
+						"height": 30,
+						"originX": 1,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "PlayerName",
+					"properties": {
+						"text": "Player Name",
+						"enable-bbcode": true,
+						"font": "Perpetua Titling MT",
+						"size": 20,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "right",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "bottom-right"
+					},
+					"uid": 9,
+					"instanceVariables": {
+						"PeerIndex": 3
+					},
+					"behaviors": {},
+					"world": {
+						"x": 1276,
+						"y": 716,
+						"width": 200,
+						"height": 30,
+						"originX": 1,
+						"originY": 1,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "PlayerName",
+					"properties": {
+						"text": "Player Name",
+						"enable-bbcode": true,
+						"font": "Perpetua Titling MT",
+						"size": 20,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "left",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "bottom-left"
+					},
+					"uid": 10,
+					"instanceVariables": {
+						"PeerIndex": 2
+					},
+					"behaviors": {},
+					"world": {
+						"x": 4,
+						"y": 716,
+						"width": 200,
+						"height": 30,
+						"originX": 0,
+						"originY": 1,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Log",
+					"properties": {
+						"text": "Text",
+						"enable-bbcode": true,
+						"font": "Arial",
+						"size": 12,
+						"line-height": 0,
+						"bold": false,
+						"italic": true,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "top-left"
+					},
+					"uid": 11,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 392,
+						"y": 684,
+						"width": 485,
+						"height": 34,
+						"originX": 0,
+						"originY": 0,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				}
+			],
 			"sid": 854017686661042,
 			"effectTypes": [],
 			"isInitiallyVisible": true,
@@ -76,7 +379,7 @@
 				1,
 				1
 			],
-			"isTransparent": false,
+			"isTransparent": true,
 			"parallaxX": 0,
 			"parallaxY": 0,
 			"scaleRate": 0,
@@ -89,8 +392,8 @@
 	"sid": 597010537325770,
 	"nonworld-instances": [],
 	"effectTypes": [],
-	"width": 2560,
-	"height": 1440,
+	"width": 1280,
+	"height": 720,
 	"unboundedScrolling": false,
-	"eventSheet": "Event sheet 1"
+	"eventSheet": "Play Events"
 }

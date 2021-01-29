@@ -1,0 +1,238 @@
+{
+	"name": "Login Events",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "MyName",
+			"type": "string",
+			"initialValue": "Whatever",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 982143882151359
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 931484240722844
+				}
+			],
+			"actions": [
+				{
+					"id": "set-focused",
+					"objectClass": "NameInput",
+					"sid": 998438658365535
+				},
+				{
+					"id": "set-text",
+					"objectClass": "NameInput",
+					"sid": 486960231106713,
+					"parameters": {
+						"text": "\"Anonymous Player\""
+					}
+				}
+			],
+			"sid": 102375268366836
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "supports-multiplayer",
+					"objectClass": "Multiplayer",
+					"sid": 306460534637138
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "LoginInstructions",
+					"sid": 898507353087636,
+					"parameters": {
+						"text": "\"Choose a name and click the button to log in\""
+					}
+				}
+			],
+			"sid": 502596261443756
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 232834330547005
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "LoginInstructions",
+					"sid": 878993618312225,
+					"parameters": {
+						"text": "\"Multiplayer is not supported by this browser!\""
+					}
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "LoginButton",
+					"sid": 260514140742555,
+					"parameters": {
+						"mode": "disabled"
+					}
+				},
+				{
+					"id": "set-enabled",
+					"objectClass": "NameInput",
+					"sid": 139212216151959,
+					"parameters": {
+						"mode": "disabled"
+					}
+				}
+			],
+			"sid": 870628969120173
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-text-changed",
+					"objectClass": "NameInput",
+					"sid": 906171421504615
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "NameInput",
+					"sid": 250556389113134,
+					"parameters": {
+						"text": "trim(NameInput.Text)"
+					}
+				}
+			],
+			"sid": 238070170120510,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-text",
+							"objectClass": "NameInput",
+							"sid": 299959987947997,
+							"parameters": {
+								"text": "\"\"",
+								"case": "case-insensitive"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "LoginButton",
+							"sid": 321581005901761,
+							"parameters": {
+								"mode": "disabled"
+							}
+						}
+					],
+					"sid": 203195997168761
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 885075631257345
+						}
+					],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "LoginButton",
+							"sid": 677977004905822,
+							"parameters": {
+								"mode": "enabled"
+							}
+						}
+					],
+					"sid": 828409198547188
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 322558918715674,
+					"parameters": {
+						"key": 13
+					}
+				},
+				{
+					"id": "on-clicked",
+					"objectClass": "LoginButton",
+					"sid": 232194788780291
+				}
+			],
+			"actions": [],
+			"sid": 860185669180436,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [],
+					"sid": 659194388994176
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-text",
+							"objectClass": "NameInput",
+							"sid": 960200523716831,
+							"parameters": {
+								"text": "\"\"",
+								"case": "case-insensitive"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "supports-multiplayer",
+							"objectClass": "Multiplayer",
+							"sid": 296596203387361
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 944423911806323,
+							"parameters": {
+								"variable": "MyName",
+								"value": "trim(NameInput.Text)"
+							}
+						},
+						{
+							"id": "go-to-nextprevious-layout",
+							"objectClass": "System",
+							"sid": 377598838689092,
+							"parameters": {
+								"which": "next"
+							}
+						}
+					],
+					"sid": 359271614405806
+				}
+			],
+			"isOrBlock": true
+		}
+	],
+	"sid": 397351830393026
+}

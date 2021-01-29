@@ -1,0 +1,418 @@
+{
+	"name": "Play Events",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "GAME_NAME",
+			"type": "string",
+			"initialValue": "patata-bollente",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 340826543005715
+		},
+		{
+			"eventType": "variable",
+			"name": "INSTANCE_NAME",
+			"type": "string",
+			"initialValue": "default",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 516413201601266
+		},
+		{
+			"eventType": "variable",
+			"name": "ROOM_NAME",
+			"type": "string",
+			"initialValue": "arena",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 472470540722491
+		},
+		{
+			"eventType": "variable",
+			"name": "GameState",
+			"type": "string",
+			"initialValue": "waiting",
+			"comment": "\"waiting\", \"getready\", \"go\" or \"started\"",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 836404875808987
+		},
+		{
+			"functionName": "Log",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "Message",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 532112398378769
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 367209875356039,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-running-typewriter-text",
+							"objectClass": "Log",
+							"sid": 635941720884454
+						}
+					],
+					"actions": [
+						{
+							"id": "typewriter-finish",
+							"objectClass": "Log",
+							"sid": 355973479887117
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 484846944744615,
+							"parameters": {
+								"seconds": "0.2"
+							}
+						},
+						{
+							"id": "typewriter-text",
+							"objectClass": "Log",
+							"sid": 187376476564730,
+							"parameters": {
+								"text": "Message",
+								"duration": "len(Message) * 0.03"
+							}
+						}
+					],
+					"sid": 990543629388286
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 994048450408205
+						}
+					],
+					"actions": [
+						{
+							"id": "typewriter-text",
+							"objectClass": "Log",
+							"sid": 217967799145098,
+							"parameters": {
+								"text": "Message",
+								"duration": "len(Message) * 0.02"
+							}
+						}
+					],
+					"sid": 972078213132226
+				}
+			]
+		},
+		{
+			"functionName": "DisplayPlayerNames",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-size",
+					"objectClass": "Players",
+					"sid": 142732122565884,
+					"parameters": {
+						"width": "Multiplayer.PeerCount",
+						"height": "1",
+						"depth": "1"
+					}
+				}
+			],
+			"sid": 123413030223112,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for",
+							"objectClass": "System",
+							"sid": 655334884369658,
+							"parameters": {
+								"name": "\"Peer IDs\"",
+								"start-index": "0",
+								"end-index": "Multiplayer.PeerCount"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-at-x",
+							"objectClass": "Players",
+							"sid": 638164781011470,
+							"parameters": {
+								"x": "loopindex",
+								"value": "Multiplayer.PeerIDAt(loopindex)"
+							}
+						}
+					],
+					"sid": 597870476109172
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-size",
+							"objectClass": "Players",
+							"sid": 543408802541148,
+							"parameters": {
+								"axis": "x",
+								"comparison": 4,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "sort",
+							"objectClass": "Players",
+							"sid": 397068954169879,
+							"parameters": {
+								"axis": "x"
+							}
+						}
+					],
+					"sid": 783479301242920
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each-element",
+							"objectClass": "Players",
+							"sid": 311311515988356,
+							"parameters": {
+								"axes": "x"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "PlayerName",
+							"sid": 249484674731137,
+							"parameters": {
+								"text": "Multiplayer.PeerAliasFromID(Players.At(PlayerName.PeerIndex))"
+							}
+						}
+					],
+					"sid": 511256304700301
+				}
+			]
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Signalling",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 613197220684519
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "Log",
+							"sid": 307081757956390,
+							"parameters": [
+								"\"Connecting to signalling server…\""
+							]
+						},
+						{
+							"id": "connect",
+							"objectClass": "Multiplayer",
+							"sid": 133886881338203,
+							"parameters": {
+								"server": "\"wss://multiplayer.scirra.com\""
+							}
+						}
+					],
+					"sid": 522667592383266
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-connected",
+							"objectClass": "Multiplayer",
+							"sid": 383121642175329
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "Log",
+							"sid": 905315030154989,
+							"parameters": [
+								"\"Connected, logging in…\""
+							]
+						},
+						{
+							"id": "log-in",
+							"objectClass": "Multiplayer",
+							"sid": 496885709042530,
+							"parameters": {
+								"alias": "MyName"
+							}
+						}
+					],
+					"sid": 898576180263201
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-logged-in",
+							"objectClass": "Multiplayer",
+							"sid": 349451188546684
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "Log",
+							"sid": 197786307906038,
+							"parameters": [
+								"\"Logged in as \" & Multiplayer.MyAlias & \" (ID: \" & Multiplayer.MyID & \"), joining room…\""
+							]
+						},
+						{
+							"id": "auto-join-room",
+							"objectClass": "Multiplayer",
+							"sid": 669977873157187,
+							"parameters": {
+								"game": "GAME_NAME",
+								"instance": "INSTANCE_NAME",
+								"first-room": "ROOM_NAME",
+								"max-peers": "2",
+								"locking": "lock-when-full"
+							}
+						}
+					],
+					"sid": 304826278553399
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-joined-room",
+							"objectClass": "Multiplayer",
+							"sid": 273458007816043
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "DisplayPlayerNames",
+							"sid": 982546591822082
+						}
+					],
+					"sid": 455367435737397,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-host",
+									"objectClass": "Multiplayer",
+									"sid": 287960382578929
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "Log",
+									"sid": 822759953588992,
+									"parameters": [
+										"\"You are the game host\""
+									]
+								}
+							],
+							"sid": 365409939725310
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 416400790844953
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "Log",
+									"sid": 859446761253261,
+									"parameters": [
+										"\"You are a game peer\""
+									]
+								}
+							],
+							"sid": 884284865114808
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-connected",
+							"objectClass": "Multiplayer",
+							"sid": 182118815518661
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "DisplayPlayerNames",
+							"sid": 930180234809941
+						}
+					],
+					"sid": 371309199144246
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-disconnected",
+							"objectClass": "Multiplayer",
+							"sid": 718978317692982
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "DisplayPlayerNames",
+							"sid": 660504490829473
+						}
+					],
+					"sid": 811821798161721
+				}
+			],
+			"sid": 574492691276879
+		}
+	],
+	"sid": 607373704127325
+}

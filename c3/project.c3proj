@@ -8,8 +8,48 @@
 	"usedAddons": [
 		{
 			"type": "plugin",
+			"id": "TextBox",
+			"name": "Text input",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Button",
+			"name": "Button",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "Text",
-			"name": "Testo",
+			"name": "Text",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Multiplayer",
+			"name": "Multiplayer",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Keyboard",
+			"name": "Keyboard",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Arr",
+			"name": "Array",
 			"author": "Scirra",
 			"version": "r225",
 			"bundled": false
@@ -25,12 +65,38 @@
 	],
 	"uniqueId": "s6d7gosbo40",
 	"objectTypes": {
-		"items": [
-			"ExampleText",
-			"ExampleSprite",
-			"cav"
-		],
-		"subfolders": []
+		"items": [],
+		"subfolders": [
+			{
+				"items": [
+					"NameInput",
+					"LoginButton",
+					"LoginInstructions",
+					"PlayerName",
+					"Log"
+				],
+				"subfolders": [],
+				"name": "UI"
+			},
+			{
+				"items": [
+					"Multiplayer",
+					"Keyboard",
+					"Players"
+				],
+				"subfolders": [],
+				"name": "Static"
+			},
+			{
+				"items": [
+					"ExampleSprite",
+					"ExampleText",
+					"Knight"
+				],
+				"subfolders": [],
+				"name": "Examples"
+			}
+		]
 	},
 	"autosaveData": null,
 	"containers": [],
@@ -40,7 +106,7 @@
 	},
 	"layouts": {
 		"items": [
-			"Title",
+			"Login",
 			"Play",
 			"GameOver"
 		],
@@ -48,7 +114,8 @@
 	},
 	"eventSheets": {
 		"items": [
-			"Event sheet 1"
+			"Login Events",
+			"Play Events"
 		],
 		"subfolders": []
 	},

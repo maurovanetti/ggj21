@@ -1,0 +1,16 @@
+{
+	"name": "PlayerName",
+	"plugin-id": "Text",
+	"sid": 898533394750699,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "PeerIndex",
+			"type": "number",
+			"desc": "",
+			"sid": 371382967534573
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}
