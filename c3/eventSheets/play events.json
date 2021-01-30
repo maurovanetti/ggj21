@@ -205,9 +205,19 @@
 					],
 					"actions": [
 						{
+							"id": "disconnect-room",
+							"objectClass": "Multiplayer",
+							"sid": 586956761362243
+						},
+						{
+							"id": "disconnect-signalling",
+							"objectClass": "Multiplayer",
+							"sid": 740925161789074
+						},
+						{
 							"id": "restart-layout",
 							"objectClass": "System",
-							"sid": 819439611714067
+							"sid": 661310757229447
 						}
 					],
 					"sid": 610928971047410
@@ -1271,39 +1281,48 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 226397764247693,
-							"parameters": {
-								"variable": "GameState",
-								"comparison": 0,
-								"value": "\"waiting\""
-							}
-						},
-						{
-							"id": "compare-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 971880224312948,
-							"parameters": {
-								"variable": "Ready"
-							}
-						},
-						{
 							"id": "every-x-seconds",
 							"objectClass": "System",
-							"sid": 206582355008699,
+							"sid": 741233115832078,
 							"parameters": {
 								"interval-seconds": "1.0"
 							}
 						}
 					],
-					"actions": [
+					"actions": [],
+					"sid": 320481694232207,
+					"children": [
 						{
-							"callFunction": "ConfigureParty",
-							"sid": 116915937879668
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 165147519423858,
+									"parameters": {
+										"variable": "Ready"
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 562099802231877,
+									"parameters": {
+										"variable": "GameState",
+										"comparison": 0,
+										"value": "\"waiting\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "ConfigureParty",
+									"sid": 493673406071955
+								}
+							],
+							"sid": 276180854089034
 						}
-					],
-					"sid": 320481694232207
+					]
 				}
 			],
 			"sid": 574492691276879
@@ -1427,27 +1446,49 @@
 												}
 											],
 											"sid": 206464154055484
-										},
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "on-collision-with-another-object",
+											"objectClass": "Monster",
+											"sid": 266489565873909,
+											"parameters": {
+												"object": "Avatar"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "destroy",
+											"objectClass": "Avatar",
+											"sid": 567900749486850
+										}
+									],
+									"sid": 658797248801840,
+									"children": [
 										{
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "on-collision-with-another-object",
-													"objectClass": "Monster",
-													"sid": 983383553487944,
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "Avatar",
+													"sid": 576727203140202,
 													"parameters": {
-														"object": "Avatar"
+														"instance-variable": "HasEgg"
 													}
 												}
 											],
 											"actions": [
 												{
-													"id": "destroy",
-													"objectClass": "Avatar",
-													"sid": 926566512364045
+													"callFunction": "LoseEgg",
+													"sid": 873348956154558
 												}
 											],
-											"sid": 108973737251504
+											"sid": 601691923515485
 										}
 									]
 								},
@@ -2093,12 +2134,26 @@
 									],
 									"actions": [
 										{
+											"id": "stop-all-tweens",
+											"objectClass": "Egg",
+											"sid": 517528571738157,
+											"behaviorType": "Tween"
+										},
+										{
 											"id": "set-position-to-another-object",
 											"objectClass": "Egg",
 											"sid": 983574789772676,
 											"parameters": {
 												"object": "Avatar",
 												"image-point-optional": "\"Egg\""
+											}
+										},
+										{
+											"id": "set-scale",
+											"objectClass": "Egg",
+											"sid": 707579762425667,
+											"parameters": {
+												"scale": "1"
 											}
 										},
 										{
@@ -2179,17 +2234,6 @@
 						},
 						{
 							"id": "compare-instance-variable",
-							"objectClass": "Avatar",
-							"sid": 223620312433522,
-							"parameters": {
-								"instance-variable": "PeerID",
-								"comparison": 0,
-								"value": "\"\""
-							},
-							"isInverted": true
-						},
-						{
-							"id": "compare-instance-variable",
 							"objectClass": "Flag",
 							"sid": 704537217562691,
 							"parameters": {
@@ -2210,34 +2254,7 @@
 							}
 						}
 					],
-					"sid": 785480509097167,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-host",
-									"objectClass": "Multiplayer",
-									"sid": 342896353820848
-								},
-								{
-									"id": "is-boolean-instance-variable-set",
-									"objectClass": "Avatar",
-									"sid": 743961405870612,
-									"parameters": {
-										"instance-variable": "HasEgg"
-									}
-								}
-							],
-							"actions": [
-								{
-									"callFunction": "LoseEgg",
-									"sid": 441462596290244
-								}
-							],
-							"sid": 757252758276884
-						}
-					]
+					"sid": 785480509097167
 				},
 				{
 					"eventType": "block",
@@ -2279,28 +2296,43 @@
 			"functionIsAsync": false,
 			"functionParameters": [],
 			"eventType": "function-block",
-			"conditions": [
+			"conditions": [],
+			"actions": [],
+			"sid": 528623576252789,
+			"children": [
 				{
-					"id": "pick-nearestfurthest",
-					"objectClass": "Avatar",
-					"sid": 238677723616424,
-					"parameters": {
-						"which": "furthest",
-						"x": "Egg.X",
-						"y": "Egg.Y"
-					}
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-nearestfurthest",
+							"objectClass": "Avatar",
+							"sid": 796498583750272,
+							"parameters": {
+								"which": "furthest",
+								"x": "Egg.X",
+								"y": "Egg.Y"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "Log",
+							"sid": 163202999734796,
+							"parameters": [
+								"\"Egg lost, furthest player is #\" & Avatar.PlayerIndex"
+							]
+						},
+						{
+							"callFunction": "ThrowEgg",
+							"sid": 351700334499218,
+							"parameters": [
+								"Avatar.PlayerIndex"
+							]
+						}
+					],
+					"sid": 146890338873634
 				}
-			],
-			"actions": [
-				{
-					"callFunction": "ThrowEgg",
-					"sid": 534812337192297,
-					"parameters": [
-						"Avatar.UID"
-					]
-				}
-			],
-			"sid": 528623576252789
+			]
 		},
 		{
 			"functionName": "ThrowEgg",
@@ -2397,6 +2429,23 @@
 								"destroy-on-complete": "no",
 								"loop": "no",
 								"ping-pong": "no"
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "Egg",
+							"sid": 684891052354604,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"ballistic\"",
+								"property": "scale",
+								"end-x": "2",
+								"end-y": "2",
+								"time": "1",
+								"ease": "easeinoutsine",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes"
 							}
 						}
 					],
@@ -2596,6 +2645,11 @@
 					"id": "disconnect-room",
 					"objectClass": "Multiplayer",
 					"sid": 498073866595666
+				},
+				{
+					"id": "disconnect-signalling",
+					"objectClass": "Multiplayer",
+					"sid": 319455412884433
 				},
 				{
 					"id": "go-to-layout",
