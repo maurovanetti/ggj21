@@ -1496,6 +1496,57 @@
 									"eventType": "block",
 									"conditions": [
 										{
+											"id": "on-collision-with-another-object",
+											"objectClass": "Avatar",
+											"sid": 732977199810208,
+											"parameters": {
+												"object": "Egg"
+											}
+										},
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "Avatar",
+											"sid": 718950588461750,
+											"parameters": {
+												"instance-variable": "HasEgg"
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "AssignEgg",
+											"sid": 783400627747004,
+											"parameters": [
+												"Avatar.PlayerIndex"
+											]
+										},
+										{
+											"id": "set-collisions-enabled",
+											"objectClass": "Egg",
+											"sid": 443158681256186,
+											"parameters": {
+												"collisions": "disabled"
+											}
+										},
+										{
+											"id": "start-timer",
+											"objectClass": "Egg",
+											"sid": 693771455912980,
+											"behaviorType": "Timer",
+											"parameters": {
+												"duration": "1.0",
+												"type": "once",
+												"tag": "\"grace\""
+											}
+										}
+									],
+									"sid": 614254504734279
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
 											"id": "every-x-seconds",
 											"objectClass": "System",
 											"sid": 370656026034609,
@@ -2276,6 +2327,14 @@
 					],
 					"actions": [
 						{
+							"id": "set-collisions-enabled",
+							"objectClass": "Egg",
+							"sid": 536797122230788,
+							"parameters": {
+								"collisions": "enabled"
+							}
+						},
+						{
 							"callFunction": "AssignEgg",
 							"sid": 513239396917691,
 							"parameters": [
@@ -2284,6 +2343,31 @@
 						}
 					],
 					"sid": 551468084616859
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-timer",
+							"objectClass": "Egg",
+							"sid": 784884370221219,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"grace\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-collisions-enabled",
+							"objectClass": "Egg",
+							"sid": 418880756743264,
+							"parameters": {
+								"collisions": "enabled"
+							}
+						}
+					],
+					"sid": 394768213149629
 				}
 			],
 			"sid": 390860884619276
@@ -2351,7 +2435,16 @@
 			],
 			"eventType": "function-block",
 			"conditions": [],
-			"actions": [],
+			"actions": [
+				{
+					"id": "set-collisions-enabled",
+					"objectClass": "Egg",
+					"sid": 981370391679457,
+					"parameters": {
+						"collisions": "disabled"
+					}
+				}
+			],
 			"sid": 274638757458724,
 			"children": [
 				{
@@ -2503,7 +2596,19 @@
 			],
 			"eventType": "function-block",
 			"conditions": [],
-			"actions": [],
+			"actions": [
+				{
+					"id": "flash",
+					"objectClass": "Egg",
+					"sid": 596841992004334,
+					"behaviorType": "Flash",
+					"parameters": {
+						"on-time": "0.1",
+						"off-time": "0.1",
+						"duration": "1"
+					}
+				}
+			],
 			"sid": 517573465315408,
 			"children": [
 				{

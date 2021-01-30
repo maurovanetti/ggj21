@@ -487,6 +487,9 @@
 						},
 						"Flash": {
 							"properties": {}
+						},
+						"Timer": {
+							"properties": {}
 						}
 					},
 					"world": {
