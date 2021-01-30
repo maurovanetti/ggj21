@@ -306,6 +306,15 @@
 					"parameters": {
 						"unique-id": "AvatarUID"
 					}
+				},
+				{
+					"id": "pick-by-unique-id",
+					"objectClass": "Avatar",
+					"sid": 625681414898333,
+					"parameters": {
+						"unique-id": "Egg.ThrownToAvatarUID"
+					},
+					"isInverted": true
 				}
 			],
 			"actions": [],

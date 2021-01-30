@@ -3,8 +3,32 @@
 	"plugin-id": "Sprite",
 	"sid": 717207998260536,
 	"isGlobal": false,
-	"instanceVariables": [],
-	"behaviorTypes": [],
+	"instanceVariables": [
+		{
+			"name": "ThrownToAvatarUID",
+			"type": "number",
+			"desc": "",
+			"sid": 541940757704211
+		},
+		{
+			"name": "DegreesPerSecond",
+			"type": "number",
+			"desc": "When rotating",
+			"sid": 102239863304230
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 262647197291037
+		},
+		{
+			"behaviorId": "Flash",
+			"name": "Flash",
+			"sid": 998737458619202
+		}
+	],
 	"effectTypes": [],
 	"animations": {
 		"items": [
@@ -24,7 +48,7 @@
 					}
 				],
 				"sid": 686193195112689,
-				"name": "Animation 1",
+				"name": "Carried",
 				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,

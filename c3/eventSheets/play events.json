@@ -290,9 +290,98 @@
 							}
 						}
 					],
-					"sid": 958740572055487
+					"sid": 958740572055487,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Flag",
+									"sid": 798554104727492,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "Avatar.PlayerIndex"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "Flag",
+									"sid": 502918994851960,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Flag",
+									"sid": 816342459682544,
+									"parameters": {
+										"instance-variable": "State",
+										"value": "\"Playing\""
+									}
+								}
+							],
+							"sid": 244388234862831
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Flag",
+							"sid": 344448926347257,
+							"parameters": {
+								"instance-variable": "PlayerIndex",
+								"comparison": 5,
+								"value": "Multiplayer.PeerCount"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "Flag",
+							"sid": 976155472176994,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						}
+					],
+					"sid": 357090922817335
 				}
 			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-animation-playing",
+					"objectClass": "Flag",
+					"sid": 610907969712221,
+					"parameters": {
+						"animation": "Flag.State"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "set-animation",
+					"objectClass": "Flag",
+					"sid": 409442402156579,
+					"parameters": {
+						"animation": "Flag.State",
+						"from": "current-frame"
+					}
+				}
+			],
+			"sid": 335640551594078
 		},
 		{
 			"eventType": "group",
@@ -342,6 +431,21 @@
 								"precision": "very-low-uint8-1-byte",
 								"interpolation": "none",
 								"client-value-tag": "\"inputs\""
+							}
+						},
+						{
+							"id": "sync-instance-variable",
+							"objectClass": "Multiplayer",
+							"sid": 105550078420053,
+							"parameters": {
+								"object": "Avatar",
+								"instance-variable": {
+									"name": "PlayerIndex",
+									"objectClass": "Avatar"
+								},
+								"precision": "very-low-uint8-1-byte",
+								"interpolation": "none",
+								"client-value-tag": "\"\""
 							}
 						},
 						{
@@ -696,10 +800,21 @@
 						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
-							"sid": 442808617405746,
+							"sid": 111152543033087,
 							"parameters": {
 								"variable": "GameState",
 								"value": "\"playing\""
+							}
+						},
+						{
+							"id": "flash",
+							"objectClass": "Egg",
+							"sid": 849034895332965,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "2"
 							}
 						}
 					],
@@ -837,60 +952,6 @@
 							"sid": 373482133769824
 						},
 						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "every-x-seconds",
-									"objectClass": "System",
-									"sid": 459032396641707,
-									"parameters": {
-										"interval-seconds": "1.0"
-									}
-								},
-								{
-									"id": "is-boolean-instance-variable-set",
-									"objectClass": "Avatar",
-									"sid": 154532315398736,
-									"parameters": {
-										"instance-variable": "HasEgg"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "find-path",
-									"objectClass": "Monster",
-									"sid": 812739726918495,
-									"behaviorType": "Pathfinding",
-									"parameters": {
-										"x": "Avatar.X",
-										"y": "Avatar.Y"
-									}
-								}
-							],
-							"sid": 171075824613483
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-path-found",
-									"objectClass": "Monster",
-									"sid": 335544567121930,
-									"behaviorType": "Pathfinding"
-								}
-							],
-							"actions": [
-								{
-									"id": "move-along-path",
-									"objectClass": "Monster",
-									"sid": 412189354551349,
-									"behaviorType": "Pathfinding"
-								}
-							],
-							"sid": 418107340134866
-						},
-						{
 							"eventType": "group",
 							"disabled": false,
 							"title": "Host",
@@ -953,8 +1014,116 @@
 												}
 											],
 											"sid": 206464154055484
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "on-collision-with-another-object",
+													"objectClass": "Monster",
+													"sid": 983383553487944,
+													"parameters": {
+														"object": "Avatar"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "destroy",
+													"objectClass": "Avatar",
+													"sid": 926566512364045
+												}
+											],
+											"sid": 108973737251504
 										}
 									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "every-x-seconds",
+											"objectClass": "System",
+											"sid": 370656026034609,
+											"parameters": {
+												"interval-seconds": "1.0"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 941320585996540,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "Avatar",
+													"sid": 896259359893809,
+													"parameters": {
+														"instance-variable": "HasEgg"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "find-path",
+													"objectClass": "Monster",
+													"sid": 132758701072873,
+													"behaviorType": "Pathfinding",
+													"parameters": {
+														"x": "Avatar.X",
+														"y": "Avatar.Y"
+													}
+												}
+											],
+											"sid": 373971602469021
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Egg",
+													"sid": 672391679022677,
+													"parameters": {
+														"instance-variable": "ThrownToAvatarUID",
+														"comparison": 1,
+														"value": "-1"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "stop",
+													"objectClass": "Monster",
+													"sid": 495153688027542,
+													"behaviorType": "Pathfinding"
+												}
+											],
+											"sid": 215263909772723
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "on-path-found",
+											"objectClass": "Monster",
+											"sid": 135560187572968,
+											"behaviorType": "Pathfinding"
+										}
+									],
+									"actions": [
+										{
+											"id": "move-along-path",
+											"objectClass": "Monster",
+											"sid": 957191266340961,
+											"behaviorType": "Pathfinding"
+										}
+									],
+									"sid": 265667807136231
 								}
 							],
 							"sid": 206193643965131
@@ -1064,6 +1233,66 @@
 											"sid": 653452604765488
 										}
 									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "on-peer-message",
+											"objectClass": "Multiplayer",
+											"sid": 872130620724823,
+											"parameters": {
+												"tag": "\"throw egg\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "ThrowEgg",
+											"sid": 630633633706043,
+											"parameters": [
+												"int(Multiplayer.Message)"
+											]
+										},
+										{
+											"callFunction": "Log",
+											"sid": 593920024926437,
+											"parameters": [
+												"\"Receveid message: Egg thrown to player #\" & Multiplayer.Message"
+											]
+										}
+									],
+									"sid": 591887885599626
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "on-peer-message",
+											"objectClass": "Multiplayer",
+											"sid": 552526369418560,
+											"parameters": {
+												"tag": "\"assign egg\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "AssignEgg",
+											"sid": 565540528469947,
+											"parameters": [
+												"int(Multiplayer.Message)"
+											]
+										},
+										{
+											"callFunction": "Log",
+											"sid": 545250281107448,
+											"parameters": [
+												"\"Receveid message: Egg to player #\" & Multiplayer.Message"
+											]
+										}
+									],
+									"sid": 231866876743466
 								}
 							],
 							"sid": 140951644177167
@@ -1117,152 +1346,199 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "compare-two-values",
-													"objectClass": "System",
-													"sid": 560704484159602,
+													"id": "pick-by-unique-id",
+													"objectClass": "Avatar",
+													"sid": 581522260346391,
 													"parameters": {
-														"first-value": "getbit(Avatar.Inputs, 0)",
-														"comparison": 0,
-														"second-value": "1"
+														"unique-id": "Egg.ThrownToAvatarUID"
 													}
 												}
 											],
 											"actions": [
 												{
-													"id": "set-instvar-value",
-													"objectClass": "Avatar",
-													"sid": 394447636132047,
+													"id": "rotate-clockwise",
+													"objectClass": "Egg",
+													"sid": 733956751259405,
 													"parameters": {
-														"instance-variable": "Animation",
-														"value": "\"Walk Up\""
-													}
-												}
-											],
-											"sid": 463197873288257
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-two-values",
-													"objectClass": "System",
-													"sid": 372341979746733,
-													"parameters": {
-														"first-value": "getbit(Avatar.Inputs, 1)",
-														"comparison": 0,
-														"second-value": "1"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "Avatar",
-													"sid": 529313890754992,
-													"parameters": {
-														"instance-variable": "Animation",
-														"value": "\"Walk Right\""
+														"degrees": "dt * Egg.DegreesPerSecond"
 													}
 												},
 												{
-													"id": "set-mirrored",
-													"objectClass": "Avatar",
-													"sid": 339016635946360,
-													"parameters": {
-														"state": "mirrored"
-													}
-												}
-											],
-											"sid": 887772544327553
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-two-values",
-													"objectClass": "System",
-													"sid": 319467342839741,
-													"parameters": {
-														"first-value": "getbit(Avatar.Inputs, 2)",
-														"comparison": 0,
-														"second-value": "1"
-													}
-												}
-											],
-											"actions": [
-												{
 													"id": "set-instvar-value",
 													"objectClass": "Avatar",
-													"sid": 735780299193952,
-													"parameters": {
-														"instance-variable": "Animation",
-														"value": "\"Walk Down\""
-													}
-												}
-											],
-											"sid": 933722575420970
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-two-values",
-													"objectClass": "System",
-													"sid": 728114629992590,
-													"parameters": {
-														"first-value": "getbit(Avatar.Inputs, 3)",
-														"comparison": 0,
-														"second-value": "1"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "Avatar",
-													"sid": 323099713571140,
-													"parameters": {
-														"instance-variable": "Animation",
-														"value": "\"Walk Right\""
-													}
-												},
-												{
-													"id": "set-mirrored",
-													"objectClass": "Avatar",
-													"sid": 764101891115192,
-													"parameters": {
-														"state": "not-mirrored"
-													}
-												}
-											],
-											"sid": 931384718228275
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-two-values",
-													"objectClass": "System",
-													"sid": 358480699452603,
-													"parameters": {
-														"first-value": "Avatar.Inputs",
-														"comparison": 0,
-														"second-value": "0"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-instvar-value",
-													"objectClass": "Avatar",
-													"sid": 874460802892148,
+													"sid": 838875196862978,
 													"parameters": {
 														"instance-variable": "Animation",
 														"value": "\"Idle\""
 													}
 												}
 											],
-											"sid": 101477110234405
+											"sid": 197987698592210
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 647634187784044
+												}
+											],
+											"actions": [],
+											"sid": 576646574681297,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-two-values",
+															"objectClass": "System",
+															"sid": 340328994952161,
+															"parameters": {
+																"first-value": "getbit(Avatar.Inputs, 0)",
+																"comparison": 0,
+																"second-value": "1"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-instvar-value",
+															"objectClass": "Avatar",
+															"sid": 108271914804632,
+															"parameters": {
+																"instance-variable": "Animation",
+																"value": "\"Walk Up\""
+															}
+														}
+													],
+													"sid": 682061942282159
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-two-values",
+															"objectClass": "System",
+															"sid": 980969860631338,
+															"parameters": {
+																"first-value": "getbit(Avatar.Inputs, 1)",
+																"comparison": 0,
+																"second-value": "1"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-instvar-value",
+															"objectClass": "Avatar",
+															"sid": 305960898474919,
+															"parameters": {
+																"instance-variable": "Animation",
+																"value": "\"Walk Right\""
+															}
+														},
+														{
+															"id": "set-mirrored",
+															"objectClass": "Avatar",
+															"sid": 932259524440659,
+															"parameters": {
+																"state": "mirrored"
+															}
+														}
+													],
+													"sid": 255604452614527
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-two-values",
+															"objectClass": "System",
+															"sid": 231624162961661,
+															"parameters": {
+																"first-value": "getbit(Avatar.Inputs, 2)",
+																"comparison": 0,
+																"second-value": "1"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-instvar-value",
+															"objectClass": "Avatar",
+															"sid": 557310751404878,
+															"parameters": {
+																"instance-variable": "Animation",
+																"value": "\"Walk Down\""
+															}
+														}
+													],
+													"sid": 931603909390715
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-two-values",
+															"objectClass": "System",
+															"sid": 710274167622087,
+															"parameters": {
+																"first-value": "getbit(Avatar.Inputs, 3)",
+																"comparison": 0,
+																"second-value": "1"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-instvar-value",
+															"objectClass": "Avatar",
+															"sid": 540355690927141,
+															"parameters": {
+																"instance-variable": "Animation",
+																"value": "\"Walk Right\""
+															}
+														},
+														{
+															"id": "set-mirrored",
+															"objectClass": "Avatar",
+															"sid": 291512278722914,
+															"parameters": {
+																"state": "not-mirrored"
+															}
+														}
+													],
+													"sid": 791319835353239
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-two-values",
+															"objectClass": "System",
+															"sid": 611209153385698,
+															"parameters": {
+																"first-value": "Avatar.Inputs",
+																"comparison": 0,
+																"second-value": "0"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-instvar-value",
+															"objectClass": "Avatar",
+															"sid": 238359370115201,
+															"parameters": {
+																"instance-variable": "Animation",
+																"value": "\"Idle\""
+															}
+														}
+													],
+													"sid": 892805491588967
+												}
+											]
 										},
 										{
 											"eventType": "block",
@@ -1296,63 +1572,67 @@
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "is-moving-along-path",
+											"id": "compare-x",
 											"objectClass": "Monster",
-											"sid": 701854726549388,
-											"behaviorType": "Pathfinding"
+											"sid": 807160317302484,
+											"parameters": {
+												"comparison": 4,
+												"x-co-ordinate": "Monster.PreviousX"
+											}
 										}
 									],
-									"actions": [],
-									"sid": 937444928576540,
-									"children": [
+									"actions": [
 										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-two-values",
-													"objectClass": "System",
-													"sid": 253167086347175,
-													"parameters": {
-														"first-value": "Monster.Pathfinding.NodeXAt(Monster.Pathfinding.CurrentNode)",
-														"comparison": 4,
-														"second-value": "Monster.X"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "set-mirrored",
-													"objectClass": "Monster",
-													"sid": 192791481551241,
-													"parameters": {
-														"state": "not-mirrored"
-													}
-												}
-											],
-											"sid": 208073286472960
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "else",
-													"objectClass": "System",
-													"sid": 489173546136803
-												}
-											],
-											"actions": [
-												{
-													"id": "set-mirrored",
-													"objectClass": "Monster",
-													"sid": 963544613100643,
-													"parameters": {
-														"state": "mirrored"
-													}
-												}
-											],
-											"sid": 912017243202793
+											"id": "set-mirrored",
+											"objectClass": "Monster",
+											"sid": 284961827424196,
+											"parameters": {
+												"state": "not-mirrored"
+											}
 										}
-									]
+									],
+									"sid": 937444928576540
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-x",
+											"objectClass": "Monster",
+											"sid": 500952066534632,
+											"parameters": {
+												"comparison": 2,
+												"x-co-ordinate": "Monster.PreviousX"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-mirrored",
+											"objectClass": "Monster",
+											"sid": 831254540404341,
+											"parameters": {
+												"state": "mirrored"
+											}
+										}
+									],
+									"sid": 164720685115765
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Monster",
+											"sid": 678902545480278,
+											"parameters": {
+												"instance-variable": "PreviousX",
+												"value": "Monster.X"
+											}
+										}
+									],
+									"sid": 478739274734959
 								},
 								{
 									"eventType": "block",
@@ -1360,7 +1640,7 @@
 										{
 											"id": "is-boolean-instance-variable-set",
 											"objectClass": "Avatar",
-											"sid": 235440090531870,
+											"sid": 968496029865251,
 											"parameters": {
 												"instance-variable": "HasEgg"
 											}
@@ -1370,14 +1650,23 @@
 										{
 											"id": "set-position-to-another-object",
 											"objectClass": "Egg",
-											"sid": 196264109452691,
+											"sid": 983574789772676,
 											"parameters": {
 												"object": "Avatar",
 												"image-point-optional": "\"Egg\""
 											}
+										},
+										{
+											"id": "rotate-toward-angle",
+											"objectClass": "Egg",
+											"sid": 519673357320294,
+											"parameters": {
+												"degrees": "dt * Egg.DegreesPerSecond",
+												"angle": "0"
+											}
 										}
 									],
-									"sid": 299458583236549,
+									"sid": 866341706387310,
 									"children": [
 										{
 											"eventType": "block",
@@ -1385,7 +1674,7 @@
 												{
 													"id": "compare-two-values",
 													"objectClass": "System",
-													"sid": 299073617657459,
+													"sid": 278609407577128,
 													"parameters": {
 														"first-value": "Avatar.Inputs",
 														"comparison": 0,
@@ -1397,14 +1686,14 @@
 												{
 													"id": "move-to-object",
 													"objectClass": "Egg",
-													"sid": 342018437043676,
+													"sid": 246734069658371,
 													"parameters": {
 														"where": "in-front",
 														"object": "Avatar"
 													}
 												}
 											],
-											"sid": 150221436072649
+											"sid": 195065630092407
 										},
 										{
 											"eventType": "block",
@@ -1412,21 +1701,21 @@
 												{
 													"id": "else",
 													"objectClass": "System",
-													"sid": 256745414061081
+													"sid": 794649060292495
 												}
 											],
 											"actions": [
 												{
 													"id": "move-to-object",
 													"objectClass": "Egg",
-													"sid": 449133303741637,
+													"sid": 562128462476361,
 													"parameters": {
 														"where": "behind",
 														"object": "Avatar"
 													}
 												}
 											],
-											"sid": 226537723976591
+											"sid": 978398810933204
 										}
 									]
 								}
@@ -1434,9 +1723,367 @@
 							"sid": 621671606272389
 						}
 					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-destroyed",
+							"objectClass": "Avatar",
+							"sid": 276076008641009
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Avatar",
+							"sid": 223620312433522,
+							"parameters": {
+								"instance-variable": "PeerID",
+								"comparison": 0,
+								"value": "\"\""
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Flag",
+							"sid": 704537217562691,
+							"parameters": {
+								"instance-variable": "PlayerIndex",
+								"comparison": 0,
+								"value": "Avatar.PlayerIndex"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Flag",
+							"sid": 755683025452007,
+							"parameters": {
+								"instance-variable": "State",
+								"value": "\"Defeated\""
+							}
+						}
+					],
+					"sid": 785480509097167,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-host",
+									"objectClass": "Multiplayer",
+									"sid": 342896353820848
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "Avatar",
+									"sid": 743961405870612,
+									"parameters": {
+										"instance-variable": "HasEgg"
+									}
+								},
+								{
+									"id": "pick-nearestfurthest",
+									"objectClass": "Avatar",
+									"sid": 890787073609362,
+									"parameters": {
+										"which": "furthest",
+										"x": "Egg.X",
+										"y": "Egg.Y"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "ThrowEgg",
+									"sid": 719108236710751,
+									"parameters": [
+										"Avatar.UID"
+									]
+								}
+							],
+							"sid": 757252758276884
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tweens-finished",
+							"objectClass": "Egg",
+							"sid": 737297176618057,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"throw\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "AssignEgg",
+							"sid": 922379346716816,
+							"parameters": [
+								"Egg.ThrownToAvatarUID"
+							]
+						}
+					],
+					"sid": 551468084616859
 				}
 			],
 			"sid": 390860884619276
+		},
+		{
+			"functionName": "ThrowEgg",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "PlayerIndex",
+					"type": "number",
+					"initialValue": "-1",
+					"comment": "",
+					"sid": 506283858624711
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 274638757458724,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Avatar",
+							"sid": 561260281956432,
+							"parameters": {
+								"instance-variable": "HasEgg"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Avatar",
+							"sid": 463256042673322,
+							"parameters": {
+								"instance-variable": "HasEgg",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 268031277609356
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Avatar",
+							"sid": 908684300262330,
+							"parameters": {
+								"instance-variable": "PlayerIndex",
+								"comparison": 0,
+								"value": "PlayerIndex"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "flash",
+							"objectClass": "Avatar",
+							"sid": 364574666654052,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "2.0"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Egg",
+							"sid": 285750151022498,
+							"parameters": {
+								"instance-variable": "ThrownToAvatarUID",
+								"value": "Avatar.UID"
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "Egg",
+							"sid": 374380352793240,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"throw\"",
+								"property": "position",
+								"end-x": "Avatar.X",
+								"end-y": "Avatar.Y",
+								"time": "2",
+								"ease": "noease",
+								"destroy-on-complete": "yes",
+								"loop": "no",
+								"ping-pong": "no"
+							}
+						}
+					],
+					"sid": 395945902357069,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-host",
+									"objectClass": "Multiplayer",
+									"sid": 321682207986004
+								}
+							],
+							"actions": [
+								{
+									"id": "broadcast-message",
+									"objectClass": "Multiplayer",
+									"sid": 697905527222750,
+									"parameters": {
+										"from-id": "\"\"",
+										"tag": "\"throw egg\"",
+										"message": "str(Avatar.PlayerIndex)",
+										"mode": "reliable-ordered"
+									}
+								},
+								{
+									"callFunction": "Log",
+									"sid": 537974250878647,
+									"parameters": [
+										"\"Broadcast: Egg thrown to player #\" & Multiplayer.Message"
+									]
+								}
+							],
+							"sid": 556054756630020
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "AssignEgg",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "PlayerIndex",
+					"type": "number",
+					"initialValue": "-1",
+					"comment": "",
+					"sid": 507892777321241
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 517573465315408,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Avatar",
+							"sid": 909761760975662,
+							"parameters": {
+								"instance-variable": "HasEgg"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Avatar",
+							"sid": 369779803866380,
+							"parameters": {
+								"instance-variable": "HasEgg",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 871419626010106
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Avatar",
+							"sid": 527058886170546,
+							"parameters": {
+								"instance-variable": "PlayerIndex",
+								"comparison": 0,
+								"value": "PlayerIndex"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Avatar",
+							"sid": 123293512405643,
+							"parameters": {
+								"instance-variable": "HasEgg",
+								"value": "true"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Egg",
+							"sid": 828727939612536,
+							"parameters": {
+								"instance-variable": "ThrownToAvatarUID",
+								"value": "-1"
+							}
+						}
+					],
+					"sid": 798493436450260,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-host",
+									"objectClass": "Multiplayer",
+									"sid": 992674934325655
+								}
+							],
+							"actions": [
+								{
+									"id": "broadcast-message",
+									"objectClass": "Multiplayer",
+									"sid": 861303469112466,
+									"parameters": {
+										"from-id": "\"\"",
+										"tag": "\"assign egg\"",
+										"message": "str(Avatar.PlayerIndex)",
+										"mode": "reliable-ordered"
+									}
+								},
+								{
+									"callFunction": "Log",
+									"sid": 997762058414387,
+									"parameters": [
+										"\"Broadcast: Egg to player #\" & Multiplayer.Message"
+									]
+								}
+							],
+							"sid": 464951835999316
+						}
+					]
+				}
+			]
 		}
 	],
 	"sid": 607373704127325

@@ -45,6 +45,11 @@
 			"behaviorId": "EightDir",
 			"name": "8Direction",
 			"sid": 189481776479576
+		},
+		{
+			"behaviorId": "Flash",
+			"name": "Flash",
+			"sid": 241501363029896
 		}
 	],
 	"effectTypes": [],

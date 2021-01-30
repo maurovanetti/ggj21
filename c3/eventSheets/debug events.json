@@ -24,6 +24,29 @@
 				}
 			],
 			"sid": 140525356339221
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 951261216033177,
+					"parameters": {
+						"key": 72
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "ThrowEgg",
+					"sid": 527531493309959,
+					"parameters": [
+						"-1"
+					]
+				}
+			],
+			"sid": 835948814797513
 		}
 	],
 	"sid": 346769543903299

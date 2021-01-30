@@ -33,6 +33,134 @@
 						"angle": 0,
 						"zElevation": 0
 					}
+				},
+				{
+					"type": "Flag0",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Playing",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 23,
+					"instanceVariables": {
+						"PlayerIndex": 0,
+						"State": ""
+					},
+					"behaviors": {},
+					"world": {
+						"x": 299,
+						"y": 36,
+						"width": -64,
+						"height": 64,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Flag1",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Playing",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 24,
+					"instanceVariables": {
+						"PlayerIndex": 1,
+						"State": ""
+					},
+					"behaviors": {},
+					"world": {
+						"x": 1008,
+						"y": 35,
+						"width": 64,
+						"height": 64,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Flag2",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Playing",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 25,
+					"instanceVariables": {
+						"PlayerIndex": 2,
+						"State": ""
+					},
+					"behaviors": {},
+					"world": {
+						"x": 267,
+						"y": 687,
+						"width": -64,
+						"height": 64,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Flag3",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Playing",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 26,
+					"instanceVariables": {
+						"PlayerIndex": 3,
+						"State": ""
+					},
+					"behaviors": {},
+					"world": {
+						"x": 1010,
+						"y": 685,
+						"width": 64,
+						"height": 64,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
 				}
 			],
 			"sid": 167324257825134,
@@ -120,6 +248,9 @@
 								"default-controls": false,
 								"enabled": true
 							}
+						},
+						"Flash": {
+							"properties": {}
 						}
 					},
 					"world": {
@@ -168,6 +299,9 @@
 								"default-controls": false,
 								"enabled": true
 							}
+						},
+						"Flash": {
+							"properties": {}
 						}
 					},
 					"world": {
@@ -216,6 +350,9 @@
 								"default-controls": false,
 								"enabled": true
 							}
+						},
+						"Flash": {
+							"properties": {}
 						}
 					},
 					"world": {
@@ -264,6 +401,9 @@
 								"default-controls": false,
 								"enabled": true
 							}
+						},
+						"Flash": {
+							"properties": {}
 						}
 					},
 					"world": {
@@ -287,13 +427,15 @@
 					"type": "Monster",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Default",
+						"initial-animation": "Walk Right",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
 					},
 					"uid": 21,
-					"instanceVariables": {},
+					"instanceVariables": {
+						"PreviousX": 0
+					},
 					"behaviors": {
 						"Pathfinding": {
 							"properties": {
@@ -313,10 +455,10 @@
 					"world": {
 						"x": 654,
 						"y": 184,
-						"width": 209,
-						"height": 131,
-						"originX": 0.46411483253588515,
-						"originY": 0.9236641221374046,
+						"width": 250,
+						"height": 200,
+						"originX": 0.5,
+						"originY": 0.5,
 						"color": [
 							1,
 							1,
@@ -331,14 +473,26 @@
 					"type": "Egg",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Animation 1",
+						"initial-animation": "Carried",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
 					},
 					"uid": 22,
-					"instanceVariables": {},
-					"behaviors": {},
+					"instanceVariables": {
+						"ThrownToAvatarUID": -1,
+						"DegreesPerSecond": 720
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Flash": {
+							"properties": {}
+						}
+					},
 					"world": {
 						"x": 616,
 						"y": 435,
