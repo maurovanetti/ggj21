@@ -2,6 +2,14 @@
 	"name": "Play Events",
 	"events": [
 		{
+			"eventType": "include",
+			"includeSheet": "Avatar Controls"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "Debug Events"
+		},
+		{
 			"eventType": "variable",
 			"name": "GAME_NAME",
 			"type": "string",
@@ -225,7 +233,7 @@
 						{
 							"id": "set-enabled",
 							"objectClass": "StartButton",
-							"sid": 466521172560120,
+							"sid": 700275866311509,
 							"parameters": {
 								"mode": "disabled"
 							}
@@ -319,6 +327,31 @@
 								"data": "position-only",
 								"precision": "normal-float-4-bytes",
 								"bandwidth": "normal-bandwidth-unpredictable"
+							}
+						},
+						{
+							"id": "sync-instance-variable",
+							"objectClass": "Multiplayer",
+							"sid": 396131145436619,
+							"parameters": {
+								"object": "Avatar",
+								"instance-variable": {
+									"name": "Inputs",
+									"objectClass": "Avatar"
+								},
+								"precision": "very-low-uint8-1-byte",
+								"interpolation": "none",
+								"client-value-tag": "\"inputs\""
+							}
+						},
+						{
+							"id": "add-client-input-value",
+							"objectClass": "Multiplayer",
+							"sid": 335349863696363,
+							"parameters": {
+								"tag": "\"inputs\"",
+								"precision": "very-low-uint8-1-byte",
+								"interpolation": "none"
 							}
 						},
 						{
@@ -632,18 +665,56 @@
 								"variable": "GameState",
 								"value": "\"playing\""
 							}
-						},
-						{
-							"id": "associate-object-with-peer",
-							"objectClass": "Multiplayer",
-							"sid": 268971569951334,
-							"parameters": {
-								"object": "Avatar",
-								"peer-id": "Avatar.PeerID"
-							}
 						}
 					],
-					"sid": 261006266300459
+					"sid": 261006266300459,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Avatar",
+									"sid": 844887811879300,
+									"parameters": {
+										"instance-variable": "PeerID",
+										"comparison": 0,
+										"value": "\"\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "Avatar",
+									"sid": 209353246434446
+								}
+							],
+							"sid": 606726205206703
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 876478617655683
+								}
+							],
+							"actions": [
+								{
+									"id": "associate-object-with-peer",
+									"objectClass": "Multiplayer",
+									"sid": 184688456306985,
+									"parameters": {
+										"object": "Avatar",
+										"peer-id": "Avatar.PeerID"
+									}
+								}
+							],
+							"sid": 137620339943083
+						}
+					]
 				},
 				{
 					"eventType": "block",
@@ -674,66 +745,243 @@
 			"sid": 574492691276879
 		},
 		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-eventvar",
-					"objectClass": "System",
-					"sid": 168031450548852,
-					"parameters": {
-						"variable": "GameState",
-						"comparison": 0,
-						"value": "\"playing\""
-					}
-				}
-			],
-			"actions": [],
-			"sid": 354888765212396,
+			"eventType": "group",
+			"disabled": false,
+			"title": "Playing",
+			"description": "",
+			"isActiveOnStart": true,
 			"children": [
 				{
-					"eventType": "group",
-					"disabled": false,
-					"title": "Host",
-					"description": "",
-					"isActiveOnStart": false,
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 608645592195948,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"playing\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "CheckInputs",
+							"sid": 210967493831757
+						}
+					],
+					"sid": 652454315136357,
 					"children": [
 						{
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "is-enabled",
-									"objectClass": "Avatar0",
-									"sid": 912362839413622,
-									"behaviorType": "8Direction",
-									"isInverted": true
+									"id": "compare-instance-variable",
+									"objectClass": "Avatar",
+									"sid": 372850811457340,
+									"parameters": {
+										"instance-variable": "PeerID",
+										"comparison": 0,
+										"value": "Multiplayer.MyID"
+									}
 								}
 							],
 							"actions": [
 								{
-									"id": "set-enabled",
-									"objectClass": "Avatar0",
-									"sid": 550475268867509,
-									"behaviorType": "8Direction",
+									"id": "set-instvar-value",
+									"objectClass": "Avatar",
+									"sid": 626780860978397,
 									"parameters": {
-										"state": "enabled"
+										"instance-variable": "Inputs",
+										"value": "Inputs"
 									}
 								}
 							],
-							"sid": 707289090153605
+							"sid": 373482133769824
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "Host",
+							"description": "",
+							"isActiveOnStart": false,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for-each",
+											"objectClass": "System",
+											"sid": 156129139773509,
+											"parameters": {
+												"object": "Avatar"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 171587236052462,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Avatar",
+													"sid": 748353705636830,
+													"parameters": {
+														"instance-variable": "PeerID",
+														"comparison": 0,
+														"value": "Multiplayer.MyID"
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Avatar",
+													"sid": 475244378284171,
+													"parameters": {
+														"instance-variable": "Inputs",
+														"value": "Multiplayer.PeerState(Avatar.PeerID, \"inputs\")"
+													}
+												}
+											],
+											"sid": 157450475088155
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"callFunction": "MoveAvatar",
+													"sid": 904435967986062,
+													"parameters": [
+														"Avatar.UID"
+													]
+												}
+											],
+											"sid": 206464154055484
+										}
+									]
+								}
+							],
+							"sid": 206193643965131
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "Peer",
+							"description": "",
+							"isActiveOnStart": false,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "on-created",
+											"objectClass": "Avatar",
+											"sid": 722426129208237
+										}
+									],
+									"actions": [
+										{
+											"id": "associate-object-with-peer",
+											"objectClass": "Multiplayer",
+											"sid": 163718678671912,
+											"parameters": {
+												"object": "Avatar",
+												"peer-id": "Avatar.PeerID"
+											}
+										}
+									],
+									"sid": 220269866598697,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Avatar",
+													"sid": 470525612422055,
+													"parameters": {
+														"instance-variable": "PeerID",
+														"comparison": 0,
+														"value": "Multiplayer.MyID"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "enable-local-input-prediction",
+													"objectClass": "Multiplayer",
+													"sid": 122462553892126,
+													"parameters": {
+														"object": "Avatar"
+													}
+												}
+											],
+											"sid": 853240942740716
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "on-client-update",
+											"objectClass": "Multiplayer",
+											"sid": 530077013872376
+										}
+									],
+									"actions": [
+										{
+											"id": "set-client-state",
+											"objectClass": "Multiplayer",
+											"sid": 235858298736451,
+											"parameters": {
+												"tag": "\"inputs\"",
+												"value": "Inputs"
+											}
+										}
+									],
+									"sid": 154662192933705,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Avatar",
+													"sid": 229929049896834,
+													"parameters": {
+														"instance-variable": "PeerID",
+														"comparison": 0,
+														"value": "Multiplayer.MyID"
+													}
+												}
+											],
+											"actions": [
+												{
+													"callFunction": "MoveAvatar",
+													"sid": 761856886514263,
+													"parameters": [
+														"Avatar.UID"
+													]
+												}
+											],
+											"sid": 653452604765488
+										}
+									]
+								}
+							],
+							"sid": 140951644177167
 						}
-					],
-					"sid": 140072129924469
-				},
-				{
-					"eventType": "group",
-					"disabled": false,
-					"title": "Peer",
-					"description": "",
-					"isActiveOnStart": false,
-					"children": [],
-					"sid": 607145855502864
+					]
 				}
-			]
+			],
+			"sid": 390860884619276
 		}
 	],
 	"sid": 607373704127325

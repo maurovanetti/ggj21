@@ -20,6 +20,12 @@
 			"type": "string",
 			"desc": "",
 			"sid": 191005569854672
+		},
+		{
+			"name": "Inputs",
+			"type": "number",
+			"desc": "",
+			"sid": 382680108186609
 		}
 	],
 	"behaviorTypes": [

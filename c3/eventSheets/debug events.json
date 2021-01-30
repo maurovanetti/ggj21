@@ -1,0 +1,30 @@
+{
+	"name": "Debug Events",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 448717938091559,
+					"parameters": {
+						"key": 77
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-enabled",
+					"objectClass": "StartButton",
+					"sid": 218453326877666,
+					"parameters": {
+						"mode": "enabled"
+					}
+				}
+			],
+			"sid": 140525356339221
+		}
+	],
+	"sid": 346769543903299
+}

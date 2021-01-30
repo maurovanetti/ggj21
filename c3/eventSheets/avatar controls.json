@@ -1,0 +1,426 @@
+{
+	"name": "Avatar Controls",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "Inputs",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "W A S D",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 294847032188960
+		},
+		{
+			"functionName": "CheckInputs",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 481376234547055,
+					"parameters": {
+						"variable": "Inputs",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 649456833126877,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 252071314375260,
+							"parameters": {
+								"key": 38
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 758973917819544,
+							"parameters": {
+								"variable": "Inputs",
+								"value": "setbit(Inputs, 0, 1)"
+							}
+						}
+					],
+					"sid": 369875162051085
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 511906512991812,
+							"parameters": {
+								"key": 37
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 314419372735675,
+							"parameters": {
+								"variable": "Inputs",
+								"value": "setbit(Inputs, 1, 1)"
+							}
+						}
+					],
+					"sid": 632400363018816
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 635526475913563,
+							"parameters": {
+								"key": 40
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 480121298823859,
+							"parameters": {
+								"variable": "Inputs",
+								"value": "setbit(Inputs, 2, 1)"
+							}
+						}
+					],
+					"sid": 499284597361338
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "key-is-down",
+							"objectClass": "Keyboard",
+							"sid": 678981910945689,
+							"parameters": {
+								"key": 39
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 524287944417045,
+							"parameters": {
+								"variable": "Inputs",
+								"value": "setbit(Inputs, 3, 1)"
+							}
+						}
+					],
+					"sid": 411284478194593
+				}
+			]
+		},
+		{
+			"functionName": "MoveOwnAvatar",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 166101062987564,
+			"disabled": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Avatar",
+							"sid": 252154879162840,
+							"parameters": {
+								"instance-variable": "PeerID",
+								"comparison": 0,
+								"value": "Multiplayer.PeerID"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 142694449584443,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 101350780056388,
+									"parameters": {
+										"first-value": "getbit(Avatar.Inputs, 0)",
+										"comparison": 0,
+										"second-value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Avatar",
+									"sid": 798331456004247,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "up"
+									}
+								}
+							],
+							"sid": 444348958603689,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 681399088421373,
+									"parameters": {
+										"first-value": "getbit(Avatar.Inputs, 1)",
+										"comparison": 0,
+										"second-value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Avatar",
+									"sid": 698507359403191,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "left"
+									}
+								}
+							],
+							"sid": 253572131620326,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 859327200894513,
+									"parameters": {
+										"first-value": "getbit(Avatar.Inputs, 2)",
+										"comparison": 0,
+										"second-value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Avatar",
+									"sid": 982654013284186,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "down"
+									}
+								}
+							],
+							"sid": 860986907909916,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 753144287025536,
+									"parameters": {
+										"first-value": "getbit(Avatar.Inputs, 3)",
+										"comparison": 0,
+										"second-value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Avatar",
+									"sid": 232636771189662,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "right"
+									}
+								}
+							],
+							"sid": 895710336509999,
+							"disabled": true
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "MoveAvatar",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "AvatarUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 824346274132573
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "pick-by-unique-id",
+					"objectClass": "Avatar",
+					"sid": 456404900460254,
+					"parameters": {
+						"unique-id": "AvatarUID"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 933077418848036,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 811382721615571,
+							"parameters": {
+								"first-value": "getbit(Avatar.Inputs, 0)",
+								"comparison": 0,
+								"second-value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "Avatar",
+							"sid": 237435207244856,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "up"
+							}
+						}
+					],
+					"sid": 110278838771593
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 405948958676010,
+							"parameters": {
+								"first-value": "getbit(Avatar.Inputs, 1)",
+								"comparison": 0,
+								"second-value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "Avatar",
+							"sid": 580708619502368,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "left"
+							}
+						}
+					],
+					"sid": 589347087358218
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 689600919882086,
+							"parameters": {
+								"first-value": "getbit(Avatar.Inputs, 2)",
+								"comparison": 0,
+								"second-value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "Avatar",
+							"sid": 689474137989540,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "down"
+							}
+						}
+					],
+					"sid": 378199064608412
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 562762828955467,
+							"parameters": {
+								"first-value": "getbit(Avatar.Inputs, 3)",
+								"comparison": 0,
+								"second-value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "Avatar",
+							"sid": 363402091245324,
+							"behaviorType": "8Direction",
+							"parameters": {
+								"control": "right"
+							}
+						}
+					],
+					"sid": 370321937310392
+				}
+			]
+		}
+	],
+	"sid": 762793860119666
+}

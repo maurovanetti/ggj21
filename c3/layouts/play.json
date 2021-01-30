@@ -4,7 +4,37 @@
 		{
 			"name": "Background",
 			"overriden": 0,
-			"instances": [],
+			"instances": [
+				{
+					"type": "Background",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 20,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 639,
+						"y": 360,
+						"width": 1280,
+						"height": 720,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				}
+			],
 			"sid": 167324257825134,
 			"effectTypes": [],
 			"isInitiallyVisible": true,
@@ -74,7 +104,8 @@
 					"instanceVariables": {
 						"PlayerIndex": 0,
 						"PeerID": "",
-						"PeerAlias": ""
+						"PeerAlias": "",
+						"Inputs": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -84,8 +115,8 @@
 								"deceleration": 500,
 								"directions": "dir-8",
 								"set-angle": "no",
-								"default-controls": true,
-								"enabled": false
+								"default-controls": false,
+								"enabled": true
 							}
 						}
 					},
@@ -119,7 +150,8 @@
 					"instanceVariables": {
 						"PlayerIndex": 1,
 						"PeerID": "",
-						"PeerAlias": ""
+						"PeerAlias": "",
+						"Inputs": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -129,14 +161,14 @@
 								"deceleration": 500,
 								"directions": "dir-8",
 								"set-angle": "no",
-								"default-controls": true,
-								"enabled": false
+								"default-controls": false,
+								"enabled": true
 							}
 						}
 					},
 					"world": {
-						"x": 1010,
-						"y": 244,
+						"x": 935,
+						"y": 248,
 						"width": 80,
 						"height": 110,
 						"originX": 0.5,
@@ -164,7 +196,8 @@
 					"instanceVariables": {
 						"PlayerIndex": 2,
 						"PeerID": "",
-						"PeerAlias": ""
+						"PeerAlias": "",
+						"Inputs": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -174,8 +207,8 @@
 								"deceleration": 500,
 								"directions": "dir-8",
 								"set-angle": "no",
-								"default-controls": true,
-								"enabled": false
+								"default-controls": false,
+								"enabled": true
 							}
 						}
 					},
@@ -209,7 +242,8 @@
 					"instanceVariables": {
 						"PlayerIndex": 3,
 						"PeerID": "",
-						"PeerAlias": ""
+						"PeerAlias": "",
+						"Inputs": 0
 					},
 					"behaviors": {
 						"8Direction": {
@@ -219,8 +253,8 @@
 								"deceleration": 500,
 								"directions": "dir-8",
 								"set-angle": "no",
-								"default-controls": true,
-								"enabled": false
+								"default-controls": false,
+								"enabled": true
 							}
 						}
 					},

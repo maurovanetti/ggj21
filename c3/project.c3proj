@@ -98,7 +98,8 @@
 				"items": [
 					"Multiplayer",
 					"Keyboard",
-					"PeerIDs"
+					"PeerIDs",
+					"Background"
 				],
 				"subfolders": [],
 				"name": "Static"
@@ -133,7 +134,9 @@
 	"eventSheets": {
 		"items": [
 			"Login Events",
-			"Play Events"
+			"Play Events",
+			"Avatar Controls",
+			"Debug Events"
 		],
 		"subfolders": []
 	},
