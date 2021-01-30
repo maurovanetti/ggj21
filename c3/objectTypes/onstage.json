@@ -1,0 +1,37 @@
+{
+	"name": "OnStage",
+	"plugin-id": "Sprite",
+	"sid": 386704391408908,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 36,
+						"height": 37,
+						"originX": 0.5263157894736842,
+						"originY": 0.5918367346938775,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 511524,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 457377784245074,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -51,7 +51,7 @@
 					"behaviors": {},
 					"world": {
 						"x": 299,
-						"y": 36,
+						"y": 25,
 						"width": -64,
 						"height": 64,
 						"originX": 0.5,
@@ -82,8 +82,8 @@
 					},
 					"behaviors": {},
 					"world": {
-						"x": 1008,
-						"y": 35,
+						"x": 1006,
+						"y": 28,
 						"width": 64,
 						"height": 64,
 						"originX": 0.5,
@@ -115,7 +115,7 @@
 					"behaviors": {},
 					"world": {
 						"x": 267,
-						"y": 687,
+						"y": 691,
 						"width": -64,
 						"height": 64,
 						"originX": 0.5,
@@ -146,8 +146,8 @@
 					},
 					"behaviors": {},
 					"world": {
-						"x": 1010,
-						"y": 685,
+						"x": 1011,
+						"y": 691,
 						"width": 64,
 						"height": 64,
 						"originX": 0.5,
@@ -423,7 +423,7 @@
 					"type": "Monster",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Walk Right",
+						"initial-animation": "Idle Down",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -446,17 +446,22 @@
 								"rotate-speed": 135,
 								"rotate-object": false,
 								"diagonals": true,
+								"enabled": false
+							}
+						},
+						"Tween": {
+							"properties": {
 								"enabled": true
 							}
 						}
 					},
 					"world": {
-						"x": 654,
-						"y": 184,
+						"x": 650.7500036277776,
+						"y": 115.74999831771828,
 						"width": 250,
 						"height": 200,
-						"originX": 0.48,
-						"originY": 0.835,
+						"originX": 0.528,
+						"originY": 0.73,
 						"color": [
 							1,
 							1,
@@ -495,8 +500,8 @@
 						}
 					},
 					"world": {
-						"x": 616,
-						"y": 435,
+						"x": 248,
+						"y": 226,
 						"width": 25,
 						"height": 29,
 						"originX": 0.64,
@@ -539,7 +544,37 @@
 		{
 			"name": "Tall Items",
 			"overriden": 0,
-			"instances": [],
+			"instances": [
+				{
+					"type": "Arch",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 28,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 639,
+						"y": 360,
+						"width": 1280,
+						"height": 720,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				}
+			],
 			"sid": 910274710464728,
 			"effectTypes": [],
 			"isInitiallyVisible": true,
@@ -567,7 +602,37 @@
 		{
 			"name": "Overlay",
 			"overriden": 0,
-			"instances": [],
+			"instances": [
+				{
+					"type": "OnStage",
+					"properties": {
+						"initially-visible": false,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 29,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 643,
+						"y": 404,
+						"width": 36,
+						"height": 37,
+						"originX": 0.5263157894736842,
+						"originY": 0.5918367346938775,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				}
+			],
 			"sid": 389031852306720,
 			"effectTypes": [],
 			"isInitiallyVisible": true,
@@ -607,9 +672,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							0,
-							0,
-							0,
+							1,
+							1,
+							1,
 							1
 						],
 						"horizontal-alignment": "left",
@@ -651,9 +716,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							0,
-							0,
-							0,
+							1,
+							1,
+							1,
 							1
 						],
 						"horizontal-alignment": "right",
@@ -695,9 +760,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							0,
-							0,
-							0,
+							1,
+							1,
+							1,
 							1
 						],
 						"horizontal-alignment": "right",
@@ -739,9 +804,9 @@
 						"bold": false,
 						"italic": false,
 						"color": [
-							0,
-							0,
-							0,
+							1,
+							1,
+							1,
 							1
 						],
 						"horizontal-alignment": "left",
@@ -798,10 +863,10 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 392,
-						"y": 684,
-						"width": 485,
-						"height": 34,
+						"x": 858,
+						"y": 108,
+						"width": 395,
+						"height": 55,
 						"originX": 0,
 						"originY": 0,
 						"color": [
@@ -830,8 +895,8 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 472,
-						"y": 287,
+						"x": 494,
+						"y": 477,
 						"width": 299.2941696725815,
 						"height": 99.76472322419383,
 						"originX": 0,
@@ -847,17 +912,17 @@
 				{
 					"type": "RoomName",
 					"properties": {
-						"text": "…",
+						"text": "…connecting…",
 						"enable-bbcode": true,
 						"font": "Perpetua Titling MT",
-						"size": 20,
+						"size": 14,
 						"line-height": 0,
 						"bold": true,
 						"italic": false,
 						"color": [
-							0,
-							0,
-							0,
+							0.25098039215686274,
+							0.7098039215686275,
+							0.44313725490196076,
 							1
 						],
 						"horizontal-alignment": "center",
@@ -872,9 +937,9 @@
 					},
 					"behaviors": {},
 					"world": {
-						"x": 326,
-						"y": 5,
-						"width": 597,
+						"x": 348,
+						"y": 36,
+						"width": 239,
 						"height": 30,
 						"originX": 0,
 						"originY": 0,

@@ -131,7 +131,8 @@
 					"Keyboard",
 					"PeerIDs",
 					"Background",
-					"ReadyPeerIDs"
+					"ReadyPeerIDs",
+					"Arch"
 				],
 				"subfolders": [],
 				"name": "Static"
@@ -152,7 +153,8 @@
 					"Avatar2",
 					"Avatar3",
 					"Monster",
-					"Egg"
+					"Egg",
+					"OnStage"
 				],
 				"subfolders": [],
 				"name": "Dynamic"

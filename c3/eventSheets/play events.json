@@ -671,6 +671,23 @@
 							}
 						},
 						{
+							"id": "tween-two-properties",
+							"objectClass": "Monster",
+							"sid": 645351318520162,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"entrance\"",
+								"property": "position",
+								"end-x": "OnStage.X",
+								"end-y": "OnStage.Y",
+								"time": "12",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no"
+							}
+						},
+						{
 							"id": "set-boolean-eventvar",
 							"objectClass": "System",
 							"sid": 403740558869515,
@@ -1392,6 +1409,66 @@
 								}
 							],
 							"sid": 373482133769824
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-enabled",
+									"objectClass": "Monster",
+									"sid": 331173522266757,
+									"behaviorType": "Pathfinding",
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "Monster",
+									"sid": 689834089853462,
+									"behaviorType": "Tween",
+									"parameters": {
+										"mode": "disabled"
+									}
+								},
+								{
+									"id": "set-position-to-another-object",
+									"objectClass": "Monster",
+									"sid": 288980393725615,
+									"parameters": {
+										"object": "OnStage",
+										"image-point-optional": "0"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "Monster",
+									"sid": 690886120365837,
+									"behaviorType": "Pathfinding",
+									"parameters": {
+										"set": "enabled"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Monster",
+									"sid": 919172316385265,
+									"parameters": {
+										"instance-variable": "PreviousY",
+										"value": "(2 * Monster.Y) - Egg.Y"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Monster",
+									"sid": 669726192866240,
+									"parameters": {
+										"instance-variable": "PreviousX",
+										"value": "(2 * Monster.X) - Egg.X "
+									}
+								}
+							],
+							"sid": 152989103430941
 						},
 						{
 							"eventType": "group",
@@ -2563,6 +2640,32 @@
 						}
 					],
 					"sid": 394768213149629
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tweens-finished",
+							"objectClass": "Monster",
+							"sid": 571997356027285,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"entrance\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "Monster",
+							"sid": 735736023755029,
+							"parameters": {
+								"animation": "\"Idle Down\"",
+								"from": "current-frame"
+							}
+						}
+					],
+					"sid": 852694672232711
 				}
 			],
 			"sid": 390860884619276

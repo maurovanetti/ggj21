@@ -1,7 +1,7 @@
 {
-	"name": "Background",
+	"name": "Arch",
 	"plugin-id": "Sprite",
-	"sid": 643274153473273,
+	"sid": 910975204474129,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
@@ -18,7 +18,7 @@
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 3134192,
+						"imageSpriteId": 7961237,
 						"collisionPoly": {
 							"points": [
 								0,
@@ -43,7 +43,7 @@
 						"duration": 1
 					}
 				],
-				"sid": 956064473280600,
+				"sid": 151373432392498,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,
