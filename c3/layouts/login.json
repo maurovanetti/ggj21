@@ -138,7 +138,7 @@
 	"sid": 753961770259785,
 	"nonworld-instances": [
 		{
-			"type": "Players",
+			"type": "PeerIDs",
 			"properties": {
 				"width": 0,
 				"height": 1,

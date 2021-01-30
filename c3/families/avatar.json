@@ -1,0 +1,39 @@
+{
+	"name": "Avatar",
+	"plugin-id": "Sprite",
+	"sid": 190628399050529,
+	"instanceVariables": [
+		{
+			"name": "PlayerIndex",
+			"type": "number",
+			"desc": "",
+			"sid": 229238843449120
+		},
+		{
+			"name": "PeerID",
+			"type": "string",
+			"desc": "",
+			"sid": 195003688933276
+		},
+		{
+			"name": "PeerAlias",
+			"type": "string",
+			"desc": "",
+			"sid": 191005569854672
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "EightDir",
+			"name": "8Direction",
+			"sid": 189481776479576
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"Avatar0",
+		"Avatar1",
+		"Avatar2",
+		"Avatar3"
+	]
+}

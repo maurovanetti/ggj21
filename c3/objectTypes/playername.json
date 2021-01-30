@@ -5,7 +5,7 @@
 	"isGlobal": false,
 	"instanceVariables": [
 		{
-			"name": "PeerIndex",
+			"name": "PlayerIndex",
 			"type": "number",
 			"desc": "",
 			"sid": 371382967534573

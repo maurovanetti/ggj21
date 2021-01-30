@@ -61,11 +61,24 @@
 			"author": "Scirra",
 			"version": "r225",
 			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "EightDir",
+			"name": "8 Direction",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
 		}
 	],
 	"uniqueId": "s6d7gosbo40",
 	"objectTypes": {
-		"items": [],
+		"items": [
+			"Avatar0",
+			"Avatar1",
+			"Avatar2",
+			"Avatar3"
+		],
 		"subfolders": [
 			{
 				"items": [
@@ -85,7 +98,7 @@
 				"items": [
 					"Multiplayer",
 					"Keyboard",
-					"Players"
+					"PeerIDs"
 				],
 				"subfolders": [],
 				"name": "Static"
@@ -104,7 +117,9 @@
 	"autosaveData": null,
 	"containers": [],
 	"families": {
-		"items": [],
+		"items": [
+			"Avatar"
+		],
 		"subfolders": []
 	},
 	"layouts": {

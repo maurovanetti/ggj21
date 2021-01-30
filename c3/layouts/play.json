@@ -60,7 +60,188 @@
 		{
 			"name": "Arena",
 			"overriden": 0,
-			"instances": [],
+			"instances": [
+				{
+					"type": "Avatar0",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Walk",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 16,
+					"instanceVariables": {
+						"PlayerIndex": 0,
+						"PeerID": "",
+						"PeerAlias": ""
+					},
+					"behaviors": {
+						"8Direction": {
+							"properties": {
+								"max-speed": 200,
+								"acceleration": 600,
+								"deceleration": 500,
+								"directions": "dir-8",
+								"set-angle": "no",
+								"default-controls": true,
+								"enabled": false
+							}
+						}
+					},
+					"world": {
+						"x": 252,
+						"y": 216,
+						"width": 80,
+						"height": 110,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Avatar1",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Walk",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 17,
+					"instanceVariables": {
+						"PlayerIndex": 1,
+						"PeerID": "",
+						"PeerAlias": ""
+					},
+					"behaviors": {
+						"8Direction": {
+							"properties": {
+								"max-speed": 200,
+								"acceleration": 600,
+								"deceleration": 500,
+								"directions": "dir-8",
+								"set-angle": "no",
+								"default-controls": true,
+								"enabled": false
+							}
+						}
+					},
+					"world": {
+						"x": 1010,
+						"y": 244,
+						"width": 80,
+						"height": 110,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Avatar2",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Walk",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 18,
+					"instanceVariables": {
+						"PlayerIndex": 2,
+						"PeerID": "",
+						"PeerAlias": ""
+					},
+					"behaviors": {
+						"8Direction": {
+							"properties": {
+								"max-speed": 200,
+								"acceleration": 600,
+								"deceleration": 500,
+								"directions": "dir-8",
+								"set-angle": "no",
+								"default-controls": true,
+								"enabled": false
+							}
+						}
+					},
+					"world": {
+						"x": 248,
+						"y": 538,
+						"width": 80,
+						"height": 110,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Avatar3",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Walk",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 19,
+					"instanceVariables": {
+						"PlayerIndex": 3,
+						"PeerID": "",
+						"PeerAlias": ""
+					},
+					"behaviors": {
+						"8Direction": {
+							"properties": {
+								"max-speed": 200,
+								"acceleration": 600,
+								"deceleration": 500,
+								"directions": "dir-8",
+								"set-angle": "no",
+								"default-controls": true,
+								"enabled": false
+							}
+						}
+					},
+					"world": {
+						"x": 1014,
+						"y": 553,
+						"width": 80,
+						"height": 110,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				}
+			],
 			"sid": 469799981371182,
 			"effectTypes": [],
 			"isInitiallyVisible": true,
@@ -169,7 +350,7 @@
 					},
 					"uid": 7,
 					"instanceVariables": {
-						"PeerIndex": 0
+						"PlayerIndex": 0
 					},
 					"behaviors": {},
 					"world": {
@@ -213,7 +394,7 @@
 					},
 					"uid": 8,
 					"instanceVariables": {
-						"PeerIndex": 1
+						"PlayerIndex": 1
 					},
 					"behaviors": {},
 					"world": {
@@ -257,7 +438,7 @@
 					},
 					"uid": 9,
 					"instanceVariables": {
-						"PeerIndex": 3
+						"PlayerIndex": 3
 					},
 					"behaviors": {},
 					"world": {
@@ -301,7 +482,7 @@
 					},
 					"uid": 10,
 					"instanceVariables": {
-						"PeerIndex": 2
+						"PlayerIndex": 2
 					},
 					"behaviors": {},
 					"world": {

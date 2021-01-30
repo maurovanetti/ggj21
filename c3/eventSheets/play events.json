@@ -36,7 +36,7 @@
 			"name": "GameState",
 			"type": "string",
 			"initialValue": "waiting",
-			"comment": "\"waiting\", \"getready\", \"go\" or \"started\"",
+			"comment": "waiting, playing",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 836404875808987
@@ -121,7 +121,7 @@
 			]
 		},
 		{
-			"functionName": "DisplayPlayerNames",
+			"functionName": "ConfigureParty",
 			"functionDescription": "",
 			"functionCategory": "",
 			"functionReturnType": "none",
@@ -132,12 +132,20 @@
 			"actions": [
 				{
 					"id": "set-size",
-					"objectClass": "Players",
+					"objectClass": "PeerIDs",
 					"sid": 142732122565884,
 					"parameters": {
 						"width": "Multiplayer.PeerCount",
 						"height": "1",
 						"depth": "1"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "PlayerName",
+					"sid": 212967293847692,
+					"parameters": {
+						"visibility": "visible"
 					}
 				}
 			],
@@ -149,9 +157,9 @@
 						{
 							"id": "for",
 							"objectClass": "System",
-							"sid": 655334884369658,
+							"sid": 384767452637146,
 							"parameters": {
-								"name": "\"Peer IDs\"",
+								"name": "\"PeerIndex\"",
 								"start-index": "0",
 								"end-index": "Multiplayer.PeerCount"
 							}
@@ -160,7 +168,7 @@
 					"actions": [
 						{
 							"id": "set-at-x",
-							"objectClass": "Players",
+							"objectClass": "PeerIDs",
 							"sid": 638164781011470,
 							"parameters": {
 								"x": "loopindex",
@@ -175,7 +183,7 @@
 					"conditions": [
 						{
 							"id": "compare-size",
-							"objectClass": "Players",
+							"objectClass": "PeerIDs",
 							"sid": 543408802541148,
 							"parameters": {
 								"axis": "x",
@@ -187,7 +195,7 @@
 					"actions": [
 						{
 							"id": "sort",
-							"objectClass": "Players",
+							"objectClass": "PeerIDs",
 							"sid": 397068954169879,
 							"parameters": {
 								"axis": "x"
@@ -227,27 +235,54 @@
 				},
 				{
 					"eventType": "block",
-					"conditions": [
-						{
-							"id": "for-each-element",
-							"objectClass": "Players",
-							"sid": 311311515988356,
-							"parameters": {
-								"axes": "x"
-							}
-						}
-					],
+					"conditions": [],
 					"actions": [
 						{
 							"id": "set-text",
 							"objectClass": "PlayerName",
 							"sid": 249484674731137,
 							"parameters": {
-								"text": "Multiplayer.PeerAliasFromID(Players.At(PlayerName.PeerIndex))"
+								"text": "Multiplayer.PeerAliasFromID(PeerIDs.At(PlayerName.PlayerIndex))"
 							}
 						}
 					],
 					"sid": 511256304700301
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Avatar",
+							"sid": 885888985479820,
+							"parameters": {
+								"instance-variable": "PlayerIndex",
+								"comparison": 2,
+								"value": "Multiplayer.PeerCount"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Avatar",
+							"sid": 361817418871790,
+							"parameters": {
+								"instance-variable": "PeerAlias",
+								"value": "Multiplayer.PeerAliasFromID(PeerIDs.At(Avatar.PlayerIndex))"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Avatar",
+							"sid": 179009262139630,
+							"parameters": {
+								"instance-variable": "PeerID",
+								"value": "PeerIDs.At(Avatar.PlayerIndex)"
+							}
+						}
+					],
+					"sid": 958740572055487
 				}
 			]
 		},
@@ -274,6 +309,17 @@
 							"parameters": [
 								"\"Connecting to signalling server…\""
 							]
+						},
+						{
+							"id": "sync-object",
+							"objectClass": "Multiplayer",
+							"sid": 409593476073186,
+							"parameters": {
+								"object": "Avatar",
+								"data": "position-only",
+								"precision": "normal-float-4-bytes",
+								"bandwidth": "normal-bandwidth-unpredictable"
+							}
 						},
 						{
 							"id": "connect",
@@ -373,7 +419,7 @@
 					],
 					"actions": [
 						{
-							"callFunction": "DisplayPlayerNames",
+							"callFunction": "ConfigureParty",
 							"sid": 982546591822082
 						},
 						{
@@ -419,6 +465,15 @@
 									"parameters": {
 										"mode": "disabled"
 									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 887681603151421,
+									"parameters": {
+										"group-name": "\"Host\"",
+										"state": "activated"
+									}
 								}
 							],
 							"sid": 365409939725310
@@ -444,6 +499,20 @@
 									"id": "destroy",
 									"objectClass": "StartButton",
 									"sid": 254704499026106
+								},
+								{
+									"id": "destroy",
+									"objectClass": "Avatar",
+									"sid": 140614208373379
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 860394973607216,
+									"parameters": {
+										"group-name": "\"Peer\"",
+										"state": "activated"
+									}
 								}
 							],
 							"sid": 884284865114808
@@ -461,7 +530,7 @@
 					],
 					"actions": [
 						{
-							"callFunction": "DisplayPlayerNames",
+							"callFunction": "ConfigureParty",
 							"sid": 930180234809941
 						}
 					],
@@ -478,7 +547,7 @@
 					],
 					"actions": [
 						{
-							"callFunction": "DisplayPlayerNames",
+							"callFunction": "ConfigureParty",
 							"sid": 660504490829473
 						}
 					],
@@ -528,9 +597,143 @@
 						}
 					],
 					"sid": 188794122019087
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-clicked",
+							"objectClass": "StartButton",
+							"sid": 521034732363413
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "StartButton",
+							"sid": 526214499958077
+						},
+						{
+							"id": "broadcast-message",
+							"objectClass": "Multiplayer",
+							"sid": 316205399465396,
+							"parameters": {
+								"from-id": "\"\"",
+								"tag": "\"GameState change\"",
+								"message": "\"playing\"",
+								"mode": "reliable-unordered"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 442808617405746,
+							"parameters": {
+								"variable": "GameState",
+								"value": "\"playing\""
+							}
+						},
+						{
+							"id": "associate-object-with-peer",
+							"objectClass": "Multiplayer",
+							"sid": 268971569951334,
+							"parameters": {
+								"object": "Avatar",
+								"peer-id": "Avatar.PeerID"
+							}
+						}
+					],
+					"sid": 261006266300459
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-message",
+							"objectClass": "Multiplayer",
+							"sid": 678493903694905,
+							"parameters": {
+								"tag": "\"GameState change\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 978088143893041,
+							"parameters": {
+								"variable": "GameState",
+								"value": "Multiplayer.Message"
+							}
+						}
+					],
+					"sid": 955338106732255
 				}
 			],
 			"sid": 574492691276879
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 168031450548852,
+					"parameters": {
+						"variable": "GameState",
+						"comparison": 0,
+						"value": "\"playing\""
+					}
+				}
+			],
+			"actions": [],
+			"sid": 354888765212396,
+			"children": [
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Host",
+					"description": "",
+					"isActiveOnStart": false,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-enabled",
+									"objectClass": "Avatar0",
+									"sid": 912362839413622,
+									"behaviorType": "8Direction",
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "Avatar0",
+									"sid": 550475268867509,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"state": "enabled"
+									}
+								}
+							],
+							"sid": 707289090153605
+						}
+					],
+					"sid": 140072129924469
+				},
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Peer",
+					"description": "",
+					"isActiveOnStart": false,
+					"children": [],
+					"sid": 607145855502864
+				}
+			]
 		}
 	],
 	"sid": 607373704127325
