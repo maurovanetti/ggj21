@@ -1,49 +1,35 @@
 {
-	"name": "Arch",
+	"name": "ForbiddenArea",
 	"plugin-id": "Sprite",
-	"sid": 910975204474129,
+	"sid": 452520742424295,
 	"isGlobal": false,
 	"instanceVariables": [],
-	"behaviorTypes": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 763445101041246
+		}
+	],
 	"effectTypes": [],
 	"animations": {
 		"items": [
 			{
 				"frames": [
 					{
-						"width": 1280,
-						"height": 720,
+						"width": 24,
+						"height": 24,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 3343402,
-						"collisionPoly": {
-							"points": [
-								0,
-								0,
-								0.5,
-								0,
-								0.999009900990099,
-								0,
-								0.999009900990099,
-								0.5,
-								0.999009900990099,
-								0.9982174688057041,
-								0.5,
-								0.9982174688057041,
-								0,
-								0.9982174688057041,
-								0,
-								0.5
-							]
-						},
+						"imageSpriteId": 9810704,
 						"useCollisionPoly": true,
 						"duration": 1
 					}
 				],
-				"sid": 151373432392498,
+				"sid": 924494277770169,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

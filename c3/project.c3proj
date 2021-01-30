@@ -63,6 +63,22 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "Tilemap",
+			"name": "Tilemap",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "solid",
+			"name": "Solid",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
+		},
+		{
 			"type": "behavior",
 			"id": "Pathfinding",
 			"name": "Pathfinding",
@@ -132,7 +148,13 @@
 					"PeerIDs",
 					"Background",
 					"ReadyPeerIDs",
-					"Arch"
+					"Arch",
+					"Frame",
+					"Tilemap",
+					"ForbiddenArea",
+					"Obstacles",
+					"OnStage",
+					"Monument"
 				],
 				"subfolders": [],
 				"name": "Static"
@@ -153,8 +175,7 @@
 					"Avatar2",
 					"Avatar3",
 					"Monster",
-					"Egg",
-					"OnStage"
+					"Egg"
 				],
 				"subfolders": [],
 				"name": "Dynamic"
