@@ -32,6 +32,12 @@
 			"type": "boolean",
 			"desc": "",
 			"sid": 153064864205103
+		},
+		{
+			"name": "Animation",
+			"type": "string",
+			"desc": "",
+			"sid": 539508980530494
 		}
 	],
 	"behaviorTypes": [

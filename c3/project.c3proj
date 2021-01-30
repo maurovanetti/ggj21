@@ -134,7 +134,8 @@
 	"containers": [],
 	"families": {
 		"items": [
-			"Avatar"
+			"Avatar",
+			"ZOrderable"
 		],
 		"subfolders": []
 	},

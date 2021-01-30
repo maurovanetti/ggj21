@@ -1079,26 +1079,24 @@
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "is-boolean-instance-variable-set",
-											"objectClass": "Avatar",
-											"sid": 306889157230190,
+											"id": "for-each-ordered",
+											"objectClass": "System",
+											"sid": 429190748195225,
 											"parameters": {
-												"instance-variable": "HasEgg"
+												"object": "ZOrderable",
+												"expression": "ZOrderable.Y",
+												"order": "ascending"
 											}
 										}
 									],
 									"actions": [
 										{
-											"id": "set-position-to-another-object",
-											"objectClass": "Egg",
-											"sid": 404468821773597,
-											"parameters": {
-												"object": "Avatar",
-												"image-point-optional": "\"Egg\""
-											}
+											"id": "move-to-top",
+											"objectClass": "ZOrderable",
+											"sid": 569212557393474
 										}
 									],
-									"sid": 825575867991319
+									"sid": 873695387389173
 								},
 								{
 									"eventType": "block",
@@ -1129,7 +1127,17 @@
 													}
 												}
 											],
-											"actions": [],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Avatar",
+													"sid": 394447636132047,
+													"parameters": {
+														"instance-variable": "Animation",
+														"value": "\"Walk Up\""
+													}
+												}
+											],
 											"sid": 463197873288257
 										},
 										{
@@ -1147,6 +1155,15 @@
 												}
 											],
 											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Avatar",
+													"sid": 529313890754992,
+													"parameters": {
+														"instance-variable": "Animation",
+														"value": "\"Walk Right\""
+													}
+												},
 												{
 													"id": "set-mirrored",
 													"objectClass": "Avatar",
@@ -1172,7 +1189,17 @@
 													}
 												}
 											],
-											"actions": [],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Avatar",
+													"sid": 735780299193952,
+													"parameters": {
+														"instance-variable": "Animation",
+														"value": "\"Walk Down\""
+													}
+												}
+											],
 											"sid": 933722575420970
 										},
 										{
@@ -1190,6 +1217,15 @@
 												}
 											],
 											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Avatar",
+													"sid": 323099713571140,
+													"parameters": {
+														"instance-variable": "Animation",
+														"value": "\"Walk Right\""
+													}
+												},
 												{
 													"id": "set-mirrored",
 													"objectClass": "Avatar",
@@ -1217,12 +1253,12 @@
 											],
 											"actions": [
 												{
-													"id": "set-animation",
+													"id": "set-instvar-value",
 													"objectClass": "Avatar",
-													"sid": 621527740464491,
+													"sid": 874460802892148,
 													"parameters": {
-														"animation": "\"Idle\"",
-														"from": "current-frame"
+														"instance-variable": "Animation",
+														"value": "\"Idle\""
 													}
 												}
 											],
@@ -1232,23 +1268,27 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "else",
-													"objectClass": "System",
-													"sid": 569294346018503
+													"id": "is-animation-playing",
+													"objectClass": "Avatar",
+													"sid": 933040138732286,
+													"parameters": {
+														"animation": "Avatar.Animation"
+													},
+													"isInverted": true
 												}
 											],
 											"actions": [
 												{
 													"id": "set-animation",
 													"objectClass": "Avatar",
-													"sid": 276839213967526,
+													"sid": 761562347421679,
 													"parameters": {
-														"animation": "\"Walk\"",
+														"animation": "Avatar.Animation",
 														"from": "current-frame"
 													}
 												}
 											],
-											"sid": 741944522691960
+											"sid": 907628720163654
 										}
 									]
 								},
@@ -1311,6 +1351,82 @@
 												}
 											],
 											"sid": 912017243202793
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "Avatar",
+											"sid": 235440090531870,
+											"parameters": {
+												"instance-variable": "HasEgg"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position-to-another-object",
+											"objectClass": "Egg",
+											"sid": 196264109452691,
+											"parameters": {
+												"object": "Avatar",
+												"image-point-optional": "\"Egg\""
+											}
+										}
+									],
+									"sid": 299458583236549,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 299073617657459,
+													"parameters": {
+														"first-value": "Avatar.Inputs",
+														"comparison": 0,
+														"second-value": "1"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "move-to-object",
+													"objectClass": "Egg",
+													"sid": 342018437043676,
+													"parameters": {
+														"where": "in-front",
+														"object": "Avatar"
+													}
+												}
+											],
+											"sid": 150221436072649
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 256745414061081
+												}
+											],
+											"actions": [
+												{
+													"id": "move-to-object",
+													"objectClass": "Egg",
+													"sid": 449133303741637,
+													"parameters": {
+														"where": "behind",
+														"object": "Avatar"
+													}
+												}
+											],
+											"sid": 226537723976591
 										}
 									]
 								}

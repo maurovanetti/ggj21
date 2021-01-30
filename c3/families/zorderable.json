@@ -1,0 +1,16 @@
+{
+	"name": "ZOrderable",
+	"plugin-id": "Sprite",
+	"sid": 563319230656431,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"Avatar0",
+		"Avatar1",
+		"Avatar2",
+		"Avatar3",
+		"Egg",
+		"Monster"
+	]
+}

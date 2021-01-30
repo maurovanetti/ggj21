@@ -13,8 +13,8 @@
 					{
 						"width": 80,
 						"height": 110,
-						"originX": 0.5,
-						"originY": 0.5,
+						"originX": 0.5125,
+						"originY": 0.990909090909091,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
@@ -63,8 +63,8 @@
 					{
 						"width": 80,
 						"height": 110,
-						"originX": 0.5,
-						"originY": 0.5,
+						"originX": 0.5125,
+						"originY": 0.990909090909091,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
@@ -102,8 +102,8 @@
 					{
 						"width": 80,
 						"height": 110,
-						"originX": 0.5,
-						"originY": 0.5,
+						"originX": 0.5125,
+						"originY": 0.990909090909091,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
@@ -141,8 +141,8 @@
 					{
 						"width": 80,
 						"height": 110,
-						"originX": 0.5,
-						"originY": 0.5,
+						"originX": 0.5125,
+						"originY": 0.990909090909091,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
@@ -179,7 +179,146 @@
 					}
 				],
 				"sid": 392702367070765,
-				"name": "Walk",
+				"name": "Walk Right",
+				"isLooping": true,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 80,
+						"height": 110,
+						"originX": 0.5125,
+						"originY": 0.990909090909091,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 1144594,
+						"collisionPoly": {
+							"points": [
+								0.325,
+								0.23636363636363636,
+								0.5,
+								0.20909090909090908,
+								0.6625,
+								0.23636363636363636,
+								0.7625,
+								0.5,
+								0.85,
+								0.8909090909090909,
+								0.5,
+								0.8454545454545455,
+								0.15,
+								0.8818181818181818,
+								0.2,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.5,
+								"y": 0.6454545454545455
+							}
+						],
+						"duration": 1
+					}
+				],
+				"sid": 943448543209340,
+				"name": "Walk Up",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 80,
+						"height": 110,
+						"originX": 0.5125,
+						"originY": 0.990909090909091,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 7579621,
+						"collisionPoly": {
+							"points": [
+								0.3,
+								0.21818181818181817,
+								0.5,
+								0.21818181818181817,
+								0.65,
+								0.24545454545454545,
+								0.7625,
+								0.5,
+								0.85,
+								0.8909090909090909,
+								0.5,
+								0.8545454545454545,
+								0.15,
+								0.8818181818181818,
+								0.2,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.2,
+								"y": 0.6363636363636364
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 80,
+						"height": 110,
+						"originX": 0.5125,
+						"originY": 0.990909090909091,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3181445,
+						"collisionPoly": {
+							"points": [
+								0.3,
+								0.21818181818181817,
+								0.5,
+								0.2,
+								0.6875,
+								0.21818181818181817,
+								0.8,
+								0.5,
+								0.7625,
+								0.8272727272727273,
+								0.5,
+								0.990909090909091,
+								0.2,
+								0.8454545454545455,
+								0.25,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.2,
+								"y": 0.6363636363636364
+							}
+						],
+						"duration": 1
+					}
+				],
+				"sid": 933505465723914,
+				"name": "Walk Down",
 				"isLooping": true,
 				"isPingPong": false,
 				"repeatCount": 1,

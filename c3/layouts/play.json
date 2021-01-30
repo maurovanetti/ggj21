@@ -33,79 +33,6 @@
 						"angle": 0,
 						"zElevation": 0
 					}
-				},
-				{
-					"type": "Monster",
-					"properties": {
-						"initially-visible": true,
-						"initial-animation": "Default",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 21,
-					"instanceVariables": {},
-					"behaviors": {
-						"Pathfinding": {
-							"properties": {
-								"cell-size": 30,
-								"cell-border": -1,
-								"obstacles": "solids",
-								"max-speed": 25,
-								"acceleration": 100,
-								"deceleration": 5000,
-								"rotate-speed": 135,
-								"rotate-object": false,
-								"diagonals": true,
-								"enabled": true
-							}
-						}
-					},
-					"world": {
-						"x": 655,
-						"y": 142,
-						"width": 209,
-						"height": 131,
-						"originX": 0.4688995215311005,
-						"originY": 0.48854961832061067,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "Egg",
-					"properties": {
-						"initially-visible": true,
-						"initial-animation": "Animation 1",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 22,
-					"instanceVariables": {},
-					"behaviors": {},
-					"world": {
-						"x": 616,
-						"y": 435,
-						"width": 25,
-						"height": 29,
-						"originX": 0.64,
-						"originY": 0.6206896551724138,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
 				}
 			],
 			"sid": 167324257825134,
@@ -168,7 +95,7 @@
 					"type": "Avatar0",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Walk",
+						"initial-animation": "Idle",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -179,7 +106,8 @@
 						"PeerID": "",
 						"PeerAlias": "",
 						"Inputs": 0,
-						"HasEgg": true
+						"HasEgg": true,
+						"Animation": ""
 					},
 					"behaviors": {
 						"8Direction": {
@@ -199,8 +127,8 @@
 						"y": 228,
 						"width": 56,
 						"height": 77,
-						"originX": 0.5,
-						"originY": 0.5,
+						"originX": 0.5125,
+						"originY": 0.990909090909091,
 						"color": [
 							1,
 							1,
@@ -215,7 +143,7 @@
 					"type": "Avatar1",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Walk",
+						"initial-animation": "Idle",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -226,7 +154,8 @@
 						"PeerID": "",
 						"PeerAlias": "",
 						"Inputs": 0,
-						"HasEgg": false
+						"HasEgg": false,
+						"Animation": ""
 					},
 					"behaviors": {
 						"8Direction": {
@@ -246,8 +175,8 @@
 						"y": 248,
 						"width": 56,
 						"height": 77,
-						"originX": 0.5,
-						"originY": 0.5,
+						"originX": 0.5125,
+						"originY": 0.990909090909091,
 						"color": [
 							1,
 							1,
@@ -262,7 +191,7 @@
 					"type": "Avatar2",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Walk",
+						"initial-animation": "Idle",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -273,7 +202,8 @@
 						"PeerID": "",
 						"PeerAlias": "",
 						"Inputs": 0,
-						"HasEgg": false
+						"HasEgg": false,
+						"Animation": ""
 					},
 					"behaviors": {
 						"8Direction": {
@@ -293,8 +223,8 @@
 						"y": 519,
 						"width": 56,
 						"height": 77,
-						"originX": 0.5,
-						"originY": 0.5,
+						"originX": 0.525,
+						"originY": 0.990909090909091,
 						"color": [
 							1,
 							1,
@@ -309,7 +239,7 @@
 					"type": "Avatar3",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Walk",
+						"initial-animation": "Idle",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -320,7 +250,8 @@
 						"PeerID": "",
 						"PeerAlias": "",
 						"Inputs": 0,
-						"HasEgg": false
+						"HasEgg": false,
+						"Animation": ""
 					},
 					"behaviors": {
 						"8Direction": {
@@ -340,8 +271,81 @@
 						"y": 522,
 						"width": 56,
 						"height": 77,
-						"originX": 0.5,
-						"originY": 0.5,
+						"originX": 0.5125,
+						"originY": 1,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Monster",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Default",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 21,
+					"instanceVariables": {},
+					"behaviors": {
+						"Pathfinding": {
+							"properties": {
+								"cell-size": 30,
+								"cell-border": -1,
+								"obstacles": "solids",
+								"max-speed": 25,
+								"acceleration": 100,
+								"deceleration": 5000,
+								"rotate-speed": 135,
+								"rotate-object": false,
+								"diagonals": true,
+								"enabled": true
+							}
+						}
+					},
+					"world": {
+						"x": 655,
+						"y": 142,
+						"width": 209,
+						"height": 131,
+						"originX": 0.46411483253588515,
+						"originY": 0.9236641221374046,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Egg",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 22,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 616,
+						"y": 435,
+						"width": 25,
+						"height": 29,
+						"originX": 0.64,
+						"originY": 0.6206896551724138,
 						"color": [
 							1,
 							1,
