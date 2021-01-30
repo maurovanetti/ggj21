@@ -1,0 +1,43 @@
+{
+	"name": "Monster",
+	"plugin-id": "Sprite",
+	"sid": 738720690962711,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Pathfinding",
+			"name": "Pathfinding",
+			"sid": 975417056234334
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 209,
+						"height": 131,
+						"originX": 0.4688995215311005,
+						"originY": 0.48854961832061067,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6793704,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 340241223523721,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -33,6 +33,79 @@
 						"angle": 0,
 						"zElevation": 0
 					}
+				},
+				{
+					"type": "Monster",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Default",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 21,
+					"instanceVariables": {},
+					"behaviors": {
+						"Pathfinding": {
+							"properties": {
+								"cell-size": 30,
+								"cell-border": -1,
+								"obstacles": "solids",
+								"max-speed": 25,
+								"acceleration": 100,
+								"deceleration": 5000,
+								"rotate-speed": 135,
+								"rotate-object": false,
+								"diagonals": true,
+								"enabled": true
+							}
+						}
+					},
+					"world": {
+						"x": 655,
+						"y": 142,
+						"width": 209,
+						"height": 131,
+						"originX": 0.4688995215311005,
+						"originY": 0.48854961832061067,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "Egg",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 22,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 616,
+						"y": 435,
+						"width": 25,
+						"height": 29,
+						"originX": 0.64,
+						"originY": 0.6206896551724138,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
 				}
 			],
 			"sid": 167324257825134,
@@ -105,14 +178,15 @@
 						"PlayerIndex": 0,
 						"PeerID": "",
 						"PeerAlias": "",
-						"Inputs": 0
+						"Inputs": 0,
+						"HasEgg": true
 					},
 					"behaviors": {
 						"8Direction": {
 							"properties": {
 								"max-speed": 200,
-								"acceleration": 600,
-								"deceleration": 500,
+								"acceleration": 3000,
+								"deceleration": 5000,
 								"directions": "dir-8",
 								"set-angle": "no",
 								"default-controls": false,
@@ -121,10 +195,10 @@
 						}
 					},
 					"world": {
-						"x": 252,
-						"y": 216,
-						"width": 80,
-						"height": 110,
+						"x": 264,
+						"y": 228,
+						"width": 56,
+						"height": 77,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -151,14 +225,15 @@
 						"PlayerIndex": 1,
 						"PeerID": "",
 						"PeerAlias": "",
-						"Inputs": 0
+						"Inputs": 0,
+						"HasEgg": false
 					},
 					"behaviors": {
 						"8Direction": {
 							"properties": {
 								"max-speed": 200,
-								"acceleration": 600,
-								"deceleration": 500,
+								"acceleration": 3000,
+								"deceleration": 5000,
 								"directions": "dir-8",
 								"set-angle": "no",
 								"default-controls": false,
@@ -169,8 +244,8 @@
 					"world": {
 						"x": 935,
 						"y": 248,
-						"width": 80,
-						"height": 110,
+						"width": 56,
+						"height": 77,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -197,14 +272,15 @@
 						"PlayerIndex": 2,
 						"PeerID": "",
 						"PeerAlias": "",
-						"Inputs": 0
+						"Inputs": 0,
+						"HasEgg": false
 					},
 					"behaviors": {
 						"8Direction": {
 							"properties": {
 								"max-speed": 200,
-								"acceleration": 600,
-								"deceleration": 500,
+								"acceleration": 3000,
+								"deceleration": 5000,
 								"directions": "dir-8",
 								"set-angle": "no",
 								"default-controls": false,
@@ -213,10 +289,10 @@
 						}
 					},
 					"world": {
-						"x": 248,
-						"y": 538,
-						"width": 80,
-						"height": 110,
+						"x": 269,
+						"y": 519,
+						"width": 56,
+						"height": 77,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [
@@ -243,14 +319,15 @@
 						"PlayerIndex": 3,
 						"PeerID": "",
 						"PeerAlias": "",
-						"Inputs": 0
+						"Inputs": 0,
+						"HasEgg": false
 					},
 					"behaviors": {
 						"8Direction": {
 							"properties": {
 								"max-speed": 200,
-								"acceleration": 600,
-								"deceleration": 500,
+								"acceleration": 3000,
+								"deceleration": 5000,
 								"directions": "dir-8",
 								"set-angle": "no",
 								"default-controls": false,
@@ -259,10 +336,10 @@
 						}
 					},
 					"world": {
-						"x": 1014,
-						"y": 553,
-						"width": 80,
-						"height": 110,
+						"x": 1004,
+						"y": 522,
+						"width": 56,
+						"height": 77,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [

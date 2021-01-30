@@ -26,6 +26,12 @@
 			"type": "number",
 			"desc": "",
 			"sid": 382680108186609
+		},
+		{
+			"name": "HasEgg",
+			"type": "boolean",
+			"desc": "",
+			"sid": 153064864205103
 		}
 	],
 	"behaviorTypes": [

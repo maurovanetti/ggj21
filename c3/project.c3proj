@@ -64,6 +64,14 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Pathfinding",
+			"name": "Pathfinding",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "EightDir",
 			"name": "8 Direction",
 			"author": "Scirra",
@@ -73,12 +81,7 @@
 	],
 	"uniqueId": "s6d7gosbo40",
 	"objectTypes": {
-		"items": [
-			"Avatar0",
-			"Avatar1",
-			"Avatar2",
-			"Avatar3"
-		],
+		"items": [],
 		"subfolders": [
 			{
 				"items": [
@@ -112,6 +115,18 @@
 				],
 				"subfolders": [],
 				"name": "Examples"
+			},
+			{
+				"items": [
+					"Avatar0",
+					"Avatar1",
+					"Avatar2",
+					"Avatar3",
+					"Monster",
+					"Egg"
+				],
+				"subfolders": [],
+				"name": "Dynamic"
 			}
 		]
 	},

@@ -29,9 +29,9 @@
 				{
 					"id": "set-text",
 					"objectClass": "NameInput",
-					"sid": 486960231106713,
+					"sid": 640365190349376,
 					"parameters": {
-						"text": "\"Anonymous Player\""
+						"text": "\"Anonymous\""
 					}
 				}
 			],

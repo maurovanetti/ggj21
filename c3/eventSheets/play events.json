@@ -321,11 +321,11 @@
 						{
 							"id": "sync-object",
 							"objectClass": "Multiplayer",
-							"sid": 409593476073186,
+							"sid": 543598849265309,
 							"parameters": {
 								"object": "Avatar",
 								"data": "position-only",
-								"precision": "normal-float-4-bytes",
+								"precision": "high-double-8-bytes",
 								"bandwidth": "normal-bandwidth-unpredictable"
 							}
 						},
@@ -342,6 +342,17 @@
 								"precision": "very-low-uint8-1-byte",
 								"interpolation": "none",
 								"client-value-tag": "\"inputs\""
+							}
+						},
+						{
+							"id": "sync-object",
+							"objectClass": "Multiplayer",
+							"sid": 369766598747571,
+							"parameters": {
+								"object": "Monster",
+								"data": "position-only",
+								"precision": "high-double-8-bytes",
+								"bandwidth": "normal-bandwidth-unpredictable"
 							}
 						},
 						{
@@ -429,12 +440,12 @@
 						{
 							"id": "auto-join-room",
 							"objectClass": "Multiplayer",
-							"sid": 669977873157187,
+							"sid": 797279048641624,
 							"parameters": {
 								"game": "GAME_NAME",
 								"instance": "INSTANCE_NAME",
 								"first-room": "ROOM_NAME",
-								"max-peers": "2",
+								"max-peers": "4",
 								"locking": "lock-when-full"
 							}
 						}
@@ -539,6 +550,11 @@
 									"sid": 140614208373379
 								},
 								{
+									"id": "destroy",
+									"objectClass": "Monster",
+									"sid": 945463405284596
+								},
+								{
 									"id": "set-group-active",
 									"objectClass": "System",
 									"sid": 860394973607216,
@@ -559,6 +575,16 @@
 							"id": "on-peer-connected",
 							"objectClass": "Multiplayer",
 							"sid": 182118815518661
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 983805741606114,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"waiting\""
+							}
 						}
 					],
 					"actions": [
@@ -576,6 +602,16 @@
 							"id": "on-peer-disconnected",
 							"objectClass": "Multiplayer",
 							"sid": 718978317692982
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 152675231783120,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"waiting\""
+							}
 						}
 					],
 					"actions": [
@@ -801,6 +837,60 @@
 							"sid": 373482133769824
 						},
 						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 459032396641707,
+									"parameters": {
+										"interval-seconds": "1.0"
+									}
+								},
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "Avatar",
+									"sid": 154532315398736,
+									"parameters": {
+										"instance-variable": "HasEgg"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "find-path",
+									"objectClass": "Monster",
+									"sid": 812739726918495,
+									"behaviorType": "Pathfinding",
+									"parameters": {
+										"x": "Avatar.X",
+										"y": "Avatar.Y"
+									}
+								}
+							],
+							"sid": 171075824613483
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-path-found",
+									"objectClass": "Monster",
+									"sid": 335544567121930,
+									"behaviorType": "Pathfinding"
+								}
+							],
+							"actions": [
+								{
+									"id": "move-along-path",
+									"objectClass": "Monster",
+									"sid": 412189354551349,
+									"behaviorType": "Pathfinding"
+								}
+							],
+							"sid": 418107340134866
+						},
+						{
 							"eventType": "group",
 							"disabled": false,
 							"title": "Host",
@@ -977,6 +1067,255 @@
 								}
 							],
 							"sid": 140951644177167
+						},
+						{
+							"eventType": "group",
+							"disabled": false,
+							"title": "Animations",
+							"description": "",
+							"isActiveOnStart": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "Avatar",
+											"sid": 306889157230190,
+											"parameters": {
+												"instance-variable": "HasEgg"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-position-to-another-object",
+											"objectClass": "Egg",
+											"sid": 404468821773597,
+											"parameters": {
+												"object": "Avatar",
+												"image-point-optional": "\"Egg\""
+											}
+										}
+									],
+									"sid": 825575867991319
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for-each",
+											"objectClass": "System",
+											"sid": 852772085797786,
+											"parameters": {
+												"object": "Avatar"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 176037488441844,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 560704484159602,
+													"parameters": {
+														"first-value": "getbit(Avatar.Inputs, 0)",
+														"comparison": 0,
+														"second-value": "1"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 463197873288257
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 372341979746733,
+													"parameters": {
+														"first-value": "getbit(Avatar.Inputs, 1)",
+														"comparison": 0,
+														"second-value": "1"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-mirrored",
+													"objectClass": "Avatar",
+													"sid": 339016635946360,
+													"parameters": {
+														"state": "mirrored"
+													}
+												}
+											],
+											"sid": 887772544327553
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 319467342839741,
+													"parameters": {
+														"first-value": "getbit(Avatar.Inputs, 2)",
+														"comparison": 0,
+														"second-value": "1"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 933722575420970
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 728114629992590,
+													"parameters": {
+														"first-value": "getbit(Avatar.Inputs, 3)",
+														"comparison": 0,
+														"second-value": "1"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-mirrored",
+													"objectClass": "Avatar",
+													"sid": 764101891115192,
+													"parameters": {
+														"state": "not-mirrored"
+													}
+												}
+											],
+											"sid": 931384718228275
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 358480699452603,
+													"parameters": {
+														"first-value": "Avatar.Inputs",
+														"comparison": 0,
+														"second-value": "0"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation",
+													"objectClass": "Avatar",
+													"sid": 621527740464491,
+													"parameters": {
+														"animation": "\"Idle\"",
+														"from": "current-frame"
+													}
+												}
+											],
+											"sid": 101477110234405
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 569294346018503
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation",
+													"objectClass": "Avatar",
+													"sid": 276839213967526,
+													"parameters": {
+														"animation": "\"Walk\"",
+														"from": "current-frame"
+													}
+												}
+											],
+											"sid": 741944522691960
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-moving-along-path",
+											"objectClass": "Monster",
+											"sid": 701854726549388,
+											"behaviorType": "Pathfinding"
+										}
+									],
+									"actions": [],
+									"sid": 937444928576540,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 253167086347175,
+													"parameters": {
+														"first-value": "Monster.Pathfinding.NodeXAt(Monster.Pathfinding.CurrentNode)",
+														"comparison": 4,
+														"second-value": "Monster.X"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-mirrored",
+													"objectClass": "Monster",
+													"sid": 192791481551241,
+													"parameters": {
+														"state": "not-mirrored"
+													}
+												}
+											],
+											"sid": 208073286472960
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 489173546136803
+												}
+											],
+											"actions": [
+												{
+													"id": "set-mirrored",
+													"objectClass": "Monster",
+													"sid": 963544613100643,
+													"parameters": {
+														"state": "mirrored"
+													}
+												}
+											],
+											"sid": 912017243202793
+										}
+									]
+								}
+							],
+							"sid": 621671606272389
 						}
 					]
 				}
