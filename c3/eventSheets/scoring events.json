@@ -36,6 +36,147 @@
 			"sid": 805819465090598
 		},
 		{
+			"functionName": "StartScore",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "PlayerIndex",
+					"type": "number",
+					"initialValue": "-1",
+					"comment": "",
+					"sid": 932433077152154
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 908640586422455,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Score",
+							"sid": 940125552605785,
+							"parameters": {
+								"instance-variable": "PlayerIndex",
+								"comparison": 0,
+								"value": "PlayerIndex"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 712400012087583,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-timer-paused",
+									"objectClass": "Score",
+									"sid": 240926839295207,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "\"countup\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "pause-resume-timer",
+									"objectClass": "Score",
+									"sid": 271376529489742,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "\"countup\"",
+										"state": "resumed"
+									}
+								}
+							],
+							"sid": 706191760436754
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 449726858821122
+								}
+							],
+							"actions": [
+								{
+									"id": "start-timer",
+									"objectClass": "Score",
+									"sid": 136719583921477,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "1",
+										"type": "regular",
+										"tag": "\"countup\""
+									}
+								}
+							],
+							"sid": 496181666059694
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "StopAllScores",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"callFunction": "Log",
+					"sid": 287452069989379,
+					"parameters": [
+						"\"All scores stopped!\""
+					]
+				}
+			],
+			"sid": 555514675485248,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-timer-running",
+							"objectClass": "Score",
+							"sid": 907114943700277,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"countup\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "pause-resume-timer",
+							"objectClass": "Score",
+							"sid": 688233719777186,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"countup\"",
+								"state": "paused"
+							}
+						}
+					],
+					"sid": 887097950807150
+				}
+			]
+		},
+		{
 			"functionName": "SetClock",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -201,6 +342,27 @@
 			"eventType": "block",
 			"conditions": [
 				{
+					"id": "on-created",
+					"objectClass": "Score",
+					"sid": 692758536155032
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "Score",
+					"sid": 320610676618027,
+					"parameters": {
+						"text": "0"
+					}
+				}
+			],
+			"sid": 199864775046406
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
 					"id": "is-timer-running",
 					"objectClass": "Clock",
 					"sid": 333368928329436,
@@ -221,6 +383,31 @@
 				}
 			],
 			"sid": 810132495539785
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-timer",
+					"objectClass": "Clock",
+					"sid": 509810796518376,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "\"countup\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "SetClock",
+					"sid": 874606295329729,
+					"parameters": [
+						"Clock.UID",
+						"floor(Clock.Timer.TotalTime(\"countup\"))"
+					]
+				}
+			],
+			"sid": 447002693571166
 		}
 	],
 	"sid": 800725932529419

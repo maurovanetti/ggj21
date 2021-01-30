@@ -145,7 +145,8 @@
 					"Flag1",
 					"Flag2",
 					"Flag3",
-					"Countdown"
+					"Countdown",
+					"Score"
 				],
 				"subfolders": [],
 				"name": "UI"

@@ -1,0 +1,16 @@
+{
+	"name": "Score",
+	"plugin-id": "Text",
+	"sid": 786534542422644,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "PlayerIndex",
+			"type": "number",
+			"desc": "",
+			"sid": 537384138099140
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

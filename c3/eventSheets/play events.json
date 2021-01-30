@@ -2581,7 +2581,43 @@
 							}
 						}
 					],
-					"sid": 785480509097167
+					"sid": 785480509097167,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Score",
+									"sid": 185288747775492,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "Avatar.PlayerIndex"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-opacity",
+									"objectClass": "Score",
+									"sid": 721834262406397,
+									"parameters": {
+										"opacity": "50"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "Score",
+									"sid": 453321347263999,
+									"parameters": {
+										"text": "\"(\" & Score.Text & \")\""
+									}
+								}
+							],
+							"sid": 982702846165719
+						}
+					]
 				},
 				{
 					"eventType": "block",
@@ -2696,7 +2732,58 @@
 							"sid": 510982208507998
 						}
 					],
-					"sid": 751227532422456
+					"sid": 751227532422456,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Score",
+									"sid": 686956071115856,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 2,
+										"value": "Multiplayer.PeerCount"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "Score",
+									"sid": 549493941767803,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 401028614154845
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "Avatar",
+									"sid": 964305889102048,
+									"parameters": {
+										"instance-variable": "HasEgg"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "StartScore",
+									"sid": 712558994522917,
+									"parameters": [
+										"Avatar.PlayerIndex"
+									]
+								}
+							],
+							"sid": 386961522553930
+						}
+					]
 				}
 			],
 			"sid": 390860884619276
@@ -2772,6 +2859,10 @@
 					"parameters": {
 						"collisions": "disabled"
 					}
+				},
+				{
+					"callFunction": "StopAllScores",
+					"sid": 691941076471860
 				}
 			],
 			"sid": 274638757458724,
@@ -2936,6 +3027,10 @@
 						"off-time": "0.1",
 						"duration": "1"
 					}
+				},
+				{
+					"callFunction": "StopAllScores",
+					"sid": 448697561397905
 				}
 			],
 			"sid": 517573465315408,
@@ -2988,6 +3083,13 @@
 								"instance-variable": "HasEgg",
 								"value": "true"
 							}
+						},
+						{
+							"callFunction": "StartScore",
+							"sid": 168638669357197,
+							"parameters": [
+								"Avatar.PlayerIndex"
+							]
 						},
 						{
 							"id": "set-instvar-value",
