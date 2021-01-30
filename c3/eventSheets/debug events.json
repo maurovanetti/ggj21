@@ -15,11 +15,12 @@
 			],
 			"actions": [
 				{
-					"id": "set-enabled",
-					"objectClass": "StartButton",
-					"sid": 218453326877666,
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 767516431911502,
 					"parameters": {
-						"mode": "enabled"
+						"variable": "MinReadyPlayers",
+						"value": "0"
 					}
 				}
 			],

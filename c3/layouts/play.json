@@ -430,7 +430,9 @@
 					},
 					"uid": 21,
 					"instanceVariables": {
-						"PreviousX": 0
+						"PreviousX": 0,
+						"PreviousY": 0,
+						"Animation": "Walk Down"
 					},
 					"behaviors": {
 						"Pathfinding": {
@@ -453,8 +455,8 @@
 						"y": 184,
 						"width": 250,
 						"height": 200,
-						"originX": 0.5,
-						"originY": 0.5,
+						"originX": 0.48,
+						"originY": 0.835,
 						"color": [
 							1,
 							1,

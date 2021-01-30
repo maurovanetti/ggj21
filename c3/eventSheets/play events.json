@@ -70,6 +70,16 @@
 			"sid": 186415746171714
 		},
 		{
+			"eventType": "variable",
+			"name": "MinReadyPlayers",
+			"type": "number",
+			"initialValue": "2",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 884076271197243
+		},
+		{
 			"functionName": "Log",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -565,11 +575,11 @@
 						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 352315124395150,
+							"sid": 809684752874243,
 							"parameters": {
 								"variable": "ReadyPeers",
-								"comparison": 4,
-								"value": "1"
+								"comparison": 5,
+								"value": "MinReadyPlayers"
 							}
 						}
 					],
@@ -1154,10 +1164,10 @@
 								{
 									"id": "compare-peer-count",
 									"objectClass": "Multiplayer",
-									"sid": 228486549603953,
+									"sid": 864265920336492,
 									"parameters": {
-										"comparison": 4,
-										"count": "1"
+										"comparison": 5,
+										"count": "MinReadyPlayers"
 									}
 								}
 							],
@@ -1840,6 +1850,26 @@
 							"isActiveOnStart": true,
 							"children": [
 								{
+									"eventType": "variable",
+									"name": "MonsterDeltaX",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 819883488882739
+								},
+								{
+									"eventType": "variable",
+									"name": "MonsterDeltaY",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 898168184377169
+								},
+								{
 									"eventType": "block",
 									"conditions": [
 										{
@@ -2107,53 +2137,173 @@
 								},
 								{
 									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-x",
-											"objectClass": "Monster",
-											"sid": 807160317302484,
-											"parameters": {
-												"comparison": 4,
-												"x-co-ordinate": "Monster.PreviousX"
-											}
-										}
-									],
+									"conditions": [],
 									"actions": [
 										{
-											"id": "set-mirrored",
-											"objectClass": "Monster",
-											"sid": 284961827424196,
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 105515278228366,
 											"parameters": {
-												"state": "not-mirrored"
+												"variable": "MonsterDeltaX",
+												"value": "abs(Monster.X - Monster.PreviousX)"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 688597953697910,
+											"parameters": {
+												"variable": "MonsterDeltaY",
+												"value": "abs(Monster.Y - Monster.PreviousY)"
 											}
 										}
 									],
-									"sid": 937444928576540
+									"sid": 323648975099048
 								},
 								{
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "compare-x",
-											"objectClass": "Monster",
-											"sid": 500952066534632,
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 674599094473857,
 											"parameters": {
-												"comparison": 2,
-												"x-co-ordinate": "Monster.PreviousX"
+												"first-value": "MonsterDeltaX * 2",
+												"comparison": 4,
+												"second-value": "MonsterDeltaY"
 											}
 										}
 									],
 									"actions": [
 										{
-											"id": "set-mirrored",
+											"id": "set-instvar-value",
 											"objectClass": "Monster",
-											"sid": 831254540404341,
+											"sid": 556040769036931,
 											"parameters": {
-												"state": "mirrored"
+												"instance-variable": "Animation",
+												"value": "\"Walk Right\""
 											}
 										}
 									],
-									"sid": 164720685115765
+									"sid": 937444928576540,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-x",
+													"objectClass": "Monster",
+													"sid": 335628708426134,
+													"parameters": {
+														"comparison": 4,
+														"x-co-ordinate": "Monster.PreviousX"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-mirrored",
+													"objectClass": "Monster",
+													"sid": 783476411702936,
+													"parameters": {
+														"state": "not-mirrored"
+													}
+												}
+											],
+											"sid": 330876967573608
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-x",
+													"objectClass": "Monster",
+													"sid": 502853082206096,
+													"parameters": {
+														"comparison": 2,
+														"x-co-ordinate": "Monster.PreviousX"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-mirrored",
+													"objectClass": "Monster",
+													"sid": 199799463457405,
+													"parameters": {
+														"state": "mirrored"
+													}
+												}
+											],
+											"sid": 858626557129210
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 400492879736253
+										}
+									],
+									"actions": [],
+									"sid": 375790958260239,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-y",
+													"objectClass": "Monster",
+													"sid": 176444287632421,
+													"parameters": {
+														"comparison": 4,
+														"y-co-ordinate": "Monster.PreviousY"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Monster",
+													"sid": 192764653441315,
+													"parameters": {
+														"instance-variable": "Animation",
+														"value": "\"Walk Down\""
+													}
+												}
+											],
+											"sid": 109994297559791
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-y",
+													"objectClass": "Monster",
+													"sid": 550031269007430,
+													"parameters": {
+														"comparison": 2,
+														"y-co-ordinate": "Monster.PreviousY"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Monster",
+													"sid": 186173809220293,
+													"parameters": {
+														"instance-variable": "Animation",
+														"value": "\"Walk Up\""
+													}
+												}
+											],
+											"sid": 230050547505478
+										}
+									]
 								},
 								{
 									"eventType": "block",
@@ -2162,14 +2312,59 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "Monster",
-											"sid": 678902545480278,
+											"sid": 777079206744766,
 											"parameters": {
 												"instance-variable": "PreviousX",
 												"value": "Monster.X"
 											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Monster",
+											"sid": 954986274504354,
+											"parameters": {
+												"instance-variable": "PreviousY",
+												"value": "Monster.Y"
+											}
 										}
 									],
-									"sid": 478739274734959
+									"sid": 881498880838232
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Monster",
+											"sid": 513381666274090,
+											"parameters": {
+												"animation": "Monster.Animation"
+											},
+											"isInverted": true
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation",
+											"objectClass": "Monster",
+											"sid": 421665518118718,
+											"parameters": {
+												"animation": "Monster.Animation",
+												"from": "current-frame"
+											}
+										},
+										{
+											"id": "rotate-toward-position",
+											"objectClass": "Monster",
+											"sid": 717608177358511,
+											"parameters": {
+												"degrees": "dt * 30",
+												"x": "Egg.X",
+												"y": "Egg.Y"
+											}
+										}
+									],
+									"sid": 379290645458497
 								},
 								{
 									"eventType": "block",
