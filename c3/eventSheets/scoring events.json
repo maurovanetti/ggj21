@@ -1,0 +1,227 @@
+{
+	"name": "Scoring Events",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "MatchDuration",
+			"type": "number",
+			"initialValue": "60",
+			"comment": "in seconds",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 906688788724505
+		},
+		{
+			"functionName": "StartCountdown",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "start-timer",
+					"objectClass": "Countdown",
+					"sid": 714361403517065,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "MatchDuration",
+						"type": "once",
+						"tag": "\"countdown\""
+					}
+				}
+			],
+			"sid": 805819465090598
+		},
+		{
+			"functionName": "SetClock",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ClockUID",
+					"type": "number",
+					"initialValue": "-1",
+					"comment": "",
+					"sid": 902829383666113
+				},
+				{
+					"name": "Value",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 421237047867981
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 668110787287914,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "Hiccup",
+					"type": "number",
+					"initialValue": "25",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 436763218553940
+				},
+				{
+					"eventType": "variable",
+					"name": "Hicdown",
+					"type": "number",
+					"initialValue": "5",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 861961017900959
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-by-unique-id",
+							"objectClass": "Clock",
+							"sid": 445568965852940,
+							"parameters": {
+								"unique-id": "ClockUID"
+							}
+						},
+						{
+							"id": "compare-text",
+							"objectClass": "Clock",
+							"sid": 162768909252266,
+							"parameters": {
+								"text-to-compare": "str(Value)",
+								"case-sensitivity": "case-sensitive"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "Clock",
+							"sid": 594851414806877,
+							"parameters": {
+								"text": "str(Value)"
+							}
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "Clock",
+							"sid": 465547969033786,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"punch\"",
+								"property": "offsetY",
+								"end-value": "Clock.Y - Hiccup",
+								"time": "0.1",
+								"ease": "easeinoutbounce",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 875000213739248
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "Clock",
+							"sid": 925976122605542,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"punch\"",
+								"property": "offsetY",
+								"end-value": "Clock.Y + Hiccup + Hicdown",
+								"time": "0.1",
+								"ease": "easeinoutbounce",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 110361497313555
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "Clock",
+							"sid": 466905731985190,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"punch\"",
+								"property": "offsetY",
+								"end-value": "Clock.Y - Hicdown",
+								"time": "0.05",
+								"ease": "easeinoutbounce",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no"
+							}
+						}
+					],
+					"sid": 740272224630092
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "Countdown",
+					"sid": 230141528065699
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "Countdown",
+					"sid": 924040441055186,
+					"parameters": {
+						"text": "floor(MatchDuration)"
+					}
+				}
+			],
+			"sid": 668390464078020
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-timer-running",
+					"objectClass": "Clock",
+					"sid": 333368928329436,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "\"countdown\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "SetClock",
+					"sid": 315507926775929,
+					"parameters": [
+						"Clock.UID",
+						"ceil(MatchDuration - Clock.Timer.CurrentTime(\"countdown\"))"
+					]
+				}
+			],
+			"sid": 810132495539785
+		}
+	],
+	"sid": 800725932529419
+}

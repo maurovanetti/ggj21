@@ -1,0 +1,63 @@
+{
+	"name": "Leaf",
+	"plugin-id": "Sprite",
+	"sid": 750083860761088,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 625408626526657
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 225,
+						"height": 150,
+						"originX": 0.38927432503366033,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 7671760,
+						"collisionPoly": {
+							"points": [
+								0,
+								0.4523384759656217,
+								0.38927432503366033,
+								0,
+								0.9704760322956235,
+								0.5419278068573102,
+								0.954631623919213,
+								0.5,
+								0.9294246105931055,
+								0.41650274360894635,
+								0.38927432503366033,
+								0.9060188476011323,
+								0,
+								0.6028485518636584,
+								0,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 201446684298265,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

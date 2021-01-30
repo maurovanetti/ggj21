@@ -1,0 +1,22 @@
+{
+	"name": "Clock",
+	"plugin-id": "Text",
+	"sid": 811748801169262,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 294736986636017
+		},
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 415788704044010
+		}
+	],
+	"effectTypes": [],
+	"members": [
+		"Countdown"
+	]
+}

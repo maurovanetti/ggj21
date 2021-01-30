@@ -10,6 +10,10 @@
 			"includeSheet": "Debug Events"
 		},
 		{
+			"eventType": "include",
+			"includeSheet": "Scoring Events"
+		},
+		{
 			"eventType": "variable",
 			"name": "GAME_NAME",
 			"type": "string",
@@ -2666,6 +2670,33 @@
 						}
 					],
 					"sid": 852694672232711
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 417379681821079,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"playing\""
+							}
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 781836901250559
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "StartCountdown",
+							"sid": 510982208507998
+						}
+					],
+					"sid": 751227532422456
 				}
 			],
 			"sid": 390860884619276
