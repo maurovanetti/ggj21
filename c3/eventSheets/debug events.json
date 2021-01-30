@@ -35,18 +35,86 @@
 					"parameters": {
 						"key": 72
 					}
+				},
+				{
+					"id": "is-host",
+					"objectClass": "Multiplayer",
+					"sid": 697274470692880
+				},
+				{
+					"id": "pick-nearestfurthest",
+					"objectClass": "Avatar",
+					"sid": 560179180213035,
+					"parameters": {
+						"which": "furthest",
+						"x": "Egg.X",
+						"y": "Egg.Y"
+					}
 				}
 			],
 			"actions": [
 				{
 					"callFunction": "ThrowEgg",
-					"sid": 527531493309959,
+					"sid": 548463246302455,
 					"parameters": [
-						"-1"
+						"Avatar.PlayerIndex"
 					]
 				}
 			],
 			"sid": 835948814797513
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 582123910413486,
+					"parameters": {
+						"key": 75
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "send-message",
+					"objectClass": "Multiplayer",
+					"sid": 887469859358009,
+					"parameters": {
+						"peer-id": "\"\"",
+						"tag": "\"kill\"",
+						"message": "\"\"",
+						"mode": "reliable-ordered"
+					}
+				}
+			],
+			"sid": 795754516385583,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-host",
+							"objectClass": "Multiplayer",
+							"sid": 470266656845089
+						}
+					],
+					"actions": [
+						{
+							"id": "broadcast-message",
+							"objectClass": "Multiplayer",
+							"sid": 499231551956708,
+							"parameters": {
+								"from-id": "\"\"",
+								"tag": "\"kill\"",
+								"message": "\"\"",
+								"mode": "reliable-ordered"
+							}
+						}
+					],
+					"sid": 872373495290567
+				}
+			]
 		}
 	],
 	"sid": 346769543903299

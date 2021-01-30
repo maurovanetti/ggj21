@@ -136,153 +136,6 @@
 			]
 		},
 		{
-			"functionName": "MoveOwnAvatar",
-			"functionDescription": "",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionIsAsync": false,
-			"functionParameters": [],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [],
-			"sid": 166101062987564,
-			"disabled": true,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Avatar",
-							"sid": 252154879162840,
-							"parameters": {
-								"instance-variable": "PeerID",
-								"comparison": 0,
-								"value": "Multiplayer.PeerID"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 142694449584443,
-					"disabled": true,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-two-values",
-									"objectClass": "System",
-									"sid": 101350780056388,
-									"parameters": {
-										"first-value": "getbit(Avatar.Inputs, 0)",
-										"comparison": 0,
-										"second-value": "1"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "simulate-control",
-									"objectClass": "Avatar",
-									"sid": 798331456004247,
-									"behaviorType": "8Direction",
-									"parameters": {
-										"control": "up"
-									}
-								}
-							],
-							"sid": 444348958603689,
-							"disabled": true
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-two-values",
-									"objectClass": "System",
-									"sid": 681399088421373,
-									"parameters": {
-										"first-value": "getbit(Avatar.Inputs, 1)",
-										"comparison": 0,
-										"second-value": "1"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "simulate-control",
-									"objectClass": "Avatar",
-									"sid": 698507359403191,
-									"behaviorType": "8Direction",
-									"parameters": {
-										"control": "left"
-									}
-								}
-							],
-							"sid": 253572131620326,
-							"disabled": true
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-two-values",
-									"objectClass": "System",
-									"sid": 859327200894513,
-									"parameters": {
-										"first-value": "getbit(Avatar.Inputs, 2)",
-										"comparison": 0,
-										"second-value": "1"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "simulate-control",
-									"objectClass": "Avatar",
-									"sid": 982654013284186,
-									"behaviorType": "8Direction",
-									"parameters": {
-										"control": "down"
-									}
-								}
-							],
-							"sid": 860986907909916,
-							"disabled": true
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-two-values",
-									"objectClass": "System",
-									"sid": 753144287025536,
-									"parameters": {
-										"first-value": "getbit(Avatar.Inputs, 3)",
-										"comparison": 0,
-										"second-value": "1"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "simulate-control",
-									"objectClass": "Avatar",
-									"sid": 232636771189662,
-									"behaviorType": "8Direction",
-									"parameters": {
-										"control": "right"
-									}
-								}
-							],
-							"sid": 895710336509999,
-							"disabled": true
-						}
-					]
-				}
-			]
-		},
-		{
 			"functionName": "MoveAvatar",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -308,13 +161,14 @@
 					}
 				},
 				{
-					"id": "pick-by-unique-id",
+					"id": "compare-instance-variable",
 					"objectClass": "Avatar",
-					"sid": 625681414898333,
+					"sid": 992042993786422,
 					"parameters": {
-						"unique-id": "Egg.ThrownToAvatarUID"
-					},
-					"isInverted": true
+						"instance-variable": "PlayerIndex",
+						"comparison": 1,
+						"value": "Egg.ThrownToPlayerIndex"
+					}
 				}
 			],
 			"actions": [],

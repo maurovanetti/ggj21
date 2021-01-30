@@ -5,7 +5,7 @@
 	"isGlobal": false,
 	"instanceVariables": [
 		{
-			"name": "ThrownToAvatarUID",
+			"name": "ThrownToPlayerIndex",
 			"type": "number",
 			"desc": "",
 			"sid": 541940757704211

@@ -232,7 +232,6 @@
 					"instanceVariables": {
 						"PlayerIndex": 0,
 						"PeerID": "",
-						"PeerAlias": "",
 						"Inputs": 0,
 						"HasEgg": true,
 						"Animation": ""
@@ -283,7 +282,6 @@
 					"instanceVariables": {
 						"PlayerIndex": 1,
 						"PeerID": "",
-						"PeerAlias": "",
 						"Inputs": 0,
 						"HasEgg": false,
 						"Animation": ""
@@ -334,7 +332,6 @@
 					"instanceVariables": {
 						"PlayerIndex": 2,
 						"PeerID": "",
-						"PeerAlias": "",
 						"Inputs": 0,
 						"HasEgg": false,
 						"Animation": ""
@@ -385,7 +382,6 @@
 					"instanceVariables": {
 						"PlayerIndex": 3,
 						"PeerID": "",
-						"PeerAlias": "",
 						"Inputs": 0,
 						"HasEgg": false,
 						"Animation": ""
@@ -442,7 +438,7 @@
 								"cell-size": 30,
 								"cell-border": -1,
 								"obstacles": "solids",
-								"max-speed": 25,
+								"max-speed": 0,
 								"acceleration": 100,
 								"deceleration": 5000,
 								"rotate-speed": 135,
@@ -480,7 +476,7 @@
 					},
 					"uid": 22,
 					"instanceVariables": {
-						"ThrownToAvatarUID": -1,
+						"ThrownToPlayerIndex": -1,
 						"DegreesPerSecond": 720
 					},
 					"behaviors": {

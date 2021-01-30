@@ -16,12 +16,6 @@
 			"sid": 195003688933276
 		},
 		{
-			"name": "PeerAlias",
-			"type": "string",
-			"desc": "",
-			"sid": 191005569854672
-		},
-		{
 			"name": "Inputs",
 			"type": "number",
 			"desc": "",

@@ -50,6 +50,16 @@
 			"sid": 836404875808987
 		},
 		{
+			"eventType": "variable",
+			"name": "PREDICTIVE_INPUT",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 208888469708275
+		},
+		{
 			"functionName": "Log",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -252,9 +262,44 @@
 							"parameters": {
 								"text": "Multiplayer.PeerAliasFromID(PeerIDs.At(PlayerName.PlayerIndex))"
 							}
+						},
+						{
+							"id": "set-font-face",
+							"objectClass": "PlayerName",
+							"sid": 912597173007720,
+							"parameters": {
+								"font-face": "PlayerName.FaceName",
+								"style": "normal"
+							}
 						}
 					],
 					"sid": 511256304700301
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-text",
+							"objectClass": "PlayerName",
+							"sid": 994274285526434,
+							"parameters": {
+								"text-to-compare": "Multiplayer.MyAlias",
+								"case-sensitivity": "case-sensitive"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-font-face",
+							"objectClass": "PlayerName",
+							"sid": 186717329076699,
+							"parameters": {
+								"font-face": "PlayerName.FaceName",
+								"style": "bold"
+							}
+						}
+					],
+					"sid": 728901122173912
 				},
 				{
 					"eventType": "block",
@@ -270,28 +315,48 @@
 							}
 						}
 					],
-					"actions": [
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Avatar",
-							"sid": 361817418871790,
-							"parameters": {
-								"instance-variable": "PeerAlias",
-								"value": "Multiplayer.PeerAliasFromID(PeerIDs.At(Avatar.PlayerIndex))"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Avatar",
-							"sid": 179009262139630,
-							"parameters": {
-								"instance-variable": "PeerID",
-								"value": "PeerIDs.At(Avatar.PlayerIndex)"
-							}
-						}
-					],
+					"actions": [],
 					"sid": 958740572055487,
 					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-host",
+									"objectClass": "Multiplayer",
+									"sid": 319299569062110
+								}
+							],
+							"actions": [
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Avatar",
+									"sid": 492278423783228,
+									"parameters": {
+										"instance-variable": "PeerID",
+										"value": "PeerIDs.At(Avatar.PlayerIndex)"
+									}
+								}
+							],
+							"sid": 203698454808380
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-at-x",
+									"objectClass": "PeerIDs",
+									"sid": 879454476223757,
+									"parameters": {
+										"x": "Avatar.PlayerIndex",
+										"comparison": 0,
+										"value": "Multiplayer.MyID"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 542095259140952
+						},
 						{
 							"eventType": "block",
 							"conditions": [
@@ -703,6 +768,48 @@
 					"eventType": "block",
 					"conditions": [
 						{
+							"id": "on-peer-connected",
+							"objectClass": "Multiplayer",
+							"sid": 601488587009051
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 915065383707733,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"waiting\""
+							},
+							"isInverted": true
+						},
+						{
+							"id": "contains-value",
+							"objectClass": "PeerIDs",
+							"sid": 341067979923169,
+							"parameters": {
+								"value": "Multiplayer.PeerID"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "kick-peer",
+							"objectClass": "Multiplayer",
+							"sid": 862667639493733,
+							"parameters": {
+								"peer-id": "Multiplayer.PeerID",
+								"reason": "\"Room full\""
+							}
+						}
+					],
+					"sid": 948039749436145
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
 							"id": "on-peer-disconnected",
 							"objectClass": "Multiplayer",
 							"sid": 718978317692982
@@ -785,6 +892,10 @@
 							"id": "destroy",
 							"objectClass": "StartButton",
 							"sid": 526214499958077
+						},
+						{
+							"callFunction": "ConfigureParty",
+							"sid": 568509702639379
 						},
 						{
 							"id": "broadcast-message",
@@ -891,6 +1002,36 @@
 						}
 					],
 					"sid": 955338106732255
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 226397764247693,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"waiting\""
+							}
+						},
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 206582355008699,
+							"parameters": {
+								"interval-seconds": "1.0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "ConfigureParty",
+							"sid": 116915937879668
+						}
+					],
+					"sid": 320481694232207
 				}
 			],
 			"sid": 574492691276879
@@ -1085,10 +1226,10 @@
 												{
 													"id": "compare-instance-variable",
 													"objectClass": "Egg",
-													"sid": 672391679022677,
+													"sid": 570633136234099,
 													"parameters": {
-														"instance-variable": "ThrownToAvatarUID",
-														"comparison": 1,
+														"instance-variable": "ThrownToPlayerIndex",
+														"comparison": 0,
 														"value": "-1"
 													}
 												}
@@ -1139,12 +1280,26 @@
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "on-created",
+											"id": "compare-instance-variable",
 											"objectClass": "Avatar",
-											"sid": 722426129208237
+											"sid": 451436008127644,
+											"parameters": {
+												"instance-variable": "PeerID",
+												"comparison": 0,
+												"value": "\"\""
+											}
 										}
 									],
 									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Avatar",
+											"sid": 709446315180750,
+											"parameters": {
+												"instance-variable": "PeerID",
+												"value": "PeerIDs.At(Avatar.PlayerIndex)"
+											}
+										},
 										{
 											"id": "associate-object-with-peer",
 											"objectClass": "Multiplayer",
@@ -1160,6 +1315,14 @@
 										{
 											"eventType": "block",
 											"conditions": [
+												{
+													"id": "compare-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 123553274089676,
+													"parameters": {
+														"variable": "PREDICTIVE_INPUT"
+													}
+												},
 												{
 													"id": "compare-instance-variable",
 													"objectClass": "Avatar",
@@ -1211,6 +1374,14 @@
 											"eventType": "block",
 											"conditions": [
 												{
+													"id": "compare-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 330973881071188,
+													"parameters": {
+														"variable": "PREDICTIVE_INPUT"
+													}
+												},
+												{
 													"id": "compare-instance-variable",
 													"objectClass": "Avatar",
 													"sid": 229929049896834,
@@ -1256,9 +1427,9 @@
 										},
 										{
 											"callFunction": "Log",
-											"sid": 593920024926437,
+											"sid": 600263229819971,
 											"parameters": [
-												"\"Receveid message: Egg thrown to player #\" & Multiplayer.Message"
+												"\"Receveid message: Egg THROWN to player #\" & Multiplayer.Message"
 											]
 										}
 									],
@@ -1286,9 +1457,9 @@
 										},
 										{
 											"callFunction": "Log",
-											"sid": 545250281107448,
+											"sid": 287284232633243,
 											"parameters": [
-												"\"Receveid message: Egg to player #\" & Multiplayer.Message"
+												"\"Receveid message: Egg ASSIGNED to player #\" & Multiplayer.Message"
 											]
 										}
 									],
@@ -1346,11 +1517,13 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "pick-by-unique-id",
+													"id": "compare-instance-variable",
 													"objectClass": "Avatar",
-													"sid": 581522260346391,
+													"sid": 100733075222445,
 													"parameters": {
-														"unique-id": "Egg.ThrownToAvatarUID"
+														"instance-variable": "PlayerIndex",
+														"comparison": 0,
+														"value": "Egg.ThrownToPlayerIndex"
 													}
 												}
 											],
@@ -1782,25 +1955,12 @@
 									"parameters": {
 										"instance-variable": "HasEgg"
 									}
-								},
-								{
-									"id": "pick-nearestfurthest",
-									"objectClass": "Avatar",
-									"sid": 890787073609362,
-									"parameters": {
-										"which": "furthest",
-										"x": "Egg.X",
-										"y": "Egg.Y"
-									}
 								}
 							],
 							"actions": [
 								{
-									"callFunction": "ThrowEgg",
-									"sid": 719108236710751,
-									"parameters": [
-										"Avatar.UID"
-									]
+									"callFunction": "LoseEgg",
+									"sid": 441462596290244
 								}
 							],
 							"sid": 757252758276884
@@ -1818,14 +1978,19 @@
 							"parameters": {
 								"tags": "\"throw\""
 							}
+						},
+						{
+							"id": "is-host",
+							"objectClass": "Multiplayer",
+							"sid": 411616222738472
 						}
 					],
 					"actions": [
 						{
 							"callFunction": "AssignEgg",
-							"sid": 922379346716816,
+							"sid": 513239396917691,
 							"parameters": [
-								"Egg.ThrownToAvatarUID"
+								"Egg.ThrownToPlayerIndex"
 							]
 						}
 					],
@@ -1833,6 +1998,37 @@
 				}
 			],
 			"sid": 390860884619276
+		},
+		{
+			"functionName": "LoseEgg",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "pick-nearestfurthest",
+					"objectClass": "Avatar",
+					"sid": 238677723616424,
+					"parameters": {
+						"which": "furthest",
+						"x": "Egg.X",
+						"y": "Egg.Y"
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "ThrowEgg",
+					"sid": 534812337192297,
+					"parameters": [
+						"Avatar.UID"
+					]
+				}
+			],
+			"sid": 528623576252789
 		},
 		{
 			"functionName": "ThrowEgg",
@@ -1908,16 +2104,16 @@
 						{
 							"id": "set-instvar-value",
 							"objectClass": "Egg",
-							"sid": 285750151022498,
+							"sid": 805324051986952,
 							"parameters": {
-								"instance-variable": "ThrownToAvatarUID",
-								"value": "Avatar.UID"
+								"instance-variable": "ThrownToPlayerIndex",
+								"value": "PlayerIndex"
 							}
 						},
 						{
 							"id": "tween-two-properties",
 							"objectClass": "Egg",
-							"sid": 374380352793240,
+							"sid": 836628591551528,
 							"behaviorType": "Tween",
 							"parameters": {
 								"tags": "\"throw\"",
@@ -1926,7 +2122,7 @@
 								"end-y": "Avatar.Y",
 								"time": "2",
 								"ease": "noease",
-								"destroy-on-complete": "yes",
+								"destroy-on-complete": "no",
 								"loop": "no",
 								"ping-pong": "no"
 							}
@@ -1957,9 +2153,9 @@
 								},
 								{
 									"callFunction": "Log",
-									"sid": 537974250878647,
+									"sid": 926262710945224,
 									"parameters": [
-										"\"Broadcast: Egg thrown to player #\" & Multiplayer.Message"
+										"\"Broadcast: Egg THROWN to player #\" & PlayerIndex"
 									]
 								}
 							],
@@ -2043,7 +2239,7 @@
 							"objectClass": "Egg",
 							"sid": 828727939612536,
 							"parameters": {
-								"instance-variable": "ThrownToAvatarUID",
+								"instance-variable": "ThrownToPlayerIndex",
 								"value": "-1"
 							}
 						}
@@ -2073,9 +2269,9 @@
 								},
 								{
 									"callFunction": "Log",
-									"sid": 997762058414387,
+									"sid": 319462985079225,
 									"parameters": [
-										"\"Broadcast: Egg to player #\" & Multiplayer.Message"
+										"\"Broadcast: Egg ASSIGNED to player #\" & Multiplayer.Message"
 									]
 								}
 							],
@@ -2084,6 +2280,61 @@
 					]
 				}
 			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-peer-message",
+					"objectClass": "Multiplayer",
+					"sid": 937386865115110,
+					"parameters": {
+						"tag": "\"kill\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "Log",
+					"sid": 451396620364692,
+					"parameters": [
+						"\"Room SHUTDOWN required by peer or host...\""
+					]
+				},
+				{
+					"id": "broadcast-message",
+					"objectClass": "Multiplayer",
+					"sid": 792627038401426,
+					"parameters": {
+						"from-id": "\"\"",
+						"tag": "\"kill\"",
+						"message": "\"\"",
+						"mode": "reliable-ordered"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 998595383523785,
+					"parameters": {
+						"seconds": "2.0"
+					}
+				},
+				{
+					"id": "disconnect-room",
+					"objectClass": "Multiplayer",
+					"sid": 498073866595666
+				},
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 100366390220399,
+					"parameters": {
+						"layout": "Login"
+					}
+				}
+			],
+			"sid": 584367563571926
 		}
 	],
 	"sid": 607373704127325
