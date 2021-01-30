@@ -226,11 +226,128 @@
 							}
 						],
 						"duration": 1
+					},
+					{
+						"width": 80,
+						"height": 110,
+						"originX": 0.5125,
+						"originY": 0.990909090909091,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 8226099,
+						"collisionPoly": {
+							"points": [
+								0.325,
+								0.23636363636363636,
+								0.5,
+								0.20909090909090908,
+								0.6625,
+								0.23636363636363636,
+								0.7625,
+								0.5,
+								0.85,
+								0.8909090909090909,
+								0.5,
+								0.8454545454545455,
+								0.15,
+								0.8818181818181818,
+								0.2,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.5,
+								"y": 0.6454545454545455
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 80,
+						"height": 110,
+						"originX": 0.5125,
+						"originY": 0.990909090909091,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 9033189,
+						"collisionPoly": {
+							"points": [
+								0.325,
+								0.23636363636363636,
+								0.5,
+								0.20909090909090908,
+								0.6625,
+								0.23636363636363636,
+								0.7625,
+								0.5,
+								0.85,
+								0.8909090909090909,
+								0.5,
+								0.8454545454545455,
+								0.15,
+								0.8818181818181818,
+								0.2,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.5,
+								"y": 0.6454545454545455
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 80,
+						"height": 110,
+						"originX": 0.5125,
+						"originY": 0.990909090909091,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 1023309,
+						"collisionPoly": {
+							"points": [
+								0.325,
+								0.23636363636363636,
+								0.5,
+								0.20909090909090908,
+								0.6625,
+								0.23636363636363636,
+								0.7625,
+								0.5,
+								0.85,
+								0.8909090909090909,
+								0.5,
+								0.8454545454545455,
+								0.15,
+								0.8818181818181818,
+								0.2,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.5,
+								"y": 0.6454545454545455
+							}
+						],
+						"duration": 1
 					}
 				],
 				"sid": 943448543209340,
 				"name": "Walk Up",
-				"isLooping": false,
+				"isLooping": true,
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,
