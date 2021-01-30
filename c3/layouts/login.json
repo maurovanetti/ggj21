@@ -146,6 +146,16 @@
 			},
 			"uid": 13,
 			"instanceVariables": {}
+		},
+		{
+			"type": "ReadyPeerIDs",
+			"properties": {
+				"width": 0,
+				"height": 1,
+				"depth": 1
+			},
+			"uid": 27,
+			"instanceVariables": {}
 		}
 	],
 	"effectTypes": [],

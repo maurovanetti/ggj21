@@ -122,7 +122,8 @@
 					"Multiplayer",
 					"Keyboard",
 					"PeerIDs",
-					"Background"
+					"Background",
+					"ReadyPeerIDs"
 				],
 				"subfolders": [],
 				"name": "Static"
