@@ -164,7 +164,8 @@
 					"Countdown",
 					"Score",
 					"HUD",
-					"EggIcon"
+					"EggIcon",
+					"Title"
 				],
 				"subfolders": [],
 				"name": "GUI"
