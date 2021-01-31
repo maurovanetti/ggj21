@@ -2,7 +2,7 @@
 	"name": "Flag2",
 	"plugin-id": "Sprite",
 	"sid": 929495184588894,
-	"isGlobal": false,
+	"isGlobal": true,
 	"instanceVariables": [],
 	"behaviorTypes": [],
 	"effectTypes": [],
@@ -11,14 +11,14 @@
 			{
 				"frames": [
 					{
-						"width": 128,
-						"height": 128,
+						"width": 127,
+						"height": 127,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 3408878,
+						"imageSpriteId": 3697857,
 						"collisionPoly": {
 							"points": [
 								0.0234375,
@@ -40,34 +40,34 @@
 							]
 						},
 						"useCollisionPoly": true,
-						"duration": 1
+						"duration": 10
 					},
 					{
-						"width": 128,
-						"height": 128,
+						"width": 127,
+						"height": 127,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 9869560,
+						"imageSpriteId": 4018642,
 						"collisionPoly": {
 							"points": [
-								0.0234375,
-								0.0234375,
+								0.1732283464566929,
+								0.1732283464566929,
 								0.5,
-								0.1015625,
-								0.75,
-								0.2421875,
-								0.65625,
+								0.07086614173228346,
+								0.7874015748031497,
+								0.2047244094488189,
+								0.9763779527559056,
 								0.5,
-								0.46875,
-								0.46875,
+								0.7874015748031497,
+								0.7874015748031497,
 								0.5,
-								0.46875,
-								0,
-								0.9921875,
-								0,
+								0.9921259842519685,
+								0.18110236220472442,
+								0.8110236220472441,
+								0.031496062992125984,
 								0.5
 							]
 						},
@@ -81,19 +81,19 @@
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,
-				"speed": 2
+				"speed": 6
 			},
 			{
 				"frames": [
 					{
-						"width": 128,
-						"height": 128,
+						"width": 127,
+						"height": 127,
 						"originX": 0.5,
 						"originY": 0.5,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 9646395,
+						"imageSpriteId": 7901583,
 						"collisionPoly": {
 							"points": [
 								0.0234375,
@@ -116,6 +116,92 @@
 				],
 				"sid": 610196221266841,
 				"name": "Defeated",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 127,
+						"height": 127,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3892607,
+						"collisionPoly": {
+							"points": [
+								0.1732283464566929,
+								0.1732283464566929,
+								0.5,
+								0.07086614173228346,
+								0.7874015748031497,
+								0.2047244094488189,
+								0.9763779527559056,
+								0.5,
+								0.7874015748031497,
+								0.7874015748031497,
+								0.5,
+								0.9921259842519685,
+								0.18110236220472442,
+								0.8110236220472441,
+								0.031496062992125984,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 582744152072751,
+				"name": "Surprised",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 127,
+						"height": 127,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 5475130,
+						"collisionPoly": {
+							"points": [
+								0.1732283464566929,
+								0.1732283464566929,
+								0.5,
+								0.06299212598425197,
+								0.7874015748031497,
+								0.2047244094488189,
+								0.9763779527559056,
+								0.5,
+								0.7874015748031497,
+								0.7874015748031497,
+								0.5,
+								0.9921259842519685,
+								0.18110236220472442,
+								0.8110236220472441,
+								0.031496062992125984,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 794545909390971,
+				"name": "Happy",
 				"isLooping": false,
 				"isPingPong": false,
 				"repeatCount": 1,

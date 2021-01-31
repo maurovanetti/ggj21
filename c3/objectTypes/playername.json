@@ -2,7 +2,7 @@
 	"name": "PlayerName",
 	"plugin-id": "Text",
 	"sid": 898533394750699,
-	"isGlobal": false,
+	"isGlobal": true,
 	"instanceVariables": [
 		{
 			"name": "PlayerIndex",

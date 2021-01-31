@@ -355,9 +355,44 @@
 					"parameters": {
 						"text": "0"
 					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "Score",
+					"sid": 777563373185582,
+					"parameters": {
+						"instance-variable": "AsNumber",
+						"value": "0"
+					}
 				}
 			],
 			"sid": 199864775046406
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-timer",
+					"objectClass": "Score",
+					"sid": 220466564617119,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "\"countup\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "add-to-instvar",
+					"objectClass": "Score",
+					"sid": 957159562647250,
+					"parameters": {
+						"instance-variable": "AsNumber",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 431929469135888
 		},
 		{
 			"eventType": "block",
@@ -408,6 +443,113 @@
 				}
 			],
 			"sid": 447002693571166
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-timer",
+					"objectClass": "Countdown",
+					"sid": 916967999897132,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "\"countdown\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "GameStateChange",
+					"sid": 675945752588323,
+					"parameters": [
+						"\"ending\""
+					]
+				},
+				{
+					"id": "stop-timer",
+					"objectClass": "Countdown",
+					"sid": 428627971544651,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "\"countdown\""
+					}
+				},
+				{
+					"id": "stop-timer",
+					"objectClass": "Score",
+					"sid": 697949379787140,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "\"countup\""
+					}
+				}
+			],
+			"sid": 143560192409775
+		},
+		{
+			"functionName": "Highlight",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "PlayerIndex",
+					"type": "number",
+					"initialValue": "-1",
+					"comment": "",
+					"sid": 219061331935773
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"callFunction": "Log",
+					"sid": 384898737316263,
+					"parameters": [
+						"\"Now highlighting player #\" & PlayerIndex"
+					]
+				}
+			],
+			"sid": 835714584700447,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "Flag",
+							"sid": 242625277430849,
+							"parameters": {
+								"instance-variable": "PlayerIndex",
+								"comparison": 0,
+								"value": "PlayerIndex"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "tween-two-properties",
+							"objectClass": "Flag",
+							"sid": 500602863080530,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"highlight\"",
+								"property": "scale",
+								"end-x": "2",
+								"end-y": "2",
+								"time": "0.3",
+								"ease": "easeinoutbounce",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes"
+							}
+						}
+					],
+					"sid": 824908431696548
+				}
+			]
 		}
 	],
 	"sid": 800725932529419

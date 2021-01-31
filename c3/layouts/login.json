@@ -6,31 +6,27 @@
 			"overriden": 0,
 			"instances": [
 				{
-					"type": "LoginBackground",
+					"type": "GameOverBackground",
 					"properties": {
 						"initially-visible": true,
-						"origin": "top-left",
-						"wrap-horizontal": "repeat",
-						"wrap-vertical": "repeat",
-						"image-offset-x": 0,
-						"image-offset-y": 0,
-						"image-scale-x": 1,
-						"image-scale-y": 1,
-						"image-angle": 0
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
 					},
 					"uid": 67,
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": -63,
-						"y": -51,
-						"width": 1406,
-						"height": 832,
+						"x": 0,
+						"y": 0,
+						"width": 1280,
+						"height": 720,
 						"originX": 0,
 						"originY": 0,
 						"color": [
-							0.6196078431372549,
-							0.6392156862745098,
+							1,
+							1,
 							1,
 							1
 						],

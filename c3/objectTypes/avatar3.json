@@ -11,32 +11,227 @@
 			{
 				"frames": [
 					{
-						"width": 80,
-						"height": 110,
-						"originX": 0.5125,
-						"originY": 1,
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 3623028,
+						"imageSpriteId": 2884426,
 						"collisionPoly": {
 							"points": [
-								0.16562499999999988,
-								0.2204545454545453,
-								0.8281250000000003,
-								0.225,
-								0.8499999999999996,
+								0.8250000000000001,
 								1,
-								0.1749999999999999,
-								1
+								0.15000000000000036,
+								1,
+								0.17187499999999967,
+								0.225,
+								0.8343750000000001,
+								0.2204545454545453
 							]
 						},
 						"useCollisionPoly": true,
 						"imagePoints": [
 							{
 								"name": "Egg",
-								"x": 0.25,
-								"y": 0.6181818181818182
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3363379,
+						"collisionPoly": {
+							"points": [
+								0.6599999999999999,
+								0.5,
+								0.62,
+								0.61,
+								0.5,
+								0.71,
+								0.41000000000000003,
+								0.59,
+								0.30000000000000004,
+								0.5,
+								0.31999999999999995,
+								0.31,
+								0.5,
+								0.05,
+								0.69,
+								0.31
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 9477138,
+						"collisionPoly": {
+							"points": [
+								0.69,
+								0.5,
+								0.62,
+								0.61,
+								0.5,
+								0.7,
+								0.41000000000000003,
+								0.59,
+								0.28,
+								0.5,
+								0.32999999999999996,
+								0.32,
+								0.5,
+								0.01,
+								0.69,
+								0.31
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 8360137,
+						"collisionPoly": {
+							"points": [
+								0.6699999999999999,
+								0.5,
+								0.62,
+								0.61,
+								0.5,
+								0.71,
+								0.4,
+								0.6,
+								0.29000000000000004,
+								0.5,
+								0.31999999999999995,
+								0.31,
+								0.5,
+								0.03,
+								0.69,
+								0.31
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 5266608,
+						"collisionPoly": {
+							"points": [
+								0.65,
+								0.5,
+								0.62,
+								0.61,
+								0.5,
+								0.72,
+								0.41000000000000003,
+								0.59,
+								0.30000000000000004,
+								0.5,
+								0.31999999999999995,
+								0.31,
+								0.5,
+								0.06,
+								0.69,
+								0.31
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 769341,
+						"collisionPoly": {
+							"points": [
+								0.64,
+								0.5,
+								0.62,
+								0.61,
+								0.5,
+								0.72,
+								0.41000000000000003,
+								0.59,
+								0.31000000000000005,
+								0.5,
+								0.32999999999999996,
+								0.32,
+								0.5,
+								0.09,
+								0.7,
+								0.3
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
 							}
 						],
 						"duration": 1
@@ -53,94 +248,383 @@
 			{
 				"frames": [
 					{
-						"width": 80,
-						"height": 110,
-						"originX": 0.5125,
-						"originY": 1,
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 3190009,
+						"imageSpriteId": 4206513,
 						"collisionPoly": {
 							"points": [
-								0.16562499999999988,
-								0.2204545454545453,
-								0.8281250000000003,
-								0.225,
-								0.8499999999999996,
+								0.8250000000000001,
 								1,
-								0.1749999999999999,
-								1
+								0.15000000000000036,
+								1,
+								0.17187499999999967,
+								0.225,
+								0.8343750000000001,
+								0.2204545454545453
 							]
 						},
 						"useCollisionPoly": true,
 						"imagePoints": [
 							{
 								"name": "Egg",
-								"x": 0.25,
-								"y": 0.6181818181818182
+								"x": 0.41,
+								"y": 0.41
 							}
 						],
 						"duration": 1
 					},
 					{
-						"width": 80,
-						"height": 110,
-						"originX": 0.5125,
-						"originY": 1,
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 7563807,
+						"imageSpriteId": 1872932,
 						"collisionPoly": {
 							"points": [
-								0.16562499999999988,
-								0.2204545454545453,
-								0.8281250000000003,
-								0.225,
-								0.8499999999999996,
-								1,
-								0.1749999999999999,
-								1
+								0.62,
+								0.5,
+								0.61,
+								0.6,
+								0.5,
+								0.88,
+								0.31000000000000005,
+								0.69,
+								0.25,
+								0.5,
+								0.35,
+								0.34,
+								0.5,
+								0.14,
+								0.73,
+								0.27
 							]
 						},
 						"useCollisionPoly": true,
 						"imagePoints": [
 							{
 								"name": "Egg",
-								"x": 0.25,
-								"y": 0.6181818181818182
+								"x": 0.41,
+								"y": 0.41
 							}
 						],
 						"duration": 1
 					},
 					{
-						"width": 80,
-						"height": 110,
-						"originX": 0.5125,
-						"originY": 1,
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 8729447,
+						"imageSpriteId": 2189937,
 						"collisionPoly": {
 							"points": [
-								0.16562499999999988,
-								0.2204545454545453,
-								0.8281250000000003,
-								0.225,
-								0.8499999999999996,
-								1,
-								0.1749999999999999,
-								1
+								0.64,
+								0.5,
+								0.5800000000000001,
+								0.57,
+								0.5,
+								0.72,
+								0.31999999999999995,
+								0.68,
+								0.31000000000000005,
+								0.5,
+								0.36,
+								0.35,
+								0.5,
+								0.15,
+								0.73,
+								0.27
 							]
 						},
 						"useCollisionPoly": true,
 						"imagePoints": [
 							{
 								"name": "Egg",
-								"x": 0.25,
-								"y": 0.6181818181818182
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 259925,
+						"collisionPoly": {
+							"points": [
+								0.63,
+								0.5,
+								0.5700000000000001,
+								0.56,
+								0.5,
+								0.85,
+								0.27,
+								0.73,
+								0.31999999999999995,
+								0.5,
+								0.35,
+								0.34,
+								0.5,
+								0.11,
+								0.7,
+								0.3
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3907194,
+						"collisionPoly": {
+							"points": [
+								0.64,
+								0.5,
+								0.5700000000000001,
+								0.56,
+								0.5,
+								0.92,
+								0.25,
+								0.75,
+								0.31999999999999995,
+								0.5,
+								0.35,
+								0.34,
+								0.5,
+								0.07,
+								0.6699999999999999,
+								0.33
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3408646,
+						"collisionPoly": {
+							"points": [
+								0.64,
+								0.5,
+								0.5700000000000001,
+								0.56,
+								0.5,
+								0.74,
+								0.33999999999999997,
+								0.66,
+								0.32999999999999996,
+								0.5,
+								0.35,
+								0.34,
+								0.5,
+								0.03,
+								0.6699999999999999,
+								0.33
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3896441,
+						"collisionPoly": {
+							"points": [
+								0.62,
+								0.5,
+								0.56,
+								0.55,
+								0.5,
+								0.79,
+								0.36,
+								0.64,
+								0.29000000000000004,
+								0.5,
+								0.33999999999999997,
+								0.33,
+								0.5,
+								0.04,
+								0.6799999999999999,
+								0.32
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 1143830,
+						"collisionPoly": {
+							"points": [
+								0.61,
+								0.5,
+								0.5700000000000001,
+								0.56,
+								0.5,
+								0.88,
+								0.31999999999999995,
+								0.68,
+								0.26,
+								0.5,
+								0.32999999999999996,
+								0.32,
+								0.5,
+								0.05,
+								0.69,
+								0.31
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6477786,
+						"collisionPoly": {
+							"points": [
+								0.62,
+								0.5,
+								0.61,
+								0.6,
+								0.5,
+								0.79,
+								0.26,
+								0.74,
+								0.21999999999999997,
+								0.5,
+								0.33999999999999997,
+								0.33,
+								0.5,
+								0.09,
+								0.6799999999999999,
+								0.32
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2573833,
+						"collisionPoly": {
+							"points": [
+								0.62,
+								0.5,
+								0.62,
+								0.61,
+								0.5,
+								0.86,
+								0.25,
+								0.75,
+								0.16000000000000003,
+								0.5,
+								0.35,
+								0.34,
+								0.5,
+								0.14,
+								0.73,
+								0.27
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
 							}
 						],
 						"duration": 1
@@ -152,68 +636,349 @@
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,
-				"speed": 5
+				"speed": 16
 			},
 			{
 				"frames": [
 					{
-						"width": 80,
-						"height": 110,
-						"originX": 0.5125,
-						"originY": 1,
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 5398346,
+						"imageSpriteId": 9654817,
 						"collisionPoly": {
 							"points": [
-								0.16562499999999988,
-								0.2204545454545453,
-								0.8281250000000003,
-								0.225,
-								0.8499999999999996,
+								0.8250000000000001,
 								1,
-								0.1749999999999999,
-								1
+								0.15000000000000036,
+								1,
+								0.17187499999999967,
+								0.225,
+								0.8343750000000001,
+								0.2204545454545453
 							]
 						},
 						"useCollisionPoly": true,
 						"imagePoints": [
 							{
 								"name": "Egg",
-								"x": 0.25,
-								"y": 0.6181818181818182
+								"x": 0.41,
+								"y": 0.41
 							}
 						],
 						"duration": 1
 					},
 					{
-						"width": 80,
-						"height": 110,
-						"originX": 0.5125,
-						"originY": 1,
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 3164870,
+						"imageSpriteId": 4768185,
 						"collisionPoly": {
 							"points": [
-								0.16562499999999988,
-								0.2204545454545453,
-								0.8281250000000003,
-								0.225,
-								0.8499999999999996,
-								1,
-								0.1749999999999999,
-								1
+								0.6699999999999999,
+								0.5,
+								0.63,
+								0.62,
+								0.5,
+								0.69,
+								0.39,
+								0.61,
+								0.4,
+								0.5,
+								0.31999999999999995,
+								0.31,
+								0.5,
+								0.04,
+								0.69,
+								0.31
 							]
 						},
 						"useCollisionPoly": true,
 						"imagePoints": [
 							{
 								"name": "Egg",
-								"x": 0.25,
-								"y": 0.6181818181818182
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3769680,
+						"collisionPoly": {
+							"points": [
+								0.64,
+								0.5,
+								0.62,
+								0.61,
+								0.5,
+								0.74,
+								0.41000000000000003,
+								0.59,
+								0.25,
+								0.5,
+								0.32999999999999996,
+								0.32,
+								0.5,
+								0.09,
+								0.7,
+								0.3
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6562549,
+						"collisionPoly": {
+							"points": [
+								0.76,
+								0.5,
+								0.64,
+								0.63,
+								0.5,
+								0.82,
+								0.4,
+								0.6,
+								0.32999999999999996,
+								0.5,
+								0.32999999999999996,
+								0.32,
+								0.5,
+								0.08,
+								0.7,
+								0.3
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3547549,
+						"collisionPoly": {
+							"points": [
+								0.5800000000000001,
+								0.5,
+								0.5800000000000001,
+								0.57,
+								0.5,
+								0.86,
+								0.36,
+								0.64,
+								0.33999999999999997,
+								0.5,
+								0.31999999999999995,
+								0.31,
+								0.5,
+								0.08,
+								0.7,
+								0.3
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 7939403,
+						"collisionPoly": {
+							"points": [
+								0.76,
+								0.5,
+								0.56,
+								0.55,
+								0.5,
+								0.73,
+								0.35,
+								0.65,
+								0.25,
+								0.5,
+								0.31999999999999995,
+								0.31,
+								0.5,
+								0.08,
+								0.69,
+								0.31
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6023066,
+						"collisionPoly": {
+							"points": [
+								0.75,
+								0.5,
+								0.56,
+								0.55,
+								0.5,
+								0.75,
+								0.35,
+								0.65,
+								0.18000000000000005,
+								0.5,
+								0.31999999999999995,
+								0.31,
+								0.5,
+								0.07,
+								0.69,
+								0.31
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 4529926,
+						"collisionPoly": {
+							"points": [
+								0.73,
+								0.5,
+								0.62,
+								0.61,
+								0.5,
+								0.77,
+								0.37,
+								0.63,
+								0.17000000000000004,
+								0.5,
+								0.31999999999999995,
+								0.31,
+								0.5,
+								0.07,
+								0.69,
+								0.31
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6966013,
+						"collisionPoly": {
+							"points": [
+								0.69,
+								0.5,
+								0.65,
+								0.64,
+								0.5,
+								0.76,
+								0.41000000000000003,
+								0.59,
+								0.38,
+								0.5,
+								0.32999999999999996,
+								0.32,
+								0.5,
+								0.06,
+								0.6799999999999999,
+								0.32
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.41,
+								"y": 0.41
 							}
 						],
 						"duration": 1
@@ -225,19 +990,19 @@
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,
-				"speed": 5
+				"speed": 16
 			},
 			{
 				"frames": [
 					{
-						"width": 80,
-						"height": 110,
-						"originX": 0.5125,
-						"originY": 1,
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 8085437,
+						"imageSpriteId": 7497835,
 						"collisionPoly": {
 							"points": [
 								0.16562499999999988,
@@ -254,101 +1019,359 @@
 						"imagePoints": [
 							{
 								"name": "Egg",
-								"x": 0.5125,
-								"y": 0.6272727272727273
+								"x": 0.51,
+								"y": 0.49
 							}
 						],
 						"duration": 1
 					},
 					{
-						"width": 80,
-						"height": 110,
-						"originX": 0.5125,
-						"originY": 1,
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 6993805,
+						"imageSpriteId": 3449316,
 						"collisionPoly": {
 							"points": [
-								0.16562499999999988,
-								0.2204545454545453,
-								0.8281250000000003,
-								0.225,
-								0.8499999999999996,
-								1,
-								0.1749999999999999,
-								1
+								0.31,
+								0.31,
+								0.5,
+								0.06,
+								0.69,
+								0.3,
+								0.58,
+								0.5,
+								0.63,
+								0.63,
+								0.5,
+								0.66,
+								0.37,
+								0.62,
+								0.28,
+								0.5
 							]
 						},
 						"useCollisionPoly": true,
 						"imagePoints": [
 							{
 								"name": "Egg",
-								"x": 0.5125,
-								"y": 0.6272727272727273
+								"x": 0.51,
+								"y": 0.49
 							}
 						],
 						"duration": 1
 					},
 					{
-						"width": 80,
-						"height": 110,
-						"originX": 0.5125,
-						"originY": 1,
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 5837118,
+						"imageSpriteId": 3393118,
 						"collisionPoly": {
 							"points": [
-								0.16562499999999988,
-								0.2204545454545453,
-								0.8281250000000003,
-								0.225,
-								0.8499999999999996,
-								1,
-								0.1749999999999999,
-								1
+								0.3,
+								0.3,
+								0.5,
+								0.09,
+								0.68,
+								0.31,
+								0.75,
+								0.5,
+								0.61,
+								0.61,
+								0.5,
+								0.75,
+								0.36,
+								0.63,
+								0.34,
+								0.5
 							]
 						},
 						"useCollisionPoly": true,
 						"imagePoints": [
 							{
 								"name": "Egg",
-								"x": 0.5125,
-								"y": 0.6272727272727273
+								"x": 0.51,
+								"y": 0.49
 							}
 						],
 						"duration": 1
 					},
 					{
-						"width": 80,
-						"height": 110,
-						"originX": 0.5125,
-						"originY": 1,
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 2733055,
+						"imageSpriteId": 4836222,
 						"collisionPoly": {
 							"points": [
-								0.16562499999999988,
-								0.2204545454545453,
-								0.8281250000000003,
-								0.225,
-								0.8499999999999996,
-								1,
-								0.1749999999999999,
-								1
+								0.3,
+								0.3,
+								0.5,
+								0.08,
+								0.67,
+								0.32,
+								0.67,
+								0.5,
+								0.62,
+								0.62,
+								0.5,
+								0.8,
+								0.37,
+								0.62,
+								0.43,
+								0.5
 							]
 						},
 						"useCollisionPoly": true,
 						"imagePoints": [
 							{
 								"name": "Egg",
-								"x": 0.5125,
-								"y": 0.6272727272727273
+								"x": 0.51,
+								"y": 0.49
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 4170279,
+						"collisionPoly": {
+							"points": [
+								0.3,
+								0.3,
+								0.5,
+								0.08,
+								0.68,
+								0.31,
+								0.66,
+								0.5,
+								0.63,
+								0.63,
+								0.5,
+								0.8,
+								0.43,
+								0.56,
+								0.44,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.51,
+								"y": 0.49
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 1857,
+						"collisionPoly": {
+							"points": [
+								0.3,
+								0.3,
+								0.5,
+								0.08,
+								0.68,
+								0.31,
+								0.75,
+								0.5,
+								0.65,
+								0.65,
+								0.5,
+								0.89,
+								0.47,
+								0.52,
+								0.45,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.51,
+								"y": 0.49
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6384466,
+						"collisionPoly": {
+							"points": [
+								0.31,
+								0.31,
+								0.5,
+								0.07,
+								0.68,
+								0.31,
+								0.82,
+								0.5,
+								0.63,
+								0.63,
+								0.5,
+								0.81,
+								0.43,
+								0.56,
+								0.43,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.51,
+								"y": 0.49
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 4603465,
+						"collisionPoly": {
+							"points": [
+								0.31,
+								0.31,
+								0.5,
+								0.06,
+								0.68,
+								0.31,
+								0.83,
+								0.5,
+								0.63,
+								0.63,
+								0.5,
+								0.66,
+								0.39,
+								0.6,
+								0.43,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.51,
+								"y": 0.49
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6683614,
+						"collisionPoly": {
+							"points": [
+								0.31,
+								0.31,
+								0.5,
+								0.08,
+								0.68,
+								0.31,
+								0.6,
+								0.5,
+								0.62,
+								0.62,
+								0.5,
+								0.7,
+								0.35,
+								0.64,
+								0.27,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.51,
+								"y": 0.49
+							}
+						],
+						"duration": 1
+					},
+					{
+						"width": 100,
+						"height": 100,
+						"originX": 0.51,
+						"originY": 0.88,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3276177,
+						"collisionPoly": {
+							"points": [
+								0.31,
+								0.31,
+								0.5,
+								0.1,
+								0.68,
+								0.31,
+								0.6,
+								0.5,
+								0.62,
+								0.62,
+								0.5,
+								0.7,
+								0.35,
+								0.64,
+								0.27,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Egg",
+								"x": 0.51,
+								"y": 0.49
 							}
 						],
 						"duration": 1
@@ -360,7 +1383,7 @@
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,
-				"speed": 5
+				"speed": 16
 			}
 		],
 		"subfolders": []

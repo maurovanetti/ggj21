@@ -1,0 +1,232 @@
+{
+	"name": "End Events",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 281145832601691
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "PlayMusic",
+					"sid": 641926723351914,
+					"parameters": [
+						"\"main\""
+					]
+				}
+			],
+			"sid": 981039712237609,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Score",
+							"sid": 648346999144867,
+							"parameters": {
+								"instance-variable": "HasPlayed"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "move-to-layer",
+							"objectClass": "Score",
+							"sid": 332901242563381,
+							"parameters": {
+								"layer": "\"GUI\""
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "Score",
+							"sid": 774970081599083,
+							"parameters": {
+								"visibility": "visible"
+							}
+						}
+					],
+					"sid": 695392789524160,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Flag",
+									"sid": 292658844406605,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "Score.PlayerIndex"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "move-to-layer",
+									"objectClass": "Flag",
+									"sid": 934689024292485,
+									"parameters": {
+										"layer": "\"GUI\""
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "Flag",
+									"sid": 287171820108284,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 810470261412102
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "EggIcon",
+									"sid": 796627679616966,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "Score.PlayerIndex"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "move-to-layer",
+									"objectClass": "EggIcon",
+									"sid": 740703514047747,
+									"parameters": {
+										"layer": "\"GUI\""
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "EggIcon",
+									"sid": 571636890676825,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 536169715741150
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerName",
+									"sid": 367121259091688,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "Score.PlayerIndex"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "move-to-layer",
+									"objectClass": "PlayerName",
+									"sid": 348649103966134,
+									"parameters": {
+										"layer": "\"GUI\""
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "PlayerName",
+									"sid": 350800706965008,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 383591415456328
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-highestlowest",
+							"objectClass": "Score",
+							"sid": 391039706519452,
+							"parameters": {
+								"which": "lowest",
+								"instance-variable": "AsNumber"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Score",
+							"sid": 774253744134674,
+							"parameters": {
+								"instance-variable": "HasPlayed"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "Defeat",
+							"sid": 806635074483512,
+							"parameters": {
+								"animation": "str(Score.PlayerIndex)",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 388117594119034
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-highestlowest",
+							"objectClass": "Score",
+							"sid": 514326572186612,
+							"parameters": {
+								"which": "highest",
+								"instance-variable": "AsNumber"
+							}
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Score",
+							"sid": 787871710758906,
+							"parameters": {
+								"instance-variable": "HasPlayed"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "Victory",
+							"sid": 693627608252440,
+							"parameters": {
+								"animation": "str(Score.PlayerIndex)",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 622723739556721
+				}
+			]
+		}
+	],
+	"sid": 191190093625712
+}

@@ -33,6 +33,13 @@
 					"parameters": {
 						"text": "\"Anonymous\""
 					}
+				},
+				{
+					"callFunction": "PlayMusic",
+					"sid": 110836094188288,
+					"parameters": [
+						"\"login\""
+					]
 				}
 			],
 			"sid": 102375268366836
@@ -137,6 +144,13 @@
 							"parameters": {
 								"mode": "disabled"
 							}
+						},
+						{
+							"callFunction": "PlaySFX",
+							"sid": 487275166906901,
+							"parameters": [
+								"\"interaction\""
+							]
 						}
 					],
 					"sid": 203195997168761
@@ -158,6 +172,13 @@
 							"parameters": {
 								"mode": "enabled"
 							}
+						},
+						{
+							"callFunction": "PlaySFX",
+							"sid": 468953334573725,
+							"parameters": [
+								"\"interaction\""
+							]
 						}
 					],
 					"sid": 828409198547188
@@ -181,7 +202,15 @@
 					"sid": 232194788780291
 				}
 			],
-			"actions": [],
+			"actions": [
+				{
+					"callFunction": "PlaySFX",
+					"sid": 157303420700689,
+					"parameters": [
+						"\"interaction\""
+					]
+				}
+			],
 			"sid": 860185669180436,
 			"children": [
 				{

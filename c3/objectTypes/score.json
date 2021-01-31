@@ -2,13 +2,31 @@
 	"name": "Score",
 	"plugin-id": "Text",
 	"sid": 786534542422644,
-	"isGlobal": false,
+	"isGlobal": true,
 	"instanceVariables": [
 		{
 			"name": "PlayerIndex",
 			"type": "number",
 			"desc": "",
 			"sid": 537384138099140
+		},
+		{
+			"name": "AsNumber",
+			"type": "number",
+			"desc": "",
+			"sid": 564894622415378
+		},
+		{
+			"name": "Meh",
+			"type": "boolean",
+			"desc": "",
+			"sid": 592635701212756
+		},
+		{
+			"name": "HasPlayed",
+			"type": "boolean",
+			"desc": "",
+			"sid": 362679123668916
 		}
 	],
 	"behaviorTypes": [],

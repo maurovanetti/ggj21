@@ -1,0 +1,725 @@
+{
+	"name": "Audio Events",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "MusicVolumeAttenuation",
+			"type": "number",
+			"initialValue": "-10",
+			"comment": "<= 0",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 875000741332896
+		},
+		{
+			"eventType": "variable",
+			"name": "SFXVolumeAttenuation",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "<= 0",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 717361645191345
+		},
+		{
+			"functionName": "PlaySFX",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "Tag",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 651654233463667
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 234251214433312,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 411680602476697,
+							"parameters": {
+								"first-value": "Tag",
+								"comparison": 0,
+								"second-value": "\"long roar\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "PlaySoundFileByName",
+							"sid": 450676085879045,
+							"parameters": [
+								"\"Monster_Roar_Long\"",
+								"Tag",
+								"7",
+								"0"
+							]
+						}
+					],
+					"sid": 462145401394287
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 170080834420473,
+							"parameters": {
+								"first-value": "Tag",
+								"comparison": 0,
+								"second-value": "\"short roar\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "PlaySoundFileByName",
+							"sid": 778355259474507,
+							"parameters": [
+								"\"Monster_Roar_Short\"",
+								"Tag",
+								"6",
+								"0"
+							]
+						}
+					],
+					"sid": 664400808970174
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 755166409888123,
+							"parameters": {
+								"first-value": "Tag",
+								"comparison": 0,
+								"second-value": "\"monster step\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "PlaySoundFileByName",
+							"sid": 459273871223980,
+							"parameters": [
+								"\"Monster_Footstep\"",
+								"Tag",
+								"5",
+								"1.2"
+							]
+						}
+					],
+					"sid": 437715539409295
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 219398893804916,
+							"parameters": {
+								"first-value": "Tag",
+								"comparison": 0,
+								"second-value": "\"player steer\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "PlaySoundFileByName",
+							"sid": 143871200548570,
+							"parameters": [
+								"\"Player_Footstep\"",
+								"Tag",
+								"6",
+								"2.0"
+							]
+						}
+					],
+					"sid": 891720054195610
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 632598204207475,
+							"parameters": {
+								"first-value": "Tag",
+								"comparison": 0,
+								"second-value": "\"interaction\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "PlaySoundFileByName",
+							"sid": 823639612105744,
+							"parameters": [
+								"\"HUD_MenuButton\"",
+								"Tag",
+								"16",
+								"1.0"
+							]
+						}
+					],
+					"sid": 244431513770990
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 290342413770985,
+							"parameters": {
+								"first-value": "Tag",
+								"comparison": 0,
+								"second-value": "\"victory\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "PlaySoundFileByName",
+							"sid": 702462249718578,
+							"parameters": [
+								"\"Yeah\"",
+								"Tag",
+								"3",
+								"1.0"
+							]
+						}
+					],
+					"sid": 584777158780730
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 314497084907671,
+							"parameters": {
+								"first-value": "Tag",
+								"comparison": 0,
+								"second-value": "\"defeat\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "PlaySoundFileByName",
+							"sid": 551961651469970,
+							"parameters": [
+								"\"UhOh\"",
+								"Tag",
+								"1",
+								"1.0"
+							]
+						}
+					],
+					"sid": 481771397880024
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 113995321288401,
+							"parameters": {
+								"first-value": "Tag",
+								"comparison": 0,
+								"second-value": "\"delusion\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "PlaySoundFileByName",
+							"sid": 671644150301317,
+							"parameters": [
+								"\"Hm\"",
+								"Tag",
+								"1",
+								"1.0"
+							]
+						}
+					],
+					"sid": 132509613992530
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 111053996563934,
+							"parameters": {
+								"first-value": "Tag",
+								"comparison": 0,
+								"second-value": "\"gong\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "PlaySoundFileByName",
+							"sid": 399969764361250,
+							"parameters": [
+								"\"Gong\"",
+								"Tag",
+								"1",
+								"1.0"
+							]
+						}
+					],
+					"sid": 700287576089963
+				}
+			]
+		},
+		{
+			"functionName": "PlaySoundFileByName",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "FilePrefix",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 566717591355247
+				},
+				{
+					"name": "Tag",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 797551985122224
+				},
+				{
+					"name": "FileCount",
+					"type": "number",
+					"initialValue": "1",
+					"comment": "",
+					"sid": 241788287043709
+				},
+				{
+					"name": "MaxPitchIncrease",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 528403133724433
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "play-by-name",
+					"objectClass": "Audio",
+					"sid": 443645105812188,
+					"parameters": {
+						"folder": "sounds",
+						"audio-file-name": "FilePrefix & \"_\" & zeropad(floor(random(1, FileCount + 1)), 2)",
+						"loop": "not-looping",
+						"volume": "random(-5, 0)",
+						"tag-optional": "Tag"
+					}
+				}
+			],
+			"sid": 466730777818103,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 207281284863013,
+							"parameters": {
+								"first-value": "MaxPitchIncrease",
+								"comparison": 1,
+								"second-value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-playback-rate",
+							"objectClass": "Audio",
+							"sid": 867387552240353,
+							"parameters": {
+								"tag": "Tag",
+								"playback-rate": "random(1.0,  1.0 + MaxPitchIncrease)"
+							}
+						}
+					],
+					"sid": 900363889601539
+				}
+			]
+		},
+		{
+			"functionName": "PlayAmbienceLoop",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 924208291831325,
+					"parameters": {
+						"audio-file": "Ambience_Wind_01_Loop",
+						"loop": "looping",
+						"volume": "0",
+						"tag-optional": "\"ambience\""
+					}
+				}
+			],
+			"sid": 262671205221106
+		},
+		{
+			"functionName": "PlayEnterSFX",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 793822536398848,
+					"parameters": {
+						"audio-file": "Enter",
+						"loop": "not-looping",
+						"volume": "0",
+						"tag-optional": "\"enter\""
+					}
+				}
+			],
+			"sid": 235590788376371
+		},
+		{
+			"functionName": "PlayMusic",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "Tag",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 502294217990956
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "stop",
+					"objectClass": "Audio",
+					"sid": 119893850311252,
+					"parameters": {
+						"tag": "\"login\""
+					}
+				},
+				{
+					"id": "stop",
+					"objectClass": "Audio",
+					"sid": 767634596215155,
+					"parameters": {
+						"tag": "\"wait\""
+					}
+				},
+				{
+					"id": "stop",
+					"objectClass": "Audio",
+					"sid": 925150107276489,
+					"parameters": {
+						"tag": "\"main\""
+					}
+				}
+			],
+			"sid": 778750040359240,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 671912270798726,
+							"parameters": {
+								"first-value": "Tag",
+								"comparison": 0,
+								"second-value": "\"login\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 318563888687377,
+							"parameters": {
+								"audio-file": "LoginIntro",
+								"loop": "not-looping",
+								"volume": "MusicVolumeAttenuation",
+								"tag-optional": "\"login\""
+							}
+						}
+					],
+					"sid": 508299476211129
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 210787044128627,
+							"parameters": {
+								"first-value": "Tag",
+								"comparison": 0,
+								"second-value": "\"enter\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 131962413443018,
+							"parameters": {
+								"audio-file": "Enter",
+								"loop": "not-looping",
+								"volume": "0",
+								"tag-optional": "\"enter\""
+							}
+						}
+					],
+					"sid": 463875547103566
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 929016261647954,
+							"parameters": {
+								"first-value": "Tag",
+								"comparison": 0,
+								"second-value": "\"wait\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 258016364801274,
+							"parameters": {
+								"audio-file": "WaitIntro",
+								"loop": "not-looping",
+								"volume": "MusicVolumeAttenuation",
+								"tag-optional": "\"wait\""
+							}
+						}
+					],
+					"sid": 799829025223491
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 187121395222289,
+							"parameters": {
+								"first-value": "Tag",
+								"comparison": 0,
+								"second-value": "\"main\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "play",
+							"objectClass": "Audio",
+							"sid": 599128397900488,
+							"parameters": {
+								"audio-file": "MainLoop",
+								"loop": "looping",
+								"volume": "MusicVolumeAttenuation",
+								"tag-optional": "\"main\""
+							}
+						}
+					],
+					"sid": 562369572137363
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-ended",
+					"objectClass": "Audio",
+					"sid": 427714846725432,
+					"parameters": {
+						"tag": "\"login\""
+					}
+				},
+				{
+					"id": "is-tag-playing",
+					"objectClass": "Audio",
+					"sid": 161661919393387,
+					"parameters": {
+						"tag": "\"enter\""
+					},
+					"isInverted": true
+				},
+				{
+					"id": "is-tag-playing",
+					"objectClass": "Audio",
+					"sid": 150824795993035,
+					"parameters": {
+						"tag": "\"wait\""
+					},
+					"isInverted": true
+				},
+				{
+					"id": "is-tag-playing",
+					"objectClass": "Audio",
+					"sid": 348295870592976,
+					"parameters": {
+						"tag": "\"main\""
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 350902195788122,
+					"parameters": {
+						"audio-file": "MainLoop",
+						"loop": "looping",
+						"volume": "MusicVolumeAttenuation",
+						"tag-optional": "\"login\""
+					}
+				}
+			],
+			"sid": 396471412483830
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-ended",
+					"objectClass": "Audio",
+					"sid": 788923927156692,
+					"parameters": {
+						"tag": "\"enter\""
+					}
+				},
+				{
+					"id": "is-tag-playing",
+					"objectClass": "Audio",
+					"sid": 638133653526679,
+					"parameters": {
+						"tag": "\"wait\""
+					},
+					"isInverted": true
+				},
+				{
+					"id": "is-tag-playing",
+					"objectClass": "Audio",
+					"sid": 653860781105918,
+					"parameters": {
+						"tag": "\"main\""
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "PlayMusic",
+					"sid": 465484886480617,
+					"parameters": [
+						"\"wait\""
+					]
+				}
+			],
+			"sid": 316768264511520
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-ended",
+					"objectClass": "Audio",
+					"sid": 913725260259840,
+					"parameters": {
+						"tag": "\"wait\""
+					}
+				},
+				{
+					"id": "is-tag-playing",
+					"objectClass": "Audio",
+					"sid": 155308216198854,
+					"parameters": {
+						"tag": "\"main\""
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "play",
+					"objectClass": "Audio",
+					"sid": 431013137172591,
+					"parameters": {
+						"audio-file": "WaitLoop",
+						"loop": "looping",
+						"volume": "MusicVolumeAttenuation",
+						"tag-optional": "\"wait\""
+					}
+				}
+			],
+			"sid": 762875615645405
+		}
+	],
+	"sid": 376950651466482
+}

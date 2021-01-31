@@ -22,9 +22,48 @@
 						"variable": "MinReadyPlayers",
 						"value": "0"
 					}
+				},
+				{
+					"callFunction": "Log",
+					"sid": 287576491132595,
+					"parameters": [
+						"\"DEBUG: Solo play available\""
+					]
 				}
 			],
 			"sid": 140525356339221
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 748160903934052,
+					"parameters": {
+						"key": 74
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-max-speed",
+					"objectClass": "Monster",
+					"sid": 233602969494615,
+					"behaviorType": "Pathfinding",
+					"parameters": {
+						"speed": "0"
+					}
+				},
+				{
+					"callFunction": "Log",
+					"sid": 577354253100498,
+					"parameters": [
+						"\"DEBUG: Frozen monster (still aggressive)\""
+					]
+				}
+			],
+			"sid": 229606050037039
 		},
 		{
 			"eventType": "block",

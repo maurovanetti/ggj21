@@ -72,6 +72,14 @@
 		},
 		{
 			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
 			"id": "TiledBg",
 			"name": "Tiled Background",
 			"author": "Scirra",
@@ -82,14 +90,6 @@
 			"type": "behavior",
 			"id": "solid",
 			"name": "Solid",
-			"author": "Scirra",
-			"version": "r225",
-			"bundled": false
-		},
-		{
-			"type": "behavior",
-			"id": "Sin",
-			"name": "Sine",
 			"author": "Scirra",
 			"version": "r225",
 			"bundled": false
@@ -128,6 +128,14 @@
 		},
 		{
 			"type": "behavior",
+			"id": "Sin",
+			"name": "Sine",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
 			"id": "EightDir",
 			"name": "8 Direction",
 			"author": "Scirra",
@@ -154,47 +162,27 @@
 					"Flag2",
 					"Flag3",
 					"Countdown",
-					"Score"
+					"Score",
+					"HUD",
+					"EggIcon"
 				],
 				"subfolders": [],
-				"name": "UI"
+				"name": "GUI"
 			},
 			{
 				"items": [
 					"Multiplayer",
 					"Keyboard",
 					"PeerIDs",
-					"Background",
 					"ReadyPeerIDs",
-					"Arch",
-					"Frame",
 					"Tilemap",
 					"ForbiddenArea",
 					"Obstacles",
 					"OnStage",
-					"Monument",
-					"Leaf",
-					"LoginBackground",
-					"Tree",
-					"Fountain",
-					"Column1",
-					"Swamp",
-					"Column2",
-					"Pawn",
-					"Stone",
-					"Rock"
+					"Audio"
 				],
 				"subfolders": [],
 				"name": "Static"
-			},
-			{
-				"items": [
-					"ExampleSprite",
-					"ExampleText",
-					"Knight"
-				],
-				"subfolders": [],
-				"name": "Examples"
 			},
 			{
 				"items": [
@@ -206,7 +194,31 @@
 					"Egg"
 				],
 				"subfolders": [],
-				"name": "Dynamic"
+				"name": "Corporeal"
+			},
+			{
+				"items": [
+					"Arch",
+					"Background",
+					"Column1",
+					"Column2",
+					"Fountain",
+					"Frame",
+					"Leaf",
+					"LoginBackground",
+					"Monument",
+					"Pawn",
+					"Rock",
+					"Stone",
+					"Swamp",
+					"Tree",
+					"GameOverBackground",
+					"Defeat",
+					"Victory",
+					"TimerDisplay"
+				],
+				"subfolders": [],
+				"name": "Visual"
 			}
 		]
 	},
@@ -235,7 +247,9 @@
 			"Play Events",
 			"Avatar Controls",
 			"Debug Events",
-			"Scoring Events"
+			"Scoring Events",
+			"Audio Events",
+			"End Events"
 		],
 		"subfolders": []
 	},
@@ -245,11 +259,328 @@
 			"subfolders": []
 		},
 		"sound": {
-			"items": [],
-			"subfolders": []
+			"items": [
+				{
+					"name": "Enter.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 104555438670217
+				}
+			],
+			"subfolders": [
+				{
+					"items": [],
+					"subfolders": [
+						{
+							"items": [
+								{
+									"name": "Monster_Roar_Long_01.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 759483581508207
+								},
+								{
+									"name": "Monster_Roar_Long_02.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 559449700474695
+								},
+								{
+									"name": "Monster_Roar_Long_03.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 673100536749411
+								},
+								{
+									"name": "Monster_Roar_Long_04.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 634841092755237
+								},
+								{
+									"name": "Monster_Roar_Long_05.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 974688176348232
+								},
+								{
+									"name": "Monster_Roar_Long_06.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 423971290649015
+								},
+								{
+									"name": "Monster_Roar_Long_07.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 198886192162174
+								}
+							],
+							"subfolders": [],
+							"name": "Long"
+						},
+						{
+							"items": [
+								{
+									"name": "Monster_Roar_Short_01.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 895545357514585
+								},
+								{
+									"name": "Monster_Roar_Short_02.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 875905603073517
+								},
+								{
+									"name": "Monster_Roar_Short_03.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 281642060023302
+								},
+								{
+									"name": "Monster_Roar_Short_04.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 595824526465474
+								},
+								{
+									"name": "Monster_Roar_Short_05.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 741718290643009
+								},
+								{
+									"name": "Monster_Roar_Short_06.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 346139723287043
+								}
+							],
+							"subfolders": [],
+							"name": "Short"
+						}
+					],
+					"name": "Roar"
+				},
+				{
+					"items": [],
+					"subfolders": [
+						{
+							"items": [
+								{
+									"name": "Monster_Footstep_01.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 349940255305280
+								},
+								{
+									"name": "Monster_Footstep_02.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 881400658902221
+								},
+								{
+									"name": "Monster_Footstep_03.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 985710430468615
+								},
+								{
+									"name": "Monster_Footstep_04.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 209707206761477
+								},
+								{
+									"name": "Monster_Footstep_05.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 784885476283499
+								}
+							],
+							"subfolders": [],
+							"name": "Monster"
+						},
+						{
+							"items": [
+								{
+									"name": "Player_Footstep_01.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 575984385381408
+								},
+								{
+									"name": "Player_Footstep_02.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 376330909281262
+								},
+								{
+									"name": "Player_Footstep_03.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 398518434082130
+								},
+								{
+									"name": "Player_Footstep_04.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 317118458132577
+								},
+								{
+									"name": "Player_Footstep_05.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 539773156594452
+								},
+								{
+									"name": "Player_Footstep_06.webm",
+									"type": "audio/webm; codecs=opus",
+									"sid": 952705606138486
+								}
+							],
+							"subfolders": [],
+							"name": "Players"
+						}
+					],
+					"name": "Steps"
+				},
+				{
+					"items": [
+						{
+							"name": "Ambience_Wind_01_Loop.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 226390416715331
+						}
+					],
+					"subfolders": [],
+					"name": "Ambience"
+				},
+				{
+					"items": [
+						{
+							"name": "HUD_MenuButton_01.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 718613807577413
+						},
+						{
+							"name": "HUD_MenuButton_02.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 596711153838517
+						},
+						{
+							"name": "HUD_MenuButton_03.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 196335299874136
+						},
+						{
+							"name": "HUD_MenuButton_04.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 609963236311405
+						},
+						{
+							"name": "HUD_MenuButton_05.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 985040759738636
+						},
+						{
+							"name": "HUD_MenuButton_06.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 436992957778502
+						},
+						{
+							"name": "HUD_MenuButton_07.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 995737493684489
+						},
+						{
+							"name": "HUD_MenuButton_08.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 181538732749526
+						},
+						{
+							"name": "HUD_MenuButton_09.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 214511617442826
+						},
+						{
+							"name": "HUD_MenuButton_10.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 159210053944034
+						},
+						{
+							"name": "HUD_MenuButton_11.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 136566589629242
+						},
+						{
+							"name": "HUD_MenuButton_12.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 264832474637564
+						},
+						{
+							"name": "HUD_MenuButton_13.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 115045294850004
+						},
+						{
+							"name": "HUD_MenuButton_14.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 434979726612947
+						},
+						{
+							"name": "HUD_MenuButton_15.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 295510441735276
+						},
+						{
+							"name": "HUD_MenuButton_16.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 305326053857078
+						}
+					],
+					"subfolders": [],
+					"name": "GUI"
+				},
+				{
+					"items": [
+						{
+							"name": "UhOh_01.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 309738472993356
+						},
+						{
+							"name": "Hm_01.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 387285306111725
+						},
+						{
+							"name": "Yeah_01.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 660597961276214
+						},
+						{
+							"name": "Yeah_02.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 261378836909778
+						},
+						{
+							"name": "Yeah_03.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 552434286663603
+						},
+						{
+							"name": "Gong_01.webm",
+							"type": "audio/webm; codecs=opus",
+							"sid": 709899963208743
+						}
+					],
+					"subfolders": [],
+					"name": "Ending"
+				}
+			]
 		},
 		"music": {
-			"items": [],
+			"items": [
+				{
+					"name": "LoginIntro.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 485399686473440
+				},
+				{
+					"name": "MainLoop.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 336961217547389
+				},
+				{
+					"name": "WaitIntro.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 327097683728830
+				},
+				{
+					"name": "WaitLoop.mp3",
+					"type": "audio/mpeg",
+					"sid": 257438260507861
+				}
+			],
 			"subfolders": []
 		},
 		"video": {
@@ -434,5 +765,5 @@
 	},
 	"viewportWidth": 1280,
 	"viewportHeight": 720,
-	"firstLayout": null
+	"firstLayout": "Login"
 }
