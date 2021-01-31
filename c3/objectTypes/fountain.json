@@ -1,0 +1,37 @@
+{
+	"name": "Fountain",
+	"plugin-id": "Sprite",
+	"sid": 119452516331607,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 103,
+						"height": 127,
+						"originX": 0.46601941747572817,
+						"originY": 0.8346456692913385,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 7459897,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 504464657073725,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

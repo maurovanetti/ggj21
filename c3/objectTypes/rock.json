@@ -1,7 +1,7 @@
 {
-	"name": "Background",
+	"name": "Rock",
 	"plugin-id": "Sprite",
-	"sid": 643274153473273,
+	"sid": 405104883970397,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
@@ -11,39 +11,31 @@
 			{
 				"frames": [
 					{
-						"width": 1280,
-						"height": 720,
-						"originX": 0.5,
-						"originY": 0.5,
+						"width": 51,
+						"height": 41,
+						"originX": 0.49019607843137253,
+						"originY": 0.7073170731707317,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 7440690,
+						"imageSpriteId": 1144342,
 						"collisionPoly": {
 							"points": [
 								0,
+								0.024390243902439025,
+								1,
+								0.024390243902439025,
+								1,
+								1,
 								0,
-								0.5,
-								0,
-								0.999009900990099,
-								0,
-								0.999009900990099,
-								0.5,
-								0.999009900990099,
-								0.9982174688057041,
-								0.5,
-								0.9982174688057041,
-								0,
-								0.9982174688057041,
-								0,
-								0.5
+								1
 							]
 						},
 						"useCollisionPoly": true,
 						"duration": 1
 					}
 				],
-				"sid": 956064473280600,
+				"sid": 730276449070354,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

@@ -1,7 +1,7 @@
 {
-	"name": "Background",
+	"name": "Tree",
 	"plugin-id": "Sprite",
-	"sid": 643274153473273,
+	"sid": 526070095035530,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
@@ -11,39 +11,31 @@
 			{
 				"frames": [
 					{
-						"width": 1280,
-						"height": 720,
-						"originX": 0.5,
-						"originY": 0.5,
+						"width": 156,
+						"height": 191,
+						"originX": 0.5576923076923077,
+						"originY": 0.8219895287958116,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 7440690,
+						"imageSpriteId": 2705951,
 						"collisionPoly": {
 							"points": [
-								0,
-								0,
-								0.5,
-								0,
-								0.999009900990099,
-								0,
-								0.999009900990099,
-								0.5,
-								0.999009900990099,
-								0.9982174688057041,
-								0.5,
-								0.9982174688057041,
-								0,
-								0.9982174688057041,
-								0,
-								0.5
+								0.6730769230769231,
+								0.03664921465968586,
+								0.6474358974358975,
+								0.4973821989528796,
+								0.6474358974358975,
+								0.9319371727748691,
+								0.10256410256410256,
+								0.4973821989528796
 							]
 						},
 						"useCollisionPoly": true,
 						"duration": 1
 					}
 				],
-				"sid": 956064473280600,
+				"sid": 334552949966334,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

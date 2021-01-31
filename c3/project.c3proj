@@ -174,7 +174,15 @@
 					"OnStage",
 					"Monument",
 					"Leaf",
-					"LoginBackground"
+					"LoginBackground",
+					"Tree",
+					"Fountain",
+					"Column1",
+					"Swamp",
+					"Column2",
+					"Pawn",
+					"Stone",
+					"Rock"
 				],
 				"subfolders": [],
 				"name": "Static"

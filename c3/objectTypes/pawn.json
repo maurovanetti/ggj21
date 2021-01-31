@@ -1,0 +1,37 @@
+{
+	"name": "Pawn",
+	"plugin-id": "Sprite",
+	"sid": 266751201485017,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 76,
+						"height": 146,
+						"originX": 0.4868421052631579,
+						"originY": 0.8698630136986302,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 8414449,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 478179108920338,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

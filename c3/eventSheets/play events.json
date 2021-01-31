@@ -2647,6 +2647,14 @@
 							}
 						},
 						{
+							"id": "move-to-layer",
+							"objectClass": "Egg",
+							"sid": 404978389771562,
+							"parameters": {
+								"layer": "\"Arena\""
+							}
+						},
+						{
 							"callFunction": "AssignEgg",
 							"sid": 513239396917691,
 							"parameters": [
@@ -2959,6 +2967,14 @@
 								"destroy-on-complete": "no",
 								"loop": "no",
 								"ping-pong": "yes"
+							}
+						},
+						{
+							"id": "move-to-layer",
+							"objectClass": "Egg",
+							"sid": 598765667082575,
+							"parameters": {
+								"layer": "\"Tall Items\""
 							}
 						}
 					],
