@@ -71,6 +71,14 @@
 			"bundled": false
 		},
 		{
+			"type": "plugin",
+			"id": "TiledBg",
+			"name": "Tiled Background",
+			"author": "Scirra",
+			"version": "r225",
+			"bundled": false
+		},
+		{
 			"type": "behavior",
 			"id": "solid",
 			"name": "Solid",
@@ -165,7 +173,8 @@
 					"Obstacles",
 					"OnStage",
 					"Monument",
-					"Leaf"
+					"Leaf",
+					"LoginBackground"
 				],
 				"subfolders": [],
 				"name": "Static"
@@ -240,7 +249,58 @@
 			"subfolders": []
 		},
 		"font": {
-			"items": [],
+			"items": [
+				{
+					"name": "SassoonInfantStd.otf",
+					"type": "application/font-sfnt",
+					"sid": 591726811879136
+				},
+				{
+					"name": "SassoonInfantStd-Bold.otf",
+					"type": "application/font-sfnt",
+					"sid": 651515577080078
+				},
+				{
+					"name": "Sassoon-Primary.otf",
+					"type": "application/font-sfnt",
+					"sid": 781950953652826
+				},
+				{
+					"name": "SassoonPrimaryStd.otf",
+					"type": "application/font-sfnt",
+					"sid": 408951285878594
+				},
+				{
+					"name": "SassoonPrimaryStd-Bold.otf",
+					"type": "application/font-sfnt",
+					"sid": 880009471246749
+				},
+				{
+					"name": "SassoonSansSlopeStd.otf",
+					"type": "application/font-sfnt",
+					"sid": 625775525650856
+				},
+				{
+					"name": "SassoonSansSlopeStd-Medium.otf",
+					"type": "application/font-sfnt",
+					"sid": 566759885517662
+				},
+				{
+					"name": "SassoonSansStd.otf",
+					"type": "application/font-sfnt",
+					"sid": 680374574850929
+				},
+				{
+					"name": "SassoonSansStd-Bold.otf",
+					"type": "application/font-sfnt",
+					"sid": 654246187276159
+				},
+				{
+					"name": "SassoonSansStd-Medium.otf",
+					"type": "application/font-sfnt",
+					"sid": 983156422342776
+				}
+			],
 			"subfolders": []
 		},
 		"icon": {
