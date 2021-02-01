@@ -2,6 +2,10 @@
 	"name": "End Events",
 	"events": [
 		{
+			"eventType": "include",
+			"includeSheet": "Audio Events"
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{

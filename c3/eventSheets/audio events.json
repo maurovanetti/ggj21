@@ -5,7 +5,7 @@
 			"eventType": "variable",
 			"name": "MusicVolumeAttenuation",
 			"type": "number",
-			"initialValue": "-10",
+			"initialValue": "-5",
 			"comment": "<= 0",
 			"isStatic": false,
 			"isConstant": true,

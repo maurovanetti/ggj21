@@ -2,6 +2,10 @@
 	"name": "Login Events",
 	"events": [
 		{
+			"eventType": "include",
+			"includeSheet": "Audio Events"
+		},
+		{
 			"eventType": "variable",
 			"name": "MyName",
 			"type": "string",

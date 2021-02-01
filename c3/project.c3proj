@@ -720,10 +720,10 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "1.0.0.0",
+		"version": "0.1.1",
 		"author": "",
 		"authorEmail": "",
-		"authorWebsite": "",
+		"authorWebsite": "https://maurovanetti.itch.io/dinomite",
 		"appId": "",
 		"pixelRounding": false,
 		"useLoaderLayout": false,
