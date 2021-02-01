@@ -1,3 +1,3 @@
-Ggj21
+Dinomite
 
-prova testo stefy
+https://maurovanetti.itch.io/dinomite
