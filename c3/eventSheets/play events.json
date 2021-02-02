@@ -236,16 +236,6 @@
 							"id": "disconnect-room",
 							"objectClass": "Multiplayer",
 							"sid": 586956761362243
-						},
-						{
-							"id": "disconnect-signalling",
-							"objectClass": "Multiplayer",
-							"sid": 740925161789074
-						},
-						{
-							"id": "restart-layout",
-							"objectClass": "System",
-							"sid": 661310757229447
 						}
 					],
 					"sid": 610928971047410
@@ -706,6 +696,42 @@
 			"description": "",
 			"isActiveOnStart": true,
 			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-left-room",
+							"objectClass": "Multiplayer",
+							"sid": 968230469973693
+						}
+					],
+					"actions": [
+						{
+							"id": "disconnect-signalling",
+							"objectClass": "Multiplayer",
+							"sid": 883100838067157
+						}
+					],
+					"sid": 667696328957462
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-disconnected",
+							"objectClass": "Multiplayer",
+							"sid": 723545645484846
+						}
+					],
+					"actions": [
+						{
+							"id": "restart-layout",
+							"objectClass": "System",
+							"sid": 618618529651233
+						}
+					],
+					"sid": 354196566375029
+				},
 				{
 					"eventType": "block",
 					"conditions": [
@@ -4128,19 +4154,6 @@
 					"id": "disconnect-room",
 					"objectClass": "Multiplayer",
 					"sid": 498073866595666
-				},
-				{
-					"id": "disconnect-signalling",
-					"objectClass": "Multiplayer",
-					"sid": 319455412884433
-				},
-				{
-					"id": "go-to-layout",
-					"objectClass": "System",
-					"sid": 100366390220399,
-					"parameters": {
-						"layout": "Login"
-					}
 				}
 			],
 			"sid": 584367563571926
