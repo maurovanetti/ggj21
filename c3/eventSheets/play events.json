@@ -363,6 +363,33 @@
 									"eventType": "block",
 									"conditions": [
 										{
+											"id": "compare-instance-variable",
+											"objectClass": "Face",
+											"sid": 145943426615149,
+											"parameters": {
+												"instance-variable": "PlayerIndex",
+												"comparison": 0,
+												"value": "PlayerName.PlayerIndex"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Face",
+											"sid": 681949542442221,
+											"parameters": {
+												"instance-variable": "State",
+												"value": "\"Playing\""
+											}
+										}
+									],
+									"sid": 199605949396912
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
 											"id": "is-host",
 											"objectClass": "Multiplayer",
 											"sid": 369823818287000
@@ -428,7 +455,36 @@
 									}
 								}
 							],
-							"sid": 630695999910978
+							"sid": 630695999910978,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Face",
+											"sid": 189887875869510,
+											"parameters": {
+												"instance-variable": "PlayerIndex",
+												"comparison": 0,
+												"value": "PlayerName.PlayerIndex"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Face",
+											"sid": 261578389209577,
+											"parameters": {
+												"instance-variable": "State",
+												"value": "\"Surprised\""
+											}
+										}
+									],
+									"sid": 525911939765298
+								}
+							]
 						}
 					]
 				},
@@ -519,7 +575,7 @@
 							"conditions": [
 								{
 									"id": "compare-instance-variable",
-									"objectClass": "Flag",
+									"objectClass": "Face",
 									"sid": 798554104727492,
 									"parameters": {
 										"instance-variable": "PlayerIndex",
@@ -531,19 +587,10 @@
 							"actions": [
 								{
 									"id": "set-visible",
-									"objectClass": "Flag",
+									"objectClass": "Face",
 									"sid": 502918994851960,
 									"parameters": {
 										"visibility": "visible"
-									}
-								},
-								{
-									"id": "set-instvar-value",
-									"objectClass": "Flag",
-									"sid": 816342459682544,
-									"parameters": {
-										"instance-variable": "State",
-										"value": "\"Playing\""
 									}
 								}
 							],
@@ -556,7 +603,7 @@
 					"conditions": [
 						{
 							"id": "compare-instance-variable",
-							"objectClass": "Flag",
+							"objectClass": "Face",
 							"sid": 344448926347257,
 							"parameters": {
 								"instance-variable": "PlayerIndex",
@@ -568,7 +615,7 @@
 					"actions": [
 						{
 							"id": "set-visible",
-							"objectClass": "Flag",
+							"objectClass": "Face",
 							"sid": 976155472176994,
 							"parameters": {
 								"visibility": "invisible"
@@ -631,10 +678,10 @@
 			"conditions": [
 				{
 					"id": "is-animation-playing",
-					"objectClass": "Flag",
+					"objectClass": "Face",
 					"sid": 610907969712221,
 					"parameters": {
-						"animation": "Flag.State"
+						"animation": "Face.State"
 					},
 					"isInverted": true
 				}
@@ -642,10 +689,10 @@
 			"actions": [
 				{
 					"id": "set-animation",
-					"objectClass": "Flag",
+					"objectClass": "Face",
 					"sid": 409442402156579,
 					"parameters": {
-						"animation": "Flag.State",
+						"animation": "Face.State",
 						"from": "current-frame"
 					}
 				}
@@ -657,7 +704,7 @@
 			"conditions": [
 				{
 					"id": "compare-instance-variable",
-					"objectClass": "Flag",
+					"objectClass": "Face",
 					"sid": 505635014072924,
 					"parameters": {
 						"instance-variable": "State",
@@ -672,7 +719,7 @@
 					"parameters": {
 						"instance-variable": "PlayerIndex",
 						"comparison": 0,
-						"value": "Flag.PlayerIndex"
+						"value": "Face.PlayerIndex"
 					}
 				}
 			],
@@ -937,6 +984,31 @@
 						},
 						{
 							"id": "set-visible",
+							"objectClass": "Hud",
+							"sid": 404368359887245,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "Face",
+							"sid": 199595175232476,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "Face",
+							"sid": 821744700959552,
+							"parameters": {
+								"animation": "Face.State",
+								"from": "current-frame"
+							}
+						},
+						{
+							"id": "set-visible",
 							"objectClass": "StartButton",
 							"sid": 953984617826229,
 							"parameters": {
@@ -1088,6 +1160,14 @@
 									"parameters": [
 										"\"You are the game host\""
 									]
+								},
+								{
+									"id": "append-text",
+									"objectClass": "RoomName",
+									"sid": 414323465562839,
+									"parameters": {
+										"text": "\" (host)\""
+									}
 								},
 								{
 									"id": "set-visible",
@@ -1636,6 +1716,32 @@
 								}
 							],
 							"sid": 752757389318822
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Hud",
+									"sid": 457783711015995,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 5,
+										"value": "Multiplayer.PeerCount"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "Hud",
+									"sid": 630563668709394,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								}
+							],
+							"sid": 123165252590821
 						},
 						{
 							"eventType": "block",
@@ -2800,16 +2906,16 @@
 										{
 											"id": "for-each",
 											"objectClass": "System",
-											"sid": 887720302583573,
+											"sid": 543255887542586,
 											"parameters": {
-												"object": "EggIcon"
+												"object": "Hud"
 											}
 										}
 									],
 									"actions": [
 										{
 											"id": "set-animation",
-											"objectClass": "EggIcon",
+											"objectClass": "Hud",
 											"sid": 135629235327942,
 											"parameters": {
 												"animation": "\"Empty\"",
@@ -2985,7 +3091,7 @@
 											"conditions": [
 												{
 													"id": "compare-instance-variable",
-													"objectClass": "EggIcon",
+													"objectClass": "Hud",
 													"sid": 730042849101247,
 													"parameters": {
 														"instance-variable": "PlayerIndex",
@@ -2997,10 +3103,10 @@
 											"actions": [
 												{
 													"id": "set-animation",
-													"objectClass": "EggIcon",
-													"sid": 129283864553471,
+													"objectClass": "Hud",
+													"sid": 613568103165646,
 													"parameters": {
-														"animation": "\"Full\"",
+														"animation": "\"Egg\"",
 														"from": "beginning"
 													}
 												}
@@ -3025,16 +3131,16 @@
 						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 857624608393445,
+							"sid": 715362690209265,
 							"parameters": {
 								"variable": "GameState",
-								"comparison": 1,
-								"value": "\"ending\""
+								"comparison": 0,
+								"value": "\"playing\""
 							}
 						},
 						{
 							"id": "compare-instance-variable",
-							"objectClass": "Flag",
+							"objectClass": "Face",
 							"sid": 704537217562691,
 							"parameters": {
 								"instance-variable": "PlayerIndex",
@@ -3046,7 +3152,7 @@
 					"actions": [
 						{
 							"id": "set-instvar-value",
-							"objectClass": "Flag",
+							"objectClass": "Face",
 							"sid": 755683025452007,
 							"parameters": {
 								"instance-variable": "State",
@@ -3071,14 +3177,6 @@
 								}
 							],
 							"actions": [
-								{
-									"id": "set-opacity",
-									"objectClass": "Score",
-									"sid": 721834262406397,
-									"parameters": {
-										"opacity": "50"
-									}
-								},
 								{
 									"id": "set-text",
 									"objectClass": "Score",
@@ -3273,7 +3371,7 @@
 							"conditions": [
 								{
 									"id": "compare-instance-variable",
-									"objectClass": "Flag",
+									"objectClass": "Face",
 									"sid": 752822047950820,
 									"parameters": {
 										"instance-variable": "State",
@@ -3285,7 +3383,7 @@
 							"actions": [
 								{
 									"id": "set-instvar-value",
-									"objectClass": "Flag",
+									"objectClass": "Face",
 									"sid": 523827056716875,
 									"parameters": {
 										"instance-variable": "State",
@@ -3368,7 +3466,7 @@
 									"conditions": [
 										{
 											"id": "compare-instance-variable",
-											"objectClass": "Flag",
+											"objectClass": "Face",
 											"sid": 456400576168873,
 											"parameters": {
 												"instance-variable": "State",
@@ -3378,7 +3476,7 @@
 										},
 										{
 											"id": "compare-instance-variable",
-											"objectClass": "Flag",
+											"objectClass": "Face",
 											"sid": 122460252646208,
 											"parameters": {
 												"instance-variable": "PlayerIndex",
@@ -3436,7 +3534,7 @@
 								},
 								{
 									"id": "compare-instance-variable",
-									"objectClass": "Flag",
+									"objectClass": "Face",
 									"sid": 956901352957416,
 									"parameters": {
 										"instance-variable": "PlayerIndex",
@@ -3465,7 +3563,7 @@
 								},
 								{
 									"id": "set-instvar-value",
-									"objectClass": "Flag",
+									"objectClass": "Face",
 									"sid": 834256272924044,
 									"parameters": {
 										"instance-variable": "State",
@@ -3511,7 +3609,7 @@
 								},
 								{
 									"id": "compare-instance-variable",
-									"objectClass": "Flag",
+									"objectClass": "Face",
 									"sid": 106938460945426,
 									"parameters": {
 										"instance-variable": "PlayerIndex",
@@ -3540,7 +3638,7 @@
 								},
 								{
 									"id": "set-instvar-value",
-									"objectClass": "Flag",
+									"objectClass": "Face",
 									"sid": 857343504193708,
 									"parameters": {
 										"instance-variable": "State",
@@ -3618,7 +3716,7 @@
 									"conditions": [
 										{
 											"id": "compare-instance-variable",
-											"objectClass": "Flag",
+											"objectClass": "Face",
 											"sid": 696086352127537,
 											"parameters": {
 												"instance-variable": "PlayerIndex",
@@ -3630,7 +3728,7 @@
 									"actions": [
 										{
 											"id": "set-instvar-value",
-											"objectClass": "Flag",
+											"objectClass": "Face",
 											"sid": 818700483520449,
 											"parameters": {
 												"instance-variable": "State",

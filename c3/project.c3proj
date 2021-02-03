@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 22500,
+	"savedWithRelease": 23400,
 	"name": "GGJ 2021",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -11,7 +11,7 @@
 			"id": "TextBox",
 			"name": "Text input",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -19,7 +19,7 @@
 			"id": "Button",
 			"name": "Button",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -27,7 +27,7 @@
 			"id": "Text",
 			"name": "Text",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -35,7 +35,7 @@
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -43,7 +43,7 @@
 			"id": "Multiplayer",
 			"name": "Multiplayer",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -51,7 +51,7 @@
 			"id": "Keyboard",
 			"name": "Keyboard",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -59,7 +59,7 @@
 			"id": "Arr",
 			"name": "Array",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -67,7 +67,7 @@
 			"id": "Tilemap",
 			"name": "Tilemap",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -75,7 +75,7 @@
 			"id": "Audio",
 			"name": "Audio",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -83,7 +83,7 @@
 			"id": "TiledBg",
 			"name": "Tiled Background",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -91,7 +91,7 @@
 			"id": "solid",
 			"name": "Solid",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -99,7 +99,7 @@
 			"id": "Pathfinding",
 			"name": "Pathfinding",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -107,7 +107,7 @@
 			"id": "Tween",
 			"name": "Tween",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -115,7 +115,7 @@
 			"id": "Flash",
 			"name": "Flash",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -123,7 +123,7 @@
 			"id": "Timer",
 			"name": "Timer",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -131,7 +131,7 @@
 			"id": "Sin",
 			"name": "Sine",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		},
 		{
@@ -139,7 +139,7 @@
 			"id": "EightDir",
 			"name": "8 Direction",
 			"author": "Scirra",
-			"version": "r225",
+			"version": "r234",
 			"bundled": false
 		}
 	],
@@ -157,15 +157,17 @@
 					"StartButton",
 					"RoomName",
 					"NetworkStats",
-					"Flag0",
-					"Flag1",
-					"Flag2",
-					"Flag3",
+					"Face0",
+					"Face1",
+					"Face2",
+					"Face3",
 					"Countdown",
 					"Score",
-					"HUD",
-					"EggIcon",
-					"Title"
+					"Title",
+					"Hud0",
+					"Hud1",
+					"Hud2",
+					"Hud3"
 				],
 				"subfolders": [],
 				"name": "GUI"
@@ -229,8 +231,9 @@
 		"items": [
 			"Avatar",
 			"ZOrderable",
-			"Flag",
-			"Clock"
+			"Face",
+			"Clock",
+			"Hud"
 		],
 		"subfolders": []
 	},
@@ -753,6 +756,7 @@
 		"orientations": "landscape",
 		"enableWebGL": true,
 		"gpuPreference": "high-performance",
+		"scriptsType": "module",
 		"framerateMode": "vsync",
 		"compositingMode": "standard",
 		"sampling": "trilinear",

@@ -519,7 +519,7 @@
 					"conditions": [
 						{
 							"id": "compare-instance-variable",
-							"objectClass": "Flag",
+							"objectClass": "Face",
 							"sid": 242625277430849,
 							"parameters": {
 								"instance-variable": "PlayerIndex",
@@ -531,7 +531,7 @@
 					"actions": [
 						{
 							"id": "tween-two-properties",
-							"objectClass": "Flag",
+							"objectClass": "Face",
 							"sid": 500602863080530,
 							"behaviorType": "Tween",
 							"parameters": {

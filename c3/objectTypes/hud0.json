@@ -1,0 +1,100 @@
+{
+	"name": "Hud0",
+	"plugin-id": "Sprite",
+	"sid": 584323648980079,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 293,
+						"height": 117,
+						"originX": 0.16040955631399317,
+						"originY": 0.4444444444444444,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2237902,
+						"collisionPoly": {
+							"points": [
+								0.051194539249146756,
+								0.15384615384615385,
+								0.4931740614334471,
+								0.1282051282051282,
+								0.8600682593856656,
+								0.3333333333333333,
+								0.7781569965870307,
+								0.5170940170940171,
+								0.7849829351535836,
+								0.5042735042735043,
+								0.4931740614334471,
+								0.7606837606837606,
+								0.08873720136518772,
+								0.7777777777777778,
+								0.006825938566552901,
+								0.5170940170940171
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 998034352245414,
+				"name": "Empty",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 293,
+						"height": 117,
+						"originX": 0.16040955631399317,
+						"originY": 0.4444444444444444,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6468315,
+						"collisionPoly": {
+							"points": [
+								0.051194539249146756,
+								0.15384615384615385,
+								0.4931740614334471,
+								0.1282051282051282,
+								0.8600682593856656,
+								0.3333333333333333,
+								0.7781569965870307,
+								0.5170940170940171,
+								0.7849829351535836,
+								0.5042735042735043,
+								0.4931740614334471,
+								0.7606837606837606,
+								0.08873720136518772,
+								0.7777777777777778,
+								0.006825938566552901,
+								0.5170940170940171
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 827734000536269,
+				"name": "Egg",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

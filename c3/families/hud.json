@@ -1,0 +1,21 @@
+{
+	"name": "Hud",
+	"plugin-id": "Sprite",
+	"sid": 263985339797040,
+	"instanceVariables": [
+		{
+			"name": "PlayerIndex",
+			"type": "number",
+			"desc": "",
+			"sid": 247380549902379
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"Hud0",
+		"Hud1",
+		"Hud2",
+		"Hud3"
+	]
+}

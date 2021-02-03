@@ -1,0 +1,132 @@
+{
+	"name": "Hud3",
+	"plugin-id": "Sprite",
+	"sid": 424877307887157,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 287,
+						"height": 104,
+						"originX": 0.8327526132404182,
+						"originY": 0.5576923076923077,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 4725336,
+						"collisionPoly": {
+							"points": [
+								0.20905923344947736,
+								0.5576923076923077,
+								0.5017421602787456,
+								0.25961538461538464,
+								0.9233449477351916,
+								0.19230769230769232,
+								0.9860627177700348,
+								0.49038461538461536,
+								0.9407665505226481,
+								0.8269230769230769,
+								0.5017421602787456,
+								0.9230769230769231,
+								0.0313588850174216,
+								0.9038461538461539,
+								0.30313588850174217,
+								0.49038461538461536
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 920208077436709,
+				"name": "Empty",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 287,
+						"height": 104,
+						"originX": 0.8327526132404182,
+						"originY": 0.5576923076923077,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 5298815,
+						"collisionPoly": {
+							"points": [
+								0.20905923344947736,
+								0.5576923076923077,
+								0.5017421602787456,
+								0.25961538461538464,
+								0.9233449477351916,
+								0.19230769230769232,
+								0.9860627177700348,
+								0.49038461538461536,
+								0.9407665505226481,
+								0.8269230769230769,
+								0.5017421602787456,
+								0.9230769230769231,
+								0.0313588850174216,
+								0.9038461538461539,
+								0.30313588850174217,
+								0.49038461538461536
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					},
+					{
+						"width": 22,
+						"height": 30,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 7000131,
+						"collisionPoly": {
+							"points": [
+								0.22727272727272727,
+								0.16666666666666666,
+								0.5,
+								0,
+								0.7727272727272727,
+								0.13333333333333333,
+								0.9545454545454546,
+								0.5,
+								0.8181818181818182,
+								0.8666666666666667,
+								0.5,
+								0.9,
+								0.18181818181818182,
+								0.8333333333333334,
+								0,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 343359358202549,
+				"name": "Egg",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

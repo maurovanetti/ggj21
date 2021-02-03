@@ -62,7 +62,7 @@
 							"conditions": [
 								{
 									"id": "compare-instance-variable",
-									"objectClass": "Flag",
+									"objectClass": "Face",
 									"sid": 292658844406605,
 									"parameters": {
 										"instance-variable": "PlayerIndex",
@@ -74,7 +74,7 @@
 							"actions": [
 								{
 									"id": "move-to-layer",
-									"objectClass": "Flag",
+									"objectClass": "Face",
 									"sid": 934689024292485,
 									"parameters": {
 										"layer": "\"GUI\""
@@ -82,7 +82,7 @@
 								},
 								{
 									"id": "set-visible",
-									"objectClass": "Flag",
+									"objectClass": "Face",
 									"sid": 287171820108284,
 									"parameters": {
 										"visibility": "visible"
@@ -96,7 +96,7 @@
 							"conditions": [
 								{
 									"id": "compare-instance-variable",
-									"objectClass": "EggIcon",
+									"objectClass": "Hud",
 									"sid": 796627679616966,
 									"parameters": {
 										"instance-variable": "PlayerIndex",
@@ -108,7 +108,7 @@
 							"actions": [
 								{
 									"id": "move-to-layer",
-									"objectClass": "EggIcon",
+									"objectClass": "Hud",
 									"sid": 740703514047747,
 									"parameters": {
 										"layer": "\"GUI\""
@@ -116,7 +116,7 @@
 								},
 								{
 									"id": "set-visible",
-									"objectClass": "EggIcon",
+									"objectClass": "Hud",
 									"sid": 571636890676825,
 									"parameters": {
 										"visibility": "visible"
