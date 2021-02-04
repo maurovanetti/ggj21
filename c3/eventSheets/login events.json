@@ -6,14 +6,8 @@
 			"includeSheet": "Audio Events"
 		},
 		{
-			"eventType": "variable",
-			"name": "MyName",
-			"type": "string",
-			"initialValue": "Whatever",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 982143882151359
+			"eventType": "include",
+			"includeSheet": "Name Handling"
 		},
 		{
 			"eventType": "block",
@@ -26,16 +20,20 @@
 			],
 			"actions": [
 				{
+					"callFunction": "PickName",
+					"sid": 935502769173840
+				},
+				{
 					"id": "set-focused",
 					"objectClass": "NameInput",
-					"sid": 998438658365535
+					"sid": 288559405281933
 				},
 				{
 					"id": "set-text",
 					"objectClass": "NameInput",
-					"sid": 640365190349376,
+					"sid": 806989088405325,
 					"parameters": {
-						"text": "\"Anonymous\""
+						"text": "MyName"
 					}
 				},
 				{

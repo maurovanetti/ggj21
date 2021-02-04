@@ -39,6 +39,30 @@
 				{
 					"id": "on-key-pressed",
 					"objectClass": "Keyboard",
+					"sid": 477938760060252,
+					"parameters": {
+						"key": 76
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-visible",
+					"objectClass": "Log",
+					"sid": 305715401875390,
+					"parameters": {
+						"visibility": "toggle"
+					}
+				}
+			],
+			"sid": 172304614819469
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
 					"sid": 748160903934052,
 					"parameters": {
 						"key": 74
@@ -153,6 +177,97 @@
 						}
 					],
 					"sid": 872373495290567
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 770221713144236,
+					"parameters": {
+						"key": 80
+					}
+				}
+			],
+			"actions": [],
+			"sid": 753003414085939,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-host",
+							"objectClass": "Multiplayer",
+							"sid": 468613254637775,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "toggle-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 548824546907393,
+							"parameters": {
+								"variable": "PredictiveInput"
+							}
+						},
+						{
+							"callFunction": "Log",
+							"sid": 739433140334581,
+							"parameters": [
+								"\"Predictive input set to \" & PredictiveInput"
+							]
+						}
+					],
+					"sid": 845974051279145,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 995408173708771,
+									"parameters": {
+										"variable": "PredictiveInput"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "Log",
+									"sid": 954827293017099,
+									"parameters": [
+										"\"Predictive input ON\""
+									]
+								}
+							],
+							"sid": 532147701770717
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 624717815652601
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "Log",
+									"sid": 620566276495794,
+									"parameters": [
+										"\"Predictive input OFF\""
+									]
+								}
+							],
+							"sid": 612246168411374
+						}
+					]
 				}
 			]
 		}

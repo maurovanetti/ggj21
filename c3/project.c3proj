@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 23400,
+	"savedWithRelease": 23402,
 	"name": "GGJ 2021",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -11,7 +11,7 @@
 			"id": "TextBox",
 			"name": "Text input",
 			"author": "Scirra",
-			"version": "r234",
+			"version": "r234.2",
 			"bundled": false
 		},
 		{
@@ -19,7 +19,7 @@
 			"id": "Button",
 			"name": "Button",
 			"author": "Scirra",
-			"version": "r234",
+			"version": "r234.2",
 			"bundled": false
 		},
 		{
@@ -27,7 +27,7 @@
 			"id": "Text",
 			"name": "Text",
 			"author": "Scirra",
-			"version": "r234",
+			"version": "r234.2",
 			"bundled": false
 		},
 		{
@@ -35,7 +35,7 @@
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
-			"version": "r234",
+			"version": "r234.2",
 			"bundled": false
 		},
 		{
@@ -43,7 +43,7 @@
 			"id": "Multiplayer",
 			"name": "Multiplayer",
 			"author": "Scirra",
-			"version": "r234",
+			"version": "r234.2",
 			"bundled": false
 		},
 		{
@@ -51,7 +51,7 @@
 			"id": "Keyboard",
 			"name": "Keyboard",
 			"author": "Scirra",
-			"version": "r234",
+			"version": "r234.2",
 			"bundled": false
 		},
 		{
@@ -59,7 +59,7 @@
 			"id": "Arr",
 			"name": "Array",
 			"author": "Scirra",
-			"version": "r234",
+			"version": "r234.2",
 			"bundled": false
 		},
 		{
@@ -67,7 +67,7 @@
 			"id": "Tilemap",
 			"name": "Tilemap",
 			"author": "Scirra",
-			"version": "r234",
+			"version": "r234.2",
 			"bundled": false
 		},
 		{
@@ -75,7 +75,7 @@
 			"id": "Audio",
 			"name": "Audio",
 			"author": "Scirra",
-			"version": "r234",
+			"version": "r234.2",
 			"bundled": false
 		},
 		{
@@ -83,47 +83,7 @@
 			"id": "TiledBg",
 			"name": "Tiled Background",
 			"author": "Scirra",
-			"version": "r234",
-			"bundled": false
-		},
-		{
-			"type": "behavior",
-			"id": "solid",
-			"name": "Solid",
-			"author": "Scirra",
-			"version": "r234",
-			"bundled": false
-		},
-		{
-			"type": "behavior",
-			"id": "Pathfinding",
-			"name": "Pathfinding",
-			"author": "Scirra",
-			"version": "r234",
-			"bundled": false
-		},
-		{
-			"type": "behavior",
-			"id": "Tween",
-			"name": "Tween",
-			"author": "Scirra",
-			"version": "r234",
-			"bundled": false
-		},
-		{
-			"type": "behavior",
-			"id": "Flash",
-			"name": "Flash",
-			"author": "Scirra",
-			"version": "r234",
-			"bundled": false
-		},
-		{
-			"type": "behavior",
-			"id": "Timer",
-			"name": "Timer",
-			"author": "Scirra",
-			"version": "r234",
+			"version": "r234.2",
 			"bundled": false
 		},
 		{
@@ -131,7 +91,47 @@
 			"id": "Sin",
 			"name": "Sine",
 			"author": "Scirra",
-			"version": "r234",
+			"version": "r234.2",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "solid",
+			"name": "Solid",
+			"author": "Scirra",
+			"version": "r234.2",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Pathfinding",
+			"name": "Pathfinding",
+			"author": "Scirra",
+			"version": "r234.2",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Tween",
+			"name": "Tween",
+			"author": "Scirra",
+			"version": "r234.2",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Flash",
+			"name": "Flash",
+			"author": "Scirra",
+			"version": "r234.2",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Timer",
+			"name": "Timer",
+			"author": "Scirra",
+			"version": "r234.2",
 			"bundled": false
 		},
 		{
@@ -139,7 +139,7 @@
 			"id": "EightDir",
 			"name": "8 Direction",
 			"author": "Scirra",
-			"version": "r234",
+			"version": "r234.2",
 			"bundled": false
 		}
 	],
@@ -182,7 +182,8 @@
 					"ForbiddenArea",
 					"Obstacles",
 					"OnStage",
-					"Audio"
+					"Audio",
+					"RandomNames"
 				],
 				"subfolders": [],
 				"name": "Static"
@@ -253,7 +254,8 @@
 			"Debug Events",
 			"Scoring Events",
 			"Audio Events",
-			"End Events"
+			"End Events",
+			"Name Handling"
 		],
 		"subfolders": []
 	},
@@ -723,7 +725,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "0.1.2",
+		"version": "0.1.3",
 		"author": "",
 		"authorEmail": "",
 		"authorWebsite": "https://maurovanetti.itch.io/dinomite",
@@ -763,7 +765,7 @@
 		"downscaling": "medium",
 		"maxSpriteSheetSize": 2048,
 		"loaderStyle": "splash",
-		"preloadSounds": true,
+		"preloadSounds": false,
 		"clearBackground": true,
 		"enhancedAccelerationPrecision": true,
 		"cordovaiOSScheme": "app"

@@ -18,10 +18,14 @@
 			"includeSheet": "Audio Events"
 		},
 		{
+			"eventType": "include",
+			"includeSheet": "Name Handling"
+		},
+		{
 			"eventType": "variable",
 			"name": "GAME_NAME",
 			"type": "string",
-			"initialValue": "patata-bollente",
+			"initialValue": "dinomite-0.1.3",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -59,12 +63,12 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "PREDICTIVE_INPUT",
+			"name": "PredictiveInput",
 			"type": "boolean",
 			"initialValue": "false",
 			"comment": "",
 			"isStatic": false,
-			"isConstant": true,
+			"isConstant": false,
 			"sid": 208888469708275
 		},
 		{
@@ -244,6 +248,30 @@
 					"eventType": "block",
 					"conditions": [
 						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 731593657212381
+						}
+					],
+					"actions": [
+						{
+							"id": "send-message",
+							"objectClass": "Multiplayer",
+							"sid": 505004079822909,
+							"parameters": {
+								"peer-id": "\"\"",
+								"tag": "\"ready\"",
+								"message": "Multiplayer.MyID",
+								"mode": "reliable-ordered"
+							}
+						}
+					],
+					"sid": 775429969393740
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
 							"id": "for",
 							"objectClass": "System",
 							"sid": 384767452637146,
@@ -340,14 +368,6 @@
 							],
 							"actions": [
 								{
-									"id": "set-opacity",
-									"objectClass": "PlayerName",
-									"sid": 880140309929885,
-									"parameters": {
-										"opacity": "100"
-									}
-								},
-								{
 									"id": "add-to-eventvar",
 									"objectClass": "System",
 									"sid": 353971034374125,
@@ -399,40 +419,16 @@
 										{
 											"id": "broadcast-message",
 											"objectClass": "Multiplayer",
-											"sid": 893028936250547,
+											"sid": 922865223650551,
 											"parameters": {
 												"from-id": "\"\"",
 												"tag": "\"ready\"",
 												"message": "PeerIDs.At(PlayerName.PlayerIndex)",
-												"mode": "unreliable"
+												"mode": "reliable-ordered"
 											}
 										}
 									],
 									"sid": 690171789836239
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 298980670533712
-										}
-									],
-									"actions": [
-										{
-											"id": "send-message",
-											"objectClass": "Multiplayer",
-											"sid": 618862122275639,
-											"parameters": {
-												"peer-id": "\"\"",
-												"tag": "\"ready\"",
-												"message": "PeerIDs.At(PlayerName.PlayerIndex)",
-												"mode": "unreliable"
-											}
-										}
-									],
-									"sid": 419840543629537
 								}
 							]
 						},
@@ -445,16 +441,7 @@
 									"sid": 253203199615146
 								}
 							],
-							"actions": [
-								{
-									"id": "set-opacity",
-									"objectClass": "PlayerName",
-									"sid": 915512051842056,
-									"parameters": {
-										"opacity": "50"
-									}
-								}
-							],
+							"actions": [],
 							"sid": 630695999910978,
 							"children": [
 								{
@@ -881,22 +868,6 @@
 							}
 						},
 						{
-							"id": "set-mirrored",
-							"objectClass": "Avatar1",
-							"sid": 889254406162422,
-							"parameters": {
-								"state": "mirrored"
-							}
-						},
-						{
-							"id": "set-mirrored",
-							"objectClass": "Avatar3",
-							"sid": 864076485133344,
-							"parameters": {
-								"state": "mirrored"
-							}
-						},
-						{
 							"id": "set-boolean-eventvar",
 							"objectClass": "System",
 							"sid": 403740558869515,
@@ -983,12 +954,9 @@
 							}
 						},
 						{
-							"id": "set-visible",
+							"id": "move-to-bottom",
 							"objectClass": "Hud",
-							"sid": 404368359887245,
-							"parameters": {
-								"visibility": "visible"
-							}
+							"sid": 761244292348216
 						},
 						{
 							"id": "set-visible",
@@ -996,6 +964,15 @@
 							"sid": 199595175232476,
 							"parameters": {
 								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Face",
+							"sid": 895541755036875,
+							"parameters": {
+								"instance-variable": "State",
+								"value": "\"Playing\""
 							}
 						},
 						{
@@ -1568,6 +1545,16 @@
 							"parameters": {
 								"interval-seconds": "1.0"
 							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 306741578926763,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"waiting\""
+							}
 						}
 					],
 					"actions": [],
@@ -1582,16 +1569,6 @@
 									"sid": 165147519423858,
 									"parameters": {
 										"variable": "Ready"
-									}
-								},
-								{
-									"id": "compare-eventvar",
-									"objectClass": "System",
-									"sid": 562099802231877,
-									"parameters": {
-										"variable": "GameState",
-										"comparison": 0,
-										"value": "\"waiting\""
 									}
 								}
 							],
@@ -1615,35 +1592,193 @@
 							"parameters": {
 								"interval-seconds": "4"
 							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 840372350423456,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"waiting\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "PlaySFX",
+							"sid": 624968982368108,
+							"parameters": [
+								"\"long roar\""
+							]
+						}
+					],
+					"sid": 319956730788763
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 568971567395356,
+							"parameters": {
+								"interval-seconds": "9.5"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 450956106472317,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"waiting\""
+							}
 						}
 					],
 					"actions": [],
-					"sid": 319956730788763,
+					"sid": 808527838795476,
 					"children": [
 						{
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "compare-eventvar",
-									"objectClass": "System",
-									"sid": 708831790569532,
+									"id": "compare-peer-count",
+									"objectClass": "Multiplayer",
+									"sid": 394091367522639,
 									"parameters": {
-										"variable": "GameState",
 										"comparison": 0,
-										"value": "\"waiting\""
+										"count": "0"
 									}
 								}
 							],
 							"actions": [
 								{
-									"callFunction": "PlaySFX",
-									"sid": 813594357805556,
-									"parameters": [
-										"\"long roar\""
-									]
+									"id": "disconnect-room",
+									"objectClass": "Multiplayer",
+									"sid": 699271718605473
 								}
 							],
-							"sid": 837464567688871
+							"sid": 525779750787366
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 317853580763183,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"waiting\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-mirrored",
+							"objectClass": "Avatar1",
+							"sid": 889254406162422,
+							"parameters": {
+								"state": "mirrored"
+							}
+						},
+						{
+							"id": "set-mirrored",
+							"objectClass": "Avatar3",
+							"sid": 864076485133344,
+							"parameters": {
+								"state": "mirrored"
+							}
+						}
+					],
+					"sid": 935389765389942,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Face",
+									"sid": 744864847628864,
+									"parameters": {
+										"instance-variable": "State",
+										"comparison": 0,
+										"value": "\"Surprised\""
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerName",
+									"sid": 488232639161176,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "Face.PlayerIndex"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-active",
+									"objectClass": "PlayerName",
+									"sid": 619562167172554,
+									"behaviorType": "Sine",
+									"parameters": {
+										"state": "active"
+									}
+								}
+							],
+							"sid": 689042004977922
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Face",
+									"sid": 285652959867407,
+									"parameters": {
+										"instance-variable": "State",
+										"comparison": 0,
+										"value": "\"Playing\""
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "PlayerName",
+									"sid": 167178146740312,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "Face.PlayerIndex"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-active",
+									"objectClass": "PlayerName",
+									"sid": 383275187153446,
+									"behaviorType": "Sine",
+									"parameters": {
+										"state": "inactive"
+									}
+								},
+								{
+									"id": "set-opacity",
+									"objectClass": "PlayerName",
+									"sid": 711199916200180,
+									"parameters": {
+										"opacity": "100"
+									}
+								}
+							],
+							"sid": 319477922477054
 						}
 					]
 				}
@@ -1677,6 +1812,23 @@
 						}
 					],
 					"actions": [
+						{
+							"id": "set-active",
+							"objectClass": "PlayerName",
+							"sid": 235609298925008,
+							"behaviorType": "Sine",
+							"parameters": {
+								"state": "inactive"
+							}
+						},
+						{
+							"id": "set-opacity",
+							"objectClass": "PlayerName",
+							"sid": 743264455332242,
+							"parameters": {
+								"opacity": "100"
+							}
+						},
 						{
 							"callFunction": "StartCountdown",
 							"sid": 250077992438133
@@ -2224,7 +2376,7 @@
 													"objectClass": "System",
 													"sid": 123553274089676,
 													"parameters": {
-														"variable": "PREDICTIVE_INPUT"
+														"variable": "PredictiveInput"
 													}
 												},
 												{
@@ -2282,7 +2434,7 @@
 													"objectClass": "System",
 													"sid": 330973881071188,
 													"parameters": {
-														"variable": "PREDICTIVE_INPUT"
+														"variable": "PredictiveInput"
 													}
 												},
 												{

@@ -1,0 +1,66 @@
+{
+	"name": "Name Handling",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "MyName",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 715536537715426
+		},
+		{
+			"functionName": "PickName",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 494289931755081,
+					"parameters": {
+						"variable": "MyName",
+						"comparison": 0,
+						"value": "\"\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 600965792464216,
+					"parameters": {
+						"variable": "MyName",
+						"value": "choose(\"Sara\", \"Emma\", \"Rania\", \"Imane\", \"Sofia\", \"Maria\", \"Mary\", \"Nareh\", \"Zahra\", \"Jing\", \"Aadya\", \"Noam\", \"Rimas\", \"Fatma\", \"Marie\", \"Nor\", \"Odval\", \"Angel\", \"Laia\", \"Anna\", \"Amina\", \"Mia\", \"Ida\", \"Eva\", \"Aino\", \"Hanna\", \"Emily\", \"Nora\", \"Zala\", \"Lucia\", \"Ane\", \"Alice\")"
+					}
+				}
+			],
+			"sid": 656072995721615
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 592024245019142
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "PickName",
+					"sid": 460922193386685
+				}
+			],
+			"sid": 195858802838531
+		}
+	],
+	"sid": 313929888463091
+}

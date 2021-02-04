@@ -154,7 +154,7 @@
 							]
 						},
 						"useCollisionPoly": true,
-						"duration": 1
+						"duration": 10
 					},
 					{
 						"width": 104,

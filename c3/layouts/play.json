@@ -1748,7 +1748,22 @@
 					"instanceVariables": {
 						"PlayerIndex": 0
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Sine": {
+							"properties": {
+								"movement": "opacity",
+								"wave": "sine",
+								"period": 0.7,
+								"period-random": 0,
+								"period-offset": 0,
+								"period-offset-random": 1,
+								"magnitude": 100,
+								"magnitude-random": 0,
+								"enabled": false,
+								"live-preview": false
+							}
+						}
+					},
 					"world": {
 						"x": 101,
 						"y": 10,
@@ -1760,7 +1775,7 @@
 							1,
 							1,
 							1,
-							0.5
+							1
 						],
 						"angle": 0,
 						"zElevation": 0
@@ -1792,7 +1807,22 @@
 					"instanceVariables": {
 						"PlayerIndex": 3
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Sine": {
+							"properties": {
+								"movement": "opacity",
+								"wave": "sine",
+								"period": 0.7,
+								"period-random": 0,
+								"period-offset": 0,
+								"period-offset-random": 1,
+								"magnitude": 100,
+								"magnitude-random": 0,
+								"enabled": false,
+								"live-preview": false
+							}
+						}
+					},
 					"world": {
 						"x": 1184,
 						"y": 725,
@@ -1804,7 +1834,7 @@
 							1,
 							1,
 							1,
-							0.5
+							1
 						],
 						"angle": 0,
 						"zElevation": 0
@@ -1836,7 +1866,22 @@
 					"instanceVariables": {
 						"PlayerIndex": 2
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Sine": {
+							"properties": {
+								"movement": "opacity",
+								"wave": "sine",
+								"period": 0.7,
+								"period-random": 0,
+								"period-offset": 0,
+								"period-offset-random": 1,
+								"magnitude": 100,
+								"magnitude-random": 0,
+								"enabled": false,
+								"live-preview": false
+							}
+						}
+					},
 					"world": {
 						"x": 98,
 						"y": 727,
@@ -1848,7 +1893,7 @@
 							1,
 							1,
 							1,
-							0.5
+							1
 						],
 						"angle": 0,
 						"zElevation": 0
@@ -1880,9 +1925,9 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 858,
-						"y": 108,
-						"width": 395,
+						"x": 702,
+						"y": 106,
+						"width": 266,
 						"height": 55,
 						"originX": 0,
 						"originY": 0,
@@ -2161,9 +2206,9 @@
 						}
 					},
 					"world": {
-						"x": 645.2656250772476,
+						"x": 643.5754206987434,
 						"y": 710.1914056513308,
-						"width": 89,
+						"width": 69.39362920935343,
 						"height": 80,
 						"originX": 0.5,
 						"originY": 1,
@@ -2402,7 +2447,22 @@
 					"instanceVariables": {
 						"PlayerIndex": 1
 					},
-					"behaviors": {},
+					"behaviors": {
+						"Sine": {
+							"properties": {
+								"movement": "opacity",
+								"wave": "sine",
+								"period": 0.7,
+								"period-random": 0,
+								"period-offset": 0,
+								"period-offset-random": 1,
+								"magnitude": 100,
+								"magnitude-random": 0,
+								"enabled": false,
+								"live-preview": false
+							}
+						}
+					},
 					"world": {
 						"x": 1187,
 						"y": 4,
@@ -2414,7 +2474,7 @@
 							1,
 							1,
 							1,
-							0.5
+							1
 						],
 						"angle": 0,
 						"zElevation": 0
