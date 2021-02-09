@@ -1,0 +1,37 @@
+{
+	"name": "RobotWaypoint",
+	"plugin-id": "Sprite",
+	"sid": 589425840681726,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 20,
+						"height": 18,
+						"originX": 0.47692307692307695,
+						"originY": 0.5901639344262295,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6858600,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 243356389520514,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

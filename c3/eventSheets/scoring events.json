@@ -36,6 +36,28 @@
 			"sid": 805819465090598
 		},
 		{
+			"functionName": "StopCountdown",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "stop-timer",
+					"objectClass": "Countdown",
+					"sid": 767009794890932,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "\"countdown\""
+					}
+				}
+			],
+			"sid": 515628848110787
+		},
+		{
 			"functionName": "StartScore",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -136,15 +158,7 @@
 			"functionParameters": [],
 			"eventType": "function-block",
 			"conditions": [],
-			"actions": [
-				{
-					"callFunction": "Log",
-					"sid": 287452069989379,
-					"parameters": [
-						"\"All scores stopped!\""
-					]
-				}
-			],
+			"actions": [],
 			"sid": 555514675485248,
 			"children": [
 				{
@@ -459,29 +473,8 @@
 			],
 			"actions": [
 				{
-					"callFunction": "GameStateChange",
-					"sid": 675945752588323,
-					"parameters": [
-						"\"ending\""
-					]
-				},
-				{
-					"id": "stop-timer",
-					"objectClass": "Countdown",
-					"sid": 428627971544651,
-					"behaviorType": "Timer",
-					"parameters": {
-						"tag": "\"countdown\""
-					}
-				},
-				{
-					"id": "stop-timer",
-					"objectClass": "Score",
-					"sid": 697949379787140,
-					"behaviorType": "Timer",
-					"parameters": {
-						"tag": "\"countup\""
-					}
+					"callFunction": "End",
+					"sid": 291174384611591
 				}
 			],
 			"sid": 143560192409775
@@ -503,15 +496,7 @@
 			],
 			"eventType": "function-block",
 			"conditions": [],
-			"actions": [
-				{
-					"callFunction": "Log",
-					"sid": 384898737316263,
-					"parameters": [
-						"\"Now highlighting player #\" & PlayerIndex"
-					]
-				}
-			],
+			"actions": [],
 			"sid": 835714584700447,
 			"children": [
 				{

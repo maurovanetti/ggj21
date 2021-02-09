@@ -32,6 +32,24 @@
 			"type": "string",
 			"desc": "",
 			"sid": 539508980530494
+		},
+		{
+			"name": "Robot",
+			"type": "boolean",
+			"desc": "",
+			"sid": 305428951860271
+		},
+		{
+			"name": "RobotWaypointX",
+			"type": "number",
+			"desc": "",
+			"sid": 906050529889551
+		},
+		{
+			"name": "RobotWaypointY",
+			"type": "number",
+			"desc": "",
+			"sid": 394662895823212
 		}
 	],
 	"behaviorTypes": [
@@ -44,6 +62,11 @@
 			"behaviorId": "Flash",
 			"name": "Flash",
 			"sid": 241501363029896
+		},
+		{
+			"behaviorId": "Pathfinding",
+			"name": "Pathfinding",
+			"sid": 989368152875442
 		}
 	],
 	"effectTypes": [],

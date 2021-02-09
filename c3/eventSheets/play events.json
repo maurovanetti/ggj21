@@ -25,7 +25,7 @@
 			"eventType": "variable",
 			"name": "GAME_NAME",
 			"type": "string",
-			"initialValue": "dinomite-0.1.3",
+			"initialValue": "dinomite-0.1.4",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -53,6 +53,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "RoomAttempt",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "starts from 1",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 520687340206629
+		},
+		{
+			"eventType": "variable",
 			"name": "GameState",
 			"type": "string",
 			"initialValue": "waiting",
@@ -60,6 +70,16 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 836404875808987
+		},
+		{
+			"eventType": "variable",
+			"name": "MatchmakingStage",
+			"type": "string",
+			"initialValue": "prepare",
+			"comment": "prepare, connect, login, join, ready, play",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 600163988855333
 		},
 		{
 			"eventType": "variable",
@@ -73,19 +93,9 @@
 		},
 		{
 			"eventType": "variable",
-			"name": "Ready",
-			"type": "boolean",
-			"initialValue": "false",
-			"comment": "",
-			"isStatic": false,
-			"isConstant": false,
-			"sid": 186415746171714
-		},
-		{
-			"eventType": "variable",
 			"name": "MinReadyPlayers",
 			"type": "number",
-			"initialValue": "2",
+			"initialValue": "1",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
@@ -95,633 +105,250 @@
 			"eventType": "variable",
 			"name": "ENDING_PACE",
 			"type": "number",
-			"initialValue": "2",
+			"initialValue": "3",
 			"comment": "Min seconds between events in the ending phase",
 			"isStatic": false,
 			"isConstant": true,
 			"sid": 940834873944981
 		},
 		{
-			"functionName": "Log",
-			"functionDescription": "",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionIsAsync": false,
-			"functionParameters": [
-				{
-					"name": "Message",
-					"type": "string",
-					"initialValue": "",
-					"comment": "",
-					"sid": 532112398378769
-				}
-			],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [],
-			"sid": 367209875356039,
+			"eventType": "group",
+			"disabled": false,
+			"title": "Logging",
+			"description": "",
+			"isActiveOnStart": true,
 			"children": [
+				{
+					"functionName": "Log",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "Message",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 532112398378769
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "append-text",
+							"objectClass": "Log",
+							"sid": 919032742324562,
+							"parameters": {
+								"text": "newline & Message"
+							}
+						},
+						{
+							"id": "push",
+							"objectClass": "LogBuffer",
+							"sid": 114697046867810,
+							"parameters": {
+								"where": "back",
+								"value": "Message",
+								"axis": "x"
+							}
+						}
+					],
+					"sid": 632143715185335
+				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
 							"id": "is-running-typewriter-text",
-							"objectClass": "Log",
-							"sid": 635941720884454
-						}
-					],
-					"actions": [
-						{
-							"id": "typewriter-finish",
-							"objectClass": "Log",
-							"sid": 355973479887117
+							"objectClass": "Info",
+							"sid": 650131636488107,
+							"isInverted": true
 						},
 						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 484846944744615,
-							"disabled": true,
-							"parameters": {
-								"seconds": "0.2"
-							}
-						},
-						{
-							"id": "typewriter-text",
-							"objectClass": "Log",
-							"sid": 187376476564730,
-							"parameters": {
-								"text": "Message",
-								"duration": "len(Message) * 0.03"
-							}
-						}
-					],
-					"sid": 990543629388286
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 994048450408205
+							"id": "is-empty",
+							"objectClass": "LogBuffer",
+							"sid": 947011894660966,
+							"isInverted": true
 						}
 					],
 					"actions": [
 						{
 							"id": "typewriter-text",
-							"objectClass": "Log",
-							"sid": 217967799145098,
+							"objectClass": "Info",
+							"sid": 219463533978983,
 							"parameters": {
-								"text": "Message",
-								"duration": "len(Message) * 0.02"
+								"text": "LogBuffer.At(0) & \"     \"",
+								"duration": "1"
 							}
-						}
-					],
-					"sid": 972078213132226
-				}
-			]
-		},
-		{
-			"functionName": "ConfigureParty",
-			"functionDescription": "",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionIsAsync": false,
-			"functionParameters": [],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [
-				{
-					"id": "set-size",
-					"objectClass": "PeerIDs",
-					"sid": 142732122565884,
-					"parameters": {
-						"width": "Multiplayer.PeerCount",
-						"height": "1",
-						"depth": "1"
-					}
-				},
-				{
-					"id": "set-visible",
-					"objectClass": "PlayerName",
-					"sid": 212967293847692,
-					"parameters": {
-						"visibility": "visible"
-					}
-				}
-			],
-			"sid": 123413030223112,
-			"children": [
-				{
-					"eventType": "variable",
-					"name": "ReadyPeers",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 896562788626099
-				},
-				{
-					"eventType": "block",
-					"conditions": [
+						},
 						{
-							"id": "compare-peer-count",
-							"objectClass": "Multiplayer",
-							"sid": 583349872699096,
+							"id": "pop",
+							"objectClass": "LogBuffer",
+							"sid": 698461168960046,
 							"parameters": {
-								"comparison": 0,
-								"count": "0"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "disconnect-room",
-							"objectClass": "Multiplayer",
-							"sid": 586956761362243
-						}
-					],
-					"sid": 610928971047410
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 731593657212381
-						}
-					],
-					"actions": [
-						{
-							"id": "send-message",
-							"objectClass": "Multiplayer",
-							"sid": 505004079822909,
-							"parameters": {
-								"peer-id": "\"\"",
-								"tag": "\"ready\"",
-								"message": "Multiplayer.MyID",
-								"mode": "reliable-ordered"
-							}
-						}
-					],
-					"sid": 775429969393740
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "for",
-							"objectClass": "System",
-							"sid": 384767452637146,
-							"parameters": {
-								"name": "\"PeerIndex\"",
-								"start-index": "0",
-								"end-index": "Multiplayer.PeerCount"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-at-x",
-							"objectClass": "PeerIDs",
-							"sid": 638164781011470,
-							"parameters": {
-								"x": "loopindex",
-								"value": "Multiplayer.PeerIDAt(loopindex)"
-							}
-						}
-					],
-					"sid": 597870476109172
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-size",
-							"objectClass": "PeerIDs",
-							"sid": 543408802541148,
-							"parameters": {
-								"axis": "x",
-								"comparison": 4,
-								"value": "1"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "sort",
-							"objectClass": "PeerIDs",
-							"sid": 397068954169879,
-							"parameters": {
+								"where": "front",
 								"axis": "x"
 							}
 						}
 					],
-					"sid": 783479301242920
+					"sid": 713102724930943
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "for-each",
-							"objectClass": "System",
-							"sid": 197050508355387,
+							"id": "on-tap-object",
+							"objectClass": "Touch",
+							"sid": 270262287288824,
 							"parameters": {
-								"object": "PlayerName"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-text",
-							"objectClass": "PlayerName",
-							"sid": 249484674731137,
-							"parameters": {
-								"text": "Multiplayer.PeerAliasFromID(PeerIDs.At(PlayerName.PlayerIndex))"
-							}
-						},
-						{
-							"id": "set-font-face",
-							"objectClass": "PlayerName",
-							"sid": 912597173007720,
-							"parameters": {
-								"font-face": "PlayerName.FaceName",
-								"style": "normal"
-							}
-						}
-					],
-					"sid": 511256304700301,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "contains-value",
-									"objectClass": "ReadyPeerIDs",
-									"sid": 158353635147680,
-									"parameters": {
-										"value": "PeerIDs.At(PlayerName.PlayerIndex)"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "add-to-eventvar",
-									"objectClass": "System",
-									"sid": 353971034374125,
-									"parameters": {
-										"variable": "ReadyPeers",
-										"value": "1"
-									}
-								}
-							],
-							"sid": 751116469787881,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "Face",
-											"sid": 145943426615149,
-											"parameters": {
-												"instance-variable": "PlayerIndex",
-												"comparison": 0,
-												"value": "PlayerName.PlayerIndex"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "Face",
-											"sid": 681949542442221,
-											"parameters": {
-												"instance-variable": "State",
-												"value": "\"Playing\""
-											}
-										}
-									],
-									"sid": 199605949396912
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "is-host",
-											"objectClass": "Multiplayer",
-											"sid": 369823818287000
-										}
-									],
-									"actions": [
-										{
-											"id": "broadcast-message",
-											"objectClass": "Multiplayer",
-											"sid": 922865223650551,
-											"parameters": {
-												"from-id": "\"\"",
-												"tag": "\"ready\"",
-												"message": "PeerIDs.At(PlayerName.PlayerIndex)",
-												"mode": "reliable-ordered"
-											}
-										}
-									],
-									"sid": 690171789836239
-								}
-							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "else",
-									"objectClass": "System",
-									"sid": 253203199615146
-								}
-							],
-							"actions": [],
-							"sid": 630695999910978,
-							"children": [
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "Face",
-											"sid": 189887875869510,
-											"parameters": {
-												"instance-variable": "PlayerIndex",
-												"comparison": 0,
-												"value": "PlayerName.PlayerIndex"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-instvar-value",
-											"objectClass": "Face",
-											"sid": 261578389209577,
-											"parameters": {
-												"instance-variable": "State",
-												"value": "\"Surprised\""
-											}
-										}
-									],
-									"sid": 525911939765298
-								}
-							]
-						}
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-text",
-							"objectClass": "PlayerName",
-							"sid": 994274285526434,
-							"parameters": {
-								"text-to-compare": "Multiplayer.MyAlias",
-								"case-sensitivity": "case-sensitive"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-font-face",
-							"objectClass": "PlayerName",
-							"sid": 186717329076699,
-							"parameters": {
-								"font-face": "PlayerName.FaceName",
-								"style": "bold"
-							}
-						}
-					],
-					"sid": 728901122173912
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Avatar",
-							"sid": 885888985479820,
-							"parameters": {
-								"instance-variable": "PlayerIndex",
-								"comparison": 2,
-								"value": "Multiplayer.PeerCount"
-							}
-						}
-					],
-					"actions": [],
-					"sid": 958740572055487,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-host",
-									"objectClass": "Multiplayer",
-									"sid": 319299569062110
-								}
-							],
-							"actions": [
-								{
-									"id": "set-instvar-value",
-									"objectClass": "Avatar",
-									"sid": 492278423783228,
-									"parameters": {
-										"instance-variable": "PeerID",
-										"value": "PeerIDs.At(Avatar.PlayerIndex)"
-									}
-								}
-							],
-							"sid": 203698454808380
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-at-x",
-									"objectClass": "PeerIDs",
-									"sid": 879454476223757,
-									"parameters": {
-										"x": "Avatar.PlayerIndex",
-										"comparison": 0,
-										"value": "Multiplayer.MyID"
-									}
-								}
-							],
-							"actions": [],
-							"sid": 542095259140952
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "Face",
-									"sid": 798554104727492,
-									"parameters": {
-										"instance-variable": "PlayerIndex",
-										"comparison": 0,
-										"value": "Avatar.PlayerIndex"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-visible",
-									"objectClass": "Face",
-									"sid": 502918994851960,
-									"parameters": {
-										"visibility": "visible"
-									}
-								}
-							],
-							"sid": 244388234862831
-						}
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Face",
-							"sid": 344448926347257,
-							"parameters": {
-								"instance-variable": "PlayerIndex",
-								"comparison": 5,
-								"value": "Multiplayer.PeerCount"
+								"object": "Info"
 							}
 						}
 					],
 					"actions": [
 						{
 							"id": "set-visible",
+							"objectClass": "Log",
+							"sid": 830665586403058,
+							"parameters": {
+								"visibility": "toggle"
+							}
+						},
+						{
+							"callFunction": "PlaySFX",
+							"sid": 166413251596001,
+							"parameters": [
+								"\"interaction\""
+							]
+						}
+					],
+					"sid": 177153151352056
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tap-object",
+							"objectClass": "Touch",
+							"sid": 739302206435957,
+							"parameters": {
+								"object": "Log"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "Log",
+							"sid": 750257581610012,
+							"parameters": {
+								"text": "\"\""
+							}
+						},
+						{
+							"callFunction": "PlaySFX",
+							"sid": 866788568645451,
+							"parameters": [
+								"\"interaction\""
+							]
+						}
+					],
+					"sid": 901705318821468
+				}
+			],
+			"sid": 961493902363716
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "General",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
 							"objectClass": "Face",
-							"sid": 976155472176994,
+							"sid": 304928511567503,
 							"parameters": {
-								"visibility": "invisible"
+								"animation": "Face.State"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "Face",
+							"sid": 307723528300845,
+							"parameters": {
+								"animation": "Face.State",
+								"from": "current-frame"
 							}
 						}
 					],
-					"sid": 357090922817335
+					"sid": 642945833379279
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 809684752874243,
+							"id": "on-peer-message",
+							"objectClass": "Multiplayer",
+							"sid": 250530145721317,
 							"parameters": {
-								"variable": "ReadyPeers",
-								"comparison": 5,
-								"value": "MinReadyPlayers"
+								"tag": "\"kill\""
 							}
 						}
 					],
 					"actions": [
 						{
-							"id": "set-enabled",
-							"objectClass": "StartButton",
-							"sid": 428149864011720,
-							"parameters": {
-								"mode": "enabled"
-							}
-						}
-					],
-					"sid": 212250388475388
-				},
-				{
-					"eventType": "block",
-					"conditions": [
+							"callFunction": "Log",
+							"sid": 916390910519741,
+							"parameters": [
+								"\"Room SHUTDOWN required by peer or host...\""
+							]
+						},
 						{
-							"id": "else",
+							"callFunction": "PlaySFX",
+							"sid": 630232942690166,
+							"parameters": [
+								"\"interaction\""
+							]
+						},
+						{
+							"id": "broadcast-message",
+							"objectClass": "Multiplayer",
+							"sid": 355590347599570,
+							"parameters": {
+								"from-id": "\"\"",
+								"tag": "\"kill\"",
+								"message": "\"\"",
+								"mode": "reliable-ordered"
+							}
+						},
+						{
+							"id": "wait",
 							"objectClass": "System",
-							"sid": 177149855629800
-						}
-					],
-					"actions": [
-						{
-							"id": "set-enabled",
-							"objectClass": "StartButton",
-							"sid": 897062974524482,
+							"sid": 558750754333754,
 							"parameters": {
-								"mode": "disabled"
+								"seconds": "2.0"
 							}
+						},
+						{
+							"id": "disconnect-room",
+							"objectClass": "Multiplayer",
+							"sid": 856042197833626
 						}
 					],
-					"sid": 707908900713754
-				}
-			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "is-animation-playing",
-					"objectClass": "Face",
-					"sid": 610907969712221,
-					"parameters": {
-						"animation": "Face.State"
-					},
-					"isInverted": true
+					"sid": 210098333510621
 				}
 			],
-			"actions": [
-				{
-					"id": "set-animation",
-					"objectClass": "Face",
-					"sid": 409442402156579,
-					"parameters": {
-						"animation": "Face.State",
-						"from": "current-frame"
-					}
-				}
-			],
-			"sid": 335640551594078
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Face",
-					"sid": 505635014072924,
-					"parameters": {
-						"instance-variable": "State",
-						"comparison": 0,
-						"value": "\"Playing\""
-					}
-				},
-				{
-					"id": "compare-instance-variable",
-					"objectClass": "Score",
-					"sid": 695780076273002,
-					"parameters": {
-						"instance-variable": "PlayerIndex",
-						"comparison": 0,
-						"value": "Face.PlayerIndex"
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "set-boolean-instvar",
-					"objectClass": "Score",
-					"sid": 411030225663433,
-					"parameters": {
-						"instance-variable": "HasPlayed",
-						"value": "true"
-					}
-				}
-			],
-			"sid": 379275246226416
+			"sid": 873440266502351
 		},
 		{
 			"eventType": "group",
@@ -731,40 +358,8 @@
 			"isActiveOnStart": true,
 			"children": [
 				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-left-room",
-							"objectClass": "Multiplayer",
-							"sid": 968230469973693
-						}
-					],
-					"actions": [
-						{
-							"id": "disconnect-signalling",
-							"objectClass": "Multiplayer",
-							"sid": 883100838067157
-						}
-					],
-					"sid": 667696328957462
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-disconnected",
-							"objectClass": "Multiplayer",
-							"sid": 723545645484846
-						}
-					],
-					"actions": [
-						{
-							"id": "restart-layout",
-							"objectClass": "System",
-							"sid": 618618529651233
-						}
-					],
-					"sid": 354196566375029
+					"eventType": "comment",
+					"text": "Scene setup"
 				},
 				{
 					"eventType": "block",
@@ -777,12 +372,28 @@
 					],
 					"actions": [
 						{
+							"callFunction": "Log",
+							"sid": 738715502726234,
+							"parameters": [
+								"\"Setting up the game\""
+							]
+						},
+						{
 							"id": "set-eventvar-value",
 							"objectClass": "System",
 							"sid": 959823949584769,
 							"parameters": {
 								"variable": "GameState",
 								"value": "\"waiting\""
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 529143365444157,
+							"parameters": {
+								"variable": "MatchmakingStage",
+								"value": "\"prepare\""
 							}
 						},
 						{
@@ -806,38 +417,11 @@
 						{
 							"id": "set-css-style",
 							"objectClass": "StartButton",
-							"sid": 337044028888519,
-							"disabled": true,
-							"parameters": {
-								"property-name": "\"background-color\"",
-								"value": "\"#214152\""
-							}
-						},
-						{
-							"id": "set-css-style",
-							"objectClass": "StartButton",
-							"sid": 965180574086526,
-							"disabled": true,
-							"parameters": {
-								"property-name": "\"color\"",
-								"value": "\"white\""
-							}
-						},
-						{
-							"id": "set-css-style",
-							"objectClass": "StartButton",
 							"sid": 377944950529088,
 							"parameters": {
 								"property-name": "\"font-size\"",
 								"value": "\"44\""
 							}
-						},
-						{
-							"callFunction": "PlaySFX",
-							"sid": 841165897967709,
-							"parameters": [
-								"\"interaction\""
-							]
 						},
 						{
 							"callFunction": "PlayAmbienceLoop",
@@ -858,30 +442,14 @@
 							"parameters": {
 								"tags": "\"entrance\"",
 								"property": "position",
-								"end-x": "OnStage.X",
-								"end-y": "OnStage.Y",
+								"end-x": "MonsterStage.X",
+								"end-y": "MonsterStage.Y",
 								"time": "12",
 								"ease": "default",
 								"destroy-on-complete": "no",
 								"loop": "no",
 								"ping-pong": "no"
 							}
-						},
-						{
-							"id": "set-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 403740558869515,
-							"parameters": {
-								"variable": "Ready",
-								"value": "false"
-							}
-						},
-						{
-							"callFunction": "Log",
-							"sid": 307081757956390,
-							"parameters": [
-								"\"Connecting to signalling server…\""
-							]
 						},
 						{
 							"id": "sync-object",
@@ -946,11 +514,19 @@
 							}
 						},
 						{
-							"id": "connect",
-							"objectClass": "Multiplayer",
-							"sid": 133886881338203,
+							"id": "set-visible",
+							"objectClass": "PlayerName",
+							"sid": 502443344844746,
 							"parameters": {
-								"server": "\"wss://multiplayer.scirra.com\""
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "PlayerName",
+							"sid": 410469896636390,
+							"parameters": {
+								"text": "\"\""
 							}
 						},
 						{
@@ -961,9 +537,9 @@
 						{
 							"id": "set-visible",
 							"objectClass": "Face",
-							"sid": 199595175232476,
+							"sid": 297891004179458,
 							"parameters": {
-								"visibility": "visible"
+								"visibility": "invisible"
 							}
 						},
 						{
@@ -985,23 +561,175 @@
 							}
 						},
 						{
-							"id": "set-visible",
-							"objectClass": "StartButton",
-							"sid": 953984617826229,
+							"id": "set-instvar-value",
+							"objectClass": "Avatar",
+							"sid": 989908650260831,
 							"parameters": {
-								"visibility": "invisible"
+								"instance-variable": "Animation",
+								"value": "\"Idle\""
 							}
 						},
 						{
-							"id": "set-visible",
-							"objectClass": "PlayerName",
-							"sid": 853072429970513,
+							"id": "move-to-top",
+							"objectClass": "Egg",
+							"sid": 134894575678161
+						},
+						{
+							"id": "set-text",
+							"objectClass": "RoomName",
+							"sid": 454004490119989,
 							"parameters": {
-								"visibility": "invisible"
+								"text": "\"...connecting...\""
 							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "StartButton",
+							"sid": 762454910999459,
+							"parameters": {
+								"text": "\"Wait\""
+							}
+						},
+						{
+							"callFunction": "Connect",
+							"sid": 893430883929776
 						}
 					],
 					"sid": 522667592383266
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 117549723824696,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"waiting\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-mirrored",
+							"objectClass": "Avatar1",
+							"sid": 684997896972014,
+							"parameters": {
+								"state": "mirrored"
+							}
+						},
+						{
+							"id": "set-mirrored",
+							"objectClass": "Avatar3",
+							"sid": 417719472485423,
+							"parameters": {
+								"state": "mirrored"
+							}
+						}
+					],
+					"sid": 681780468033455
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-x-seconds",
+							"objectClass": "System",
+							"sid": 928218616899289,
+							"parameters": {
+								"interval-seconds": "4"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 986351638562333,
+							"parameters": {
+								"variable": "GameState",
+								"comparison": 0,
+								"value": "\"waiting\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "PlaySFX",
+							"sid": 247366766201016,
+							"parameters": [
+								"\"long roar\""
+							]
+						}
+					],
+					"sid": 842823498661248
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-tweens-finished",
+							"objectClass": "Monster",
+							"sid": 793753753855655,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"entrance\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "Monster",
+							"sid": 987498012978875,
+							"parameters": {
+								"animation": "\"Idle Down\"",
+								"from": "current-frame"
+							}
+						}
+					],
+					"sid": 151920846544212
+				},
+				{
+					"eventType": "comment",
+					"text": "Connect"
+				},
+				{
+					"functionName": "Connect",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "connect",
+							"objectClass": "Multiplayer",
+							"sid": 748618740236506,
+							"parameters": {
+								"server": "\"wss://multiplayer.scirra.com\""
+							}
+						},
+						{
+							"callFunction": "Log",
+							"sid": 874861921293025,
+							"parameters": [
+								"\"Connecting to server\""
+							]
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 855117798329353,
+							"parameters": {
+								"variable": "MatchmakingStage",
+								"value": "\"connect\""
+							}
+						}
+					],
+					"sid": 570419120442987
 				},
 				{
 					"eventType": "block",
@@ -1014,29 +742,52 @@
 					],
 					"actions": [
 						{
-							"callFunction": "Log",
-							"sid": 905315030154989,
-							"parameters": [
-								"\"Connected, logging in…\""
-							]
-						},
-						{
-							"callFunction": "PlaySFX",
-							"sid": 731821153546468,
-							"parameters": [
-								"\"interaction\""
-							]
-						},
-						{
-							"id": "log-in",
-							"objectClass": "Multiplayer",
-							"sid": 496885709042530,
-							"parameters": {
-								"alias": "MyName"
-							}
+							"callFunction": "Login",
+							"sid": 581232468363293
 						}
 					],
 					"sid": 898576180263201
+				},
+				{
+					"eventType": "comment",
+					"text": "Login"
+				},
+				{
+					"functionName": "Login",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "log-in",
+							"objectClass": "Multiplayer",
+							"sid": 732273763958345,
+							"parameters": {
+								"alias": "MyName"
+							}
+						},
+						{
+							"callFunction": "Log",
+							"sid": 773281822188944,
+							"parameters": [
+								"\"Logging in as \" & MyName"
+							]
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 276639794004674,
+							"parameters": {
+								"variable": "MatchmakingStage",
+								"value": "\"login\""
+							}
+						}
+					],
+					"sid": 484991958498458
 				},
 				{
 					"eventType": "block",
@@ -1049,13 +800,6 @@
 					],
 					"actions": [
 						{
-							"callFunction": "Log",
-							"sid": 197786307906038,
-							"parameters": [
-								"\"Logged in as \" & Multiplayer.MyAlias & \" (ID: \" & Multiplayer.MyID & \"), joining room…\""
-							]
-						},
-						{
 							"callFunction": "PlaySFX",
 							"sid": 133815259830955,
 							"parameters": [
@@ -1063,19 +807,390 @@
 							]
 						},
 						{
-							"id": "auto-join-room",
-							"objectClass": "Multiplayer",
-							"sid": 797279048641624,
-							"parameters": {
-								"game": "GAME_NAME",
-								"instance": "INSTANCE_NAME",
-								"first-room": "ROOM_NAME",
-								"max-peers": "4",
-								"locking": "lock-when-full"
-							}
+							"callFunction": "Log",
+							"sid": 463029188621676,
+							"parameters": [
+								"\"Logged in as \" & Multiplayer.MyAlias"
+							]
+						},
+						{
+							"callFunction": "Join",
+							"sid": 789336734116189
 						}
 					],
 					"sid": 304826278553399
+				},
+				{
+					"eventType": "comment",
+					"text": "Join"
+				},
+				{
+					"functionName": "Join",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-size",
+							"objectClass": "Players",
+							"sid": 214743911124255,
+							"parameters": {
+								"width": "0",
+								"height": "1",
+								"depth": "1"
+							}
+						},
+						{
+							"id": "auto-join-room",
+							"objectClass": "Multiplayer",
+							"sid": 526779702768093,
+							"parameters": {
+								"game": "GAME_NAME",
+								"instance": "INSTANCE_NAME",
+								"first-room": "Functions.GenerateRoomName",
+								"max-peers": "4",
+								"locking": "lock-when-full"
+							}
+						},
+						{
+							"callFunction": "Log",
+							"sid": 657256700301315,
+							"parameters": [
+								"\"Joining \" & Functions.GenerateRoomName"
+							]
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 625804818688574,
+							"parameters": {
+								"variable": "MatchmakingStage",
+								"value": "\"join\""
+							}
+						}
+					],
+					"sid": 690691430036211
+				},
+				{
+					"functionName": "GenerateRoomName",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "string",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 431610862123530,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 510867451037478,
+									"parameters": {
+										"variable": "RoomAttempt",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-function-return-value",
+									"objectClass": "Functions",
+									"sid": 797927582325971,
+									"parameters": {
+										"value": "ROOM_NAME"
+									}
+								}
+							],
+							"sid": 157582575262829
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 137465801178525
+								}
+							],
+							"actions": [
+								{
+									"id": "set-function-return-value",
+									"objectClass": "Functions",
+									"sid": 876585909577261,
+									"parameters": {
+										"value": "ROOM_NAME & RoomAttempt"
+									}
+								}
+							],
+							"sid": 511319731853401
+						}
+					]
+				},
+				{
+					"functionName": "SpawnWhatsMissing",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "Usually this is not necessary, the initial avatars etc. can be used; but there are cases in which the avatars etc. get lost, e.g. if a player becomes a peer and then is promoted to host before the game starts, because the initial host disconnects."
+						}
+					],
+					"sid": 387973563436283,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "Avatar0",
+									"sid": 852009072141986,
+									"isInverted": true
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "SpawningPoint",
+									"sid": 560843263930939,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "SpawningPoint",
+									"sid": 159573688645615,
+									"parameters": {
+										"object": "Avatar0",
+										"layer": "\"Arena\"",
+										"image-point": "0",
+										"create-hierarchy": false
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Avatar0",
+									"sid": 569446139062338,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"value": "0"
+									}
+								},
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "Avatar0",
+									"sid": 386082215590580,
+									"parameters": {
+										"instance-variable": "HasEgg",
+										"value": "true"
+									}
+								}
+							],
+							"sid": 221803978120918
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "Avatar1",
+									"sid": 751745545793276,
+									"isInverted": true
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "SpawningPoint",
+									"sid": 120390003885400,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "SpawningPoint",
+									"sid": 667596765458851,
+									"parameters": {
+										"object": "Avatar1",
+										"layer": "\"Arena\"",
+										"image-point": "0",
+										"create-hierarchy": false
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Avatar1",
+									"sid": 837085792228756,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"value": "1"
+									}
+								},
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "Avatar1",
+									"sid": 171941726636692,
+									"parameters": {
+										"instance-variable": "HasEgg",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 667977507211030
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "Avatar2",
+									"sid": 609711514580833,
+									"isInverted": true
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "SpawningPoint",
+									"sid": 628685239058486,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "SpawningPoint",
+									"sid": 115859824640219,
+									"parameters": {
+										"object": "Avatar2",
+										"layer": "\"Arena\"",
+										"image-point": "0",
+										"create-hierarchy": false
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Avatar2",
+									"sid": 883686339688553,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"value": "2"
+									}
+								},
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "Avatar2",
+									"sid": 539589790793150,
+									"parameters": {
+										"instance-variable": "HasEgg",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 945643843147730
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "Avatar3",
+									"sid": 785166927736794,
+									"isInverted": true
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "SpawningPoint",
+									"sid": 143111901666153,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "3"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "SpawningPoint",
+									"sid": 547903910133830,
+									"parameters": {
+										"object": "Avatar3",
+										"layer": "\"Arena\"",
+										"image-point": "0",
+										"create-hierarchy": false
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Avatar3",
+									"sid": 577762224274354,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"value": "3"
+									}
+								},
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "Avatar3",
+									"sid": 443398953426419,
+									"parameters": {
+										"instance-variable": "HasEgg",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 547328351690817
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-on-screen",
+									"objectClass": "Monster",
+									"sid": 244195381085557,
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "spawn-another-object",
+									"objectClass": "MonsterStage",
+									"sid": 297749921751914,
+									"parameters": {
+										"object": "Monster",
+										"layer": "\"Arena\"",
+										"image-point": "0",
+										"create-hierarchy": false
+									}
+								}
+							],
+							"sid": 693419404536048
+						}
+					]
 				},
 				{
 					"eventType": "block",
@@ -1088,35 +1203,38 @@
 					],
 					"actions": [
 						{
-							"id": "set-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 428068992091607,
+							"id": "push",
+							"objectClass": "Players",
+							"sid": 873091602826341,
 							"parameters": {
-								"variable": "Ready",
-								"value": "true"
+								"where": "front",
+								"value": "Multiplayer.MyID",
+								"axis": "x"
 							}
-						},
-						{
-							"callFunction": "PlaySFX",
-							"sid": 728931621262303,
-							"parameters": [
-								"\"interaction\""
-							]
 						},
 						{
 							"id": "set-text",
 							"objectClass": "RoomName",
-							"sid": 910375915626053,
+							"sid": 172214490089165,
 							"parameters": {
 								"text": "Multiplayer.CurrentRoom"
 							}
 						},
 						{
-							"callFunction": "Ready",
-							"sid": 523399131998413,
+							"callFunction": "PlaySFX",
+							"sid": 491604330017572,
 							"parameters": [
-								"Multiplayer.MyID"
+								"\"interaction\""
 							]
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 431801035734460,
+							"parameters": {
+								"variable": "MatchmakingStage",
+								"value": "\"ready\""
+							}
 						}
 					],
 					"sid": 455367435737397,
@@ -1132,13 +1250,6 @@
 							],
 							"actions": [
 								{
-									"callFunction": "Log",
-									"sid": 822759953588992,
-									"parameters": [
-										"\"You are the game host\""
-									]
-								},
-								{
 									"id": "append-text",
 									"objectClass": "RoomName",
 									"sid": 414323465562839,
@@ -1147,20 +1258,15 @@
 									}
 								},
 								{
-									"id": "set-visible",
-									"objectClass": "StartButton",
-									"sid": 960875368797598,
-									"parameters": {
-										"visibility": "visible"
-									}
+									"callFunction": "Log",
+									"sid": 882248278024483,
+									"parameters": [
+										"\"Created \" & Multiplayer.CurrentRoom"
+									]
 								},
 								{
-									"id": "set-enabled",
-									"objectClass": "StartButton",
-									"sid": 267861296148179,
-									"parameters": {
-										"mode": "disabled"
-									}
+									"callFunction": "SpawnWhatsMissing",
+									"sid": 757441502906079
 								},
 								{
 									"id": "set-group-active",
@@ -1170,10 +1276,6 @@
 										"group-name": "\"Host\"",
 										"state": "activated"
 									}
-								},
-								{
-									"callFunction": "ConfigureParty",
-									"sid": 492851410834842
 								}
 							],
 							"sid": 365409939725310
@@ -1190,25 +1292,20 @@
 							"actions": [
 								{
 									"callFunction": "Log",
-									"sid": 859446761253261,
+									"sid": 474390598250481,
 									"parameters": [
-										"\"You are a game peer\""
+										"\"Joined \" & Multiplayer.CurrentRoom"
 									]
 								},
 								{
 									"id": "destroy",
-									"objectClass": "StartButton",
-									"sid": 254704499026106
-								},
-								{
-									"id": "destroy",
 									"objectClass": "Avatar",
-									"sid": 140614208373379
+									"sid": 930024289742344
 								},
 								{
 									"id": "destroy",
 									"objectClass": "Monster",
-									"sid": 945463405284596
+									"sid": 106327466978468
 								},
 								{
 									"id": "set-group-active",
@@ -1218,10 +1315,6 @@
 										"group-name": "\"Peer\"",
 										"state": "activated"
 									}
-								},
-								{
-									"callFunction": "ConfigureParty",
-									"sid": 363065275891845
 								}
 							],
 							"sid": 884284865114808
@@ -1232,35 +1325,637 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "on-peer-connected",
-							"objectClass": "Multiplayer",
-							"sid": 182118815518661
-						},
-						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 983805741606114,
+							"sid": 889093330840703,
+							"parameters": {
+								"variable": "MatchmakingStage",
+								"comparison": 0,
+								"value": "\"play\""
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [],
+					"sid": 111172986802679,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-in-room",
+									"objectClass": "Multiplayer",
+									"sid": 987942039459738
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "RoomName",
+									"sid": 161524508930804,
+									"parameters": {
+										"text": "Multiplayer.CurrentRoom"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "StartButton",
+									"sid": 882111220342768,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 394615633111095,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-host",
+											"objectClass": "Multiplayer",
+											"sid": 986256027117993
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "Only the host can start the match."
+										},
+										{
+											"id": "append-text",
+											"objectClass": "RoomName",
+											"sid": 708981582453360,
+											"parameters": {
+												"text": "\" (host)\""
+											}
+										}
+									],
+									"sid": 829205961350282,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-size",
+													"objectClass": "Players",
+													"sid": 916371676356052,
+													"parameters": {
+														"axis": "x",
+														"comparison": 2,
+														"value": "MinReadyPlayers"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-enabled",
+													"objectClass": "StartButton",
+													"sid": 895822111408455,
+													"parameters": {
+														"mode": "disabled"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "StartButton",
+													"sid": 802990083235963,
+													"parameters": {
+														"text": "\"Min. \" & MinReadyPlayers & \" Players\""
+													}
+												}
+											],
+											"sid": 509769597300469
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 668673494161481
+												}
+											],
+											"actions": [
+												{
+													"id": "set-enabled",
+													"objectClass": "StartButton",
+													"sid": 958947470928959,
+													"parameters": {
+														"mode": "enabled"
+													}
+												}
+											],
+											"sid": 189924205694095,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-size",
+															"objectClass": "Players",
+															"sid": 769107373737161,
+															"parameters": {
+																"axis": "x",
+																"comparison": 0,
+																"value": "1"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-text",
+															"objectClass": "StartButton",
+															"sid": 127551610304074,
+															"parameters": {
+																"text": "\"Solo Play\""
+															}
+														}
+													],
+													"sid": 571649669498118
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "else",
+															"objectClass": "System",
+															"sid": 113545568970364
+														}
+													],
+													"actions": [
+														{
+															"id": "set-text",
+															"objectClass": "StartButton",
+															"sid": 332958403211186,
+															"parameters": {
+																"text": "\"Start Match\""
+															}
+														}
+													],
+													"sid": 694518497006077
+												}
+											]
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 414497526841438
+										}
+									],
+									"actions": [
+										{
+											"type": "comment",
+											"text": "The peers must wait for the host to start the match."
+										},
+										{
+											"id": "set-text",
+											"objectClass": "StartButton",
+											"sid": 720891935423387,
+											"parameters": {
+												"text": "\"Wait for Start\""
+											}
+										},
+										{
+											"id": "set-enabled",
+											"objectClass": "StartButton",
+											"sid": 436691002246245,
+											"parameters": {
+												"mode": "disabled"
+											}
+										}
+									],
+									"sid": 765546933009716
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 478676684600615
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "RoomName",
+									"sid": 795791212300603,
+									"parameters": {
+										"text": "\"No room\""
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "StartButton",
+									"sid": 309753846805638,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								}
+							],
+							"sid": 858439574780661,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 402769579893448,
+											"parameters": {
+												"variable": "MatchmakingStage",
+												"comparison": 0,
+												"value": "\"ready\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "Join",
+											"sid": 980280386300460
+										}
+									],
+									"sid": 974964630344018
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-left-room",
+							"objectClass": "Multiplayer",
+							"sid": 255508947882244
+						}
+					],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 790169124940122,
+							"parameters": {
+								"variable": "RoomAttempt",
+								"value": "1"
+							}
+						},
+						{
+							"callFunction": "Join",
+							"sid": 744679323053081
+						}
+					],
+					"sid": 319289664735174
+				},
+				{
+					"eventType": "comment",
+					"text": "Play"
+				},
+				{
+					"functionName": "Play",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 447802059965269,
+							"parameters": {
+								"variable": "MatchmakingStage",
+								"value": "\"play\""
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 150566041629140,
 							"parameters": {
 								"variable": "GameState",
+								"value": "\"playing\""
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "StartButton",
+							"sid": 231974716227191,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						},
+						{
+							"callFunction": "PlaySFX",
+							"sid": 304388504695486,
+							"parameters": [
+								"\"interaction\""
+							]
+						},
+						{
+							"callFunction": "Log",
+							"sid": 245704939281833,
+							"parameters": [
+								"\"Match started\""
+							]
+						}
+					],
+					"sid": 259098844312146
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-clicked",
+							"objectClass": "StartButton",
+							"sid": 195608810508086
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "This happens only for the host."
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Avatar",
+							"sid": 909314791658451,
+							"parameters": {
+								"instance-variable": "PeerID",
+								"value": "Players.At(Avatar.PlayerIndex)"
+							}
+						},
+						{
+							"callFunction": "Play",
+							"sid": 787357870538240
+						},
+						{
+							"id": "broadcast-message",
+							"objectClass": "Multiplayer",
+							"sid": 102394751101141,
+							"parameters": {
+								"from-id": "\"\"",
+								"tag": "\"stage\"",
+								"message": "\"play\"",
+								"mode": "reliable-ordered"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "Face",
+							"sid": 830782133047061,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "Face",
+							"sid": 428463968412224,
+							"parameters": {
+								"instance-variable": "State",
+								"value": "\"Playing\""
+							}
+						}
+					],
+					"sid": 178934927393895,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-text",
+									"objectClass": "PlayerName",
+									"sid": 932211573741062,
+									"parameters": {
+										"text-to-compare": "\"\"",
+										"case-sensitivity": "ignore-case"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [],
+							"sid": 277566421066408,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Avatar",
+											"sid": 964354139098960,
+											"parameters": {
+												"instance-variable": "PlayerIndex",
+												"comparison": 0,
+												"value": "PlayerName.PlayerIndex"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-boolean-instvar",
+											"objectClass": "Avatar",
+											"sid": 943653144630799,
+											"parameters": {
+												"instance-variable": "Robot",
+												"value": "false"
+											}
+										},
+										{
+											"id": "set-enabled",
+											"objectClass": "Avatar",
+											"sid": 319663039995275,
+											"behaviorType": "Pathfinding",
+											"parameters": {
+												"set": "disabled"
+											}
+										},
+										{
+											"id": "associate-object-with-peer",
+											"objectClass": "Multiplayer",
+											"sid": 665798303941258,
+											"parameters": {
+												"object": "Avatar",
+												"peer-id": "Avatar.PeerID"
+											}
+										}
+									],
+									"sid": 614953914177004
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-text",
+									"objectClass": "PlayerName",
+									"sid": 431131777634752,
+									"parameters": {
+										"text-to-compare": "\"\"",
+										"case-sensitivity": "ignore-case"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "PlayerName",
+									"sid": 332127440193434,
+									"parameters": {
+										"text": "\"ROBOT\""
+									}
+								}
+							],
+							"sid": 200334640957377,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "Avatar",
+											"sid": 575756866464051,
+											"parameters": {
+												"instance-variable": "PlayerIndex",
+												"comparison": 0,
+												"value": "PlayerName.PlayerIndex"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-boolean-instvar",
+											"objectClass": "Avatar",
+											"sid": 116302877858869,
+											"parameters": {
+												"instance-variable": "Robot",
+												"value": "true"
+											}
+										},
+										{
+											"id": "set-enabled",
+											"objectClass": "Avatar",
+											"sid": 842071972026821,
+											"behaviorType": "Pathfinding",
+											"parameters": {
+												"set": "enabled"
+											}
+										}
+									],
+									"sid": 842208270919293
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-message",
+							"objectClass": "Multiplayer",
+							"sid": 705051982180761,
+							"parameters": {
+								"tag": "\"stage\""
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 572968216626562,
+							"parameters": {
+								"first-value": "Multiplayer.Message",
 								"comparison": 0,
-								"value": "\"waiting\""
+								"second-value": "\"play\""
 							}
 						}
 					],
 					"actions": [
 						{
-							"callFunction": "ConfigureParty",
-							"sid": 930180234809941
+							"type": "comment",
+							"text": "This happens only for the peers. They wouldn't know when the match is started otherwise."
 						},
 						{
-							"callFunction": "PlaySFX",
-							"sid": 493593677717383,
-							"parameters": [
-								"\"interaction\""
-							]
+							"callFunction": "Play",
+							"sid": 907272277614853
 						}
 					],
-					"sid": 371309199144246
+					"sid": 398971013196445
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-peer-count",
+							"objectClass": "Multiplayer",
+							"sid": 367592898632365,
+							"parameters": {
+								"comparison": 0,
+								"count": "0"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 828627880780696,
+							"parameters": {
+								"variable": "MatchmakingStage",
+								"comparison": 0,
+								"value": "\"play\""
+							}
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 452212125173307
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "This happens only for the peers when the host leaves.\nFor the host, instead, the match would go on if the peers drop."
+						},
+						{
+							"callFunction": "StopAllScores",
+							"sid": 786581350781701
+						},
+						{
+							"callFunction": "StopCountdown",
+							"sid": 420694964659611
+						},
+						{
+							"callFunction": "Log",
+							"sid": 543448966342545,
+							"parameters": [
+								"\"Connection lost!\""
+							]
+						},
+						{
+							"id": "typewriter-text",
+							"objectClass": "RoomName",
+							"sid": 980481684030633,
+							"parameters": {
+								"text": "\"DISCONNECTED\"",
+								"duration": "1"
+							}
+						}
+					],
+					"sid": 786244883885018
+				},
+				{
+					"eventType": "comment",
+					"text": "Players"
 				},
 				{
 					"eventType": "block",
@@ -1268,23 +1963,12 @@
 						{
 							"id": "on-peer-connected",
 							"objectClass": "Multiplayer",
-							"sid": 601488587009051
-						},
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 915065383707733,
-							"parameters": {
-								"variable": "GameState",
-								"comparison": 0,
-								"value": "\"waiting\""
-							},
-							"isInverted": true
+							"sid": 182118815518661
 						},
 						{
 							"id": "contains-value",
-							"objectClass": "PeerIDs",
-							"sid": 341067979923169,
+							"objectClass": "Players",
+							"sid": 990757568468156,
 							"parameters": {
 								"value": "Multiplayer.PeerID"
 							},
@@ -1293,16 +1977,82 @@
 					],
 					"actions": [
 						{
-							"id": "kick-peer",
-							"objectClass": "Multiplayer",
-							"sid": 862667639493733,
+							"id": "push",
+							"objectClass": "Players",
+							"sid": 351386017039581,
 							"parameters": {
-								"peer-id": "Multiplayer.PeerID",
-								"reason": "\"Room full\""
+								"where": "back",
+								"value": "Multiplayer.PeerID",
+								"axis": "x"
 							}
+						},
+						{
+							"id": "sort",
+							"objectClass": "Players",
+							"sid": 624303857652011,
+							"parameters": {
+								"axis": "x"
+							}
+						},
+						{
+							"callFunction": "PlaySFX",
+							"sid": 317567105189047,
+							"parameters": [
+								"\"interaction\""
+							]
+						},
+						{
+							"callFunction": "Log",
+							"sid": 795651443623925,
+							"parameters": [
+								"Multiplayer.PeerAlias & \" joined\""
+							]
 						}
 					],
-					"sid": 948039749436145
+					"sid": 371309199144246,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-host",
+									"objectClass": "Multiplayer",
+									"sid": 422364483119556
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 546312148763868,
+									"parameters": {
+										"variable": "MatchmakingStage",
+										"comparison": 0,
+										"value": "\"play\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "Log",
+									"sid": 196052056094963,
+									"parameters": [
+										"Multiplayer.PeerAlias & \" asked to leave\""
+									]
+								},
+								{
+									"id": "send-message",
+									"objectClass": "Multiplayer",
+									"sid": 645279437657070,
+									"parameters": {
+										"peer-id": "Multiplayer.PeerID",
+										"tag": "\"reject\"",
+										"message": "\"Match already started\"",
+										"mode": "reliable-ordered"
+									}
+								}
+							],
+							"sid": 809617651119963
+						}
+					]
 				},
 				{
 					"eventType": "block",
@@ -1313,9 +2063,134 @@
 							"sid": 718978317692982
 						},
 						{
+							"id": "contains-value",
+							"objectClass": "Players",
+							"sid": 621629281374488,
+							"parameters": {
+								"value": "Multiplayer.PeerID"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "delete",
+							"objectClass": "Players",
+							"sid": 206236793491861,
+							"parameters": {
+								"index": "Players.IndexOf(Multiplayer.PeerID)",
+								"axis": "x"
+							}
+						},
+						{
+							"callFunction": "PlaySFX",
+							"sid": 618453548974085,
+							"parameters": [
+								"\"interaction\""
+							]
+						},
+						{
+							"callFunction": "Log",
+							"sid": 831415509427223,
+							"parameters": [
+								"Multiplayer.PeerAlias & \" left\""
+							]
+						}
+					],
+					"sid": 811821798161721,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 250001972218368,
+									"parameters": {
+										"first-value": "Multiplayer.PeerID",
+										"comparison": 0,
+										"second-value": "Multiplayer.HostID"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "Log",
+									"sid": 772485772940233,
+									"parameters": [
+										"\"Lost connection to the host\""
+									]
+								}
+							],
+							"sid": 653750874061101
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-peer-count",
+							"objectClass": "Multiplayer",
+							"sid": 782545687453746,
+							"parameters": {
+								"comparison": 0,
+								"count": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "comment",
+							"text": "When the connection to the host is lost, there is no point for a peer in keeping track of the IDs."
+						},
+						{
+							"id": "set-size",
+							"objectClass": "Players",
+							"sid": 102087208040547,
+							"parameters": {
+								"width": "0",
+								"height": "1",
+								"depth": "1"
+							}
+						}
+					],
+					"sid": 686636177451227
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-message",
+							"objectClass": "Multiplayer",
+							"sid": 279431754875003,
+							"parameters": {
+								"tag": "\"reject\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "Log",
+							"sid": 894723286795195,
+							"parameters": [
+								"\"Match in progress, changing room\""
+							]
+						},
+						{
+							"id": "disconnect-room",
+							"objectClass": "Multiplayer",
+							"sid": 414530881678516
+						}
+					],
+					"sid": 697317158085726
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
-							"sid": 152675231783120,
+							"sid": 320511011594502,
 							"parameters": {
 								"variable": "GameState",
 								"comparison": 0,
@@ -1323,20 +2198,209 @@
 							}
 						}
 					],
-					"actions": [
+					"actions": [],
+					"sid": 336465299540747,
+					"children": [
 						{
-							"callFunction": "ConfigureParty",
-							"sid": 660504490829473
-						},
-						{
-							"callFunction": "PlaySFX",
-							"sid": 798838807272559,
-							"parameters": [
-								"\"interaction\""
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 123082647638741,
+									"parameters": {
+										"object": "PlayerName"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-font-face",
+									"objectClass": "PlayerName",
+									"sid": 865471854457242,
+									"parameters": {
+										"font-face": "PlayerName.FaceName",
+										"style": "normal"
+									}
+								}
+							],
+							"sid": 275843631380783,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "PlayerName",
+											"sid": 473382340768441,
+											"parameters": {
+												"instance-variable": "PlayerIndex",
+												"comparison": 2,
+												"value": "Players.Width"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-text",
+											"objectClass": "PlayerName",
+											"sid": 602509449588698,
+											"parameters": {
+												"text": "Multiplayer.PeerAliasFromID(Players.At(PlayerName.PlayerIndex))"
+											}
+										}
+									],
+									"sid": 735809504859128,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Face",
+													"sid": 804289639466923,
+													"parameters": {
+														"instance-variable": "PlayerIndex",
+														"comparison": 0,
+														"value": "PlayerName.PlayerIndex"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-visible",
+													"objectClass": "Face",
+													"sid": 409092136438969,
+													"parameters": {
+														"visibility": "visible"
+													}
+												},
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Face",
+													"sid": 502832807669428,
+													"parameters": {
+														"instance-variable": "State",
+														"value": "\"Playing\""
+													}
+												}
+											],
+											"sid": 795115955148480
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 818526464738380,
+													"parameters": {
+														"first-value": "Players.At(PlayerName.PlayerIndex)",
+														"comparison": 0,
+														"second-value": "Multiplayer.MyID"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-font-face",
+													"objectClass": "PlayerName",
+													"sid": 848747142563804,
+													"parameters": {
+														"font-face": "PlayerName.FaceName",
+														"style": "bold"
+													}
+												}
+											],
+											"sid": 575558274812076
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 394657263567793
+										}
+									],
+									"actions": [
+										{
+											"id": "set-text",
+											"objectClass": "PlayerName",
+											"sid": 956207137262953,
+											"parameters": {
+												"text": "\"\""
+											}
+										}
+									],
+									"sid": 153794590377905,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "Face",
+													"sid": 248763256352470,
+													"parameters": {
+														"instance-variable": "PlayerIndex",
+														"comparison": 0,
+														"value": "PlayerName.PlayerIndex"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-visible",
+													"objectClass": "Face",
+													"sid": 760930386914803,
+													"parameters": {
+														"visibility": "invisible"
+													}
+												}
+											],
+											"sid": 465113861204878
+										}
+									]
+								}
 							]
 						}
+					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Errors"
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-error",
+							"objectClass": "Multiplayer",
+							"sid": 374001432263750
+						}
 					],
-					"sid": 811821798161721
+					"actions": [
+						{
+							"callFunction": "Log",
+							"sid": 239788296711854,
+							"parameters": [
+								"\"Error: \" & Multiplayer.ErrorMessage"
+							]
+						},
+						{
+							"id": "disconnect-room",
+							"objectClass": "Multiplayer",
+							"sid": 409367106026632
+						}
+					],
+					"sid": 982878398553848
+				},
+				{
+					"eventType": "comment",
+					"text": "Stats"
 				},
 				{
 					"eventType": "block",
@@ -1382,405 +2446,13 @@
 						{
 							"id": "set-text",
 							"objectClass": "NetworkStats",
-							"sid": 906167218743459,
+							"sid": 121819794874988,
 							"parameters": {
-								"text": "Multiplayer.StatInboundCount & \" in (\" & (round(Multiplayer.StatInboundBandwidth/100)/10) & \" k) / sec\" & newline & Multiplayer.StatOutboundCount & \" out (\" & (round(Multiplayer.StatOutboundBandwidth/100)/10) & \" k) / sec\" & newline & \"Host ping \" & round(Multiplayer.PeerLatency(Multiplayer.HostID)) & \", PDV \" & round(Multiplayer.PeerPDV(Multiplayer.HostID))"
+								"text": "\"Peers detected: \" & Multiplayer.PeerCount & newline &\r\n\"Players ready: \" & Players.Width & newline &\n\"Inbound: \" & (round(Multiplayer.StatInboundBandwidth/102.4)/10) & \" K/s (\" & Multiplayer.StatInboundCount & \"pkgs.)\"  & newline &\n\"Outbound:\" & (round(Multiplayer.StatOutboundBandwidth/102.4)/10) & \" K/s (\" & Multiplayer.StatInboundCount & \"pkgs.)\" & newline &\n\"Host ping: \" & round(Multiplayer.PeerLatency(Multiplayer.HostID)) & \", PDV \" & round(Multiplayer.PeerPDV(Multiplayer.HostID))"
 							}
 						}
 					],
 					"sid": 188794122019087
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-clicked",
-							"objectClass": "StartButton",
-							"sid": 521034732363413
-						}
-					],
-					"actions": [
-						{
-							"callFunction": "PlaySFX",
-							"sid": 428954909929786,
-							"parameters": [
-								"\"interaction\""
-							]
-						}
-					],
-					"sid": 261006266300459,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "for-each-element",
-									"objectClass": "PeerIDs",
-									"sid": 459746492177433,
-									"parameters": {
-										"axes": "x"
-									}
-								},
-								{
-									"id": "contains-value",
-									"objectClass": "ReadyPeerIDs",
-									"sid": 934182593324586,
-									"parameters": {
-										"value": "PeerIDs.CurValue"
-									},
-									"isInverted": true
-								}
-							],
-							"actions": [
-								{
-									"id": "kick-peer",
-									"objectClass": "Multiplayer",
-									"sid": 930891893172467,
-									"parameters": {
-										"peer-id": "PeerIDs.CurValue",
-										"reason": "\"Stalling at game start\""
-									}
-								}
-							],
-							"sid": 581886109477872
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-peer-count",
-									"objectClass": "Multiplayer",
-									"sid": 864265920336492,
-									"parameters": {
-										"comparison": 5,
-										"count": "MinReadyPlayers"
-									}
-								}
-							],
-							"actions": [
-								{
-									"callFunction": "ConfigureParty",
-									"sid": 469252122617956
-								},
-								{
-									"id": "destroy",
-									"objectClass": "StartButton",
-									"sid": 526214499958077
-								},
-								{
-									"callFunction": "GameStateChange",
-									"sid": 304700116578354,
-									"parameters": [
-										"\"playing\""
-									]
-								},
-								{
-									"id": "flash",
-									"objectClass": "Egg",
-									"sid": 849034895332965,
-									"behaviorType": "Flash",
-									"parameters": {
-										"on-time": "0.1",
-										"off-time": "0.1",
-										"duration": "2"
-									}
-								}
-							],
-							"sid": 265197161267375
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "Avatar",
-									"sid": 844887811879300,
-									"parameters": {
-										"instance-variable": "PeerID",
-										"comparison": 0,
-										"value": "\"\""
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "destroy",
-									"objectClass": "Avatar",
-									"sid": 209353246434446
-								}
-							],
-							"sid": 606726205206703
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "else",
-									"objectClass": "System",
-									"sid": 876478617655683
-								}
-							],
-							"actions": [
-								{
-									"id": "associate-object-with-peer",
-									"objectClass": "Multiplayer",
-									"sid": 184688456306985,
-									"parameters": {
-										"object": "Avatar",
-										"peer-id": "Avatar.PeerID"
-									}
-								}
-							],
-							"sid": 137620339943083
-						}
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "every-x-seconds",
-							"objectClass": "System",
-							"sid": 741233115832078,
-							"parameters": {
-								"interval-seconds": "1.0"
-							}
-						},
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 306741578926763,
-							"parameters": {
-								"variable": "GameState",
-								"comparison": 0,
-								"value": "\"waiting\""
-							}
-						}
-					],
-					"actions": [],
-					"sid": 320481694232207,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-boolean-eventvar",
-									"objectClass": "System",
-									"sid": 165147519423858,
-									"parameters": {
-										"variable": "Ready"
-									}
-								}
-							],
-							"actions": [
-								{
-									"callFunction": "ConfigureParty",
-									"sid": 493673406071955
-								}
-							],
-							"sid": 276180854089034
-						}
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "every-x-seconds",
-							"objectClass": "System",
-							"sid": 588562668568395,
-							"parameters": {
-								"interval-seconds": "4"
-							}
-						},
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 840372350423456,
-							"parameters": {
-								"variable": "GameState",
-								"comparison": 0,
-								"value": "\"waiting\""
-							}
-						}
-					],
-					"actions": [
-						{
-							"callFunction": "PlaySFX",
-							"sid": 624968982368108,
-							"parameters": [
-								"\"long roar\""
-							]
-						}
-					],
-					"sid": 319956730788763
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "every-x-seconds",
-							"objectClass": "System",
-							"sid": 568971567395356,
-							"parameters": {
-								"interval-seconds": "9.5"
-							}
-						},
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 450956106472317,
-							"parameters": {
-								"variable": "GameState",
-								"comparison": 0,
-								"value": "\"waiting\""
-							}
-						}
-					],
-					"actions": [],
-					"sid": 808527838795476,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-peer-count",
-									"objectClass": "Multiplayer",
-									"sid": 394091367522639,
-									"parameters": {
-										"comparison": 0,
-										"count": "0"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "disconnect-room",
-									"objectClass": "Multiplayer",
-									"sid": 699271718605473
-								}
-							],
-							"sid": 525779750787366
-						}
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 317853580763183,
-							"parameters": {
-								"variable": "GameState",
-								"comparison": 0,
-								"value": "\"waiting\""
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-mirrored",
-							"objectClass": "Avatar1",
-							"sid": 889254406162422,
-							"parameters": {
-								"state": "mirrored"
-							}
-						},
-						{
-							"id": "set-mirrored",
-							"objectClass": "Avatar3",
-							"sid": 864076485133344,
-							"parameters": {
-								"state": "mirrored"
-							}
-						}
-					],
-					"sid": 935389765389942,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "Face",
-									"sid": 744864847628864,
-									"parameters": {
-										"instance-variable": "State",
-										"comparison": 0,
-										"value": "\"Surprised\""
-									}
-								},
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "PlayerName",
-									"sid": 488232639161176,
-									"parameters": {
-										"instance-variable": "PlayerIndex",
-										"comparison": 0,
-										"value": "Face.PlayerIndex"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-active",
-									"objectClass": "PlayerName",
-									"sid": 619562167172554,
-									"behaviorType": "Sine",
-									"parameters": {
-										"state": "active"
-									}
-								}
-							],
-							"sid": 689042004977922
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "Face",
-									"sid": 285652959867407,
-									"parameters": {
-										"instance-variable": "State",
-										"comparison": 0,
-										"value": "\"Playing\""
-									}
-								},
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "PlayerName",
-									"sid": 167178146740312,
-									"parameters": {
-										"instance-variable": "PlayerIndex",
-										"comparison": 0,
-										"value": "Face.PlayerIndex"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-active",
-									"objectClass": "PlayerName",
-									"sid": 383275187153446,
-									"behaviorType": "Sine",
-									"parameters": {
-										"state": "inactive"
-									}
-								},
-								{
-									"id": "set-opacity",
-									"objectClass": "PlayerName",
-									"sid": 711199916200180,
-									"parameters": {
-										"opacity": "100"
-									}
-								}
-							],
-							"sid": 319477922477054
-						}
-					]
 				}
 			],
 			"sid": 574492691276879
@@ -1792,6 +2464,10 @@
 			"description": "",
 			"isActiveOnStart": true,
 			"children": [
+				{
+					"eventType": "comment",
+					"text": "On play triggered"
+				},
 				{
 					"eventType": "block",
 					"conditions": [
@@ -1830,6 +2506,14 @@
 							}
 						},
 						{
+							"id": "set-visible",
+							"objectClass": "Score",
+							"sid": 955334270583467,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
 							"callFunction": "StartCountdown",
 							"sid": 250077992438133
 						},
@@ -1839,6 +2523,17 @@
 							"parameters": [
 								"\"main\""
 							]
+						},
+						{
+							"id": "flash",
+							"objectClass": "Egg",
+							"sid": 170846571119074,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "2"
+							}
 						}
 					],
 					"sid": 828012167466654,
@@ -1849,10 +2544,10 @@
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "Score",
-									"sid": 942242551549218,
+									"sid": 654926096502781,
 									"parameters": {
 										"instance-variable": "PlayerIndex",
-										"comparison": 2,
+										"comparison": 5,
 										"value": "Multiplayer.PeerCount"
 									}
 								}
@@ -1861,13 +2556,14 @@
 								{
 									"id": "set-visible",
 									"objectClass": "Score",
-									"sid": 661746496709608,
+									"sid": 738068726292493,
 									"parameters": {
-										"visibility": "visible"
+										"visibility": "invisible"
 									}
 								}
 							],
-							"sid": 752757389318822
+							"sid": 752757389318822,
+							"disabled": true
 						},
 						{
 							"eventType": "block",
@@ -1893,7 +2589,8 @@
 									}
 								}
 							],
-							"sid": 123165252590821
+							"sid": 123165252590821,
+							"disabled": true
 						},
 						{
 							"eventType": "block",
@@ -1921,6 +2618,10 @@
 					]
 				},
 				{
+					"eventType": "comment",
+					"text": "During play"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -1942,6 +2643,43 @@
 					],
 					"sid": 652454315136357,
 					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Face",
+									"sid": 651350219931874,
+									"parameters": {
+										"instance-variable": "State",
+										"comparison": 0,
+										"value": "\"Playing\""
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Score",
+									"sid": 842743613360883,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "Face.PlayerIndex"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "Score",
+									"sid": 106972635601506,
+									"parameters": {
+										"instance-variable": "HasPlayed",
+										"value": "true"
+									}
+								}
+							],
+							"sid": 304772736142734
+						},
 						{
 							"eventType": "block",
 							"conditions": [
@@ -1995,7 +2733,7 @@
 									"objectClass": "Monster",
 									"sid": 288980393725615,
 									"parameters": {
-										"object": "OnStage",
+										"object": "MonsterStage",
 										"image-point-optional": "0"
 									}
 								},
@@ -2076,6 +2814,108 @@
 							"sid": 875613174206548
 						},
 						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 632676780558506,
+									"parameters": {
+										"interval-seconds": "5"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 363837688857720,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "Avatar",
+											"sid": 690745857410133,
+											"parameters": {
+												"instance-variable": "Robot"
+											}
+										},
+										{
+											"id": "pick-random-instance",
+											"objectClass": "System",
+											"sid": 877084804413901,
+											"parameters": {
+												"object": "RobotWaypoint"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Avatar",
+											"sid": 248626493704887,
+											"parameters": {
+												"instance-variable": "RobotWaypointX",
+												"value": "RobotWaypoint.X"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "Avatar",
+											"sid": 521208531321517,
+											"parameters": {
+												"instance-variable": "RobotWaypointY",
+												"value": "RobotWaypoint.Y"
+											}
+										}
+									],
+									"sid": 543902166717336
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 757820762692121,
+									"parameters": {
+										"interval-seconds": "1"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 132526991381656,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-boolean-instance-variable-set",
+											"objectClass": "Avatar",
+											"sid": 952108292451502,
+											"parameters": {
+												"instance-variable": "Robot"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "find-path",
+											"objectClass": "Avatar",
+											"sid": 808023314739578,
+											"behaviorType": "Pathfinding",
+											"parameters": {
+												"x": "Avatar.RobotWaypointX",
+												"y": "Avatar.RobotWaypointY"
+											}
+										}
+									],
+									"sid": 963272097947176
+								}
+							]
+						},
+						{
 							"eventType": "group",
 							"disabled": false,
 							"title": "Host",
@@ -2110,6 +2950,15 @@
 														"value": "Multiplayer.MyID"
 													},
 													"isInverted": true
+												},
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "Avatar",
+													"sid": 226020834539605,
+													"parameters": {
+														"instance-variable": "Robot"
+													},
+													"isInverted": true
 												}
 											],
 											"actions": [
@@ -2124,6 +2973,31 @@
 												}
 											],
 											"sid": 157450475088155
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-boolean-instance-variable-set",
+													"objectClass": "Avatar",
+													"sid": 780608367495797,
+													"parameters": {
+														"instance-variable": "Robot"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-instvar-value",
+													"objectClass": "Avatar",
+													"sid": 257189926799001,
+													"parameters": {
+														"instance-variable": "Inputs",
+														"value": "Functions.ComputeRobotInputs(Avatar.UID)"
+													}
+												}
+											],
+											"sid": 879189673774658
 										},
 										{
 											"eventType": "block",
@@ -2350,10 +3224,10 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "Avatar",
-											"sid": 709446315180750,
+											"sid": 223756264072496,
 											"parameters": {
 												"instance-variable": "PeerID",
-												"value": "PeerIDs.At(Avatar.PlayerIndex)"
+												"value": "Players.At(Avatar.PlayerIndex)"
 											}
 										},
 										{
@@ -2480,13 +3354,6 @@
 											"parameters": [
 												"int(Multiplayer.Message)"
 											]
-										},
-										{
-											"callFunction": "Log",
-											"sid": 600263229819971,
-											"parameters": [
-												"\"Receveid message: Egg THROWN to player #\" & Multiplayer.Message"
-											]
 										}
 									],
 									"sid": 591887885599626
@@ -2509,13 +3376,6 @@
 											"sid": 565540528469947,
 											"parameters": [
 												"int(Multiplayer.Message)"
-											]
-										},
-										{
-											"callFunction": "Log",
-											"sid": 287284232633243,
-											"parameters": [
-												"\"Receveid message: Egg ASSIGNED to player #\" & Multiplayer.Message"
 											]
 										}
 									],
@@ -3273,6 +4133,10 @@
 					]
 				},
 				{
+					"eventType": "comment",
+					"text": "Death during play"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -3341,6 +4205,10 @@
 							"sid": 982702846165719
 						}
 					]
+				},
+				{
+					"eventType": "comment",
+					"text": "Egg rules"
 				},
 				{
 					"eventType": "block",
@@ -3413,30 +4281,403 @@
 					"sid": 394768213149629
 				},
 				{
-					"eventType": "block",
-					"conditions": [
+					"functionName": "LoseEgg",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 363076949399633,
+					"children": [
 						{
-							"id": "on-tweens-finished",
-							"objectClass": "Monster",
-							"sid": 571997356027285,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"entrance\""
-							}
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-nearestfurthest",
+									"objectClass": "Avatar",
+									"sid": 240274548340343,
+									"parameters": {
+										"which": "furthest",
+										"x": "Egg.X",
+										"y": "Egg.Y"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "PlaySFX",
+									"sid": 247002258760380,
+									"parameters": [
+										"\"defeat\""
+									]
+								},
+								{
+									"callFunction": "ThrowEgg",
+									"sid": 700376764935117,
+									"parameters": [
+										"Avatar.PlayerIndex"
+									]
+								}
+							],
+							"sid": 559379258402968
+						}
+					]
+				},
+				{
+					"functionName": "ThrowEgg",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "PlayerIndex",
+							"type": "number",
+							"initialValue": "-1",
+							"comment": "",
+							"sid": 506283858624711
 						}
 					],
+					"eventType": "function-block",
+					"conditions": [],
 					"actions": [
 						{
-							"id": "set-animation",
-							"objectClass": "Monster",
-							"sid": 735736023755029,
+							"callFunction": "Log",
+							"sid": 703002312016825,
+							"parameters": [
+								"\"Egg flying!\""
+							]
+						},
+						{
+							"id": "set-collisions-enabled",
+							"objectClass": "Egg",
+							"sid": 156224618092103,
 							"parameters": {
-								"animation": "\"Idle Down\"",
-								"from": "current-frame"
+								"collisions": "disabled"
 							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "Egg",
+							"sid": 559152415557435,
+							"parameters": {
+								"animation": "\"Naked\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"callFunction": "PlaySFX",
+							"sid": 885723565577791,
+							"parameters": [
+								"\"interaction\""
+							]
+						},
+						{
+							"callFunction": "StopAllScores",
+							"sid": 351040777280504
 						}
 					],
-					"sid": 852694672232711
+					"sid": 687908962652330,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "Avatar",
+									"sid": 982378235736902,
+									"parameters": {
+										"instance-variable": "HasEgg"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "Avatar",
+									"sid": 649262303887696,
+									"parameters": {
+										"instance-variable": "HasEgg",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 996653375602742
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Avatar",
+									"sid": 170644431265205,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "PlayerIndex"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "flash",
+									"objectClass": "Avatar",
+									"sid": 372451338114064,
+									"behaviorType": "Flash",
+									"parameters": {
+										"on-time": "0.1",
+										"off-time": "0.1",
+										"duration": "2.0"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Egg",
+									"sid": 732876870947689,
+									"parameters": {
+										"instance-variable": "ThrownToPlayerIndex",
+										"value": "PlayerIndex"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "Egg",
+									"sid": 463760345102883,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"throw\"",
+										"property": "position",
+										"end-x": "Avatar.X",
+										"end-y": "Avatar.Y",
+										"time": "2",
+										"ease": "noease",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "Egg",
+									"sid": 710238801552426,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"ballistic\"",
+										"property": "scale",
+										"end-x": "2",
+										"end-y": "2",
+										"time": "1",
+										"ease": "easeinoutsine",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "yes"
+									}
+								},
+								{
+									"id": "move-to-layer",
+									"objectClass": "Egg",
+									"sid": 247304155773010,
+									"parameters": {
+										"layer": "\"Tall Items\""
+									}
+								}
+							],
+							"sid": 389650384706181,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-host",
+											"objectClass": "Multiplayer",
+											"sid": 554646705057702
+										}
+									],
+									"actions": [
+										{
+											"id": "broadcast-message",
+											"objectClass": "Multiplayer",
+											"sid": 132812897844653,
+											"parameters": {
+												"from-id": "\"\"",
+												"tag": "\"throw egg\"",
+												"message": "str(Avatar.PlayerIndex)",
+												"mode": "reliable-ordered"
+											}
+										}
+									],
+									"sid": 789008511691837
+								}
+							]
+						}
+					]
+				},
+				{
+					"functionName": "AssignEgg",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "PlayerIndex",
+							"type": "number",
+							"initialValue": "-1",
+							"comment": "",
+							"sid": 507892777321241
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "flash",
+							"objectClass": "Egg",
+							"sid": 804840962470503,
+							"behaviorType": "Flash",
+							"parameters": {
+								"on-time": "0.1",
+								"off-time": "0.1",
+								"duration": "1"
+							}
+						},
+						{
+							"callFunction": "PlaySFX",
+							"sid": 751097381488314,
+							"parameters": [
+								"\"interaction\""
+							]
+						},
+						{
+							"callFunction": "StopAllScores",
+							"sid": 398718222092575
+						}
+					],
+					"sid": 256252715273077,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-boolean-instance-variable-set",
+									"objectClass": "Avatar",
+									"sid": 983329048535898,
+									"parameters": {
+										"instance-variable": "HasEgg"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "Avatar",
+									"sid": 876913248145470,
+									"parameters": {
+										"instance-variable": "HasEgg",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 815854155106978
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Avatar",
+									"sid": 183561350731645,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "PlayerIndex"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "Avatar",
+									"sid": 870115473797353,
+									"parameters": {
+										"instance-variable": "HasEgg",
+										"value": "true"
+									}
+								},
+								{
+									"callFunction": "StartScore",
+									"sid": 740413680756441,
+									"parameters": [
+										"Avatar.PlayerIndex"
+									]
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Egg",
+									"sid": 685193030988365,
+									"parameters": {
+										"instance-variable": "ThrownToPlayerIndex",
+										"value": "-1"
+									}
+								}
+							],
+							"sid": 349131010847287,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "PlayerName",
+											"sid": 524418545653899,
+											"parameters": {
+												"instance-variable": "PlayerIndex",
+												"comparison": 0,
+												"value": "Avatar.PlayerIndex"
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "Log",
+											"sid": 665401963315675,
+											"parameters": [
+												"PlayerName.Text & \" got the egg\""
+											]
+										}
+									],
+									"sid": 728633402338549
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-host",
+											"objectClass": "Multiplayer",
+											"sid": 274833723205582
+										}
+									],
+									"actions": [
+										{
+											"id": "broadcast-message",
+											"objectClass": "Multiplayer",
+											"sid": 165529573343607,
+											"parameters": {
+												"from-id": "\"\"",
+												"tag": "\"assign egg\"",
+												"message": "str(Avatar.PlayerIndex)",
+												"mode": "reliable-ordered"
+											}
+										}
+									],
+									"sid": 802101374288502
+								}
+							]
+						}
+					]
 				}
 			],
 			"sid": 390860884619276
@@ -3448,6 +4689,99 @@
 			"description": "",
 			"isActiveOnStart": true,
 			"children": [
+				{
+					"eventType": "comment",
+					"text": "End"
+				},
+				{
+					"functionName": "End",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 696131149089307,
+							"parameters": {
+								"variable": "GameState",
+								"value": "\"ending\""
+							}
+						},
+						{
+							"callFunction": "Log",
+							"sid": 591075238194497,
+							"parameters": [
+								"\"The match ended\""
+							]
+						}
+					],
+					"sid": 637821991382080,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-host",
+									"objectClass": "Multiplayer",
+									"sid": 340984896749009
+								}
+							],
+							"actions": [
+								{
+									"id": "broadcast-message",
+									"objectClass": "Multiplayer",
+									"sid": 271062916952543,
+									"parameters": {
+										"from-id": "\"\"",
+										"tag": "\"stage\"",
+										"message": "\"end\"",
+										"mode": "reliable-ordered"
+									}
+								}
+							],
+							"sid": 634022862230743
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-peer-message",
+							"objectClass": "Multiplayer",
+							"sid": 338368874680724,
+							"parameters": {
+								"tag": "\"stage\""
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 604024893482331,
+							"parameters": {
+								"first-value": "Multiplayer.Message",
+								"comparison": 0,
+								"second-value": "\"end\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "End",
+							"sid": 432564077475010
+						}
+					],
+					"sid": 641868628173510
+				},
+				{
+					"eventType": "comment",
+					"text": "On ending triggered"
+				},
 				{
 					"eventType": "block",
 					"conditions": [
@@ -3469,13 +4803,8 @@
 					],
 					"actions": [
 						{
-							"id": "stop-timer",
-							"objectClass": "Countdown",
-							"sid": 850809969232130,
-							"behaviorType": "Timer",
-							"parameters": {
-								"tag": "\"countdown\""
-							}
+							"callFunction": "StopCountdown",
+							"sid": 244644392553426
 						},
 						{
 							"id": "set-text",
@@ -3486,17 +4815,12 @@
 							}
 						},
 						{
-							"id": "stop-timer",
-							"objectClass": "Score",
-							"sid": 297854701922389,
-							"behaviorType": "Timer",
-							"parameters": {
-								"tag": "\"countup\""
-							}
+							"callFunction": "StopAllScores",
+							"sid": 206464960799437
 						},
 						{
 							"callFunction": "PlayMusic",
-							"sid": 526157580175675,
+							"sid": 835131778615186,
 							"parameters": [
 								"\"none\""
 							]
@@ -3549,53 +4873,46 @@
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "is-boolean-instance-variable-set",
-									"objectClass": "Avatar",
-									"sid": 217850650924947,
+									"id": "compare-instance-variable",
+									"objectClass": "Face",
+									"sid": 704860430764757,
 									"parameters": {
-										"instance-variable": "HasEgg"
+										"instance-variable": "State",
+										"comparison": 0,
+										"value": "\"Defeated\""
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Score",
+									"sid": 523674111951294,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "Face.PlayerIndex"
 									}
 								}
 							],
-							"actions": [],
-							"sid": 871905931829330,
-							"children": [
+							"actions": [
 								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "Score",
-											"sid": 229655877383793,
-											"parameters": {
-												"instance-variable": "PlayerIndex",
-												"comparison": 0,
-												"value": "Avatar.PlayerIndex"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "set-text",
-											"objectClass": "Score",
-											"sid": 391634873123355,
-											"parameters": {
-												"text": "\"EGG\""
-											}
-										},
-										{
-											"id": "set-instvar-value",
-											"objectClass": "Score",
-											"sid": 935217953288990,
-											"parameters": {
-												"instance-variable": "AsNumber",
-												"value": "-1000"
-											}
-										}
-									],
-									"sid": 649744222977646
+									"id": "set-text",
+									"objectClass": "Score",
+									"sid": 785581773501874,
+									"parameters": {
+										"text": "\"X\""
+									}
+								},
+								{
+									"id": "subtract-from-instvar",
+									"objectClass": "Score",
+									"sid": 606487651964552,
+									"parameters": {
+										"instance-variable": "AsNumber",
+										"value": "1000"
+									}
 								}
-							]
+							],
+							"sid": 620234702176659
 						},
 						{
 							"eventType": "block",
@@ -3603,66 +4920,58 @@
 								{
 									"id": "is-boolean-instance-variable-set",
 									"objectClass": "Avatar",
-									"sid": 902727608119660,
+									"sid": 217850650924947,
 									"parameters": {
 										"instance-variable": "HasEgg"
-									},
-									"isInverted": true
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Score",
+									"sid": 157390290552699,
+									"parameters": {
+										"instance-variable": "PlayerIndex",
+										"comparison": 0,
+										"value": "Avatar.PlayerIndex"
+									}
 								}
 							],
-							"actions": [],
-							"sid": 817538895726272,
-							"children": [
+							"actions": [
 								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "Face",
-											"sid": 456400576168873,
-											"parameters": {
-												"instance-variable": "State",
-												"comparison": 0,
-												"value": "\"Defeated\""
-											}
-										},
-										{
-											"id": "compare-instance-variable",
-											"objectClass": "Face",
-											"sid": 122460252646208,
-											"parameters": {
-												"instance-variable": "PlayerIndex",
-												"comparison": 0,
-												"value": "Avatar.PlayerIndex"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "subtract-from-instvar",
-											"objectClass": "Score",
-											"sid": 228418201285344,
-											"parameters": {
-												"instance-variable": "AsNumber",
-												"value": "MatchDuration"
-											}
-										},
-										{
-											"type": "comment",
-											"text": "DEBUG"
-										},
-										{
-											"id": "set-text",
-											"objectClass": "Score",
-											"sid": 515644362762605,
-											"parameters": {
-												"text": "str(Score.AsNumber)"
-											}
-										}
-									],
-									"sid": 495418955373793
+									"id": "set-text",
+									"objectClass": "Score",
+									"sid": 226349377397179,
+									"parameters": {
+										"text": "\"EGG\""
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "Score",
+									"sid": 445886305670147,
+									"parameters": {
+										"instance-variable": "AsNumber",
+										"value": "-99999"
+									}
 								}
-							]
+							],
+							"sid": 871905931829330
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-boolean-instvar",
+									"objectClass": "Score",
+									"sid": 418000708652332,
+									"parameters": {
+										"instance-variable": "Meh",
+										"value": "true"
+									}
+								}
+							],
+							"sid": 596840413358997
 						},
 						{
 							"eventType": "block",
@@ -3674,14 +4983,6 @@
 									"parameters": {
 										"which": "lowest",
 										"instance-variable": "AsNumber"
-									}
-								},
-								{
-									"id": "is-boolean-instance-variable-set",
-									"objectClass": "Score",
-									"sid": 654233912042487,
-									"parameters": {
-										"instance-variable": "HasPlayed"
 									}
 								},
 								{
@@ -3752,11 +5053,13 @@
 									}
 								},
 								{
-									"id": "is-boolean-instance-variable-set",
+									"id": "compare-instance-variable",
 									"objectClass": "Score",
-									"sid": 529249832828579,
+									"sid": 838417466694641,
 									"parameters": {
-										"instance-variable": "HasPlayed"
+										"instance-variable": "AsNumber",
+										"comparison": 4,
+										"value": "0"
 									}
 								},
 								{
@@ -3783,9 +5086,9 @@
 								{
 									"id": "wait",
 									"objectClass": "System",
-									"sid": 734398107663990,
+									"sid": 458955127152354,
 									"parameters": {
-										"seconds": "ENDING_PACE * min(3, Multiplayer.PeerCount)"
+										"seconds": "ENDING_PACE * 4"
 									}
 								},
 								{
@@ -3814,9 +5117,9 @@
 								{
 									"id": "wait",
 									"objectClass": "System",
-									"sid": 232058746363283,
+									"sid": 321820442438879,
 									"parameters": {
-										"seconds": "ENDING_PACE * 2"
+										"seconds": "ENDING_PACE"
 									}
 								},
 								{
@@ -3841,14 +5144,6 @@
 										"object": "Score",
 										"expression": "Score.AsNumber",
 										"order": "ascending"
-									}
-								},
-								{
-									"id": "is-boolean-instance-variable-set",
-									"objectClass": "Score",
-									"sid": 753774779390573,
-									"parameters": {
-										"instance-variable": "HasPlayed"
 									}
 								},
 								{
@@ -3917,6 +5212,10 @@
 					]
 				},
 				{
+					"eventType": "comment",
+					"text": "During ending"
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -3965,613 +5264,6 @@
 				}
 			],
 			"sid": 720024197207794
-		},
-		{
-			"functionName": "LoseEgg",
-			"functionDescription": "",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionIsAsync": false,
-			"functionParameters": [],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [],
-			"sid": 528623576252789,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "pick-nearestfurthest",
-							"objectClass": "Avatar",
-							"sid": 796498583750272,
-							"parameters": {
-								"which": "furthest",
-								"x": "Egg.X",
-								"y": "Egg.Y"
-							}
-						}
-					],
-					"actions": [
-						{
-							"callFunction": "PlaySFX",
-							"sid": 335185421854805,
-							"parameters": [
-								"\"defeat\""
-							]
-						},
-						{
-							"callFunction": "Log",
-							"sid": 163202999734796,
-							"parameters": [
-								"\"Egg lost, furthest player is #\" & Avatar.PlayerIndex"
-							]
-						},
-						{
-							"callFunction": "ThrowEgg",
-							"sid": 351700334499218,
-							"parameters": [
-								"Avatar.PlayerIndex"
-							]
-						}
-					],
-					"sid": 146890338873634
-				}
-			]
-		},
-		{
-			"functionName": "ThrowEgg",
-			"functionDescription": "",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionIsAsync": false,
-			"functionParameters": [
-				{
-					"name": "PlayerIndex",
-					"type": "number",
-					"initialValue": "-1",
-					"comment": "",
-					"sid": 506283858624711
-				}
-			],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [
-				{
-					"id": "set-collisions-enabled",
-					"objectClass": "Egg",
-					"sid": 981370391679457,
-					"parameters": {
-						"collisions": "disabled"
-					}
-				},
-				{
-					"id": "set-animation",
-					"objectClass": "Egg",
-					"sid": 622891780219073,
-					"parameters": {
-						"animation": "\"Naked\"",
-						"from": "beginning"
-					}
-				},
-				{
-					"callFunction": "PlaySFX",
-					"sid": 214167394085386,
-					"parameters": [
-						"\"interaction\""
-					]
-				},
-				{
-					"callFunction": "StopAllScores",
-					"sid": 691941076471860
-				}
-			],
-			"sid": 274638757458724,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "Avatar",
-							"sid": 561260281956432,
-							"parameters": {
-								"instance-variable": "HasEgg"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-boolean-instvar",
-							"objectClass": "Avatar",
-							"sid": 463256042673322,
-							"parameters": {
-								"instance-variable": "HasEgg",
-								"value": "false"
-							}
-						}
-					],
-					"sid": 268031277609356
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Avatar",
-							"sid": 908684300262330,
-							"parameters": {
-								"instance-variable": "PlayerIndex",
-								"comparison": 0,
-								"value": "PlayerIndex"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "flash",
-							"objectClass": "Avatar",
-							"sid": 364574666654052,
-							"behaviorType": "Flash",
-							"parameters": {
-								"on-time": "0.1",
-								"off-time": "0.1",
-								"duration": "2.0"
-							}
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Egg",
-							"sid": 805324051986952,
-							"parameters": {
-								"instance-variable": "ThrownToPlayerIndex",
-								"value": "PlayerIndex"
-							}
-						},
-						{
-							"id": "tween-two-properties",
-							"objectClass": "Egg",
-							"sid": 836628591551528,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"throw\"",
-								"property": "position",
-								"end-x": "Avatar.X",
-								"end-y": "Avatar.Y",
-								"time": "2",
-								"ease": "noease",
-								"destroy-on-complete": "no",
-								"loop": "no",
-								"ping-pong": "no"
-							}
-						},
-						{
-							"id": "tween-two-properties",
-							"objectClass": "Egg",
-							"sid": 684891052354604,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"ballistic\"",
-								"property": "scale",
-								"end-x": "2",
-								"end-y": "2",
-								"time": "1",
-								"ease": "easeinoutsine",
-								"destroy-on-complete": "no",
-								"loop": "no",
-								"ping-pong": "yes"
-							}
-						},
-						{
-							"id": "move-to-layer",
-							"objectClass": "Egg",
-							"sid": 598765667082575,
-							"parameters": {
-								"layer": "\"Tall Items\""
-							}
-						}
-					],
-					"sid": 395945902357069,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-host",
-									"objectClass": "Multiplayer",
-									"sid": 321682207986004
-								}
-							],
-							"actions": [
-								{
-									"id": "broadcast-message",
-									"objectClass": "Multiplayer",
-									"sid": 697905527222750,
-									"parameters": {
-										"from-id": "\"\"",
-										"tag": "\"throw egg\"",
-										"message": "str(Avatar.PlayerIndex)",
-										"mode": "reliable-ordered"
-									}
-								},
-								{
-									"callFunction": "Log",
-									"sid": 926262710945224,
-									"parameters": [
-										"\"Broadcast: Egg THROWN to player #\" & PlayerIndex"
-									]
-								}
-							],
-							"sid": 556054756630020
-						}
-					]
-				}
-			]
-		},
-		{
-			"functionName": "AssignEgg",
-			"functionDescription": "",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionIsAsync": false,
-			"functionParameters": [
-				{
-					"name": "PlayerIndex",
-					"type": "number",
-					"initialValue": "-1",
-					"comment": "",
-					"sid": 507892777321241
-				}
-			],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [
-				{
-					"id": "flash",
-					"objectClass": "Egg",
-					"sid": 596841992004334,
-					"behaviorType": "Flash",
-					"parameters": {
-						"on-time": "0.1",
-						"off-time": "0.1",
-						"duration": "1"
-					}
-				},
-				{
-					"callFunction": "PlaySFX",
-					"sid": 642136175629042,
-					"parameters": [
-						"\"interaction\""
-					]
-				},
-				{
-					"callFunction": "StopAllScores",
-					"sid": 448697561397905
-				}
-			],
-			"sid": 517573465315408,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "Avatar",
-							"sid": 909761760975662,
-							"parameters": {
-								"instance-variable": "HasEgg"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-boolean-instvar",
-							"objectClass": "Avatar",
-							"sid": 369779803866380,
-							"parameters": {
-								"instance-variable": "HasEgg",
-								"value": "false"
-							}
-						}
-					],
-					"sid": 871419626010106
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "Avatar",
-							"sid": 527058886170546,
-							"parameters": {
-								"instance-variable": "PlayerIndex",
-								"comparison": 0,
-								"value": "PlayerIndex"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-boolean-instvar",
-							"objectClass": "Avatar",
-							"sid": 123293512405643,
-							"parameters": {
-								"instance-variable": "HasEgg",
-								"value": "true"
-							}
-						},
-						{
-							"callFunction": "StartScore",
-							"sid": 168638669357197,
-							"parameters": [
-								"Avatar.PlayerIndex"
-							]
-						},
-						{
-							"id": "set-instvar-value",
-							"objectClass": "Egg",
-							"sid": 828727939612536,
-							"parameters": {
-								"instance-variable": "ThrownToPlayerIndex",
-								"value": "-1"
-							}
-						}
-					],
-					"sid": 798493436450260,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "is-host",
-									"objectClass": "Multiplayer",
-									"sid": 992674934325655
-								}
-							],
-							"actions": [
-								{
-									"id": "broadcast-message",
-									"objectClass": "Multiplayer",
-									"sid": 861303469112466,
-									"parameters": {
-										"from-id": "\"\"",
-										"tag": "\"assign egg\"",
-										"message": "str(Avatar.PlayerIndex)",
-										"mode": "reliable-ordered"
-									}
-								},
-								{
-									"callFunction": "Log",
-									"sid": 181175191311876,
-									"parameters": [
-										"\"Broadcast: Egg ASSIGNED to player #\" & PlayerIndex"
-									]
-								}
-							],
-							"sid": 464951835999316
-						}
-					]
-				}
-			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-peer-message",
-					"objectClass": "Multiplayer",
-					"sid": 937386865115110,
-					"parameters": {
-						"tag": "\"kill\""
-					}
-				}
-			],
-			"actions": [
-				{
-					"callFunction": "Log",
-					"sid": 451396620364692,
-					"parameters": [
-						"\"Room SHUTDOWN required by peer or host...\""
-					]
-				},
-				{
-					"callFunction": "PlaySFX",
-					"sid": 340486432706899,
-					"parameters": [
-						"\"interaction\""
-					]
-				},
-				{
-					"id": "broadcast-message",
-					"objectClass": "Multiplayer",
-					"sid": 792627038401426,
-					"parameters": {
-						"from-id": "\"\"",
-						"tag": "\"kill\"",
-						"message": "\"\"",
-						"mode": "reliable-ordered"
-					}
-				},
-				{
-					"id": "wait",
-					"objectClass": "System",
-					"sid": 998595383523785,
-					"parameters": {
-						"seconds": "2.0"
-					}
-				},
-				{
-					"id": "disconnect-room",
-					"objectClass": "Multiplayer",
-					"sid": 498073866595666
-				}
-			],
-			"sid": 584367563571926
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-peer-message",
-					"objectClass": "Multiplayer",
-					"sid": 936111856193778,
-					"parameters": {
-						"tag": "\"ready\""
-					}
-				}
-			],
-			"actions": [
-				{
-					"callFunction": "Ready",
-					"sid": 209880629987723,
-					"parameters": [
-						"Multiplayer.Message"
-					]
-				},
-				{
-					"callFunction": "Log",
-					"sid": 939245161198874,
-					"parameters": [
-						"Multiplayer.Message & \" is READY\""
-					]
-				}
-			],
-			"sid": 712396215682062
-		},
-		{
-			"functionName": "Ready",
-			"functionDescription": "",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionIsAsync": false,
-			"functionParameters": [
-				{
-					"name": "PeerID",
-					"type": "string",
-					"initialValue": "",
-					"comment": "",
-					"sid": 587249756684190
-				}
-			],
-			"eventType": "function-block",
-			"conditions": [
-				{
-					"id": "contains-value",
-					"objectClass": "ReadyPeerIDs",
-					"sid": 976599207638993,
-					"parameters": {
-						"value": "PeerID"
-					},
-					"isInverted": true
-				}
-			],
-			"actions": [
-				{
-					"id": "push",
-					"objectClass": "ReadyPeerIDs",
-					"sid": 362236040542988,
-					"parameters": {
-						"where": "front",
-						"value": "PeerID",
-						"axis": "x"
-					}
-				}
-			],
-			"sid": 210124993954789
-		},
-		{
-			"functionName": "GameStateChange",
-			"functionDescription": "",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionIsAsync": false,
-			"functionParameters": [
-				{
-					"name": "NewGameState",
-					"type": "string",
-					"initialValue": "",
-					"comment": "",
-					"sid": 747667216689327
-				}
-			],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [],
-			"sid": 243941500241756,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "is-host",
-							"objectClass": "Multiplayer",
-							"sid": 744899525401758
-						}
-					],
-					"actions": [
-						{
-							"id": "broadcast-message",
-							"objectClass": "Multiplayer",
-							"sid": 588606423208706,
-							"parameters": {
-								"from-id": "\"\"",
-								"tag": "\"GameState change\"",
-								"message": "NewGameState",
-								"mode": "reliable-unordered"
-							}
-						},
-						{
-							"callFunction": "PlaySFX",
-							"sid": 499256502665342,
-							"parameters": [
-								"\"interaction\""
-							]
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 364356835816323,
-							"parameters": {
-								"variable": "GameState",
-								"value": "NewGameState"
-							}
-						}
-					],
-					"sid": 504179708030064
-				}
-			]
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-peer-message",
-					"objectClass": "Multiplayer",
-					"sid": 256604070935618,
-					"parameters": {
-						"tag": "\"GameState change\""
-					}
-				}
-			],
-			"actions": [
-				{
-					"callFunction": "PlaySFX",
-					"sid": 400657862721033,
-					"parameters": [
-						"\"interaction\""
-					]
-				},
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 923543081987562,
-					"parameters": {
-						"variable": "GameState",
-						"value": "Multiplayer.Message"
-					}
-				}
-			],
-			"sid": 719337250129677
 		}
 	],
 	"sid": 607373704127325

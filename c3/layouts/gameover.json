@@ -197,5 +197,5 @@
 	"width": 1280,
 	"height": 720,
 	"unboundedScrolling": false,
-	"eventSheet": "End Events"
+	"eventSheet": "Game Over Events"
 }

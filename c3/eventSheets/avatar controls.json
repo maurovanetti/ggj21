@@ -319,6 +319,215 @@
 					"sid": 370321937310392
 				}
 			]
+		},
+		{
+			"functionName": "ComputeRobotInputs",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "AvatarUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 915975450062623
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "pick-by-unique-id",
+					"objectClass": "Avatar",
+					"sid": 752793215982184,
+					"parameters": {
+						"unique-id": "AvatarUID"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 831297345280496,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "RobotInputs",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 803946185843664
+				},
+				{
+					"eventType": "variable",
+					"name": "NextNodeX",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 185976064639216
+				},
+				{
+					"eventType": "variable",
+					"name": "NextNodeY",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 511840528837122
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 482266731103896,
+							"parameters": {
+								"variable": "NextNodeX",
+								"value": "Avatar.Pathfinding.NodeXAt(Avatar.Pathfinding.CurrentNode)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 480954393667191,
+							"parameters": {
+								"variable": "NextNodeY",
+								"value": "Avatar.Pathfinding.NodeYAt(Avatar.Pathfinding.CurrentNode)"
+							}
+						}
+					],
+					"sid": 983374631428623
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-y",
+							"objectClass": "Avatar",
+							"sid": 388936969842395,
+							"parameters": {
+								"comparison": 4,
+								"y-co-ordinate": "NextNodeY"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 518575062232305,
+							"parameters": {
+								"variable": "RobotInputs",
+								"value": "setbit(RobotInputs, 0, 1)"
+							}
+						}
+					],
+					"sid": 715096468843191,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-x",
+							"objectClass": "Avatar",
+							"sid": 995832026184861,
+							"parameters": {
+								"comparison": 4,
+								"x-co-ordinate": "NextNodeX"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 861999110750689,
+							"parameters": {
+								"variable": "RobotInputs",
+								"value": "setbit(RobotInputs, 1, 1)"
+							}
+						}
+					],
+					"sid": 299708090547174,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-y",
+							"objectClass": "Avatar",
+							"sid": 258324426351682,
+							"parameters": {
+								"comparison": 2,
+								"y-co-ordinate": "NextNodeY"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 167886621893020,
+							"parameters": {
+								"variable": "RobotInputs",
+								"value": "setbit(RobotInputs, 2, 1)"
+							}
+						}
+					],
+					"sid": 931475672178186,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-x",
+							"objectClass": "Avatar",
+							"sid": 831856423482649,
+							"parameters": {
+								"comparison": 2,
+								"x-co-ordinate": "NextNodeX"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 850555095864174,
+							"parameters": {
+								"variable": "RobotInputs",
+								"value": "setbit(RobotInputs, 3, 1)"
+							}
+						}
+					],
+					"sid": 138741726635911,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 719084569283824,
+							"parameters": {
+								"value": "RobotInputs"
+							}
+						}
+					],
+					"sid": 134899613615530
+				}
+			]
 		}
 	],
 	"sid": 762793860119666

@@ -1,5 +1,5 @@
 {
-	"name": "End Events",
+	"name": "Game Over Events",
 	"events": [
 		{
 			"eventType": "include",
@@ -172,14 +172,6 @@
 								"which": "lowest",
 								"instance-variable": "AsNumber"
 							}
-						},
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "Score",
-							"sid": 774253744134674,
-							"parameters": {
-								"instance-variable": "HasPlayed"
-							}
 						}
 					],
 					"actions": [
@@ -206,28 +198,69 @@
 								"which": "highest",
 								"instance-variable": "AsNumber"
 							}
-						},
-						{
-							"id": "is-boolean-instance-variable-set",
-							"objectClass": "Score",
-							"sid": 787871710758906,
-							"parameters": {
-								"instance-variable": "HasPlayed"
-							}
 						}
 					],
 					"actions": [
 						{
 							"id": "set-animation",
 							"objectClass": "Victory",
-							"sid": 693627608252440,
+							"sid": 326866493258248,
 							"parameters": {
 								"animation": "str(Score.PlayerIndex)",
 								"from": "beginning"
 							}
 						}
 					],
-					"sid": 622723739556721
+					"sid": 622723739556721,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "Score",
+									"sid": 296105107854370,
+									"parameters": {
+										"instance-variable": "AsNumber",
+										"comparison": 4,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "Victory",
+									"sid": 240212169966121,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 615103146537117
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 204809624675764
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "Victory",
+									"sid": 514900325311151,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								}
+							],
+							"sid": 901409827500126
+						}
+					]
 				}
 			]
 		}

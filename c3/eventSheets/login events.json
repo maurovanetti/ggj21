@@ -113,16 +113,7 @@
 					"sid": 906171421504615
 				}
 			],
-			"actions": [
-				{
-					"id": "set-text",
-					"objectClass": "NameInput",
-					"sid": 250556389113134,
-					"parameters": {
-						"text": "trim(NameInput.Text)"
-					}
-				}
-			],
+			"actions": [],
 			"sid": 238070170120510,
 			"children": [
 				{
@@ -215,12 +206,6 @@
 			],
 			"sid": 860185669180436,
 			"children": [
-				{
-					"eventType": "block",
-					"conditions": [],
-					"actions": [],
-					"sid": 659194388994176
-				},
 				{
 					"eventType": "block",
 					"conditions": [

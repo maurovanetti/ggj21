@@ -56,14 +56,6 @@
 		},
 		{
 			"type": "plugin",
-			"id": "Arr",
-			"name": "Array",
-			"author": "Scirra",
-			"version": "r234.2",
-			"bundled": false
-		},
-		{
-			"type": "plugin",
 			"id": "Tilemap",
 			"name": "Tilemap",
 			"author": "Scirra",
@@ -74,6 +66,22 @@
 			"type": "plugin",
 			"id": "Audio",
 			"name": "Audio",
+			"author": "Scirra",
+			"version": "r234.2",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Arr",
+			"name": "Array",
+			"author": "Scirra",
+			"version": "r234.2",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Touch",
+			"name": "Touch",
 			"author": "Scirra",
 			"version": "r234.2",
 			"bundled": false
@@ -153,7 +161,7 @@
 					"LoginButton",
 					"LoginInstructions",
 					"PlayerName",
-					"Log",
+					"Info",
 					"StartButton",
 					"RoomName",
 					"NetworkStats",
@@ -167,7 +175,8 @@
 					"Hud0",
 					"Hud1",
 					"Hud2",
-					"Hud3"
+					"Hud3",
+					"Log"
 				],
 				"subfolders": [],
 				"name": "GUI"
@@ -176,14 +185,17 @@
 				"items": [
 					"Multiplayer",
 					"Keyboard",
-					"PeerIDs",
-					"ReadyPeerIDs",
 					"Tilemap",
 					"ForbiddenArea",
 					"Obstacles",
-					"OnStage",
+					"MonsterStage",
 					"Audio",
-					"RandomNames"
+					"RandomNames",
+					"Touch",
+					"Players",
+					"LogBuffer",
+					"SpawningPoint",
+					"RobotWaypoint"
 				],
 				"subfolders": [],
 				"name": "Static"
@@ -254,7 +266,7 @@
 			"Debug Events",
 			"Scoring Events",
 			"Audio Events",
-			"End Events",
+			"Game Over Events",
 			"Name Handling"
 		],
 		"subfolders": []

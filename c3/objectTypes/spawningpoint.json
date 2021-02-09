@@ -1,0 +1,44 @@
+{
+	"name": "SpawningPoint",
+	"plugin-id": "Sprite",
+	"sid": 673335434276815,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "PlayerIndex",
+			"type": "number",
+			"desc": "",
+			"sid": 778600084663711
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 40,
+						"height": 38,
+						"originX": 0.5169491525423728,
+						"originY": 0.22807017543859648,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6059518,
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 136410916460285,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

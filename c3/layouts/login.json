@@ -577,26 +577,6 @@
 	"sid": 753961770259785,
 	"nonworld-instances": [
 		{
-			"type": "PeerIDs",
-			"properties": {
-				"width": 0,
-				"height": 1,
-				"depth": 1
-			},
-			"uid": 13,
-			"instanceVariables": {}
-		},
-		{
-			"type": "ReadyPeerIDs",
-			"properties": {
-				"width": 0,
-				"height": 1,
-				"depth": 1
-			},
-			"uid": 27,
-			"instanceVariables": {}
-		},
-		{
 			"type": "RandomNames",
 			"properties": {
 				"width": 10,
@@ -604,6 +584,26 @@
 				"depth": 1
 			},
 			"uid": 84,
+			"instanceVariables": {}
+		},
+		{
+			"type": "Players",
+			"properties": {
+				"width": 0,
+				"height": 1,
+				"depth": 1
+			},
+			"uid": 170,
+			"instanceVariables": {}
+		},
+		{
+			"type": "LogBuffer",
+			"properties": {
+				"width": 0,
+				"height": 1,
+				"depth": 1
+			},
+			"uid": 171,
 			"instanceVariables": {}
 		}
 	],
