@@ -25,7 +25,7 @@
 			"eventType": "variable",
 			"name": "GAME_NAME",
 			"type": "string",
-			"initialValue": "dinomite-0.1.4",
+			"initialValue": "dinomite-0.2",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": true,
@@ -5037,9 +5037,9 @@
 								{
 									"id": "set-text",
 									"objectClass": "Score",
-									"sid": 236172795686867,
+									"sid": 718826147475847,
 									"parameters": {
-										"text": "\"x\""
+										"text": "\"X\""
 									}
 								},
 								{
