@@ -10,6 +10,10 @@
 			"includeSheet": "Name Handling"
 		},
 		{
+			"eventType": "include",
+			"includeSheet": "Button Events"
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -34,6 +38,15 @@
 					"sid": 806989088405325,
 					"parameters": {
 						"text": "MyName"
+					}
+				},
+				{
+					"id": "set-css-style",
+					"objectClass": "NameInput",
+					"sid": 222844890680437,
+					"parameters": {
+						"property-name": "\"font-size\"",
+						"value": "\"50px\""
 					}
 				},
 				{
@@ -86,11 +99,12 @@
 					}
 				},
 				{
-					"id": "set-enabled",
-					"objectClass": "LoginButton",
-					"sid": 260514140742555,
+					"id": "set-boolean-instvar",
+					"objectClass": "WoodButton",
+					"sid": 372386619849348,
 					"parameters": {
-						"mode": "disabled"
+						"instance-variable": "Enabled",
+						"value": "false"
 					}
 				},
 				{
@@ -131,19 +145,13 @@
 					],
 					"actions": [
 						{
-							"id": "set-enabled",
-							"objectClass": "LoginButton",
-							"sid": 321581005901761,
+							"id": "set-boolean-instvar",
+							"objectClass": "WoodButton",
+							"sid": 172421204347867,
 							"parameters": {
-								"mode": "disabled"
+								"instance-variable": "Enabled",
+								"value": "false"
 							}
-						},
-						{
-							"callFunction": "PlaySFX",
-							"sid": 487275166906901,
-							"parameters": [
-								"\"interaction\""
-							]
 						}
 					],
 					"sid": 203195997168761
@@ -159,19 +167,13 @@
 					],
 					"actions": [
 						{
-							"id": "set-enabled",
-							"objectClass": "LoginButton",
-							"sid": 677977004905822,
+							"id": "set-boolean-instvar",
+							"objectClass": "WoodButton",
+							"sid": 493347060735055,
 							"parameters": {
-								"mode": "enabled"
+								"instance-variable": "Enabled",
+								"value": "true"
 							}
-						},
-						{
-							"callFunction": "PlaySFX",
-							"sid": 468953334573725,
-							"parameters": [
-								"\"interaction\""
-							]
 						}
 					],
 					"sid": 828409198547188
@@ -184,15 +186,18 @@
 				{
 					"id": "on-key-pressed",
 					"objectClass": "Keyboard",
-					"sid": 322558918715674,
+					"sid": 765353628683608,
 					"parameters": {
 						"key": 13
 					}
 				},
 				{
-					"id": "on-clicked",
-					"objectClass": "LoginButton",
-					"sid": 232194788780291
+					"id": "evaluate-expression",
+					"objectClass": "System",
+					"sid": 973953587109009,
+					"parameters": {
+						"value": "Functions.OnPressed(\"enter\")"
+					}
 				}
 			],
 			"actions": [

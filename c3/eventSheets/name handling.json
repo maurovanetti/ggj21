@@ -45,6 +45,63 @@
 			"sid": 656072995721615
 		},
 		{
+			"functionName": "PickBotName",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "string",
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 288969072600668,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "BotName",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 713771797597643
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 104905244079593,
+							"parameters": {
+								"variable": "BotName",
+								"value": "choose(\"Sara\", \"Emma\", \"Rania\", \"Imane\", \"Sofia\", \"Maria\", \"Mary\", \"Nareh\", \"Zahra\", \"Jing\", \"Aadya\", \"Noam\", \"Rimas\", \"Fatma\", \"Marie\", \"Nor\", \"Odval\", \"Angel\", \"Laia\", \"Anna\", \"Amina\", \"Mia\", \"Ida\", \"Eva\", \"Aino\", \"Hanna\", \"Emily\", \"Nora\", \"Zala\", \"Lucia\", \"Ane\", \"Alice\")"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 333904209796919,
+							"parameters": {
+								"variable": "BotName",
+								"value": "BotName & \"bot\""
+							}
+						},
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 805471855013831,
+							"parameters": {
+								"value": "BotName"
+							}
+						}
+					],
+					"sid": 527389359923834
+				}
+			]
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{

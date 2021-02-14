@@ -1,0 +1,395 @@
+{
+	"name": "Button Events",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "ButtonPressedDeltaY",
+			"type": "number",
+			"initialValue": "5",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 935241552307223
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-created",
+					"objectClass": "WoodButton",
+					"sid": 954015614643374
+				}
+			],
+			"actions": [
+				{
+					"id": "set-position-to-another-object",
+					"objectClass": "WoodButtonText",
+					"sid": 898573489952002,
+					"parameters": {
+						"object": "WoodButton",
+						"image-point-optional": "0"
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "WoodButtonText",
+					"sid": 176983829256859,
+					"parameters": {
+						"width": "WoodButton.Width",
+						"height": "WoodButton.Height"
+					}
+				},
+				{
+					"id": "add-child",
+					"objectClass": "WoodButton",
+					"sid": 916163601517191,
+					"parameters": {
+						"child": "WoodButtonText",
+						"transform-x": true,
+						"transform-y": true,
+						"transform-w": true,
+						"transform-h": true,
+						"transform-a": false,
+						"transform-z-elevation": false,
+						"destroy-with-parent": false
+					}
+				},
+				{
+					"id": "add-key",
+					"objectClass": "WoodButtonsPressed",
+					"sid": 107467740191520,
+					"parameters": {
+						"key": "WoodButton.Tag",
+						"value": "0"
+					}
+				}
+			],
+			"sid": 547497716571258
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-visible",
+					"objectClass": "WoodButton",
+					"sid": 677220850079894
+				}
+			],
+			"actions": [
+				{
+					"id": "set-visible",
+					"objectClass": "WoodButtonText",
+					"sid": 308015640853295,
+					"parameters": {
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "WoodButtonText",
+					"sid": 938800205143579,
+					"parameters": {
+						"text": "WoodButton.Text"
+					}
+				}
+			],
+			"sid": 395829938947625,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "WoodButton",
+							"sid": 239191359843953,
+							"parameters": {
+								"instance-variable": "Enabled"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-collisions-enabled",
+							"objectClass": "WoodButton",
+							"sid": 198568305886502,
+							"parameters": {
+								"collisions": "enabled"
+							}
+						},
+						{
+							"id": "set-effect-enabled",
+							"objectClass": "WoodButton",
+							"sid": 966354642206234,
+							"parameters": {
+								"mode": "disable",
+								"effect": "\"Grayscale\""
+							}
+						}
+					],
+					"sid": 664366972622800
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 876812898146502
+						}
+					],
+					"actions": [
+						{
+							"id": "set-collisions-enabled",
+							"objectClass": "WoodButton",
+							"sid": 435270191883617,
+							"parameters": {
+								"collisions": "disabled"
+							}
+						},
+						{
+							"id": "set-effect-enabled",
+							"objectClass": "WoodButton",
+							"sid": 843259469075014,
+							"parameters": {
+								"mode": "enable",
+								"effect": "\"Grayscale\""
+							}
+						}
+					],
+					"sid": 976308855615815
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 236478139236273
+				}
+			],
+			"actions": [
+				{
+					"id": "set-collisions-enabled",
+					"objectClass": "WoodButton",
+					"sid": 943440348319683,
+					"parameters": {
+						"collisions": "disabled"
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "WoodButtonText",
+					"sid": 365636921722966,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				}
+			],
+			"sid": 406368693427761
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-touching-object",
+					"objectClass": "Touch",
+					"sid": 591672540252033,
+					"parameters": {
+						"object": "WoodButton"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 288331205787450,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "WoodButton",
+							"sid": 903915252027238,
+							"parameters": {
+								"animation": "\"Pressed\""
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "WoodButton",
+							"sid": 801500493186260,
+							"parameters": {
+								"animation": "\"Pressed\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-y",
+							"objectClass": "WoodButton",
+							"sid": 260060652515186,
+							"parameters": {
+								"y": "WoodButton.Y + ButtonPressedDeltaY"
+							}
+						},
+						{
+							"id": "signal",
+							"objectClass": "System",
+							"sid": 929187517604865,
+							"parameters": {
+								"tag": "\"pressed \" & WoodButton.Tag"
+							}
+						}
+					],
+					"sid": 926554232919906
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 810411851282754
+				}
+			],
+			"actions": [],
+			"sid": 283019791415805,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "WoodButton",
+							"sid": 810835687891185,
+							"parameters": {
+								"animation": "\"Pressed\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "WoodButton",
+							"sid": 316203590356884,
+							"parameters": {
+								"animation": "\"Normal\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "set-y",
+							"objectClass": "WoodButton",
+							"sid": 531540911248192,
+							"parameters": {
+								"y": "WoodButton.Y - ButtonPressedDeltaY"
+							}
+						},
+						{
+							"id": "add-key",
+							"objectClass": "WoodButtonsPressed",
+							"sid": 765728338621676,
+							"parameters": {
+								"key": "WoodButton.Tag",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 130250286385781
+				}
+			]
+		},
+		{
+			"functionName": "OnPressed",
+			"functionDescription": "1 if pressed, 0 otherwise",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "Tag",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 368451272364081
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 573279148466754,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "has-key",
+							"objectClass": "WoodButtonsPressed",
+							"sid": 428427853162304,
+							"parameters": {
+								"key": "Tag"
+							}
+						},
+						{
+							"id": "compare-value",
+							"objectClass": "WoodButtonsPressed",
+							"sid": 942604025682225,
+							"parameters": {
+								"key": "Tag",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-key",
+							"objectClass": "WoodButtonsPressed",
+							"sid": 223028476086342,
+							"parameters": {
+								"key": "Tag",
+								"value": "0"
+							}
+						},
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 644603941065545,
+							"parameters": {
+								"value": "1"
+							}
+						}
+					],
+					"sid": 823935587165278
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 412857057038481
+						}
+					],
+					"actions": [
+						{
+							"id": "set-function-return-value",
+							"objectClass": "Functions",
+							"sid": 577879784541869,
+							"parameters": {
+								"value": "0"
+							}
+						}
+					],
+					"sid": 191414606386377
+				}
+			]
+		}
+	],
+	"sid": 464803568923108
+}

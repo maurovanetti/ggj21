@@ -22,6 +22,10 @@
 			"includeSheet": "Name Handling"
 		},
 		{
+			"eventType": "include",
+			"includeSheet": "Button Events"
+		},
+		{
 			"eventType": "variable",
 			"name": "GAME_NAME",
 			"type": "string",
@@ -297,6 +301,31 @@
 					"eventType": "block",
 					"conditions": [
 						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Avatar",
+							"sid": 657511654821336,
+							"parameters": {
+								"instance-variable": "Robot"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "Face",
+							"sid": 365249757081667,
+							"parameters": {
+								"animation": "Face.State",
+								"from": "current-frame"
+							}
+						}
+					],
+					"sid": 260930916562694
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
 							"id": "on-peer-message",
 							"objectClass": "Multiplayer",
 							"sid": 250530145721317,
@@ -394,33 +423,6 @@
 							"parameters": {
 								"variable": "MatchmakingStage",
 								"value": "\"prepare\""
-							}
-						},
-						{
-							"id": "set-css-style",
-							"objectClass": "StartButton",
-							"sid": 127483815611248,
-							"parameters": {
-								"property-name": "\"border-radius\"",
-								"value": "\"10px\""
-							}
-						},
-						{
-							"id": "set-css-style",
-							"objectClass": "StartButton",
-							"sid": 271894691409092,
-							"parameters": {
-								"property-name": "\"border\"",
-								"value": "\"2px solid black\""
-							}
-						},
-						{
-							"id": "set-css-style",
-							"objectClass": "StartButton",
-							"sid": 377944950529088,
-							"parameters": {
-								"property-name": "\"font-size\"",
-								"value": "\"44\""
 							}
 						},
 						{
@@ -583,11 +585,21 @@
 							}
 						},
 						{
-							"id": "set-text",
-							"objectClass": "StartButton",
-							"sid": 762454910999459,
+							"id": "set-instvar-value",
+							"objectClass": "WoodButton",
+							"sid": 602193094764455,
 							"parameters": {
-								"text": "\"Wait\""
+								"instance-variable": "Text",
+								"value": "\"Wait\""
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "WoodButton",
+							"sid": 177176931109251,
+							"parameters": {
+								"instance-variable": "Enabled",
+								"value": "false"
 							}
 						},
 						{
@@ -1359,8 +1371,8 @@
 								},
 								{
 									"id": "set-visible",
-									"objectClass": "StartButton",
-									"sid": 882111220342768,
+									"objectClass": "WoodButton",
+									"sid": 836657123196069,
 									"parameters": {
 										"visibility": "visible"
 									}
@@ -1409,19 +1421,21 @@
 											],
 											"actions": [
 												{
-													"id": "set-enabled",
-													"objectClass": "StartButton",
-													"sid": 895822111408455,
+													"id": "set-boolean-instvar",
+													"objectClass": "WoodButton",
+													"sid": 784285229165679,
 													"parameters": {
-														"mode": "disabled"
+														"instance-variable": "Enabled",
+														"value": "false"
 													}
 												},
 												{
-													"id": "set-text",
-													"objectClass": "StartButton",
-													"sid": 802990083235963,
+													"id": "set-instvar-value",
+													"objectClass": "WoodButton",
+													"sid": 280272754813737,
 													"parameters": {
-														"text": "\"Min. \" & MinReadyPlayers & \" Players\""
+														"instance-variable": "Text",
+														"value": "\"Min. \" & MinReadyPlayers & \" Players\""
 													}
 												}
 											],
@@ -1438,11 +1452,12 @@
 											],
 											"actions": [
 												{
-													"id": "set-enabled",
-													"objectClass": "StartButton",
-													"sid": 958947470928959,
+													"id": "set-boolean-instvar",
+													"objectClass": "WoodButton",
+													"sid": 156035833460232,
 													"parameters": {
-														"mode": "enabled"
+														"instance-variable": "Enabled",
+														"value": "true"
 													}
 												}
 											],
@@ -1464,11 +1479,12 @@
 													],
 													"actions": [
 														{
-															"id": "set-text",
-															"objectClass": "StartButton",
-															"sid": 127551610304074,
+															"id": "set-instvar-value",
+															"objectClass": "WoodButton",
+															"sid": 688192062224416,
 															"parameters": {
-																"text": "\"Solo Play\""
+																"instance-variable": "Text",
+																"value": "\"Solo Play\""
 															}
 														}
 													],
@@ -1485,11 +1501,12 @@
 													],
 													"actions": [
 														{
-															"id": "set-text",
-															"objectClass": "StartButton",
-															"sid": 332958403211186,
+															"id": "set-instvar-value",
+															"objectClass": "WoodButton",
+															"sid": 513849680223930,
 															"parameters": {
-																"text": "\"Start Match\""
+																"instance-variable": "Text",
+																"value": "\"Start Match\""
 															}
 														}
 													],
@@ -1514,19 +1531,21 @@
 											"text": "The peers must wait for the host to start the match."
 										},
 										{
-											"id": "set-text",
-											"objectClass": "StartButton",
-											"sid": 720891935423387,
+											"id": "set-instvar-value",
+											"objectClass": "WoodButton",
+											"sid": 815837169667432,
 											"parameters": {
-												"text": "\"Wait for Start\""
+												"instance-variable": "Text",
+												"value": "\"Wait for Start\""
 											}
 										},
 										{
-											"id": "set-enabled",
-											"objectClass": "StartButton",
-											"sid": 436691002246245,
+											"id": "set-boolean-instvar",
+											"objectClass": "WoodButton",
+											"sid": 210237947298336,
 											"parameters": {
-												"mode": "disabled"
+												"instance-variable": "Enabled",
+												"value": "false"
 											}
 										}
 									],
@@ -1553,11 +1572,12 @@
 									}
 								},
 								{
-									"id": "set-visible",
-									"objectClass": "StartButton",
-									"sid": 309753846805638,
+									"id": "set-boolean-instvar",
+									"objectClass": "WoodButton",
+									"sid": 999831898802250,
 									"parameters": {
-										"visibility": "invisible"
+										"instance-variable": "Enabled",
+										"value": "false"
 									}
 								}
 							],
@@ -1649,8 +1669,16 @@
 						},
 						{
 							"id": "set-visible",
-							"objectClass": "StartButton",
-							"sid": 231974716227191,
+							"objectClass": "WoodButton",
+							"sid": 885457320750014,
+							"parameters": {
+								"visibility": "invisible"
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "WoodButtonText",
+							"sid": 129109867087304,
 							"parameters": {
 								"visibility": "invisible"
 							}
@@ -1676,9 +1704,12 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "on-clicked",
-							"objectClass": "StartButton",
-							"sid": 195608810508086
+							"id": "evaluate-expression",
+							"objectClass": "System",
+							"sid": 428189462882432,
+							"parameters": {
+								"value": "Functions.OnPressed(\"start\")"
+							}
 						}
 					],
 					"actions": [
@@ -1846,9 +1877,9 @@
 												{
 													"id": "set-text",
 													"objectClass": "PlayerName",
-													"sid": 972146226661510,
+													"sid": 184130154754740,
 													"parameters": {
-														"text": "\"ROBOT\""
+														"text": "Functions.PickBotName"
 													}
 												}
 											],
@@ -2571,6 +2602,14 @@
 								"instance-variable": "PreviousX",
 								"value": "(2 * Monster.X) - Egg.X "
 							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "Hud",
+							"sid": 101086479776522,
+							"parameters": {
+								"visibility": "visible"
+							}
 						}
 					],
 					"sid": 828012167466654,
@@ -2651,6 +2690,71 @@
 								}
 							],
 							"sid": 647099741622634
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 443752006807956,
+									"parameters": {
+										"object": "Face"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 832051015613612,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-visible",
+											"objectClass": "Face",
+											"sid": 184312320391069,
+											"isInverted": true
+										},
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "PlayerName",
+											"sid": 452419050941490,
+											"parameters": {
+												"instance-variable": "PlayerIndex",
+												"comparison": 0,
+												"value": "Face.PlayerIndex"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "Face",
+											"sid": 964087131359103,
+											"parameters": {
+												"visibility": "visible"
+											}
+										},
+										{
+											"id": "set-visible",
+											"objectClass": "PlayerName",
+											"sid": 894822877990984,
+											"parameters": {
+												"visibility": "visible"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "PlayerName",
+											"sid": 562915234743461,
+											"parameters": {
+												"text": "Functions.PickBotName"
+											}
+										}
+									],
+									"sid": 731220797987852
+								}
+							]
 						}
 					]
 				},

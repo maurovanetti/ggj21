@@ -2,7 +2,7 @@
 	"name": "Login",
 	"layers": [
 		{
-			"name": "Layer 0",
+			"name": "Background",
 			"overriden": 0,
 			"instances": [
 				{
@@ -33,6 +33,75 @@
 						"angle": 0,
 						"zElevation": 0
 					}
+				}
+			],
+			"sid": 120981371863607,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				1,
+				1,
+				1,
+				1
+			],
+			"isTransparent": true,
+			"parallaxX": 1,
+			"parallaxY": 1,
+			"scaleRate": 1,
+			"forceOwnTexture": false,
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"global": false
+		},
+		{
+			"name": "Foreground",
+			"overriden": 0,
+			"instances": [
+				{
+					"type": "WoodButton",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Normal",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 114,
+					"instanceVariables": {
+						"Tag": "enter",
+						"Text": "Enter the Arena",
+						"Enabled": true
+					},
+					"behaviors": {},
+					"effects": {
+						"Grayscale": {
+							"parameters": {
+								"intensity": 1
+							}
+						}
+					},
+					"world": {
+						"x": 774,
+						"y": 538,
+						"width": 341.3434826305145,
+						"height": 100.74895742838974,
+						"originX": 0.5,
+						"originY": 0.4626865671641791,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
 				},
 				{
 					"type": "NameInput",
@@ -52,40 +121,10 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 523,
-						"y": 485,
-						"width": 300,
-						"height": 38,
-						"originX": 0,
-						"originY": 0,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						]
-					}
-				},
-				{
-					"type": "LoginButton",
-					"properties": {
-						"type": "button",
-						"text": "Enter the Playground",
-						"tooltip": "",
-						"initially-visible": true,
-						"enabled": true,
-						"auto-font-size": true,
-						"checked": false,
-						"id": ""
-					},
-					"uid": 5,
-					"instanceVariables": {},
-					"behaviors": {},
-					"world": {
-						"x": 522,
-						"y": 533,
-						"width": 300,
-						"height": 47,
+						"x": 276,
+						"y": 495,
+						"width": 294.75170295313944,
+						"height": 46.20188237406433,
 						"originX": 0,
 						"originY": 0,
 						"color": [
@@ -122,8 +161,8 @@
 					"instanceVariables": {},
 					"behaviors": {},
 					"world": {
-						"x": 522,
-						"y": 592,
+						"x": 279,
+						"y": 550,
 						"width": 300,
 						"height": 30,
 						"originX": 0,
@@ -547,6 +586,48 @@
 						"angle": 0,
 						"zElevation": 0
 					}
+				},
+				{
+					"type": "WoodButtonText",
+					"properties": {
+						"text": "Text",
+						"enable-bbcode": true,
+						"font": "SassoonSansStd-Medium",
+						"size": 24,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							0,
+							0,
+							0,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "center",
+						"wrapping": "word",
+						"initially-visible": true,
+						"origin": "center"
+					},
+					"uid": 115,
+					"instanceVariables": {},
+					"behaviors": {},
+					"world": {
+						"x": 773.5,
+						"y": 537.5,
+						"width": 340,
+						"height": 101,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
 				}
 			],
 			"sid": 177220183271480,
@@ -564,7 +645,7 @@
 				1,
 				1
 			],
-			"isTransparent": false,
+			"isTransparent": true,
 			"parallaxX": 1,
 			"parallaxY": 1,
 			"scaleRate": 1,
@@ -604,6 +685,12 @@
 				"depth": 1
 			},
 			"uid": 171,
+			"instanceVariables": {}
+		},
+		{
+			"type": "WoodButtonsPressed",
+			"properties": {},
+			"uid": 116,
 			"instanceVariables": {}
 		}
 	],

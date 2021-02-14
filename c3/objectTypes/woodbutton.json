@@ -1,0 +1,124 @@
+{
+	"name": "WoodButton",
+	"plugin-id": "Sprite",
+	"sid": 561704467145467,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "Tag",
+			"type": "string",
+			"desc": "",
+			"sid": 683100011115670
+		},
+		{
+			"name": "Text",
+			"type": "string",
+			"desc": "",
+			"sid": 719313701547012
+		},
+		{
+			"name": "Enabled",
+			"type": "boolean",
+			"desc": "",
+			"sid": 247643790498112
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "grayscale",
+			"name": "Grayscale"
+		}
+	],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 454,
+						"height": 134,
+						"originX": 0.5,
+						"originY": 0.4626865671641791,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 6755255,
+						"collisionPoly": {
+							"points": [
+								0.01762114537444934,
+								0.05970149253731343,
+								0.5,
+								0.007462686567164179,
+								0.9801762114537445,
+								0.05970149253731343,
+								0.9889867841409692,
+								0.5,
+								0.9845814977973568,
+								0.9477611940298507,
+								0.5,
+								0.9925373134328358,
+								0.013215859030837005,
+								0.9477611940298507,
+								0.004405286343612335,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 424576335180175,
+				"name": "Normal",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			},
+			{
+				"frames": [
+					{
+						"width": 452,
+						"height": 134,
+						"originX": 0.5,
+						"originY": 0.4626865671641791,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 2941303,
+						"collisionPoly": {
+							"points": [
+								0.01762114537444934,
+								0.05970149253731343,
+								0.5,
+								0.007462686567164179,
+								0.9801762114537445,
+								0.05970149253731343,
+								0.9889867841409692,
+								0.5,
+								0.9845814977973568,
+								0.9477611940298507,
+								0.5,
+								0.9925373134328358,
+								0.013215859030837005,
+								0.9477611940298507,
+								0.004405286343612335,
+								0.5
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 400340731169586,
+				"name": "Pressed",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -16,16 +16,16 @@
 		},
 		{
 			"type": "plugin",
-			"id": "Button",
-			"name": "Button",
+			"id": "Text",
+			"name": "Text",
 			"author": "Scirra",
 			"version": "r234.4",
 			"bundled": false
 		},
 		{
 			"type": "plugin",
-			"id": "Text",
-			"name": "Text",
+			"id": "Button",
+			"name": "Button",
 			"author": "Scirra",
 			"version": "r234.4",
 			"bundled": false
@@ -82,6 +82,14 @@
 			"type": "plugin",
 			"id": "Touch",
 			"name": "Touch",
+			"author": "Scirra",
+			"version": "r234.4",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Dictionary",
+			"name": "Dictionary",
 			"author": "Scirra",
 			"version": "r234.4",
 			"bundled": false
@@ -149,6 +157,14 @@
 			"author": "Scirra",
 			"version": "r234.4",
 			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "grayscale",
+			"name": "Grayscale",
+			"author": "Scirra",
+			"version": "r234.4",
+			"bundled": false
 		}
 	],
 	"uniqueId": "s6d7gosbo40",
@@ -158,7 +174,6 @@
 			{
 				"items": [
 					"NameInput",
-					"LoginButton",
 					"LoginInstructions",
 					"PlayerName",
 					"Info",
@@ -177,7 +192,9 @@
 					"Hud2",
 					"Hud3",
 					"Log",
-					"Destination"
+					"Destination",
+					"WoodButton",
+					"WoodButtonText"
 				],
 				"subfolders": [],
 				"name": "GUI"
@@ -196,7 +213,8 @@
 					"Players",
 					"LogBuffer",
 					"SpawningPoint",
-					"RobotWaypoint"
+					"RobotWaypoint",
+					"WoodButtonsPressed"
 				],
 				"subfolders": [],
 				"name": "Static"
@@ -251,7 +269,15 @@
 		]
 	},
 	"autosaveData": null,
-	"containers": [],
+	"containers": [
+		{
+			"members": [
+				"WoodButton",
+				"WoodButtonText"
+			],
+			"selectMode": "normal"
+		}
+	],
 	"families": {
 		"items": [
 			"Avatar",
@@ -279,7 +305,8 @@
 			"Scoring Events",
 			"Audio Events",
 			"Game Over Events",
-			"Name Handling"
+			"Name Handling",
+			"Button Events"
 		],
 		"subfolders": []
 	},
