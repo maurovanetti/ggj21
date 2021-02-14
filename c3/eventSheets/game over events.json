@@ -185,7 +185,59 @@
 							}
 						}
 					],
-					"sid": 388117594119034
+					"sid": 388117594119034,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-text",
+									"objectClass": "Score",
+									"sid": 391124216563527,
+									"parameters": {
+										"text-to-compare": "\"EGG\"",
+										"case-sensitivity": "ignore-case"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "Defeat",
+									"sid": 189222038874572,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 310875208663169
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 109539142729680
+								}
+							],
+							"actions": [
+								{
+									"type": "comment",
+									"text": "Not sure how it could happen but you never know"
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "Defeat",
+									"sid": 713126833583232,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								}
+							],
+							"sid": 369954668890615
+						}
+					]
 				},
 				{
 					"eventType": "block",
@@ -217,23 +269,26 @@
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "compare-instance-variable",
+									"id": "compare-text",
 									"objectClass": "Score",
-									"sid": 296105107854370,
+									"sid": 631141169121828,
 									"parameters": {
-										"instance-variable": "AsNumber",
-										"comparison": 4,
-										"value": "0"
+										"text-to-compare": "\"X\"",
+										"case-sensitivity": "ignore-case"
 									}
 								}
 							],
 							"actions": [
 								{
+									"type": "comment",
+									"text": "If everyone was eaten, no one is a winner"
+								},
+								{
 									"id": "set-visible",
 									"objectClass": "Victory",
-									"sid": 240212169966121,
+									"sid": 414907307429230,
 									"parameters": {
-										"visibility": "visible"
+										"visibility": "invisible"
 									}
 								}
 							],
@@ -252,9 +307,9 @@
 								{
 									"id": "set-visible",
 									"objectClass": "Victory",
-									"sid": 514900325311151,
+									"sid": 483200881596690,
 									"parameters": {
-										"visibility": "invisible"
+										"visibility": "visible"
 									}
 								}
 							],

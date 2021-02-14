@@ -1,7 +1,7 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 23402,
-	"name": "GGJ 2021",
+	"savedWithRelease": 23404,
+	"name": "Dinomite",
 	"runtime": "c3",
 	"useWorker": "auto",
 	"bundleAddons": false,
@@ -11,7 +11,7 @@
 			"id": "TextBox",
 			"name": "Text input",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -19,7 +19,7 @@
 			"id": "Button",
 			"name": "Button",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -27,7 +27,7 @@
 			"id": "Text",
 			"name": "Text",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -35,7 +35,7 @@
 			"id": "Sprite",
 			"name": "Sprite",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -43,7 +43,7 @@
 			"id": "Multiplayer",
 			"name": "Multiplayer",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -51,7 +51,7 @@
 			"id": "Keyboard",
 			"name": "Keyboard",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -59,7 +59,7 @@
 			"id": "Tilemap",
 			"name": "Tilemap",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -67,7 +67,7 @@
 			"id": "Audio",
 			"name": "Audio",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -75,7 +75,7 @@
 			"id": "Arr",
 			"name": "Array",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -83,7 +83,7 @@
 			"id": "Touch",
 			"name": "Touch",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -91,7 +91,7 @@
 			"id": "TiledBg",
 			"name": "Tiled Background",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -99,7 +99,7 @@
 			"id": "Sin",
 			"name": "Sine",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -107,7 +107,7 @@
 			"id": "solid",
 			"name": "Solid",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -115,7 +115,7 @@
 			"id": "Pathfinding",
 			"name": "Pathfinding",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -123,7 +123,7 @@
 			"id": "Tween",
 			"name": "Tween",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -131,7 +131,7 @@
 			"id": "Flash",
 			"name": "Flash",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -139,7 +139,7 @@
 			"id": "Timer",
 			"name": "Timer",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		},
 		{
@@ -147,7 +147,7 @@
 			"id": "EightDir",
 			"name": "8 Direction",
 			"author": "Scirra",
-			"version": "r234.2",
+			"version": "r234.4",
 			"bundled": false
 		}
 	],
@@ -176,7 +176,8 @@
 					"Hud1",
 					"Hud2",
 					"Hud3",
-					"Log"
+					"Log",
+					"Destination"
 				],
 				"subfolders": [],
 				"name": "GUI"
@@ -218,20 +219,31 @@
 					"Background",
 					"Column1",
 					"Column2",
-					"Fountain",
+					"Fountain1",
 					"Frame",
 					"Leaf",
 					"LoginBackground",
 					"Monument",
 					"Pawn",
-					"Rock",
-					"Stone",
+					"Rock1",
+					"Stone1",
 					"Swamp",
-					"Tree",
+					"Tree1",
 					"GameOverBackground",
 					"Defeat",
 					"Victory",
-					"TimerDisplay"
+					"TimerDisplay",
+					"Column3",
+					"Bush1",
+					"Bush2",
+					"Bush3",
+					"Tree2",
+					"Tree3",
+					"Rock2",
+					"Fountain2",
+					"Stone2",
+					"Stone3",
+					"Stone4"
 				],
 				"subfolders": [],
 				"name": "Visual"
@@ -737,7 +749,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "0.1.3.1",
+		"version": "0.2",
 		"author": "",
 		"authorEmail": "",
 		"authorWebsite": "https://maurovanetti.itch.io/dinomite",

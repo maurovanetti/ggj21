@@ -1,7 +1,7 @@
 {
-	"name": "Stone",
+	"name": "Rock2",
 	"plugin-id": "Sprite",
-	"sid": 604093811054135,
+	"sid": 960455180252508,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
@@ -11,19 +11,19 @@
 			{
 				"frames": [
 					{
-						"width": 152,
-						"height": 152,
-						"originX": 0.5263157894736842,
-						"originY": 0.881578947368421,
+						"width": 57,
+						"height": 43,
+						"originX": 0.4217406260749914,
+						"originY": 0.6874645490640952,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 3627229,
+						"imageSpriteId": 8995718,
 						"useCollisionPoly": true,
 						"duration": 1
 					}
 				],
-				"sid": 814105003763415,
+				"sid": 681090229037967,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

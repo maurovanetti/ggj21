@@ -7,38 +7,6 @@
 				{
 					"id": "on-key-pressed",
 					"objectClass": "Keyboard",
-					"sid": 448717938091559,
-					"parameters": {
-						"key": 77
-					}
-				}
-			],
-			"actions": [
-				{
-					"id": "set-eventvar-value",
-					"objectClass": "System",
-					"sid": 767516431911502,
-					"parameters": {
-						"variable": "MinReadyPlayers",
-						"value": "0"
-					}
-				},
-				{
-					"callFunction": "Log",
-					"sid": 287576491132595,
-					"parameters": [
-						"\"DEBUG: Solo play available\""
-					]
-				}
-			],
-			"sid": 140525356339221
-		},
-		{
-			"eventType": "block",
-			"conditions": [
-				{
-					"id": "on-key-pressed",
-					"objectClass": "Keyboard",
 					"sid": 477938760060252,
 					"parameters": {
 						"key": 76
@@ -81,9 +49,9 @@
 				},
 				{
 					"callFunction": "Log",
-					"sid": 577354253100498,
+					"sid": 789505039320700,
 					"parameters": [
-						"\"DEBUG: Frozen monster (still aggressive)\""
+						"\"DEBUG: Frozen monster\""
 					]
 				}
 			],

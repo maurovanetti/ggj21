@@ -214,109 +214,145 @@
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "compare-two-values",
-							"objectClass": "System",
-							"sid": 811382721615571,
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Avatar",
+							"sid": 580226576626890,
 							"parameters": {
-								"first-value": "getbit(Avatar.Inputs, 0)",
-								"comparison": 0,
-								"second-value": "1"
+								"instance-variable": "Robot"
 							}
 						}
 					],
 					"actions": [
 						{
-							"id": "simulate-control",
+							"id": "move-along-path",
 							"objectClass": "Avatar",
-							"sid": 237435207244856,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "up"
-							}
+							"sid": 280687426109401,
+							"behaviorType": "Pathfinding"
 						}
 					],
-					"sid": 110278838771593
+					"sid": 867758207581078
 				},
 				{
 					"eventType": "block",
 					"conditions": [
 						{
-							"id": "compare-two-values",
+							"id": "else",
 							"objectClass": "System",
-							"sid": 405948958676010,
-							"parameters": {
-								"first-value": "getbit(Avatar.Inputs, 1)",
-								"comparison": 0,
-								"second-value": "1"
-							}
+							"sid": 168669384121995
 						}
 					],
-					"actions": [
+					"actions": [],
+					"sid": 718720807011959,
+					"children": [
 						{
-							"id": "simulate-control",
-							"objectClass": "Avatar",
-							"sid": 580708619502368,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "left"
-							}
-						}
-					],
-					"sid": 589347087358218
-				},
-				{
-					"eventType": "block",
-					"conditions": [
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 748747504037651,
+									"parameters": {
+										"first-value": "getbit(Avatar.Inputs, 0)",
+										"comparison": 0,
+										"second-value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Avatar",
+									"sid": 263731575296122,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "up"
+									}
+								}
+							],
+							"sid": 368713302562579
+						},
 						{
-							"id": "compare-two-values",
-							"objectClass": "System",
-							"sid": 689600919882086,
-							"parameters": {
-								"first-value": "getbit(Avatar.Inputs, 2)",
-								"comparison": 0,
-								"second-value": "1"
-							}
-						}
-					],
-					"actions": [
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 820509268836521,
+									"parameters": {
+										"first-value": "getbit(Avatar.Inputs, 1)",
+										"comparison": 0,
+										"second-value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Avatar",
+									"sid": 582905259164657,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "left"
+									}
+								}
+							],
+							"sid": 802206630971838
+						},
 						{
-							"id": "simulate-control",
-							"objectClass": "Avatar",
-							"sid": 689474137989540,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "down"
-							}
-						}
-					],
-					"sid": 378199064608412
-				},
-				{
-					"eventType": "block",
-					"conditions": [
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 322082266572045,
+									"parameters": {
+										"first-value": "getbit(Avatar.Inputs, 2)",
+										"comparison": 0,
+										"second-value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Avatar",
+									"sid": 652624753330165,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "down"
+									}
+								}
+							],
+							"sid": 736853043204164
+						},
 						{
-							"id": "compare-two-values",
-							"objectClass": "System",
-							"sid": 562762828955467,
-							"parameters": {
-								"first-value": "getbit(Avatar.Inputs, 3)",
-								"comparison": 0,
-								"second-value": "1"
-							}
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 591905231068834,
+									"parameters": {
+										"first-value": "getbit(Avatar.Inputs, 3)",
+										"comparison": 0,
+										"second-value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "simulate-control",
+									"objectClass": "Avatar",
+									"sid": 133103740648338,
+									"behaviorType": "8Direction",
+									"parameters": {
+										"control": "right"
+									}
+								}
+							],
+							"sid": 147697029267577
 						}
-					],
-					"actions": [
-						{
-							"id": "simulate-control",
-							"objectClass": "Avatar",
-							"sid": 363402091245324,
-							"behaviorType": "8Direction",
-							"parameters": {
-								"control": "right"
-							}
-						}
-					],
-					"sid": 370321937310392
+					]
 				}
 			]
 		},
@@ -360,162 +396,155 @@
 					"sid": 803946185843664
 				},
 				{
-					"eventType": "variable",
-					"name": "NextNodeX",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 185976064639216
-				},
-				{
-					"eventType": "variable",
-					"name": "NextNodeY",
-					"type": "number",
-					"initialValue": "0",
-					"comment": "",
-					"isStatic": false,
-					"isConstant": false,
-					"sid": 511840528837122
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 685890760895458,
+							"parameters": {
+								"first-value": "distance(Avatar.X, Avatar.Y, Avatar.PreviousX, Avatar.PreviousY)",
+								"comparison": 4,
+								"second-value": "1"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 820701689566056,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-y",
+									"objectClass": "Avatar",
+									"sid": 831466576993689,
+									"parameters": {
+										"comparison": 2,
+										"y-co-ordinate": "Avatar.PreviousY"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 605764750495141,
+									"parameters": {
+										"variable": "RobotInputs",
+										"value": "setbit(RobotInputs, 0, 1)"
+									}
+								}
+							],
+							"sid": 755471214257032,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-x",
+									"objectClass": "Avatar",
+									"sid": 805690765163058,
+									"parameters": {
+										"comparison": 2,
+										"x-co-ordinate": "Avatar.PreviousX"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 759296219011260,
+									"parameters": {
+										"variable": "RobotInputs",
+										"value": "setbit(RobotInputs, 1, 1)"
+									}
+								}
+							],
+							"sid": 883750475641214,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-y",
+									"objectClass": "Avatar",
+									"sid": 368683039741399,
+									"parameters": {
+										"comparison": 4,
+										"y-co-ordinate": "Avatar.PreviousY"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 120993939407632,
+									"parameters": {
+										"variable": "RobotInputs",
+										"value": "setbit(RobotInputs, 2, 1)"
+									}
+								}
+							],
+							"sid": 369390328031087,
+							"isOrBlock": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-x",
+									"objectClass": "Avatar",
+									"sid": 673547280451632,
+									"parameters": {
+										"comparison": 4,
+										"x-co-ordinate": "Avatar.PreviousX"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 138584609666545,
+									"parameters": {
+										"variable": "RobotInputs",
+										"value": "setbit(RobotInputs, 3, 1)"
+									}
+								}
+							],
+							"sid": 280931681723158,
+							"isOrBlock": true
+						}
+					],
+					"isOrBlock": true
 				},
 				{
 					"eventType": "block",
 					"conditions": [],
 					"actions": [
 						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 482266731103896,
+							"id": "set-instvar-value",
+							"objectClass": "Avatar",
+							"sid": 580120180687856,
 							"parameters": {
-								"variable": "NextNodeX",
-								"value": "Avatar.Pathfinding.NodeXAt(Avatar.Pathfinding.CurrentNode)"
+								"instance-variable": "PreviousX",
+								"value": "Avatar.X"
 							}
 						},
 						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 480954393667191,
-							"parameters": {
-								"variable": "NextNodeY",
-								"value": "Avatar.Pathfinding.NodeYAt(Avatar.Pathfinding.CurrentNode)"
-							}
-						}
-					],
-					"sid": 983374631428623
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-y",
+							"id": "set-instvar-value",
 							"objectClass": "Avatar",
-							"sid": 388936969842395,
+							"sid": 871393147816633,
 							"parameters": {
-								"comparison": 4,
-								"y-co-ordinate": "NextNodeY"
+								"instance-variable": "PreviousY",
+								"value": "Avatar.Y"
 							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 518575062232305,
-							"parameters": {
-								"variable": "RobotInputs",
-								"value": "setbit(RobotInputs, 0, 1)"
-							}
-						}
-					],
-					"sid": 715096468843191,
-					"isOrBlock": true
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-x",
-							"objectClass": "Avatar",
-							"sid": 995832026184861,
-							"parameters": {
-								"comparison": 4,
-								"x-co-ordinate": "NextNodeX"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 861999110750689,
-							"parameters": {
-								"variable": "RobotInputs",
-								"value": "setbit(RobotInputs, 1, 1)"
-							}
-						}
-					],
-					"sid": 299708090547174,
-					"isOrBlock": true
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-y",
-							"objectClass": "Avatar",
-							"sid": 258324426351682,
-							"parameters": {
-								"comparison": 2,
-								"y-co-ordinate": "NextNodeY"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 167886621893020,
-							"parameters": {
-								"variable": "RobotInputs",
-								"value": "setbit(RobotInputs, 2, 1)"
-							}
-						}
-					],
-					"sid": 931475672178186,
-					"isOrBlock": true
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-x",
-							"objectClass": "Avatar",
-							"sid": 831856423482649,
-							"parameters": {
-								"comparison": 2,
-								"x-co-ordinate": "NextNodeX"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 850555095864174,
-							"parameters": {
-								"variable": "RobotInputs",
-								"value": "setbit(RobotInputs, 3, 1)"
-							}
-						}
-					],
-					"sid": 138741726635911,
-					"isOrBlock": true
-				},
-				{
-					"eventType": "block",
-					"conditions": [],
-					"actions": [
+						},
 						{
 							"id": "set-function-return-value",
 							"objectClass": "Functions",
@@ -526,6 +555,368 @@
 						}
 					],
 					"sid": 134899613615530
+				}
+			]
+		},
+		{
+			"functionName": "AssignDestination",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "AvatarUID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 510531311637887
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [
+				{
+					"id": "pick-by-unique-id",
+					"objectClass": "Avatar",
+					"sid": 100577792512476,
+					"parameters": {
+						"unique-id": "AvatarUID"
+					}
+				},
+				{
+					"id": "compare-instance-variable",
+					"objectClass": "Destination",
+					"sid": 540894055263338,
+					"parameters": {
+						"instance-variable": "PlayerIndex",
+						"comparison": 0,
+						"value": "Avatar.PlayerIndex"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 813037389036359,
+			"children": [
+				{
+					"eventType": "variable",
+					"name": "MinSafeDistance",
+					"type": "number",
+					"initialValue": "200",
+					"comment": "in pixels",
+					"isStatic": false,
+					"isConstant": true,
+					"sid": 194209684878295
+				},
+				{
+					"eventType": "variable",
+					"name": "MonsterFromEgg",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "distance in pixels",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 795057421916492
+				},
+				{
+					"eventType": "variable",
+					"name": "AvatarFromEgg",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "distance in pixels",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 821015687349928
+				},
+				{
+					"eventType": "variable",
+					"name": "MonsterFromAvatar",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "distance in pixels",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 896588737966800
+				},
+				{
+					"eventType": "variable",
+					"name": "MonsterFromClosestWaypoint",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"isStatic": false,
+					"isConstant": false,
+					"sid": 677882646053942
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 281235464797925,
+							"parameters": {
+								"variable": "MonsterFromEgg",
+								"value": "distance(Monster.X, Monster.Y, Egg.X, Egg.Y)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 928271833624243,
+							"parameters": {
+								"variable": "AvatarFromEgg",
+								"value": "distance(Avatar.X, Avatar.Y, Egg.X, Egg.Y)"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 451915367704271,
+							"parameters": {
+								"variable": "MonsterFromAvatar",
+								"value": "distance(Monster.X, Monster.Y, Avatar.X, Avatar.Y)"
+							}
+						}
+					],
+					"sid": 756215079844259
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-nearestfurthest",
+							"objectClass": "RobotWaypoint",
+							"sid": 305167405957666,
+							"parameters": {
+								"which": "nearest",
+								"x": "Avatar.X",
+								"y": "Avatar.Y"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 444450114216086,
+							"parameters": {
+								"variable": "MonsterFromClosestWaypoint",
+								"value": "distance(Monster.X, Monster.Y, RobotWaypoint.X, RobotWaypoint.Y)"
+							}
+						}
+					],
+					"sid": 225652388046905
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Countdown",
+							"sid": 566428364588028,
+							"parameters": {
+								"instance-variable": "Expiring"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "is-boolean-instance-variable-set",
+							"objectClass": "Avatar",
+							"sid": 957968099244311,
+							"parameters": {
+								"instance-variable": "CarryingEgg"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 603043576668497,
+							"parameters": {
+								"first-value": "MonsterFromAvatar",
+								"comparison": 5,
+								"second-value": "MinSafeDistance"
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 454923665450702,
+							"parameters": {
+								"first-value": "MonsterFromEgg",
+								"comparison": 5,
+								"second-value": "MinSafeDistance"
+							}
+						},
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 536427584298064,
+							"parameters": {
+								"first-value": "AvatarFromEgg",
+								"comparison": 2,
+								"second-value": "MonsterFromAvatar"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "find-path",
+							"objectClass": "Avatar",
+							"sid": 473623656761085,
+							"behaviorType": "Pathfinding",
+							"parameters": {
+								"x": "Egg.ImagePointX(\"Target\")",
+								"y": "Egg.ImagePointY(\"Target\")"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "Destination",
+							"sid": 150444979562740,
+							"parameters": {
+								"x": "Egg.ImagePointX(\"Target\")",
+								"y": "Egg.ImagePointY(\"Target\")"
+							}
+						},
+						{
+							"id": "move-to-top",
+							"objectClass": "Destination",
+							"sid": 668351064925917
+						}
+					],
+					"sid": 483881046800129
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 920018559571873
+						}
+					],
+					"actions": [],
+					"sid": 574184799259063,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-by-comparison",
+									"objectClass": "System",
+									"sid": 349553556128729,
+									"parameters": {
+										"object": "RobotWaypoint",
+										"expression": "distance(RobotWaypoint.X, RobotWaypoint.Y, Monster.X, Monster.Y)",
+										"comparison": 4,
+										"value": "MonsterFromClosestWaypoint"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 845482864550749,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-nearestfurthest",
+											"objectClass": "RobotWaypoint",
+											"sid": 891742838540162,
+											"parameters": {
+												"which": "nearest",
+												"x": "Avatar.X",
+												"y": "Avatar.Y"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "find-path",
+											"objectClass": "Avatar",
+											"sid": 590582054239958,
+											"behaviorType": "Pathfinding",
+											"parameters": {
+												"x": "RobotWaypoint.X",
+												"y": "RobotWaypoint.Y"
+											}
+										},
+										{
+											"id": "set-position",
+											"objectClass": "Destination",
+											"sid": 147599024137398,
+											"parameters": {
+												"x": "RobotWaypoint.X",
+												"y": "RobotWaypoint.Y"
+											}
+										},
+										{
+											"id": "move-to-top",
+											"objectClass": "Destination",
+											"sid": 851660117846813
+										}
+									],
+									"sid": 468364388660949
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 774066649877832
+								}
+							],
+							"actions": [],
+							"sid": 158971159345176,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-random-instance",
+											"objectClass": "System",
+											"sid": 141740603128689,
+											"parameters": {
+												"object": "RobotWaypoint"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "find-path",
+											"objectClass": "Avatar",
+											"sid": 178250385225113,
+											"behaviorType": "Pathfinding",
+											"parameters": {
+												"x": "RobotWaypoint.X",
+												"y": "RobotWaypoint.Y"
+											}
+										},
+										{
+											"id": "set-position",
+											"objectClass": "Destination",
+											"sid": 790570803938808,
+											"parameters": {
+												"x": "RobotWaypoint.X",
+												"y": "RobotWaypoint.Y"
+											}
+										},
+										{
+											"id": "move-to-top",
+											"objectClass": "Destination",
+											"sid": 212928954559946
+										}
+									],
+									"sid": 388141450579630
+								}
+							]
+						}
+					]
 				}
 			]
 		}

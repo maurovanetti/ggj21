@@ -12,6 +12,16 @@
 			"sid": 906688788724505
 		},
 		{
+			"eventType": "variable",
+			"name": "MatchEndDuration",
+			"type": "number",
+			"initialValue": "15",
+			"comment": "in seconds",
+			"isStatic": false,
+			"isConstant": true,
+			"sid": 477058084159204
+		},
+		{
 			"functionName": "StartCountdown",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -348,6 +358,15 @@
 					"parameters": {
 						"text": "floor(MatchDuration)"
 					}
+				},
+				{
+					"id": "set-boolean-instvar",
+					"objectClass": "Countdown",
+					"sid": 877861949148332,
+					"parameters": {
+						"instance-variable": "Expiring",
+						"value": "false"
+					}
 				}
 			],
 			"sid": 668390464078020
@@ -431,7 +450,55 @@
 					]
 				}
 			],
-			"sid": 810132495539785
+			"sid": 810132495539785,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 550267416701968,
+							"parameters": {
+								"first-value": "MatchDuration - Clock.Timer.CurrentTime(\"countdown\")",
+								"comparison": 2,
+								"second-value": "MatchEndDuration"
+							}
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 571712015341634
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Countdown",
+							"sid": 245275649764549,
+							"parameters": {
+								"instance-variable": "Expiring",
+								"value": "true"
+							}
+						},
+						{
+							"callFunction": "Log",
+							"sid": 119940781546886,
+							"parameters": [
+								"\"GET RID OF THE EGG!\""
+							]
+						},
+						{
+							"callFunction": "PlaySFX",
+							"sid": 143793331967882,
+							"parameters": [
+								"\"defeat\""
+							]
+						}
+					],
+					"sid": 937060394711374
+				}
+			]
 		},
 		{
 			"eventType": "block",

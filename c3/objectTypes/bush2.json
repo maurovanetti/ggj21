@@ -1,0 +1,57 @@
+{
+	"name": "Bush2",
+	"plugin-id": "Sprite",
+	"sid": 186478805545893,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 101,
+						"height": 78,
+						"originX": 0.4752475247524752,
+						"originY": 0.6923076923076923,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 3527515,
+						"collisionPoly": {
+							"points": [
+								0.022879314958522877,
+								0,
+								0.45544554455445546,
+								0,
+								0.8798501471768798,
+								0,
+								0.9043350280974043,
+								0.26282051282051283,
+								0.8227187583623228,
+								0.4328205128205127,
+								0.45544554455445546,
+								0.8928205128205128,
+								0.17795022745517797,
+								0.1928205128205128,
+								0.21059673534921064,
+								0.26282051282051283
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 814891735117573,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

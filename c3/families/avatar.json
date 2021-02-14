@@ -22,7 +22,7 @@
 			"sid": 382680108186609
 		},
 		{
-			"name": "HasEgg",
+			"name": "CarryingEgg",
 			"type": "boolean",
 			"desc": "",
 			"sid": 153064864205103
@@ -40,16 +40,16 @@
 			"sid": 305428951860271
 		},
 		{
-			"name": "RobotWaypointX",
+			"name": "PreviousX",
 			"type": "number",
 			"desc": "",
-			"sid": 906050529889551
+			"sid": 913980966118219
 		},
 		{
-			"name": "RobotWaypointY",
+			"name": "PreviousY",
 			"type": "number",
 			"desc": "",
-			"sid": 394662895823212
+			"sid": 146462916160196
 		}
 	],
 	"behaviorTypes": [

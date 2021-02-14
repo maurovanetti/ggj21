@@ -1,0 +1,57 @@
+{
+	"name": "Stone3",
+	"plugin-id": "Sprite",
+	"sid": 726195260027738,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 66,
+						"height": 64,
+						"originX": 0.9152759948652117,
+						"originY": 1.0141374806501546,
+						"originalSource": "",
+						"exportFormat": "png",
+						"exportQuality": 0.8,
+						"imageSpriteId": 1231830,
+						"collisionPoly": {
+							"points": [
+								0,
+								0.17693014705882354,
+								0.8470066518847007,
+								0.19393382352941174,
+								1,
+								0.6700367647058824,
+								1,
+								0.5340073529411765,
+								1,
+								0.31295955882352944,
+								0.8470066518847007,
+								0.9420955882352942,
+								0,
+								0.8400735294117646,
+								0,
+								0.5340073529411765
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1
+					}
+				],
+				"sid": 697133913829503,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

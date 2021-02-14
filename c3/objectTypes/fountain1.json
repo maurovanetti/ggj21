@@ -1,7 +1,7 @@
 {
-	"name": "Rock",
+	"name": "Fountain1",
 	"plugin-id": "Sprite",
-	"sid": 405104883970397,
+	"sid": 119452516331607,
 	"isGlobal": false,
 	"instanceVariables": [],
 	"behaviorTypes": [],
@@ -11,31 +11,19 @@
 			{
 				"frames": [
 					{
-						"width": 51,
-						"height": 41,
-						"originX": 0.49019607843137253,
-						"originY": 0.7073170731707317,
+						"width": 103,
+						"height": 127,
+						"originX": 0.46601941747572817,
+						"originY": 0.8346456692913385,
 						"originalSource": "",
 						"exportFormat": "png",
 						"exportQuality": 0.8,
-						"imageSpriteId": 1144342,
-						"collisionPoly": {
-							"points": [
-								0,
-								0.024390243902439025,
-								1,
-								0.024390243902439025,
-								1,
-								1,
-								0,
-								1
-							]
-						},
+						"imageSpriteId": 7459897,
 						"useCollisionPoly": true,
 						"duration": 1
 					}
 				],
-				"sid": 730276449070354,
+				"sid": 504464657073725,
 				"name": "Animation 1",
 				"isLooping": false,
 				"isPingPong": false,

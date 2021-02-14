@@ -3,7 +3,14 @@
 	"plugin-id": "Text",
 	"sid": 893947281626385,
 	"isGlobal": false,
-	"instanceVariables": [],
+	"instanceVariables": [
+		{
+			"name": "Expiring",
+			"type": "boolean",
+			"desc": "",
+			"sid": 825749241864455
+		}
+	],
 	"behaviorTypes": [],
 	"effectTypes": []
 }
